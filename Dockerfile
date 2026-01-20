@@ -35,6 +35,9 @@ ENV GEO_DATA_PATH=/app/backend/data/aoi
 # Expose port 7860 (Hugging Face default) or 8000
 EXPOSE 7860
 
+# Switch to backend directory so imports work correctly
+WORKDIR /app/backend
+
 # Command to run the application
 # Using 0.0.0.0 for external access
-CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
