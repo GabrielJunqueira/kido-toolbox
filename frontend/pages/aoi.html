@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AOI Project Generator - Create Tourism projects">
+    <title>AOI Generator | Kido Toolbox</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="/" class="navbar-brand">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                </svg>
+                Kido Toolbox
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/calibration" class="nav-link">Calibration</a></li>
+                <li><a href="/aoi" class="nav-link active">AOI Generator</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+
+        <!-- Page Header -->
+        <div class="text-center mb-xl">
+            <h1 style="font-size: 2rem; margin-bottom: 0.5rem;">
+                <span style="margin-right: 0.5rem;">🗺️</span>
+                AOI Project Generator
+            </h1>
+            <p class="text-secondary">
+                Create Tourism (AOI) projects with region and municipality selection
+            </p>
+        </div>
+
+        <!-- Stepper -->
+        <div class="stepper" id="stepper">
+            <div class="stepper-step active" data-step="1">
+                <div class="stepper-number">1</div>
+                <span class="stepper-label">Login</span>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="2">
+                <div class="stepper-number">2</div>
+                <span class="stepper-label">Location</span>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="3">
+                <div class="stepper-number">3</div>
+                <span class="stepper-label">Generate</span>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="4">
+                <div class="stepper-number">4</div>
+                <span class="stepper-label">Finish</span>
+            </div>
+        </div>
+
+        <!-- Step Content Container -->
+        <div class="card" style="max-width: 800px; margin: 0 auto;">
+
+            <!-- Step 1: Login -->
+            <div class="step-content active" id="step-1">
+                <div class="step-header">
+                    <h2 class="step-title">Connect to Kido API</h2>
+                    <p class="step-description">
+                        Enter your credentials to authenticate with the Kido Dynamics platform.
+                    </p>
+                </div>
+
+                <form id="login-form">
+                    <div class="form-group">
+                        <label class="form-label required" for="username">Email</label>
+                        <div class="input-group">
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            <input type="email" id="username" class="form-input" placeholder="your.email@company.com"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required" for="password">Password</label>
+                        <div class="input-group">
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                            </svg>
+                            <input type="password" id="password" class="form-input" placeholder="••••••••" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required" for="api-country">API Country</label>
+                        <select id="api-country" class="form-select" required>
+                            <option value="">Select API endpoint...</option>
+                            <option value="br">🇧🇷 Brazil (br)</option>
+                            <option value="pt">🇵🇹 Portugal (pt)</option>
+                            <option value="es">🇪🇸 Spain (es)</option>
+                            <option value="mx">🇲🇽 Mexico (mx)</option>
+                            <option value="ch">🇨🇭 Switzerland (ch)</option>
+                        </select>
+                        <p class="form-hint">This determines which API endpoint to use for project creation</p>
+                    </div>
+
+                    <div id="login-error" class="alert alert-error hidden">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M15 9l-6 6M9 9l6 6" />
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-message" id="login-error-message"></div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="step-footer">
+                    <a href="/" class="btn btn-ghost">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                        Back to Home
+                    </a>
+                    <button type="button" class="btn btn-primary" id="btn-login">
+                        Connect
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Location Selection -->
+            <div class="step-content" id="step-2">
+                <div class="step-header">
+                    <h2 class="step-title">Select Location</h2>
+                    <p class="step-description">
+                        Choose the country, region, and municipality for your AOI project.
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required" for="geo-country">Country</label>
+                    <select id="geo-country" class="form-select" required>
+                        <option value="">Loading countries...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required" for="region">State / District / Region</label>
+                    <select id="region" class="form-select" required disabled>
+                        <option value="">Select a country first...</option>
+                    </select>
+                    <p class="form-hint" id="region-hint">Select a country to load regions</p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required" for="municipality">Municipality / City</label>
+                    <select id="municipality" class="form-select" required disabled>
+                        <option value="">Select a region first...</option>
+                    </select>
+                    <p class="form-hint" id="municipality-hint">Select a region to load municipalities</p>
+                </div>
+
+                <div id="location-error" class="alert alert-error hidden">
+                    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M15 9l-6 6M9 9l6 6" />
+                    </svg>
+                    <div class="alert-content">
+                        <div class="alert-message" id="location-error-message"></div>
+                    </div>
+                </div>
+
+                <div class="step-footer">
+                    <button type="button" class="btn btn-secondary" id="btn-back-1">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                        Back
+                    </button>
+                    <button type="button" class="btn btn-primary" id="btn-next-2" disabled>
+                        Continue
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Generate & Preview -->
+            <div class="step-content" id="step-3">
+                <div class="step-header">
+                    <h2 class="step-title">Generate Project</h2>
+                    <p class="step-description">
+                        Review the project details and generate the GeoJSON.
+                    </p>
+                </div>
+
+                <!-- Summary -->
+                <div class="alert alert-info mb-lg">
+                    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 16v-4M12 8h.01" />
+                    </svg>
+                    <div class="alert-content">
+                        <div class="alert-title">Project Summary</div>
+                        <div class="alert-message">
+                            <div id="summary-country"></div>
+                            <div id="summary-region"></div>
+                            <div id="summary-city"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="generate-progress" class="flex items-center gap-md mb-lg hidden">
+                    <div class="spinner"></div>
+                    <span class="text-secondary">Generating project GeoJSON...</span>
+                </div>
+
+                <div id="generate-result" class="hidden">
+                    <div class="alert alert-success mb-lg">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                            <polyline points="22 4 12 14.01 9 11.01" />
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-title">GeoJSON Generated</div>
+                            <div class="alert-message" id="generate-summary"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="generate-error" class="alert alert-error hidden">
+                    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M15 9l-6 6M9 9l6 6" />
+                    </svg>
+                    <div class="alert-content">
+                        <div class="alert-message" id="generate-error-message"></div>
+                    </div>
+                </div>
+
+                <div class="step-footer">
+                    <button type="button" class="btn btn-secondary" id="btn-back-2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                        Back
+                    </button>
+                    <button type="button" class="btn btn-primary" id="btn-generate">
+                        Generate GeoJSON
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                            <polyline points="2 17 12 22 22 17" />
+                            <polyline points="2 12 12 17 22 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 4: Finish -->
+            <div class="step-content" id="step-4">
+                <div class="step-header">
+                    <h2 class="step-title">Finish</h2>
+                    <p class="step-description">
+                        Choose what to do with your generated project.
+                    </p>
+                </div>
+
+                <div class="alert alert-success mb-xl">
+                    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    <div class="alert-content">
+                        <div class="alert-title">Project Ready!</div>
+                        <div class="alert-message" id="final-summary"></div>
+                    </div>
+                </div>
+
+                <!-- Project Name for Cloud Creation -->
+                <div class="form-group" id="cloud-options">
+                    <label class="form-label required" for="project-name">Project Name</label>
+                    <input type="text" id="project-name" class="form-input"
+                        placeholder="e.g. Tourism Project - City Name">
+                    <p class="form-hint">Name for the project in the Kido platform</p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="project-description">Description (optional)</label>
+                    <textarea id="project-description" class="form-input" rows="2"
+                        placeholder="Optional description..."></textarea>
+                </div>
+
+                <div id="create-progress" class="flex items-center gap-md mb-lg hidden">
+                    <div class="spinner"></div>
+                    <span class="text-secondary" id="create-status">Validating and creating project...</span>
+                </div>
+
+                <div id="create-success" class="alert alert-success hidden mb-lg">
+                    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    <div class="alert-content">
+                        <div class="alert-title">Project Created!</div>
+                        <div class="alert-message" id="create-success-message"></div>
+                    </div>
+                </div>
+
+                <div id="create-error" class="alert alert-error hidden mb-lg">
+                    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M15 9l-6 6M9 9l6 6" />
+                    </svg>
+                    <div class="alert-content">
+                        <div class="alert-message" id="create-error-message"></div>
+                    </div>
+                </div>
+
+                <div class="step-footer" style="flex-direction: column; gap: 1rem;">
+                    <div class="flex gap-md w-full">
+                        <button type="button" class="btn btn-secondary flex-1" id="btn-download">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="7 10 12 15 17 10" />
+                                <line x1="12" y1="15" x2="12" y2="3" />
+                            </svg>
+                            Download GeoJSON
+                        </button>
+                        <button type="button" class="btn btn-primary flex-1" id="btn-create-cloud">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                            </svg>
+                            Create in Platform
+                        </button>
+                    </div>
+                    <button type="button" class="btn btn-ghost w-full" id="btn-new-project">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 5v14M5 12h14" />
+                        </svg>
+                        Create Another Project
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Application JS -->
+    <script src="/js/aoi.js"></script>
+</body>
+
+</html>

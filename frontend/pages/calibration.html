@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mall Calibration Tool - Create buffer zones and extract visitor data">
+    <title>Mall Calibration | Kido Toolbox</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="/" class="navbar-brand">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                </svg>
+                Kido Toolbox
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/calibration" class="nav-link active">Calibration</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+
+        <!-- Page Header -->
+        <div class="text-center mb-xl">
+            <h1 style="font-size: 2rem; margin-bottom: 0.5rem;">
+                <span style="margin-right: 0.5rem;">🎯</span>
+                Mall Calibration Tool
+            </h1>
+            <p class="text-secondary">
+                Create buffer zones around mall coordinates and extract visitor data
+            </p>
+        </div>
+
+        <!-- Stepper -->
+        <div class="stepper" id="stepper">
+            <div class="stepper-step active" data-step="1">
+                <div class="stepper-number">1</div>
+                <span class="stepper-label">Login</span>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="2">
+                <div class="stepper-number">2</div>
+                <span class="stepper-label">Location</span>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="3">
+                <div class="stepper-number">3</div>
+                <span class="stepper-label">Radii</span>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="4">
+                <div class="stepper-number">4</div>
+                <span class="stepper-label">Project</span>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="5">
+                <div class="stepper-number">5</div>
+                <span class="stepper-label">Extract</span>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="6">
+                <div class="stepper-number">6</div>
+                <span class="stepper-label">Results</span>
+            </div>
+        </div>
+
+        <!-- Step Content Container -->
+        <div class="card" style="max-width: 800px; margin: 0 auto;">
+
+            <!-- Step 1: Login -->
+            <div class="step-content active" id="step-1">
+                <div class="step-header">
+                    <h2 class="step-title">Connect to Kido API</h2>
+                    <p class="step-description">
+                        Enter your credentials to authenticate with the Kido Dynamics platform.
+                    </p>
+                </div>
+
+                <form id="login-form">
+                    <div class="form-group">
+                        <label class="form-label required" for="username">Email</label>
+                        <div class="input-group">
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            <input type="email" id="username" class="form-input" placeholder="your.email@company.com"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required" for="password">Password</label>
+                        <div class="input-group">
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                            </svg>
+                            <input type="password" id="password" class="form-input" placeholder="••••••••" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required" for="country-code">Country Code</label>
+                        <select id="country-code" class="form-select" required>
+                            <option value="">Select a country...</option>
+                            <option value="br">🇧🇷 Brazil (br)</option>
+                            <option value="ar">🇦🇷 Argentina (ar)</option>
+                            <option value="es">🇪🇸 Spain (es)</option>
+                            <option value="pt">🇵🇹 Portugal (pt)</option>
+                            <option value="mx">🇲🇽 Mexico (mx)</option>
+                            <option value="co">🇨🇴 Colombia (co)</option>
+                            <option value="pe">🇵🇪 Peru (pe)</option>
+                            <option value="ch">🇨🇭 Switzerland (ch)</option>
+                            <option value="pa">🇵🇦 Panama (pa)</option>
+                            <option value="qa">🇶🇦 Qatar (qa)</option>
+                            <option value="ecu">🇪🇨 Ecuador (ecu)</option>
+                        </select>
+                        <p class="form-hint">This determines which API endpoint to use</p>
+                    </div>
+
+                    <div id="login-error" class="alert alert-error hidden">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M15 9l-6 6M9 9l6 6" />
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-message" id="login-error-message"></div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="step-footer">
+                    <a href="/" class="btn btn-ghost">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                        Back to Home
+                    </a>
+                    <button type="button" class="btn btn-primary" id="btn-login">
+                        Connect
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Location -->
+            <div class="step-content" id="step-2">
+                <div class="step-header">
+                    <h2 class="step-title">Set Mall Location</h2>
+                    <p class="step-description">
+                        Enter the coordinates of the mall center point. Click on the map to set the location.
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required">Coordinates</label>
+                    <div class="flex gap-md">
+                        <div class="flex-1">
+                            <input type="number" id="latitude" class="form-input" placeholder="Latitude (e.g. -22.84)"
+                                step="any" required>
+                        </div>
+                        <div class="flex-1">
+                            <input type="number" id="longitude" class="form-input" placeholder="Longitude (e.g. -47.06)"
+                                step="any" required>
+                        </div>
+                    </div>
+                    <p class="form-hint">Or click on the map below to set the location</p>
+                </div>
+
+                <div class="map-container" id="location-map">
+                    <!-- Leaflet map will be inserted here -->
+                </div>
+
+                <div id="country-detected" class="alert alert-info mt-lg hidden">
+                    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 16v-4M12 8h.01" />
+                    </svg>
+                    <div class="alert-content">
+                        <div class="alert-message">
+                            Location detected in: <strong id="country-name"></strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-footer">
+                    <button type="button" class="btn btn-secondary" id="btn-back-1">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                        Back
+                    </button>
+                    <button type="button" class="btn btn-primary" id="btn-next-2" disabled>
+                        Continue
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Radii -->
+            <div class="step-content" id="step-3">
+                <div class="step-header">
+                    <h2 class="step-title">Configure Buffer Radii</h2>
+                    <p class="step-description">
+                        Define the radii (in meters) for the circular zones around the mall.
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Radii (meters)</label>
+                    <div class="radius-tags" id="radius-container">
+                        <input type="number" class="form-input" id="radius-input"
+                            placeholder="Type radius and press Enter" min="50" max="5000">
+                    </div>
+                    <p class="form-hint">Press Enter or comma to add. Click a tag to remove it.</p>
+                </div>
+
+                <!-- Quick presets -->
+                <div class="mb-lg">
+                    <label class="form-label">Quick Presets</label>
+                    <div class="btn-group flex-wrap">
+                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-radii="200,300,400">
+                            Standard (200, 300, 400)
+                        </button>
+                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-radii="150,250,350,500">
+                            Extended (150, 250, 350, 500)
+                        </button>
+                        <button type="button" class="btn btn-secondary btn-sm preset-btn"
+                            data-radii="100,200,300,400,500">
+                            Full Range (100-500)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Buffer Preview Map -->
+                <div class="form-group">
+                    <label class="form-label">Preview</label>
+                    <div class="map-container" id="preview-map">
+                        <!-- Leaflet map will be inserted here -->
+                    </div>
+                </div>
+
+                <div class="step-footer">
+                    <button type="button" class="btn btn-secondary" id="btn-back-2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                        Back
+                    </button>
+                    <button type="button" class="btn btn-primary" id="btn-next-3" disabled>
+                        Continue
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 4: Project Creation -->
+            <div class="step-content" id="step-4">
+                <div class="step-header">
+                    <h2 class="step-title">Create Project</h2>
+                    <p class="step-description">
+                        Name your project and create it in the Kido cloud.
+                    </p>
+                </div>
+
+                <form id="project-form">
+                    <div class="form-group">
+                        <label class="form-label required" for="project-name">Project Name</label>
+                        <input type="text" id="project-name" class="form-input"
+                            placeholder="e.g. Mall Campinas - Calibration" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="project-description">Description</label>
+                        <textarea id="project-description" class="form-input" rows="3"
+                            placeholder="Optional description for this calibration project..."></textarea>
+                    </div>
+
+                    <!-- Summary -->
+                    <div class="alert alert-info">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 16v-4M12 8h.01" />
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-title">Project Summary</div>
+                            <div class="alert-message">
+                                <div id="summary-coords"></div>
+                                <div id="summary-radii"></div>
+                                <div id="summary-country"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="project-error" class="alert alert-error hidden">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M15 9l-6 6M9 9l6 6" />
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-message" id="project-error-message"></div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="step-footer">
+                    <button type="button" class="btn btn-secondary" id="btn-back-3">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                        Back
+                    </button>
+                    <button type="button" class="btn btn-primary" id="btn-create-project">
+                        Create Project
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 5: Data Extraction -->
+            <div class="step-content" id="step-5">
+                <div class="step-header">
+                    <h2 class="step-title">Extract Visitor Data</h2>
+                    <p class="step-description">
+                        Select the time period to extract visitor data for each buffer zone.
+                    </p>
+                </div>
+
+                <div class="alert alert-warning mb-lg">
+                    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    <div class="alert-content">
+                        <div class="alert-title">Note</div>
+                        <div class="alert-message">
+                            If the project was just created, wait a few minutes for data to be processed before
+                            extracting.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-md mb-lg">
+                    <div class="form-group flex-1">
+                        <label class="form-label required" for="start-month">Start Month</label>
+                        <input type="month" id="start-month" class="form-input" required>
+                    </div>
+                    <div class="form-group flex-1">
+                        <label class="form-label required" for="end-month">End Month</label>
+                        <input type="month" id="end-month" class="form-input" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Radii to Extract</label>
+                    <div id="radii-checkboxes" class="flex gap-md flex-wrap">
+                        <!-- Checkboxes will be inserted here -->
+                    </div>
+                </div>
+
+                <div id="extraction-progress" class="hidden">
+                    <div class="flex items-center gap-md mb-md">
+                        <div class="spinner"></div>
+                        <span class="text-secondary" id="extraction-status">Extracting data...</span>
+                    </div>
+                </div>
+
+                <div id="extraction-error" class="alert alert-error hidden">
+                    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M15 9l-6 6M9 9l6 6" />
+                    </svg>
+                    <div class="alert-content">
+                        <div class="alert-message" id="extraction-error-message"></div>
+                    </div>
+                </div>
+
+                <div class="step-footer">
+                    <button type="button" class="btn btn-secondary" id="btn-back-4">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                        Back
+                    </button>
+                    <button type="button" class="btn btn-primary" id="btn-extract">
+                        Extract Data
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 6: Results -->
+            <div class="step-content" id="step-6">
+                <div class="step-header">
+                    <h2 class="step-title">Extraction Results</h2>
+                    <p class="step-description">
+                        View and export the visitor data for each buffer zone.
+                    </p>
+                </div>
+
+                <div class="alert alert-success mb-lg">
+                    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    <div class="alert-content">
+                        <div class="alert-title">Data Extracted Successfully</div>
+                        <div class="alert-message" id="result-summary"></div>
+                    </div>
+                </div>
+
+                <!-- Results Table -->
+                <div class="table-container mb-lg">
+                    <table class="table" id="results-table">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>AOI ID</th>
+                                <th>Radius (m)</th>
+                                <th>Visits</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results-body">
+                            <!-- Results will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="step-footer">
+                    <button type="button" class="btn btn-secondary" id="btn-new-calibration">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 5v14M5 12h14" />
+                        </svg>
+                        New Calibration
+                    </button>
+                    <button type="button" class="btn btn-success" id="btn-export-csv">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        Export CSV
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- Application JS -->
+    <script src="/js/calibration.js"></script>
+</body>
+
+</html>

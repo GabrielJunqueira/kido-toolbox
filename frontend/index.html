@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kido Support Toolbox - Web-based tools for the Kido support team">
+    <title>Kido Support Toolbox</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="/" class="navbar-brand">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                </svg>
+                Kido Toolbox
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="/" class="nav-link active">Home</a></li>
+                <li><a href="/calibration" class="nav-link">Calibration</a></li>
+                <li><a href="/aoi" class="nav-link">AOI Generator</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 6v6l4 2" />
+                    </svg>
+                    Support Tools v1.0
+                </div>
+                <h1 class="hero-title">Kido Support Toolbox</h1>
+                <p class="hero-subtitle">
+                    A collection of visual, easy-to-use tools designed for the Kido support team.
+                    Run complex scripts with just a few clicks.
+                </p>
+            </div>
+        </section>
+
+        <!-- Tools Grid -->
+        <section class="container">
+            <h2 class="mb-lg">Available Tools</h2>
+
+            <div class="tool-grid">
+                <!-- Mall Calibration Tool -->
+                <a href="/calibration" class="card tool-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <circle cx="12" cy="12" r="6" />
+                            <circle cx="12" cy="12" r="2" />
+                        </svg>
+                    </div>
+                    <div class="card-header">
+                        <h3 class="card-title flex items-center gap-sm">
+                            Mall Calibration
+                            <span class="tag tag-success">Active</span>
+                        </h3>
+                        <p class="card-description">
+                            Create circular buffer zones around mall coordinates to analyze visitor data
+                            and determine the optimal radius for each location.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-sm text-secondary text-sm">
+                        <span>Create buffers • Extract data • Export CSV</span>
+                        <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- AOI Project Generator -->
+                <a href="/aoi" class="card tool-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                            <polyline points="2 17 12 22 22 17" />
+                            <polyline points="2 12 12 17 22 12" />
+                        </svg>
+                    </div>
+                    <div class="card-header">
+                        <h3 class="card-title flex items-center gap-sm">
+                            AOI Generator
+                            <span class="tag tag-success">Active</span>
+                        </h3>
+                        <p class="card-description">
+                            Create Tourism (AOI) projects by selecting country, region, and municipality.
+                            Automatically generates the GeoJSON with all required polygons.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-sm text-secondary text-sm">
+                        <span>BR • PT • ES • MX • CL</span>
+                        <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- Coming Soon Tool -->
+                <div class="card" style="opacity: 0.5;">
+                    <div class="card-icon" style="background: var(--bg-tertiary); box-shadow: none;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                    </div>
+                    <div class="card-header">
+                        <h3 class="card-title flex items-center gap-sm">
+                            Bulk Exporter
+                            <span class="tag">Coming Soon</span>
+                        </h3>
+                        <p class="card-description">
+                            Export data from multiple projects at once.
+                            Batch processing for efficiency.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Section -->
+        <section class="container mt-2xl">
+            <div class="card">
+                <div class="flex items-start gap-lg">
+                    <div class="card-icon" style="flex-shrink: 0;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 16v-4M12 8h.01" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="card-title mb-sm">How to Use</h3>
+                        <p class="text-secondary mb-md">
+                            Each tool is designed to be self-explanatory. Simply click on a tool card to open it,
+                            then follow the step-by-step wizard to complete your task.
+                        </p>
+                        <ul class="text-secondary text-sm" style="list-style: disc; padding-left: 1.5rem;">
+                            <li>You'll need your Kido API credentials to log in</li>
+                            <li>All data processing happens securely through the official API</li>
+                            <li>Results can be exported as CSV files for further analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spacer -->
+        <div style="height: 4rem;"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="padding: 2rem 0; border-top: 1px solid var(--glass-border);">
+        <div class="container text-center text-muted text-sm">
+            <p>Kido Support Toolbox &copy; 2026 • Built for the Kido Dynamics Support Team</p>
+        </div>
+    </footer>
+</body>
+
+</html>
