@@ -163,21 +163,36 @@ def get_municipalities_for_region(country_code: str, region_code: str) -> List[s
         else:
             filename = f"{region_code}_Municipios.geojson"
         path_l2 = os.path.join(GEO_DATA_PATH, cfg['folder'], cfg['subfolder_l2'], filename)
-        gdf_l2 = load_gdf(path_l2)
+        print(f"Loading Brazil file: {path_l2}")
         
-        col_name = cfg.get('col_name_l2', 'name')
-        names = gdf_l2[col_name].dropna().unique().tolist()
-        return sorted(names)
+        try:
+            gdf_l2 = load_gdf(path_l2)
+            col_name = cfg.get('col_name_l2', 'name')
+            print(f"Columns found: {gdf_l2.columns.tolist()}")
+            if col_name not in gdf_l2.columns:
+                 # Fallback to finding name-like column (case insensitive)
+                 for c in gdf_l2.columns:
+                     if c.lower() == 'name':
+                         col_name = c
+                         break
+            names = gdf_l2[col_name].dropna().unique().tolist()
+            return sorted(names)
+        except Exception as e:
+            print(f"Error loading {path_l2}: {e}")
+            raise e
     
     # For other countries, filter from single file
     path_l2 = os.path.join(GEO_DATA_PATH, cfg['folder'], cfg['file_l2'])
+    print(f"Loading Country file: {path_l2}")
     gdf_l2 = load_gdf(path_l2)
     
     col_filter = cfg['col_filter_l2']
     col_name = cfg.get('col_name_l2', 'name')
     
     # Filter by region
+    print(f"Filtering by {col_filter} == {region_code}")
     filtered = gdf_l2[gdf_l2[col_filter].apply(normalize) == normalize(region_code)]
+    print(f"Found {len(filtered)} matches")
     
     if filtered.empty:
         return []
