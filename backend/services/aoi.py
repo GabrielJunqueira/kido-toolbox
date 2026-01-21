@@ -58,7 +58,7 @@ COUNTRY_CONFIG = {
         "mode": "single_file",
         "file_l1": "esp_provinces_SIMP.geojson",
         "file_l2": "esp_municipalities_SIMP.geojson",
-        "col_filter_l2": "provincia",
+        "col_filter_l2": "prov_name",
         "col_name_l1": "name",
         "col_name_l2": "name"
     },
