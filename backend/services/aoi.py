@@ -189,10 +189,34 @@ def get_municipalities_for_region(country_code: str, region_code: str) -> List[s
     col_filter = cfg['col_filter_l2']
     col_name = cfg.get('col_name_l2', 'name')
     
+    # Debug columns and values
+    print(f"Columns found: {gdf_l2.columns.tolist()}")
+    if col_filter in gdf_l2.columns:
+        unique_vals = gdf_l2[col_filter].astype(str).unique().tolist()
+        print(f"Available {col_filter} values (first 10): {unique_vals[:10]}")
+        # Check for Madrid specifically
+        has_madrid = any("madrid" in str(x).lower() for x in unique_vals)
+        print(f"Contains 'Madrid' (fuzzy check)? {has_madrid}")
+    
     # Filter by region
     print(f"Filtering by {col_filter} == {region_code}")
-    filtered = gdf_l2[gdf_l2[col_filter].apply(normalize) == normalize(region_code)]
-    print(f"Found {len(filtered)} matches")
+    try:
+        filtered = gdf_l2[gdf_l2[col_filter].apply(normalize) == normalize(region_code)]
+        print(f"Found {len(filtered)} matches")
+    except Exception as e:
+        print(f"Filter error: {e}")
+        # Try finding the column case-insensitive
+        fallback_col = None
+        for c in gdf_l2.columns:
+             if c.lower() == col_filter.lower():
+                 fallback_col = c
+                 break
+        if fallback_col:
+             print(f"Retrying with column: {fallback_col}")
+             col_filter = fallback_col
+             filtered = gdf_l2[gdf_l2[col_filter].apply(normalize) == normalize(region_code)]
+        else:
+             raise e
     
     if filtered.empty:
         return []
