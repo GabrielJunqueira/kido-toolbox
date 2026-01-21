@@ -158,7 +158,7 @@ async def create_project(request: CreateProjectRequest):
             validate_url,
             json=request.geojson,
             headers=headers,
-            timeout=180  # 3 minutes for validation
+            timeout=600  # 10 minutes for validation
         )
         
         if val_response.status_code != 200:
@@ -191,7 +191,7 @@ async def create_project(request: CreateProjectRequest):
             create_url,
             json=payload,
             headers=headers,
-            timeout=300  # 5 minutes for project creation
+            timeout=600  # 10 minutes for project creation
         )
         
         if create_response.status_code == 200:
@@ -206,7 +206,7 @@ async def create_project(request: CreateProjectRequest):
     except requests.exceptions.Timeout as e:
         return CreateProjectResponse(
             success=False, 
-            error=f"Request timeout - the Kido API is taking too long to respond. This can happen with large geometries. Please try again or contact support. Details: {str(e)}"
+            error=f"Request timeout (10 mins exceeded). Kido API is slow for large countries (Brazil/Mexico). Check platform later to see if it was created. Details: {str(e)}"
         )
     except requests.exceptions.ConnectionError as e:
         return CreateProjectResponse(
