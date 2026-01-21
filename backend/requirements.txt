@@ -7,3 +7,4 @@ geopandas==0.14.2
 shapely==2.0.2
 pyproj==3.6.1
 pydantic==2.5.3
+fiona==1.9.6
