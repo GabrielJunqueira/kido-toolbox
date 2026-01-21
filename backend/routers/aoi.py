@@ -242,3 +242,32 @@ async def create_project(request: CreateProjectRequest):
         )
     except Exception as e:
         return CreateProjectResponse(success=False, error=f"Unexpected error: {str(e)}")
+
+
+@router.get("/debug-files")
+async def debug_files():
+    """List files in the data directory recursively with sizes."""
+    import os
+    from services.aoi import GEO_DATA_PATH
+    
+    result = {}
+    try:
+        if not os.path.exists(GEO_DATA_PATH):
+            return {"error": f"Path does not exist: {GEO_DATA_PATH}"}
+
+        for root, dirs, files in os.walk(GEO_DATA_PATH):
+            rel_path = os.path.relpath(root, GEO_DATA_PATH)
+            if rel_path == ".":
+                rel_path = ""
+            
+            file_list = []
+            for f in files:
+                full_path = os.path.join(root, f)
+                size = os.path.getsize(full_path)
+                file_list.append({"name": f, "size": size})
+            
+            result[rel_path] = file_list
+            
+        return {"root": GEO_DATA_PATH, "files": result}
+    except Exception as e:
+        return {"error": str(e)}
