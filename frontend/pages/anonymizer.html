@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard Anonymizer - Anonymize sensitive deal data">
+    <title>Dashboard Anonymizer - Kido Toolbox</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="/" class="navbar-brand">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                </svg>
+                Kido Toolbox
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/calibration" class="nav-link">Calibration</a></li>
+                <li><a href="/aoi" class="nav-link">AOI Generator</a></li>
+                <li><a href="/anonymizer" class="nav-link active">Anonymizer</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Header -->
+        <header class="page-header">
+            <div class="flex items-center gap-md">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="17 8 12 3 7 8" />
+                        <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="page-title">Dashboard Anonymizer</h1>
+                    <p class="page-subtitle">Upload your Deals CSV/Excel to anonymize sensitive columns.</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tool Interface -->
+        <div class="card">
+            <form id="anonymizerForm" class="form-grid">
+                <!-- File Upload -->
+                <div class="form-group">
+                    <label class="form-label" for="fileInput">Upload File (CSV or Excel)</label>
+                    <div class="file-drop-zone" id="dropZone">
+                        <input type="file" id="fileInput" name="file" accept=".csv, .xls, .xlsx" required hidden>
+                        <div class="text-center">
+                            <svg class="mx-auto mb-sm text-secondary" width="48" height="48" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="17 8 12 3 7 8" />
+                                <line x1="12" y1="3" x2="12" y2="15" />
+                            </svg>
+                            <p class="text-secondary mb-xs">Drag & drop your file here</p>
+                            <span class="btn btn-secondary btn-sm">Browse Files</span>
+                            <p id="fileName" class="text-sm mt-sm font-medium text-primary"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Salt Configuration -->
+                <div class="form-group">
+                    <label class="form-label" for="saltInput">
+                        Anonymization Salt
+                        <span class="text-secondary text-sm font-normal">(Internal Secret)</span>
+                    </label>
+                    <input type="password" id="saltInput" name="salt" class="form-input" value="kido_internal_salt_v1"
+                        required>
+                    <p class="text-xs text-secondary mt-xs">Do not change unless you know what you are doing.</p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex justify-end gap-md mt-lg">
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        Anonymize & Download
+                    </button>
+                </div>
+            </form>
+
+            <!-- Status/Result -->
+            <div id="statusMessage" class="mt-lg hidden"></div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="card mt-xl bg-secondary">
+            <h3 class="text-lg font-semibold mb-md">How it works</h3>
+            <ul class="list-disc pl-lg space-y-xs text-secondary">
+                <li>Uploads your <strong>Deals_Kido.csv</strong> or Excel file.</li>
+                <li>Anonymizes <strong>Deal</strong> and <strong>Company</strong> names using the salt.</li>
+                <li>Cleans up <strong>Country</strong> names (removes Notion links).</li>
+                <li>Normalizes text and formats currency values (Amount CHF).</li>
+                <li>Returns a processed CSV file named <strong>deals_treated.csv</strong>.</li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="/js/anonymizer.js"></script>
+</body>
+
+</html>

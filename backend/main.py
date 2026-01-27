@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
-from routers import calibration, aoi
+from routers import calibration, aoi, anonymizer
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -30,6 +30,7 @@ app.add_middleware(
 # Mount API routers
 app.include_router(calibration.router)
 app.include_router(aoi.router)
+app.include_router(anonymizer.router)
 
 # Get paths for static files
 BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -68,6 +69,15 @@ async def calibration_page():
 async def aoi_page():
     """Serve the AOI project generator page."""
     page_path = os.path.join(FRONTEND_DIR, "pages", "aoi.html")
+    if os.path.exists(page_path):
+        return FileResponse(page_path)
+    return {"error": "Page not found"}
+
+
+@app.get("/anonymizer")
+async def anonymizer_page():
+    """Serve the dashboard anonymizer tool page."""
+    page_path = os.path.join(FRONTEND_DIR, "pages", "anonymizer.html")
     if os.path.exists(page_path):
         return FileResponse(page_path)
     return {"error": "Page not found"}
