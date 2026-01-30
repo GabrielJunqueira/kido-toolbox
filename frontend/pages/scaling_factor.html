@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Polygon Scaling Factor Adjustment - Adjust scaling factors for project polygons">
+    <title>Scaling Factor Adjustment - Kido Toolbox</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
+
+    <style>
+        /* Tool-specific styles */
+        .step-indicator {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .step-dot {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .step-dot.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+        }
+
+        .step-dot.completed {
+            background: var(--success);
+            color: white;
+        }
+
+        .step-connector {
+            flex: 1;
+            height: 2px;
+            background: var(--bg-tertiary);
+            align-self: center;
+            max-width: 3rem;
+        }
+
+        .step-connector.completed {
+            background: var(--success);
+        }
+
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .country-btn {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--glass-border);
+            border-radius: 0.5rem;
+            background: var(--bg-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            font-weight: 500;
+            color: white;
+        }
+
+        .country-btn:hover {
+            border-color: var(--primary);
+            background: var(--bg-tertiary);
+        }
+
+        .country-btn.selected {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.2);
+            color: white;
+        }
+
+        .polygon-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .polygon-table th,
+        .polygon-table td {
+            padding: 0.875rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .polygon-table th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+        }
+
+        .polygon-table tr:hover {
+            background: var(--bg-secondary);
+        }
+
+        .polygon-table tr.selected {
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .polygon-row {
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .polygon-id {
+            font-family: monospace;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .polygon-uuid {
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .search-input {
+            margin-bottom: 1rem;
+        }
+
+        .date-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .confirmation-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .confirmation-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .confirmation-item:last-child {
+            border-bottom: none;
+        }
+
+        .confirmation-label {
+            color: var(--text-secondary);
+        }
+
+        .confirmation-value {
+            font-weight: 600;
+        }
+
+        .selected-polygon-info {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge-brand {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--primary) 0%, #4338ca 100%);
+            color: white;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="/" class="navbar-brand">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                </svg>
+                Kido Toolbox
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/calibration" class="nav-link">Calibration</a></li>
+                <li><a href="/aoi" class="nav-link">AOI Generator</a></li>
+                <li><a href="/anonymizer" class="nav-link">Anonymizer</a></li>
+                <li><a href="/scaling-factor" class="nav-link active">Scaling Factor</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Header -->
+        <header class="page-header">
+            <div class="flex items-center gap-md">
+                <div class="icon-box" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="21" y1="6" x2="3" y2="6" />
+                        <line x1="17" y1="12" x2="3" y2="12" />
+                        <line x1="19" y1="18" x2="3" y2="18" />
+                        <circle cx="19" cy="6" r="2" />
+                        <circle cx="15" cy="12" r="2" />
+                        <circle cx="17" cy="18" r="2" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="page-title">Polygon Scaling Factor</h1>
+                    <p class="page-subtitle">Adjust scaling factors for polygons in your projects.</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Step Indicator -->
+        <div class="step-indicator">
+            <div class="step-dot active" data-step="1">1</div>
+            <div class="step-connector"></div>
+            <div class="step-dot" data-step="2">2</div>
+            <div class="step-connector"></div>
+            <div class="step-dot" data-step="3">3</div>
+            <div class="step-connector"></div>
+            <div class="step-dot" data-step="4">4</div>
+        </div>
+
+        <!-- Step 1: Login -->
+        <div class="step-content active" id="step1">
+            <div class="card">
+                <h2 class="text-xl font-semibold mb-md">Step 1: Connect to Kido API</h2>
+                <p class="text-secondary mb-lg">Enter your Kido credentials to authenticate.</p>
+
+                <form id="loginForm" class="space-y-lg">
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-input"
+                            placeholder="your.email@kidodynamics.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Country</label>
+                        <div class="country-grid" id="countryGrid">
+                            <button type="button" class="country-btn" data-country="br">🇧🇷 Brazil</button>
+                            <button type="button" class="country-btn" data-country="es">🇪🇸 Spain</button>
+                            <button type="button" class="country-btn" data-country="pt">🇵🇹 Portugal</button>
+                            <button type="button" class="country-btn" data-country="mx">🇲🇽 Mexico</button>
+                            <button type="button" class="country-btn" data-country="cl">🇨🇱 Chile</button>
+                            <button type="button" class="country-btn" data-country="co">🇨🇴 Colombia</button>
+                            <button type="button" class="country-btn" data-country="pe">🇵🇪 Peru</button>
+                            <button type="button" class="country-btn" data-country="pa">🇵🇦 Panama</button>
+                            <button type="button" class="country-btn" data-country="qa">🇶🇦 Qatar</button>
+                            <button type="button" class="country-btn" data-country="ch">🇨🇭 Swiss</button>
+                        </div>
+                        <input type="hidden" id="countryCode" name="country_code" required>
+                    </div>
+
+                    <div class="flex justify-end">
+                        <button type="submit" class="btn btn-primary" id="loginBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                                <polyline points="10 17 15 12 10 7" />
+                                <line x1="15" y1="12" x2="3" y2="12" />
+                            </svg>
+                            Connect
+                        </button>
+                    </div>
+                </form>
+
+                <div id="loginStatus" class="mt-lg hidden"></div>
+            </div>
+        </div>
+
+        <!-- Step 2: Project Selection -->
+        <div class="step-content" id="step2">
+            <div class="card">
+                <div class="flex items-center justify-between mb-md">
+                    <div>
+                        <h2 class="text-xl font-semibold">Step 2: Select Project</h2>
+                        <p class="text-secondary">Enter the project UUID to load its polygons.</p>
+                    </div>
+                    <span id="brandBadge" class="badge-brand"></span>
+                </div>
+
+                <form id="projectForm" class="space-y-lg">
+                    <div class="form-group">
+                        <label class="form-label" for="projectId">Project UUID</label>
+                        <input type="text" id="projectId" name="project_id" class="form-input"
+                            placeholder="e.g., ea7d69df-c3b9-42b6-8bc8-fe2f1e192bae" required>
+                        <p class="text-xs text-secondary mt-xs">You can find this in the project URL or dashboard.</p>
+                    </div>
+
+                    <div class="flex justify-between">
+                        <button type="button" class="btn btn-secondary" id="backToStep1">
+                            ← Back
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="loadPolygonsBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                                <polyline points="2 17 12 22 22 17" />
+                                <polyline points="2 12 12 17 22 12" />
+                            </svg>
+                            Load Polygons
+                        </button>
+                    </div>
+                </form>
+
+                <div id="projectStatus" class="mt-lg hidden"></div>
+            </div>
+        </div>
+
+        <!-- Step 3: Polygon Selection -->
+        <div class="step-content" id="step3">
+            <div class="card">
+                <div class="flex items-center justify-between mb-md">
+                    <div>
+                        <h2 class="text-xl font-semibold">Step 3: Select Polygon</h2>
+                        <p class="text-secondary">Choose the polygon to adjust.</p>
+                    </div>
+                    <div class="flex items-center gap-md">
+                        <button type="button" class="btn btn-secondary btn-sm" id="viewCurrentSFBtn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                            View Current SFs
+                        </button>
+                        <span id="polygonCount" class="tag tag-success"></span>
+                    </div>
+                </div>
+
+                <input type="text" id="polygonSearch" class="form-input search-input"
+                    placeholder="🔍 Search polygons by ID or name...">
+
+                <div class="table-container" style="max-height: 400px; overflow-y: auto;">
+                    <table class="polygon-table">
+                        <thead>
+                            <tr>
+                                <th>Polygon ID</th>
+                                <th>Name</th>
+                                <th>UUID</th>
+                            </tr>
+                        </thead>
+                        <tbody id="polygonTableBody">
+                            <!-- Polygons will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="emptyPolygons" class="empty-state hidden">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                        <polyline points="2 17 12 22 22 17" />
+                        <polyline points="2 12 12 17 22 12" />
+                    </svg>
+                    <p>No polygons found in this project.</p>
+                </div>
+
+                <div class="flex justify-between mt-lg">
+                    <button type="button" class="btn btn-secondary" id="backToStep2">
+                        ← Back
+                    </button>
+                    <button type="button" class="btn btn-primary" id="continueToStep4" disabled>
+                        Continue →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4: Adjustment Form -->
+        <div class="step-content" id="step4">
+            <div class="card">
+                <h2 class="text-xl font-semibold mb-md">Step 4: Apply Adjustment</h2>
+                <p class="text-secondary mb-lg">Set the scaling factor and date range.</p>
+
+                <div class="selected-polygon-info" id="selectedPolygonInfo">
+                    <!-- Selected polygon details -->
+                </div>
+
+                <form id="adjustmentForm" class="space-y-lg">
+                    <div class="form-group">
+                        <label class="form-label" for="scalingFactor">Scaling Factor</label>
+                        <input type="number" id="scalingFactor" name="scaling_factor" class="form-input" step="any"
+                            min="0.000001" placeholder="e.g., 1.05 or 0.545848" required>
+                        <p class="text-xs text-secondary mt-xs">Enter a multiplier value (e.g., 1.0 = no change, 1.5 =
+                            50% increase). Supports high precision values.</p>
+                    </div>
+
+                    <div class="date-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="validFrom">Valid From</label>
+                            <input type="date" id="validFrom" name="valid_from" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="validTo">Valid To</label>
+                            <input type="date" id="validTo" name="valid_to" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="confirmation-box" id="confirmationBox" style="display: none;">
+                        <h3 class="font-semibold mb-md">⚠️ Confirm Adjustment</h3>
+                        <div id="confirmationDetails">
+                            <!-- Confirmation details will be inserted here -->
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between mt-lg">
+                        <button type="button" class="btn btn-secondary" id="backToStep3">
+                            ← Back
+                        </button>
+                        <div class="flex gap-md">
+                            <button type="button" class="btn btn-secondary" id="previewBtn">
+                                Preview
+                            </button>
+                            <button type="submit" class="btn btn-primary" id="applyBtn" disabled>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                Apply Adjustment
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <div id="adjustmentStatus" class="mt-lg hidden"></div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="card mt-xl bg-secondary">
+            <h3 class="text-lg font-semibold mb-md">How it works</h3>
+            <ul class="list-disc pl-lg space-y-xs text-secondary">
+                <li><strong>Login</strong> with your Kido credentials and select your country.</li>
+                <li><strong>Enter the Project UUID</strong> to load all available polygons.</li>
+                <li><strong>Select a polygon</strong> from the list to adjust its scaling factor.</li>
+                <li><strong>Set the scaling factor</strong> and date range, then confirm and apply.</li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="/js/scaling_factor.js"></script>
+
+    <!-- Current Adjustments Modal -->
+    <div id="currentAdjustmentsModal" class="modal-backdrop" style="display: none;">
+        <div class="modal-content">
+            <div class="flex items-center justify-between mb-lg">
+                <h3 class="text-xl font-semibold">Current Scaling Factor Adjustments</h3>
+                <button type="button" class="btn btn-secondary btn-sm" id="closeModalBtn">
+                    ✕
+                </button>
+            </div>
+            <div class="table-container" style="max-height: 400px; overflow-y: auto;">
+                <table class="polygon-table">
+                    <thead>
+                        <tr>
+                            <th>Polygon</th>
+                            <th>Factor</th>
+                            <th>Date Range</th>
+                            <th>Applied On</th>
+                        </tr>
+                    </thead>
+                    <tbody id="currentAdjustmentsBody">
+                        <!-- Adjustments will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            background: var(--bg-primary);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow: hidden;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+        }
+    </style>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal-backdrop" style="display: none;">
+        <div class="modal-content success-modal">
+            <div class="success-icon">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="16 10 11 15 8 12" />
+                </svg>
+            </div>
+            <h3 class="text-xl font-semibold mt-lg mb-md">Adjustment Applied Successfully!</h3>
+            <p class="text-secondary mb-lg" id="successMessage">The scaling factor has been applied to the polygon.</p>
+            <div class="flex gap-md justify-center">
+                <button type="button" class="btn btn-secondary" id="continueAdjustingBtn">
+                    Continue Adjusting
+                </button>
+                <a href="/" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .success-modal {
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</body>
+
+</html>
