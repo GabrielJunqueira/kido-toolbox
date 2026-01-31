@@ -183,7 +183,8 @@ async def create_project(request: CreateProjectRequest):
             "name": request.name,
             "description": request.description,
             "geojson": clean_geojson,
-            "with_traffic": True
+            "is_geoinsight": True,
+            "with_traffic": False
         }
         
         print(f"Creating project at: {create_url}")
