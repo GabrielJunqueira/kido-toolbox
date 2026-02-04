@@ -137,8 +137,7 @@ def treat_deals(df: pd.DataFrame, salt: str) -> pd.DataFrame:
     if "Close Date" in df.columns:
         df["Close Date"] = pd.to_datetime(df["Close Date"], dayfirst=True, errors="coerce")
 
-    # --- valores numéricos ---
-    for col in ["Amount CHF", "Amount to Invoice CHF"]:
+    for col in ["Amount to Invoice CHF"]:
         if col in df.columns:
             # First ensure it's string to use .str accessor, then clean
             df[col] = (
