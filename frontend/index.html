@@ -35,6 +35,7 @@
                 <li><a href="/" class="nav-link active">Home</a></li>
                 <li><a href="/calibration" class="nav-link">Calibration</a></li>
                 <li><a href="/aoi" class="nav-link">AOI Generator</a></li>
+                <li><a href="/scaling-factor" class="nav-link">Scaling Factor</a></li>
             </ul>
         </div>
     </nav>
@@ -148,26 +149,36 @@
                     </div>
                 </a>
 
-                <!-- Coming Soon Tool -->
-                <div class="card" style="opacity: 0.5;">
-                    <div class="card-icon" style="background: var(--bg-tertiary); box-shadow: none;">
+                <!-- Polygon Scaling Factor -->
+                <a href="/scaling-factor" class="card tool-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                            <polyline points="7 10 12 15 17 10" />
-                            <line x1="12" y1="15" x2="12" y2="3" />
+                            <line x1="21" y1="6" x2="3" y2="6" />
+                            <line x1="17" y1="12" x2="3" y2="12" />
+                            <line x1="19" y1="18" x2="3" y2="18" />
+                            <circle cx="19" cy="6" r="2" />
+                            <circle cx="15" cy="12" r="2" />
+                            <circle cx="17" cy="18" r="2" />
                         </svg>
                     </div>
                     <div class="card-header">
                         <h3 class="card-title flex items-center gap-sm">
-                            Bulk Exporter
-                            <span class="tag">Coming Soon</span>
+                            Scaling Factor
+                            <span class="tag tag-success">Active</span>
                         </h3>
                         <p class="card-description">
-                            Export data from multiple projects at once.
-                            Batch processing for efficiency.
+                            Adjust polygon scaling factors for your projects.
+                            Set date ranges and multipliers with a simple wizard.
                         </p>
                     </div>
-                </div>
+                    <div class="flex items-center gap-sm text-secondary text-sm">
+                        <span>Login • Select Polygon • Apply Factor</span>
+                        <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </a>
             </div>
         </section>
 
