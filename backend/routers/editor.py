@@ -26,8 +26,8 @@ def save_upload_file_tmp(upload_file: UploadFile) -> str:
 @router.post("/process")
 async def process_map_data(
     polygons: UploadFile = File(...),
-    nodes: Optional[UploadFile] = File(None),
-    antennas: Optional[UploadFile] = File(None)
+    nodes: UploadFile = File(None),
+    antennas: UploadFile = File(None)
 ):
     tmp_poly = None
     tmp_nodes = None
@@ -97,7 +97,12 @@ async def process_map_data(
                 # Extract coordinates for frontend (only [lat, lon] to save bandwidth)
                 # We return ALL nodes, or only those inside polygons?
                 # User notebook shows all loaded nodes.
-                nodes_data = df_nodes[[lat_col, lon_col]].dropna().values.tolist()
+                # Filter: Only return nodes that are INSIDE the polygons
+                # The spatial join 'nodes_joined' contains only the matching nodes
+                # We need to extract their original lat/lon. 
+                # Since sjoin retains the index or we can pull geometry again.
+                nodes_filtered = nodes_joined.copy()
+                nodes_data = list(zip(nodes_filtered.geometry.y, nodes_filtered.geometry.x))
 
             except Exception as e:
                 print(f"Nodes processing error: {e}")
@@ -144,7 +149,9 @@ async def process_map_data(
                 polygons_gdf = polygons_gdf.merge(ant_counts, on="polygon_id", how="left")
                 polygons_gdf["antenna_count"] = polygons_gdf["antenna_count"].fillna(0).astype(int)
 
-                antennas_data = df_ant[[lat_col, lon_col]].dropna().values.tolist()
+                # Filter: Only return antennas that are INSIDE the polygons
+                antennas_filtered = antennas_joined.copy()
+                antennas_data = list(zip(antennas_filtered.geometry.y, antennas_filtered.geometry.x))
 
             except Exception as e:
                 raise HTTPException(status_code=400, detail=f"Error processing Antennas: {str(e)}")
