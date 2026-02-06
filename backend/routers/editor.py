@@ -91,6 +91,11 @@ async def process_map_data(
 
                 # Count
                 node_counts = nodes_joined.groupby("polygon_id").size().reset_index(name="node_count")
+                
+                # Check if suffix issue might happen if column exists
+                if "node_count" in polygons_gdf.columns:
+                    polygons_gdf = polygons_gdf.drop(columns=["node_count"])
+                    
                 polygons_gdf = polygons_gdf.merge(node_counts, on="polygon_id", how="left")
                 polygons_gdf["node_count"] = polygons_gdf["node_count"].fillna(0).astype(int)
 
@@ -146,6 +151,10 @@ async def process_map_data(
 
                 # Count
                 ant_counts = antennas_joined.groupby("polygon_id").size().reset_index(name="antenna_count")
+                
+                if "antenna_count" in polygons_gdf.columns:
+                    polygons_gdf = polygons_gdf.drop(columns=["antenna_count"])
+                    
                 polygons_gdf = polygons_gdf.merge(ant_counts, on="polygon_id", how="left")
                 polygons_gdf["antenna_count"] = polygons_gdf["antenna_count"].fillna(0).astype(int)
 
