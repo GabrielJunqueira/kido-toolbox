@@ -13,8 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
 function initMap() {
     // Basic OSM Map
     map = L.map('map').setView([-22.9, -43.2], 10); // Default to Rio/Brazil approximately
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
+    // CartoDB Positron (Discreet/Clean)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 20
     }).addTo(map);
 
     // FeatureGroup for Editable Layers (Polygons)
@@ -147,13 +150,14 @@ function renderData(data) {
 
     const geoJsonLayer = L.geoJSON(data.polygons, {
         style: (feature) => {
+            const hasId = feature.properties.polygon_id !== undefined;
             return {
-                fillColor: getPolygonColor(feature.properties.total_count || 0, maxCount),
-                weight: 2,
+                fillColor: '#3b82f6', // Uniform Blue
+                weight: hasId ? 2 : 1,
                 opacity: 1,
-                color: 'white',
-                dashArray: '3',
-                fillOpacity: 0.7
+                color: hasId ? '#1d4ed8' : '#60a5fa', // Darker blue border if ID exists
+                dashArray: hasId ? '' : '3',
+                fillOpacity: 0.2 // Lighter fill
             };
         },
         onEachFeature: (feature, layer) => {
@@ -180,7 +184,7 @@ function renderData(data) {
             map: map,
             data: data.nodes, // Expects [[lat, lon], ...]
             size: 3,
-            color: { r: 0.5, g: 0.5, b: 0.5 }, // Gray #808080
+            color: { r: 0.29, g: 0.29, b: 0.29 }, // Darker Gray #4a4a4a
             opacity: 0.8,
             click: (e, point, xy) => {
                 // Optional click handler
