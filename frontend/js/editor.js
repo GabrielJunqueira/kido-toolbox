@@ -13,12 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
 function initMap() {
     // Basic OSM Map
     map = L.map('map').setView([-22.9, -43.2], 10); // Default to Rio/Brazil approximately
-    // CartoDB Positron (Discreet/Clean)
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    // CartoDB Positron (Very White/Clean)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?v=2', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
         subdomains: 'abcd',
         maxZoom: 20
     }).addTo(map);
+
+    // Force white background on container
+    document.getElementById('map').style.backgroundColor = 'white';
 
     // FeatureGroup for Editable Layers (Polygons)
     drawnItems = new L.FeatureGroup();
