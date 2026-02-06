@@ -118,49 +118,60 @@ async def process_map_data(
 
         # 3. Process Antennas (if provided)
         antennas_data = []
-        if antennas:
+        if antennas and antennas.size > 0: # Check if object is valid
             tmp_antennas = save_upload_file_tmp(antennas)
-            try:
+            
+            # Check if file is empty
+            if os.path.getsize(tmp_antennas) == 0:
+                polygons_gdf["antenna_count"] = 0
+            else:
                 try:
-                    df_ant = pd.read_csv(tmp_antennas)
-                except:
-                    df_ant = pd.read_csv(tmp_antennas, sep=';')
-                
-                df_ant.columns = [c.lower() for c in df_ant.columns]
-                
-                if 'latitude' in df_ant.columns and 'longitude' in df_ant.columns:
-                    lat_col, lon_col = 'latitude', 'longitude'
-                elif 'lat' in df_ant.columns and 'lon' in df_ant.columns:
-                    lat_col, lon_col = 'lat', 'lon'
-                else:
-                    raise ValueError("Antennas CSV must have latitude/longitude columns")
-
-                antennas_gdf = gpd.GeoDataFrame(
-                    df_ant,
-                    geometry=gpd.points_from_xy(df_ant[lon_col], df_ant[lat_col]),
-                    crs="EPSG:4326"
-                )
-
-                # Spatial Join
-                antennas_joined = gpd.sjoin(
-                    antennas_gdf,
-                    polygons_gdf[["polygon_id", "geometry"]],
-                    how="inner",
-                    predicate="within"
-                )
-
-                # Count
-                ant_counts = antennas_joined.groupby("polygon_id").size().reset_index(name="antenna_count")
-                
-                if "antenna_count" in polygons_gdf.columns:
-                    polygons_gdf = polygons_gdf.drop(columns=["antenna_count"])
+                    try:
+                        df_ant = pd.read_csv(tmp_antennas)
+                    except:
+                        df_ant = pd.read_csv(tmp_antennas, sep=';')
                     
-                polygons_gdf = polygons_gdf.merge(ant_counts, on="polygon_id", how="left")
-                polygons_gdf["antenna_count"] = polygons_gdf["antenna_count"].fillna(0).astype(int)
+                    if df_ant.empty:
+                         polygons_gdf["antenna_count"] = 0
+                    else:
+                        df_ant.columns = [c.lower() for c in df_ant.columns]
+                        
+                        if 'latitude' in df_ant.columns and 'longitude' in df_ant.columns:
+                            lat_col, lon_col = 'latitude', 'longitude'
+                        elif 'lat' in df_ant.columns and 'lon' in df_ant.columns:
+                            lat_col, lon_col = 'lat', 'lon'
+                        else:
+                            # Try to be even smarter if headers are missing or weird?
+                            # For now just strict check
+                            raise ValueError("Antennas CSV must have latitude/longitude columns")
 
-                # Filter: Only return antennas that are INSIDE the polygons
-                antennas_filtered = antennas_joined.copy()
-                antennas_data = list(zip(antennas_filtered.geometry.y, antennas_filtered.geometry.x))
+                        antennas_gdf = gpd.GeoDataFrame(
+                            df_ant,
+                            geometry=gpd.points_from_xy(df_ant[lon_col], df_ant[lat_col]),
+                            crs="EPSG:4326"
+                        )
+
+                # Spatial Join - Only run if we actually made a GDF
+                if not df_ant.empty:
+                     antennas_joined = gpd.sjoin(
+                        antennas_gdf,
+                        polygons_gdf[["polygon_id", "geometry"]],
+                        how="inner",
+                        predicate="within"
+                    )
+
+                     # Count
+                     ant_counts = antennas_joined.groupby("polygon_id").size().reset_index(name="antenna_count")
+                    
+                     if "antenna_count" in polygons_gdf.columns:
+                        polygons_gdf = polygons_gdf.drop(columns=["antenna_count"])
+                        
+                     polygons_gdf = polygons_gdf.merge(ant_counts, on="polygon_id", how="left")
+                     polygons_gdf["antenna_count"] = polygons_gdf["antenna_count"].fillna(0).astype(int)
+
+                     # Filter: Only return antennas that are INSIDE the polygons
+                     antennas_filtered = antennas_joined.copy()
+                     antennas_data = list(zip(antennas_filtered.geometry.y, antennas_filtered.geometry.x))
 
             except Exception as e:
                 raise HTTPException(status_code=400, detail=f"Error processing Antennas: {str(e)}")
