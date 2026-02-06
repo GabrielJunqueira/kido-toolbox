@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive Map Editor - Edit polygons and visualize density">
+    <title>Interactive Map Editor | Kido Toolbox</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    
+    <!-- Leaflet Draw CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"/>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>">
+
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+            border-radius: var(--radius-md);
+            z-index: 1;
+        }
+        .control-panel {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .legend-color {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            vertical-align: middle;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="/" class="navbar-brand">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                </svg>
+                Kido Toolbox
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/editor" class="nav-link active">Map Editor</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Header -->
+        <header class="page-header">
+            <div class="flex items-center gap-md">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                         <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                         <polyline points="2 17 12 22 22 17" />
+                         <polyline points="2 12 12 17 22 12" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="page-title">Interactive Map Editor</h1>
+                    <p class="page-subtitle">Visualize density and edit polygons with high-performance rendering.</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tool Interface -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-lg">
+            <!-- Sidebar -->
+            <div class="md:col-span-1 space-y-md">
+                <div class="card">
+                    <h3 class="font-bold mb-sm">1. Upload Data</h3>
+                    <form id="uploadForm">
+                        <div class="form-group">
+                            <label class="form-label required">Polygons (GeoJSON)</label>
+                            <input type="file" id="polyFile" name="polygons" accept=".geojson,.json" class="form-input text-sm" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Nodes (CSV)</label>
+                            <input type="file" id="nodesFile" name="nodes" accept=".csv" class="form-input text-sm">
+                            <p class="text-xs text-secondary mt-xs">Optional. Lat/Lon columns.</p>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Antennas (CSV)</label>
+                            <input type="file" id="antennasFile" name="antennas" accept=".csv" class="form-input text-sm">
+                            <p class="text-xs text-secondary mt-xs">Optional. Lat/Lon columns.</p>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full" id="loadBtn">
+                            Load Map
+                        </button>
+                    </form>
+                </div>
+
+                <div class="card hidden" id="layerControl">
+                    <h3 class="font-bold mb-sm">2. Layers & Export</h3>
+                    
+                    <div class="form-group">
+                        <label class="flex items-center gap-sm cursor-pointer">
+                            <input type="checkbox" id="showPolygons" checked>
+                            <span>Show Polygons</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="flex items-center gap-sm cursor-pointer">
+                            <input type="checkbox" id="showNodes" checked disabled>
+                            <span>Show Nodes <small class="text-secondary">(Gray)</small></span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="flex items-center gap-sm cursor-pointer">
+                            <input type="checkbox" id="showAntennas" checked disabled>
+                            <span>Show Antennas <small class="text-danger">(Red)</small></span>
+                        </label>
+                    </div>
+
+                    <hr class="border-glass my-md">
+                    
+                    <div id="stats" class="text-sm text-secondary mb-md">
+                        <p>Polygons: <span id="polyCount">0</span></p>
+                        <p>Nodes: <span id="nodeCount">0</span></p>
+                        <p>Antennas: <span id="antCount">0</span></p>
+                    </div>
+
+                    <button class="btn btn-success w-full" id="exportBtn">
+                        Export GeoJSON
+                    </button>
+                </div>
+            </div>
+
+            <!-- Map Area -->
+            <div class="md:col-span-3">
+                <div class="card h-full p-0 overflow-hidden relative">
+                    <div id="map"></div>
+                    
+                    <!-- Loading Overlay -->
+                    <div id="loadingOverlay" class="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-[1000] hidden">
+                        <div class="spinner mb-md"></div>
+                        <p class="text-primary font-medium" id="loadingText">Processing spatial data...</p>
+                        <p class="text-sm text-secondary mt-sm">This runs on the server (16GB RAM).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <!-- Glify for WebGL rendering of points -->
+    <script src="https://unpkg.com/leaflet.glify@3.2.0/dist/glify-browser.js"></script>
+    
+    <script src="/js/editor.js"></script>
+</body>
+
+</html>

@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
-from routers import calibration, aoi, anonymizer, scaling_factor
+from routers import calibration, aoi, anonymizer, editor, scaling_factor
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -31,6 +31,7 @@ app.add_middleware(
 app.include_router(calibration.router)
 app.include_router(aoi.router)
 app.include_router(anonymizer.router)
+app.include_router(editor.router)
 app.include_router(scaling_factor.router)
 
 # Get paths for static files
@@ -88,6 +89,15 @@ async def anonymizer_page():
 async def scaling_factor_page():
     """Serve the polygon scaling factor adjustment tool page."""
     page_path = os.path.join(FRONTEND_DIR, "pages", "scaling_factor.html")
+    if os.path.exists(page_path):
+        return FileResponse(page_path)
+    return {"error": "Page not found"}
+
+
+@app.get("/editor")
+async def editor_page():
+    """Serve the interactive map editor page."""
+    page_path = os.path.join(FRONTEND_DIR, "pages", "editor.html")
     if os.path.exists(page_path):
         return FileResponse(page_path)
     return {"error": "Page not found"}
