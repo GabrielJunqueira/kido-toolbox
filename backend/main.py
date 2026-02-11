@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
-from routers import calibration, aoi, anonymizer, editor, scaling_factor
+from routers import calibration, aoi, anonymizer, editor, scaling_factor, li_project
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -33,6 +33,7 @@ app.include_router(aoi.router)
 app.include_router(anonymizer.router)
 app.include_router(editor.router)
 app.include_router(scaling_factor.router)
+app.include_router(li_project.router)
 
 # Get paths for static files
 BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -98,6 +99,15 @@ async def scaling_factor_page():
 async def editor_page():
     """Serve the interactive map editor page."""
     page_path = os.path.join(FRONTEND_DIR, "pages", "editor.html")
+    if os.path.exists(page_path):
+        return FileResponse(page_path)
+    return {"error": "Page not found"}
+
+
+@app.get("/li-project")
+async def li_project_page():
+    """Serve the LI Project Creator page."""
+    page_path = os.path.join(FRONTEND_DIR, "pages", "li_project.html")
     if os.path.exists(page_path):
         return FileResponse(page_path)
     return {"error": "Page not found"}

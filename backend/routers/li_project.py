@@ -1,0 +1,180 @@
+"""
+LI Project Creator Router
+API endpoints for creating Location Intelligence projects for establishments.
+"""
+
+import json
+from typing import List, Optional
+
+from fastapi import APIRouter, UploadFile, File, Form, HTTPException
+from fastapi.responses import Response
+from pydantic import BaseModel
+
+from services.li_project import (
+    process_nodes_csv,
+    search_by_name,
+    get_establishment_polygon,
+    filter_nodes_in_buffer,
+    create_buffer_circle_geojson,
+    build_li_project_geojson,
+)
+
+router = APIRouter(prefix="/api/li-project", tags=["li-project"])
+
+
+# ==========================================
+# Request/Response Models
+# ==========================================
+
+class SearchRequest(BaseModel):
+    query: str
+    country_code: str = ""
+    limit: int = 10
+
+
+class EstablishmentPolygonRequest(BaseModel):
+    lat: float
+    lon: float
+    custom_name: str = ""
+    radius: int = 50
+
+
+class FilterNodesRequest(BaseModel):
+    nodes: List[List[float]]  # [[lat, lon], ...]
+    center_lat: float
+    center_lon: float
+    radius_m: float = 500
+
+
+class EstablishmentFeature(BaseModel):
+    properties: dict
+    geometry: dict
+    type: str = "Feature"
+
+
+class GenerateProjectRequest(BaseModel):
+    establishments: List[dict]  # List of GeoJSON Feature dicts
+    country_code: str
+    region_code: str
+    city_name: str
+
+
+# ==========================================
+# Endpoints
+# ==========================================
+
+@router.post("/upload-nodes")
+async def upload_nodes(file: UploadFile = File(...)):
+    """
+    Upload a CSV file with node data.
+    Returns the nodes as [lat, lon] pairs and count.
+    """
+    try:
+        contents = await file.read()
+        nodes, count, extra = process_nodes_csv(contents)
+
+        return {
+            "success": True,
+            "nodes": nodes,
+            "count": count,
+            "extra": extra,
+        }
+    except ValueError as e:
+        return {"success": False, "error": str(e)}
+    except Exception as e:
+        return {"success": False, "error": f"Error processing CSV: {str(e)}"}
+
+
+@router.post("/search-establishment")
+async def search_establishment(request: SearchRequest):
+    """
+    Search for establishments by name using Nominatim.
+    """
+    try:
+        results = search_by_name(
+            request.query,
+            country_code=request.country_code,
+            limit=request.limit,
+        )
+        return {"success": True, "results": results}
+    except Exception as e:
+        return {"success": False, "error": f"Search error: {str(e)}"}
+
+
+@router.post("/get-establishment-polygon")
+async def get_polygon(request: EstablishmentPolygonRequest):
+    """
+    Get the building polygon at given coordinates from Overpass API.
+    """
+    try:
+        feature = get_establishment_polygon(
+            request.lat,
+            request.lon,
+            custom_name=request.custom_name or None,
+            radius=request.radius,
+        )
+        if feature:
+            return {"success": True, "feature": feature}
+        else:
+            return {
+                "success": False,
+                "error": "No polygon found at these coordinates. "
+                         "Try increasing the search radius or using different coordinates.",
+            }
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
+@router.post("/filter-nodes")
+async def filter_nodes(request: FilterNodesRequest):
+    """
+    Filter nodes that are within a buffer radius of a center point.
+    Also returns the buffer circle as GeoJSON for visualization.
+    """
+    try:
+        filtered = filter_nodes_in_buffer(
+            request.nodes,
+            request.center_lat,
+            request.center_lon,
+            request.radius_m,
+        )
+        buffer_geojson = create_buffer_circle_geojson(
+            request.center_lat,
+            request.center_lon,
+            request.radius_m,
+        )
+        return {
+            "success": True,
+            "filtered_nodes": filtered,
+            "filtered_count": len(filtered),
+            "buffer_geojson": buffer_geojson,
+        }
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
+@router.post("/generate-project")
+async def generate_project(request: GenerateProjectRequest):
+    """
+    Generate the final LI project GeoJSON.
+    """
+    try:
+        geojson, filename = build_li_project_geojson(
+            establishments=request.establishments,
+            country_code=request.country_code.upper(),
+            region_code=request.region_code,
+            city_name=request.city_name,
+        )
+
+        feature_count = len(geojson.get('features', []))
+
+        return {
+            "success": True,
+            "geojson": geojson,
+            "filename": filename,
+            "feature_count": feature_count,
+        }
+    except ValueError as e:
+        return {"success": False, "error": str(e)}
+    except Exception as e:
+        return {"success": False, "error": f"Unexpected error: {str(e)}"}
