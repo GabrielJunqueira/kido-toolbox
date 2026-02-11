@@ -453,7 +453,8 @@
                 <div class="step-header">
                     <h2 class="step-title">Add Establishments</h2>
                     <p class="step-description">
-                        Search for establishments by name or enter coordinates directly.
+                        Search for establishments by name or enter coordinates. You'll draw the polygons on the map in
+                        the next step.
                     </p>
                 </div>
 
@@ -519,11 +520,9 @@
                     </button>
                 </div>
 
-                <!-- Getting polygon progress -->
                 <div id="polygon-progress" class="flex items-center gap-md mt-lg hidden">
                     <div class="spinner"></div>
-                    <span class="text-secondary" id="polygon-progress-text">Fetching building polygon from
-                        Overpass...</span>
+                    <span class="text-secondary" id="polygon-progress-text">Processing establishment...</span>
                 </div>
 
                 <!-- Selected Establishments List -->
@@ -560,9 +559,10 @@
             <!-- ========== Step 4: Map Editor ========== -->
             <div class="step-content" id="step-4">
                 <div class="step-header">
-                    <h2 class="step-title">Edit Polygons</h2>
+                    <h2 class="step-title">Draw Polygons</h2>
                     <p class="step-description">
-                        Adjust establishment polygons to include/exclude nodes. Drag polygon vertices to resize.
+                        Draw a polygon for each establishment using the polygon tool in the toolbar. Each polygon you
+                        draw will be assigned to the next pending establishment.
                     </p>
                 </div>
 

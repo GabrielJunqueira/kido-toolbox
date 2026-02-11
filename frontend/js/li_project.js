@@ -23,8 +23,8 @@ const state = {
     geoCountry: null,
     geoCountryName: null,
 
-    // Establishments
-    establishments: [],  // Array of GeoJSON Feature dicts
+    // Establishments (name + coords, polygon drawn later on map)
+    establishments: [],  // Array of {name, lat, lon, polygon: GeoJSON Feature | null}
     buffers: [],         // Array of buffer GeoJSON Feature dicts
     nodesPerEst: [],     // Array of arrays of [lat, lon]
 
@@ -33,7 +33,8 @@ const state = {
     drawnItems: null,
     nodeMarkers: null,
     bufferLayers: [],
-    polygonLayers: [],
+    markerLayers: [],     // Establishment center markers
+    pendingDrawQueue: [], // Indices of establishments that still need polygons drawn
 
     // Generation
     region: null,
@@ -386,12 +387,11 @@ function renderSearchResults(results) {
 }
 
 async function addEstablishmentFromSearch(result) {
-    // Ask for custom name via prompt (simple approach)
     const customName = prompt('Name for this establishment:', result.name.split(',')[0]);
-    if (customName === null) return; // cancelled
+    if (customName === null) return;
 
     hideEl(el.searchResults);
-    await fetchAndAddPolygon(result.lat, result.lon, customName || result.name.split(',')[0]);
+    await addEstablishment(result.lat, result.lon, customName || result.name.split(',')[0]);
 }
 
 async function handleAddByCoords() {
@@ -402,36 +402,19 @@ async function handleAddByCoords() {
     if (!name) { alert('Please enter a name for the establishment.'); return; }
     if (isNaN(lat) || isNaN(lon)) { alert('Please enter valid latitude and longitude.'); return; }
 
-    await fetchAndAddPolygon(lat, lon, name);
+    await addEstablishment(lat, lon, name);
 
-    // Clear fields
     el.estNameManual.value = '';
     el.estLat.value = '';
     el.estLon.value = '';
 }
 
-async function fetchAndAddPolygon(lat, lon, name) {
+async function addEstablishment(lat, lon, name) {
     showEl(el.polygonProgress);
-    el.polygonProgressText.textContent = `Fetching building polygon for "${name}"...`;
+    el.polygonProgressText.textContent = `Filtering nodes near "${name}"...`;
 
     try {
-        const res = await fetch('/api/li-project/get-establishment-polygon', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ lat, lon, custom_name: name, radius: 50 }),
-        });
-        const data = await res.json();
-
-        let feature;
-        if (data.success && data.feature) {
-            feature = data.feature;
-        } else {
-            // Create a small buffer polygon as fallback
-            console.warn('No polygon found, creating circular buffer.');
-            feature = createFallbackPolygon(lat, lon, name);
-        }
-
-        // Filter nodes in buffer
+        // Filter nodes in 500m buffer
         const nodesRes = await fetch('/api/li-project/filter-nodes', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -444,33 +427,19 @@ async function fetchAndAddPolygon(lat, lon, name) {
         });
         const nodesData = await nodesRes.json();
 
-        state.establishments.push(feature);
+        // Store establishment as {name, lat, lon, polygon: null}
+        // Polygon will be drawn by user on the map in Step 4
+        state.establishments.push({ name, lat, lon, polygon: null });
         state.nodesPerEst.push(nodesData.success ? nodesData.filtered_nodes : []);
         state.buffers.push(nodesData.success ? nodesData.buffer_geojson : null);
 
         updateEstablishmentsList();
-
     } catch (e) {
         console.error('Error adding establishment:', e);
-        alert('Error fetching polygon. Please try again.');
+        alert('Error processing establishment. Please try again.');
     } finally {
         hideEl(el.polygonProgress);
     }
-}
-
-function createFallbackPolygon(lat, lon, name) {
-    // Create a simple circular polygon (~30m radius) as fallback
-    const r = 0.0003; // ~30m in degrees
-    const coords = [];
-    for (let i = 0; i <= 32; i++) {
-        const angle = (i / 32) * 2 * Math.PI;
-        coords.push([lon + r * Math.cos(angle), lat + r * Math.sin(angle)]);
-    }
-    return {
-        type: 'Feature',
-        properties: { id: 'manual', name: name, poly_type: 'core' },
-        geometry: { type: 'Polygon', coordinates: [coords] },
-    };
 }
 
 function updateEstablishmentsList() {
@@ -488,14 +457,15 @@ function updateEstablishmentsList() {
     el.establishmentsList.innerHTML = '';
 
     state.establishments.forEach((est, i) => {
-        const name = est.properties?.name || `Establishment ${i + 1}`;
+        const name = est.name || `Establishment ${i + 1}`;
         const nodes = state.nodesPerEst[i]?.length || 0;
+        const hasPoly = est.polygon ? '✅' : '⬜';
         const div = document.createElement('div');
         div.className = 'establishment-item';
         div.innerHTML = `
             <div class="est-info">
-                <div class="est-name">${name}</div>
-                <div class="est-coords">${nodes} nodes within 500m buffer</div>
+                <div class="est-name">${hasPoly} ${name}</div>
+                <div class="est-coords">Lat ${est.lat.toFixed(5)}, Lon ${est.lon.toFixed(5)} · ${nodes} nodes in buffer</div>
             </div>
             <button class="btn-remove" data-index="${i}">✕ Remove</button>
         `;
@@ -512,7 +482,7 @@ function removeEstablishment(index) {
 }
 
 // ==========================================
-// STEP 4: MAP EDITOR
+// STEP 4: MAP EDITOR (manual polygon drawing)
 // ==========================================
 
 function initMap() {
@@ -520,6 +490,12 @@ function initMap() {
         state.map.remove();
         state.map = null;
     }
+
+    // Determine which establishments still need polygons drawn
+    state.pendingDrawQueue = [];
+    state.establishments.forEach((est, i) => {
+        if (!est.polygon) state.pendingDrawQueue.push(i);
+    });
 
     state.map = L.map('map', {
         center: [0, 0],
@@ -531,44 +507,67 @@ function initMap() {
         maxZoom: 19,
     }).addTo(state.map);
 
-    // FeatureGroup for editable polygons
+    // FeatureGroup for drawn/editable polygons
     state.drawnItems = new L.FeatureGroup();
     state.map.addLayer(state.drawnItems);
 
-    // Draw control (edit only, no new shapes)
+    // Draw control — allow polygon drawing + editing
     const drawControl = new L.Control.Draw({
-        draw: false,
+        draw: {
+            polygon: {
+                allowIntersection: false,
+                shapeOptions: {
+                    color: '#ec4899',
+                    fillColor: '#ec4899',
+                    fillOpacity: 0.25,
+                    weight: 2,
+                },
+            },
+            polyline: false,
+            circle: false,
+            rectangle: false,
+            circlemarker: false,
+            marker: false,
+        },
         edit: {
             featureGroup: state.drawnItems,
             edit: { selectedPathOptions: { color: '#ec4899', fillColor: '#ec4899' } },
-            remove: false,
+            remove: true,
         },
     });
     state.map.addControl(drawControl);
 
-    // Add establishment polygons (editable)
     const bounds = L.latLngBounds();
-    state.polygonLayers = [];
 
+    // Add already-drawn polygons back (if returning to this step)
     state.establishments.forEach((est, i) => {
-        const geojsonLayer = L.geoJSON(est, {
-            style: {
-                color: '#ec4899',
-                fillColor: '#ec4899',
-                fillOpacity: 0.25,
-                weight: 2,
-            },
-            onEachFeature: (feature, layer) => {
-                const name = feature.properties?.name || `Est. ${i + 1}`;
-                layer.bindTooltip(name, { permanent: true, direction: 'center', className: 'polygon-tooltip' });
-            },
-        });
+        if (est.polygon) {
+            const geojsonLayer = L.geoJSON(est.polygon, {
+                style: { color: '#ec4899', fillColor: '#ec4899', fillOpacity: 0.25, weight: 2 },
+            });
+            geojsonLayer.eachLayer(l => {
+                l._estIndex = i;
+                state.drawnItems.addLayer(l);
+                if (l.getBounds) bounds.extend(l.getBounds());
+            });
+        }
+    });
 
-        geojsonLayer.eachLayer(l => {
-            state.drawnItems.addLayer(l);
-            state.polygonLayers.push({ index: i, layer: l });
-            if (l.getBounds) bounds.extend(l.getBounds());
+    // Add establishment center markers (red pins)
+    state.markerLayers = [];
+    state.establishments.forEach((est, i) => {
+        const marker = L.marker([est.lat, est.lon], {
+            icon: L.divIcon({
+                className: 'est-marker',
+                html: `<div style="background:#ec4899;color:white;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,0.4);">${i + 1}</div>`,
+                iconSize: [24, 24],
+                iconAnchor: [12, 12],
+            }),
         });
+        marker.bindTooltip(est.name, { direction: 'top', offset: [0, -14] });
+        marker.addTo(state.map);
+        state.markerLayers.push(marker);
+        bounds.extend([est.lat, est.lon]);
     });
 
     // Add buffer circles (non-editable, dashed)
@@ -615,36 +614,88 @@ function initMap() {
         state.map.fitBounds(bounds, { padding: [40, 40] });
     }
 
-    // Update stats
+    // Update stats & instructions
     updatePolygonStats();
 
-    // Handle polygon edits
-    state.map.on(L.Draw.Event.EDITED, () => {
-        // Sync edited polygons back to state
-        syncPolygonsFromMap();
+    // Handle newly drawn polygons → assign to next pending establishment
+    state.map.on(L.Draw.Event.CREATED, (e) => {
+        const layer = e.layer;
+        state.drawnItems.addLayer(layer);
+
+        if (state.pendingDrawQueue.length > 0) {
+            const estIdx = state.pendingDrawQueue.shift();
+            layer._estIndex = estIdx;
+            const geojson = layer.toGeoJSON();
+            geojson.properties = { name: state.establishments[estIdx].name, poly_type: 'core' };
+            state.establishments[estIdx].polygon = geojson;
+            layer.bindTooltip(state.establishments[estIdx].name, { permanent: true, direction: 'center' });
+        }
+
+        updatePolygonStats();
+    });
+
+    // Handle polygon edits → sync back
+    state.map.on(L.Draw.Event.EDITED, (e) => {
+        e.layers.eachLayer(layer => {
+            if (layer._estIndex !== undefined) {
+                const geojson = layer.toGeoJSON();
+                geojson.properties = { name: state.establishments[layer._estIndex].name, poly_type: 'core' };
+                state.establishments[layer._estIndex].polygon = geojson;
+            }
+        });
+        updatePolygonStats();
+    });
+
+    // Handle polygon deletion
+    state.map.on(L.Draw.Event.DELETED, (e) => {
+        e.layers.eachLayer(layer => {
+            if (layer._estIndex !== undefined) {
+                state.establishments[layer._estIndex].polygon = null;
+                state.pendingDrawQueue.push(layer._estIndex);
+                state.pendingDrawQueue.sort((a, b) => a - b);
+            }
+        });
         updatePolygonStats();
     });
 }
 
 function syncPolygonsFromMap() {
-    state.polygonLayers.forEach(({ index, layer }) => {
-        const geojson = layer.toGeoJSON();
-        // Preserve original properties
-        geojson.properties = {
-            ...state.establishments[index].properties,
-        };
-        state.establishments[index] = geojson;
+    // Sync all drawn items back to state
+    state.drawnItems.eachLayer(layer => {
+        if (layer._estIndex !== undefined) {
+            const geojson = layer.toGeoJSON();
+            geojson.properties = { name: state.establishments[layer._estIndex].name, poly_type: 'core' };
+            state.establishments[layer._estIndex].polygon = geojson;
+        }
     });
 }
 
 function updatePolygonStats() {
-    const lines = state.establishments.map((est, i) => {
-        const name = est.properties?.name || `Est. ${i + 1}`;
+    const pending = state.establishments.filter(e => !e.polygon).length;
+    const drawn = state.establishments.filter(e => e.polygon).length;
+    const total = state.establishments.length;
+
+    let html = '';
+    if (pending > 0) {
+        const nextIdx = state.pendingDrawQueue[0];
+        const nextName = nextIdx !== undefined ? state.establishments[nextIdx].name : '?';
+        html += `<strong style="color:var(--warning)">⏳ ${pending} polygon(s) to draw.</strong> `;
+        html += `Next: draw polygon for <strong>${nextName}</strong>. Use the polygon tool in the toolbar above the map.<br>`;
+    }
+    if (drawn > 0) {
+        html += `✅ ${drawn}/${total} establishment polygons drawn.<br>`;
+    }
+    state.establishments.forEach((est, i) => {
+        const status = est.polygon ? '✅' : '⬜';
         const nodes = state.nodesPerEst[i]?.length || 0;
-        return `<strong>${name}</strong>: ${nodes} nodes in buffer`;
+        html += `${status} <strong>${est.name}</strong>: ${nodes} nodes in buffer<br>`;
     });
-    el.polygonStatsMsg.innerHTML = lines.join('<br>');
+
+    el.polygonStatsMsg.innerHTML = html;
     showEl(el.polygonStats);
+
+    // Disable continue if not all polygons drawn
+    el.btnNext4.disabled = pending > 0;
 }
 
 // ==========================================
@@ -715,7 +766,7 @@ function handleCityChange() {
 }
 
 function updateGenSummary() {
-    const estNames = state.establishments.map(e => e.properties?.name || '?').join(', ');
+    const estNames = state.establishments.map(e => e.name || '?').join(', ');
     el.genSummary.innerHTML = `
         <strong>Country:</strong> ${state.geoCountryName || '-'}<br>
         <strong>Region:</strong> ${state.regionName || '-'}<br>
@@ -732,11 +783,16 @@ async function handleGenerate() {
     el.btnGenerate.disabled = true;
 
     try {
+        // Extract polygon GeoJSON Features from state
+        const estFeatures = state.establishments
+            .filter(e => e.polygon)
+            .map(e => e.polygon);
+
         const res = await fetch('/api/li-project/generate-project', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                establishments: state.establishments,
+                establishments: estFeatures,
                 country_code: state.geoCountry,
                 region_code: state.region,
                 city_name: state.city,
@@ -766,7 +822,7 @@ async function handleGenerate() {
 // ==========================================
 
 function updateFinalSummary() {
-    const estNames = state.establishments.map(e => e.properties?.name || '?').join(', ');
+    const estNames = state.establishments.map(e => e.name || '?').join(', ');
     el.finalSummary.innerHTML =
         `<strong>${state.city}</strong> (${state.regionName}, ${state.geoCountryName})<br>` +
         `${state.featureCount} features generated. Establishments: ${estNames}<br>` +
