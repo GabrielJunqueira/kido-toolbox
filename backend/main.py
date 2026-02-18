@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
-from routers import calibration, aoi, anonymizer, editor, scaling_factor, li_project
+from routers import calibration, aoi, anonymizer, editor, scaling_factor, li_project, report
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -34,6 +34,7 @@ app.include_router(anonymizer.router)
 app.include_router(editor.router)
 app.include_router(scaling_factor.router)
 app.include_router(li_project.router)
+app.include_router(report.router)
 
 # Get paths for static files
 BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -108,6 +109,15 @@ async def editor_page():
 async def li_project_page():
     """Serve the LI Project Creator page."""
     page_path = os.path.join(FRONTEND_DIR, "pages", "li_project.html")
+    if os.path.exists(page_path):
+        return FileResponse(page_path)
+    return {"error": "Page not found"}
+
+
+@app.get("/report")
+async def report_page():
+    """Serve the AOI Report Generator page."""
+    page_path = os.path.join(FRONTEND_DIR, "pages", "report.html")
     if os.path.exists(page_path):
         return FileResponse(page_path)
     return {"error": "Page not found"}

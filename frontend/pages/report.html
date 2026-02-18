@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AOI Report Generator - Generate PDF visitor analysis reports">
+    <title>AOI Report | Kido Toolbox</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+
+    <style>
+        /* Month tag styles */
+        .month-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            min-height: 40px;
+            margin-top: var(--space-sm);
+        }
+
+        .month-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-xs) var(--space-md);
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-radius: var(--radius-full);
+            background: rgba(99, 102, 241, 0.15);
+            color: var(--accent-primary-hover);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .month-tag:hover {
+            background: var(--error-bg);
+            border-color: var(--error);
+            color: var(--error);
+        }
+
+        .month-tag .remove-icon {
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        /* Progress container */
+        .progress-container {
+            margin: var(--space-xl) 0;
+        }
+
+        .progress-bar-wrapper {
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-full);
+            height: 8px;
+            overflow: hidden;
+            margin-top: var(--space-sm);
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: var(--space-sm);
+        }
+
+        /* PDF preview area */
+        .pdf-preview {
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--bg-tertiary);
+            margin: var(--space-lg) 0;
+        }
+
+        .pdf-preview iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+        /* Summary grid */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .summary-stat {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            text-align: center;
+        }
+
+        .summary-stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-primary-hover);
+            margin-bottom: var(--space-xs);
+        }
+
+        .summary-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Generating animation */
+        .generating-animation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: var(--space-2xl);
+            gap: var(--space-lg);
+        }
+
+        .generating-icon {
+            font-size: 3rem;
+            animation: pulse-icon 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-icon {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.7;
+            }
+        }
+
+        /* Log area */
+        .log-area {
+            background: var(--bg-primary);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: var(--space-md);
+        }
+
+        .log-entry {
+            padding: 2px 0;
+            animation: fadeInLog 0.3s ease;
+        }
+
+        .log-entry.success {
+            color: var(--success);
+        }
+
+        .log-entry.error {
+            color: var(--error);
+        }
+
+        .log-entry.info {
+            color: var(--info);
+        }
+
+        @keyframes fadeInLog {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .chart-wrapper {
+            background: var(--bg-tertiary);
+            padding: var(--space-sm);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="/" class="navbar-brand">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                </svg>
+                Kido Toolbox
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/report" class="nav-link active">AOI Report</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+
+        <!-- Page Header -->
+        <div class="text-center mb-xl">
+            <h1 style="font-size: 2rem; margin-bottom: 0.5rem;">
+                <span style="margin-right: 0.5rem;">📊</span>
+                AOI Report Generator
+            </h1>
+            <p class="text-secondary">
+                Generate PDF visitor analysis reports from AOI projects
+            </p>
+        </div>
+
+        <!-- Stepper -->
+        <div class="stepper" id="stepper">
+            <div class="stepper-step active" data-step="1">
+                <div class="stepper-number">1</div>
+                <span class="stepper-label">Login</span>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="2">
+                <div class="stepper-number">2</div>
+                <span class="stepper-label">Project</span>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="3">
+                <div class="stepper-number">3</div>
+                <span class="stepper-label">Dates</span>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="4">
+                <div class="stepper-number">4</div>
+                <span class="stepper-label">Report</span>
+            </div>
+        </div>
+
+        <!-- Step Content Container -->
+        <div class="card" style="max-width: 800px; margin: 0 auto;">
+
+            <!-- ═══ Step 1: Login ═══ -->
+            <div class="step-content active" id="step-1">
+                <div class="step-header">
+                    <h2 class="step-title">Connect to Kido API</h2>
+                    <p class="step-description">
+                        Enter your credentials to authenticate with the Kido Dynamics platform.
+                    </p>
+                </div>
+
+                <form id="login-form">
+                    <div class="form-group">
+                        <label class="form-label required" for="username">Email</label>
+                        <div class="input-group">
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            <input type="email" id="username" class="form-input" placeholder="your.email@company.com"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required" for="password">Password</label>
+                        <div class="input-group">
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                            </svg>
+                            <input type="password" id="password" class="form-input" placeholder="••••••••" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label required" for="country-code">Country Code</label>
+                        <select id="country-code" class="form-select" required>
+                            <option value="">Select a country...</option>
+                            <option value="br">🇧🇷 Brazil (br)</option>
+                            <option value="ar">🇦🇷 Argentina (ar)</option>
+                            <option value="es">🇪🇸 Spain (es)</option>
+                            <option value="pt">🇵🇹 Portugal (pt)</option>
+                            <option value="mx">🇲🇽 Mexico (mx)</option>
+                            <option value="co">🇨🇴 Colombia (co)</option>
+                            <option value="pe">🇵🇪 Peru (pe)</option>
+                            <option value="ch">🇨🇭 Switzerland (ch)</option>
+                            <option value="pa">🇵🇦 Panama (pa)</option>
+                            <option value="qa">🇶🇦 Qatar (qa)</option>
+                            <option value="ecu">🇪🇨 Ecuador (ecu)</option>
+                        </select>
+                        <p class="form-hint">This determines which API endpoint to use</p>
+                    </div>
+
+                    <div id="login-error" class="alert alert-error hidden">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M15 9l-6 6M9 9l6 6" />
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-message" id="login-error-message"></div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="step-footer">
+                    <a href="/" class="btn btn-ghost">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                        Back to Home
+                    </a>
+                    <button type="button" class="btn btn-primary" id="btn-login">
+                        Connect
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ═══ Step 2: Project Setup ═══ -->
+            <div class="step-content" id="step-2">
+                <div class="step-header">
+                    <h2 class="step-title">Project Setup</h2>
+                    <p class="step-description">
+                        Enter the Project ID and AOI ID from your existing AOI project.
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required" for="project-id">Project ID</label>
+                    <input type="text" id="project-id" class="form-input"
+                        placeholder="e.g. 56ba31a5-e465-4084-a7c4-632cda488ea7" required>
+                    <p class="form-hint">The UUID of your project in the Kido platform</p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required" for="aoi-id">AOI ID</label>
+                    <input type="text" id="aoi-id" class="form-input" placeholder="e.g. AOI-1-300" required>
+                    <p class="form-hint">The polygon identifier to analyze (e.g. AOI-1, AOI-1-300)</p>
+                </div>
+
+                <div class="alert alert-info">
+                    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 16v-4M12 8h.01" />
+                    </svg>
+                    <div class="alert-content">
+                        <div class="alert-title">Where to find these IDs?</div>
+                        <div class="alert-message">
+                            The <strong>Project ID</strong> is visible in the Kido dashboard URL when you open the
+                            project.
+                            The <strong>AOI ID</strong> is the polygon identifier — you can find it in the GeoJSON or in
+                            the dashboard sidebar.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-footer">
+                    <button type="button" class="btn btn-secondary" id="btn-back-1">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                        Back
+                    </button>
+                    <button type="button" class="btn btn-primary" id="btn-next-2" disabled>
+                        Continue
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ═══ Step 3: Date Range ═══ -->
+            <div class="step-content" id="step-3">
+                <div class="step-header">
+                    <h2 class="step-title">Select Analysis Period</h2>
+                    <p class="step-description">
+                        Choose the months you want to include in the report.
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Add Month</label>
+                    <div class="flex gap-md">
+                        <div class="flex-1">
+                            <input type="month" id="month-input" class="form-input">
+                        </div>
+                        <button type="button" class="btn btn-primary" id="btn-add-month">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 5v14M5 12h14" />
+                            </svg>
+                            Add
+                        </button>
+                    </div>
+                    <p class="form-hint">Select a month and click Add. Click on a tag to remove it.</p>
+                </div>
+
+                <!-- Quick range presets -->
+                <div class="mb-lg">
+                    <label class="form-label">Quick Presets</label>
+                    <div class="btn-group flex-wrap">
+                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-months="3">
+                            Last 3 months
+                        </button>
+                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-months="6">
+                            Last 6 months
+                        </button>
+                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-months="12">
+                            Last 12 months
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Selected Months</label>
+                    <div class="month-tags" id="month-tags">
+                        <span class="text-muted text-sm" id="no-months-msg">No months selected yet</span>
+                    </div>
+                </div>
+
+                <div class="step-footer">
+                    <button type="button" class="btn btn-secondary" id="btn-back-2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                        Back
+                    </button>
+                    <button type="button" class="btn btn-primary" id="btn-next-3" disabled>
+                        Continue
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ═══ Step 4: Generate Report ═══ -->
+            <div class="step-content" id="step-4">
+                <!-- Pre-generation view -->
+                <div id="pre-generate">
+                    <div class="step-header">
+                        <h2 class="step-title">Generate Report</h2>
+                        <p class="step-description">
+                            Review the configuration and generate your PDF report.
+                        </p>
+                    </div>
+
+                    <div class="alert alert-info mb-lg">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 16v-4M12 8h.01" />
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-title">Report Summary</div>
+                            <div class="alert-message">
+                                <div><strong>Project:</strong> <span id="summary-project"></span></div>
+                                <div><strong>AOI:</strong> <span id="summary-aoi"></span></div>
+                                <div><strong>Period:</strong> <span id="summary-period"></span></div>
+                                <div><strong>Months:</strong> <span id="summary-months-count"></span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-warning mb-lg">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                            <line x1="12" y1="9" x2="12" y2="13" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-title">Note</div>
+                            <div class="alert-message">
+                                Report generation may take a few minutes depending on the number of months selected.
+                                The system will fetch data from the API and generate charts for each month.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-footer">
+                        <button type="button" class="btn btn-secondary" id="btn-back-3">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7" />
+                            </svg>
+                            Back
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btn-generate">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                                <polyline points="10 9 9 9 8 9" />
+                            </svg>
+                            Generate PDF Report
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Generating view -->
+                <div id="generating" class="hidden">
+                    <div class="generating-animation">
+                        <div class="generating-icon">📊</div>
+                        <h3>Generating Report...</h3>
+                        <p class="text-secondary text-sm">Fetching data and creating charts</p>
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar-fill" id="progress-bar"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span id="progress-label">Starting...</span>
+                            <span id="progress-percent">0%</span>
+                        </div>
+                    </div>
+
+                    <div class="log-area" id="log-area"></div>
+                </div>
+
+                <!-- Results view -->
+                <div id="results" class="hidden">
+                    <div class="step-header">
+                        <h2 class="step-title">Report Ready! 🎉</h2>
+                        <p class="step-description">
+                            Your visitor analysis report has been generated successfully.
+                        </p>
+                    </div>
+
+                    <div class="alert alert-success mb-lg">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                            <polyline points="22 4 12 14.01 9 11.01" />
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-title">PDF Generated Successfully</div>
+                            <div class="alert-message" id="result-info"></div>
+                        </div>
+                    </div>
+
+                    <!-- Summary stats -->
+                    <div class="summary-grid" id="summary-stats"></div>
+
+                    <!-- Charts Section -->
+                    <div class="charts-container" style="margin-bottom: var(--space-2xl);">
+                        <h3 style="margin-bottom: var(--space-md);">Daily Visitors Analysis</h3>
+                        <div class="chart-wrapper" style="margin-bottom: var(--space-xl);">
+                            <img id="daily-chart-img" class="img-fluid" alt="Daily Visitors Chart" style="width: 100%;">
+                        </div>
+
+                        <h3 style="margin-bottom: var(--space-md);">Monthly Breakdown</h3>
+                        <div class="chart-wrapper">
+                            <img id="monthly-chart-img" class="img-fluid" alt="Monthly Breakdown Chart"
+                                style="width: 100%;">
+                        </div>
+                    </div>
+
+                    <!-- Unique Visitors & Visits Table -->
+                    <div style="margin-bottom: var(--space-2xl);">
+                        <h3 style="margin-bottom: var(--space-md);">Unique Visitors & Visits</h3>
+                        <div class="table-container">
+                            <table class="table" id="unique-data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Month</th>
+                                        <th>Unique Visitors</th>
+                                        <th>Unique Visits</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Monthly Stats Table -->
+                    <div style="margin-bottom: var(--space-2xl);">
+                        <h3 style="margin-bottom: var(--space-md);">Monthly Statistics</h3>
+                        <div class="table-container">
+                            <table class="table" id="monthly-stats-table">
+                                <thead>
+                                    <tr>
+                                        <th>Month</th>
+                                        <th>Days</th>
+                                        <th>Mean</th>
+                                        <th>Median</th>
+                                        <th>Max</th>
+                                        <th>Min</th>
+                                        <th>Weekday Avg</th>
+                                        <th>Weekend Avg</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- PDF Preview -->
+                    <h3 style="margin-bottom: var(--space-md);">PDF Preview</h3>
+                    <div class="pdf-preview" id="pdf-preview-container">
+                        <iframe id="pdf-preview" title="PDF Preview"></iframe>
+                    </div>
+
+                    <div class="step-footer">
+                        <button type="button" class="btn btn-secondary" id="btn-new-report">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 5v14M5 12h14" />
+                            </svg>
+                            New Report
+                        </button>
+                        <div style="display:flex; gap: var(--space-sm); flex-wrap: wrap;">
+                            <button type="button" class="btn btn-secondary" id="btn-download-daily-csv"
+                                title="Download daily visitors CSV">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="7 10 12 15 17 10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                                Daily CSV
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="btn-download-monthly-csv"
+                                title="Download monthly data CSV">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="7 10 12 15 17 10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                                Monthly CSV
+                            </button>
+                            <button type="button" class="btn btn-success" id="btn-download-pdf">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="7 10 12 15 17 10" />
+                                    <line x1="12" y1="15" x2="12" y2="3" />
+                                </svg>
+                                Download PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Error view -->
+                <div id="error-view" class="hidden">
+                    <div class="step-header">
+                        <h2 class="step-title">Generation Failed</h2>
+                    </div>
+
+                    <div class="alert alert-error mb-lg">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M15 9l-6 6M9 9l6 6" />
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-title">Error</div>
+                            <div class="alert-message" id="error-message"></div>
+                        </div>
+                    </div>
+
+                    <div class="step-footer">
+                        <button type="button" class="btn btn-secondary" id="btn-back-error">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7" />
+                            </svg>
+                            Back
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btn-retry">
+                            Retry
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Application JS -->
+    <script src="/js/report.js"></script>
+</body>
+
+</html>
