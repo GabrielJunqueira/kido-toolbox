@@ -5,3 +5,7 @@ requests
 pandas
 matplotlib
 python-dateutil
+numpy
+geopandas
+shapely
+pyproj
