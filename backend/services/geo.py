@@ -111,7 +111,7 @@ def create_circular_buffers(
                 country_feature = {
                     "type": "Feature",
                     "properties": {
-                        "id": "AOI-0",
+                        "id": "PRO-0",
                         "name": country_name,
                         "poly_type": "periphery"
                     },
