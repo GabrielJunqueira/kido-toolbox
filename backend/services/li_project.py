@@ -10,6 +10,7 @@ import json
 from typing import List, Dict, Any, Optional, Tuple
 
 import pandas as pd
+import numpy as np
 import geopandas as gpd
 import requests
 from shapely.geometry import Point, Polygon, shape, mapping
@@ -256,41 +257,35 @@ def filter_nodes_in_buffer(
     nodes: List[List[float]],
     center_lat: float,
     center_lon: float,
-    radius_m: float = 500
+    radius_m: float = 1000
 ) -> List[List[float]]:
     """
     Given a list of [lat, lon] nodes, return only those within
     `radius_m` meters of the center point.
+    
+    Uses vectorized haversine formula for performance.
     """
-    # Project to a metric CRS for accurate distance
-    center = Point(center_lon, center_lat)
+    if not nodes:
+        return []
     
-    # Use a local UTM projection centered on the point
-    proj_wgs84 = pyproj.CRS('EPSG:4326')
-    # Auto-determine UTM zone
-    utm_zone = int((center_lon + 180) / 6) + 1
-    hemisphere = 'north' if center_lat >= 0 else 'south'
-    proj_utm = pyproj.CRS(f'+proj=utm +zone={utm_zone} +{hemisphere} +datum=WGS84')
+    # Convert to numpy array for vectorized operations
+    arr = np.array(nodes)  # shape (N, 2) — [lat, lon]
     
-    transformer_to_utm = pyproj.Transformer.from_crs(
-        proj_wgs84, proj_utm, always_xy=True
-    )
-    transformer_to_wgs = pyproj.Transformer.from_crs(
-        proj_utm, proj_wgs84, always_xy=True
-    )
+    # Haversine formula (vectorized)
+    R = 6371000.0  # Earth radius in meters
     
-    # Create buffer circle in UTM
-    center_utm = transform(transformer_to_utm.transform, center)
-    buffer_utm = center_utm.buffer(radius_m)
+    lat1 = np.radians(center_lat)
+    lat2 = np.radians(arr[:, 0])
+    dlat = lat2 - lat1
+    dlon = np.radians(arr[:, 1] - center_lon)
     
-    # Filter nodes
-    filtered = []
-    for node in nodes:
-        lat, lon = node[0], node[1]
-        pt = Point(lon, lat)
-        pt_utm = transform(transformer_to_utm.transform, pt)
-        if buffer_utm.contains(pt_utm):
-            filtered.append(node)
+    a = np.sin(dlat / 2) ** 2 + np.cos(lat1) * np.cos(lat2) * np.sin(dlon / 2) ** 2
+    c = 2 * np.arctan2(np.sqrt(a), np.sqrt(1 - a))
+    distances = R * c
+    
+    # Filter by radius
+    mask = distances <= radius_m
+    filtered = arr[mask].tolist()
     
     return filtered
 
@@ -331,6 +326,54 @@ def create_buffer_circle_geojson(
         },
         'geometry': mapping(buffer_wgs),
     }
+
+
+# ==========================================
+# POLYGON BUFFER CREATION
+# ==========================================
+
+def create_polygon_buffers(
+    geometry: Dict[str, Any],
+    distances: List[float],
+) -> List[Dict[str, Any]]:
+    """
+    Create buffered versions of a polygon geometry at specified distances.
+    Uses UTM projection for metric accuracy.
+    
+    Args:
+        geometry: GeoJSON geometry dict (Polygon)
+        distances: List of buffer distances in meters
+    
+    Returns:
+        List of GeoJSON geometry dicts (buffered polygons)
+    """
+    poly = shape(geometry)
+    centroid = poly.centroid
+    
+    # Set up UTM projection
+    proj_wgs84 = pyproj.CRS('EPSG:4326')
+    utm_zone = int((centroid.x + 180) / 6) + 1
+    hemisphere = 'north' if centroid.y >= 0 else 'south'
+    proj_utm = pyproj.CRS(f'+proj=utm +zone={utm_zone} +{hemisphere} +datum=WGS84')
+    
+    transformer_to_utm = pyproj.Transformer.from_crs(
+        proj_wgs84, proj_utm, always_xy=True
+    )
+    transformer_to_wgs = pyproj.Transformer.from_crs(
+        proj_utm, proj_wgs84, always_xy=True
+    )
+    
+    # Project polygon to UTM
+    poly_utm = transform(transformer_to_utm.transform, poly)
+    
+    # Create buffers
+    result = []
+    for dist in distances:
+        buffered_utm = poly_utm.buffer(dist, resolution=64)
+        buffered_wgs = transform(transformer_to_wgs.transform, buffered_utm)
+        result.append(mapping(buffered_wgs))
+    
+    return result
 
 
 # ==========================================
@@ -380,13 +423,17 @@ def build_li_project_geojson(
     for i, est in enumerate(establishments):
         est_props = est.get('properties', {})
         est_name = est_props.get('name', f'Establishment {i+1}')
+        # Use custom id if provided (e.g., buffer polygons like AOI-1-50),
+        # otherwise generate sequential AOI-{i+1}
+        est_id = est_props.get('id', f'AOI-{i+1}')
+        est_poly_type = est_props.get('poly_type', 'core')
         
         new_features.append({
             'type': 'Feature',
             'properties': {
-                'id': f'AOI-{i+1}',
+                'id': est_id,
                 'name': est_name,
-                'poly_type': 'core',
+                'poly_type': est_poly_type,
             },
             'geometry': est.get('geometry'),
         })

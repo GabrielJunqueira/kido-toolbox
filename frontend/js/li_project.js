@@ -22,11 +22,15 @@ const state = {
     nodeCount: 0,
     geoCountry: null,
     geoCountryName: null,
+    nodeRadius: 1000,   // Default node search radius in meters
 
     // Establishments (name + coords, polygon drawn later on map)
     establishments: [],  // Array of {name, lat, lon, polygon: GeoJSON Feature | null}
     buffers: [],         // Array of buffer GeoJSON Feature dicts
     nodesPerEst: [],     // Array of arrays of [lat, lon]
+
+    // Buffer polygons created from drawn polygons
+    bufferPolygons: [],  // Array of {estIndex, distance, polygon: GeoJSON Feature, name, id}
 
     // Map
     map: null,
@@ -44,6 +48,16 @@ const state = {
     filename: null,
     featureCount: 0,
     projectId: null,
+};
+
+// Country code to name/flag mapping
+const COUNTRY_MAP = {
+    'br': { name: 'Brazil', flag: '🇧🇷', geoCode: 'BR' },
+    'pt': { name: 'Portugal', flag: '🇵🇹', geoCode: 'PT' },
+    'es': { name: 'Spain', flag: '🇪🇸', geoCode: 'ES' },
+    'mx': { name: 'Mexico', flag: '🇲🇽', geoCode: 'MX' },
+    'ch': { name: 'Switzerland', flag: '🇨🇭', geoCode: 'CH' },
+    'cl': { name: 'Chile', flag: '🇨🇱', geoCode: 'CL' },
 };
 
 // ==========================================
@@ -64,7 +78,6 @@ const el = {
     loginErrorMsg: document.getElementById('login-error-message'),
 
     // Step 2
-    geoCountry: document.getElementById('geo-country'),
     uploadArea: document.getElementById('upload-area'),
     nodesFile: document.getElementById('nodes-file'),
     uploadSuccess: document.getElementById('upload-success'),
@@ -75,6 +88,7 @@ const el = {
     btnNext2: document.getElementById('btn-next-2'),
 
     // Step 3
+    nodeRadius: document.getElementById('node-radius'),
     searchQuery: document.getElementById('search-query'),
     btnSearch: document.getElementById('btn-search'),
     searchProgress: document.getElementById('search-progress'),
@@ -97,6 +111,7 @@ const el = {
     mapContainer: document.getElementById('map-container'),
     polygonStats: document.getElementById('polygon-stats'),
     polygonStatsMsg: document.getElementById('polygon-stats-message'),
+    legendBufferText: document.getElementById('legend-buffer-text'),
     btnBack3: document.getElementById('btn-back-3'),
     btnNext4: document.getElementById('btn-next-4'),
 
@@ -131,7 +146,6 @@ const el = {
 
 document.addEventListener('DOMContentLoaded', () => {
     initEventListeners();
-    loadCountries();
 });
 
 function initEventListeners() {
@@ -147,7 +161,9 @@ function initEventListeners() {
     el.uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); el.uploadArea.classList.add('dragover'); });
     el.uploadArea.addEventListener('dragleave', () => el.uploadArea.classList.remove('dragover'));
     el.uploadArea.addEventListener('drop', handleFileDrop);
-    el.geoCountry.addEventListener('change', handleGeoCountryChange);
+
+    // Step 3
+    el.nodeRadius.addEventListener('change', handleRadiusChange);
 
     // Step 3 tabs
     document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -209,30 +225,6 @@ function goToStep(step) {
 }
 
 // ==========================================
-// COUNTRIES
-// ==========================================
-
-async function loadCountries() {
-    try {
-        const res = await fetch('/api/aoi/countries');
-        const countries = await res.json();
-        el.geoCountry.innerHTML = '<option value="">Select a country...</option>';
-        countries.forEach(c => {
-            const flag = { BR: '🇧🇷', PT: '🇵🇹', ES: '🇪🇸', MX: '🇲🇽', CL: '🇨🇱' }[c.code] || '🌍';
-            el.geoCountry.innerHTML += `<option value="${c.code}">${flag} ${c.name}</option>`;
-        });
-    } catch (e) {
-        el.geoCountry.innerHTML = '<option value="">Error loading countries</option>';
-    }
-}
-
-function handleGeoCountryChange() {
-    state.geoCountry = el.geoCountry.value;
-    state.geoCountryName = el.geoCountry.options[el.geoCountry.selectedIndex]?.text || '';
-    checkStep2Ready();
-}
-
-// ==========================================
 // STEP 1: LOGIN
 // ==========================================
 
@@ -258,6 +250,17 @@ async function handleLogin() {
             state.rootUrl = data.root_url;
             state.brand = data.brand;
             state.apiCountry = apiCountry;
+
+            // Auto-set geo country from the API country
+            const countryInfo = COUNTRY_MAP[apiCountry.toLowerCase()];
+            if (countryInfo) {
+                state.geoCountry = countryInfo.geoCode;
+                state.geoCountryName = `${countryInfo.flag} ${countryInfo.name}`;
+            } else {
+                state.geoCountry = apiCountry.toUpperCase();
+                state.geoCountryName = apiCountry.toUpperCase();
+            }
+
             goToStep(2);
         } else {
             showError(el.loginError, el.loginErrorMsg, data.error || 'Login failed.');
@@ -335,12 +338,23 @@ async function uploadFile(file) {
 }
 
 function checkStep2Ready() {
-    el.btnNext2.disabled = !(state.geoCountry && state.nodeCount > 0);
+    // Only need nodes loaded now — country is auto-set from login
+    el.btnNext2.disabled = !(state.nodeCount > 0);
 }
 
 // ==========================================
 // STEP 3: ESTABLISHMENTS
 // ==========================================
+
+function handleRadiusChange() {
+    const val = parseInt(el.nodeRadius.value);
+    if (val && val >= 100 && val <= 5000) {
+        state.nodeRadius = val;
+        if (el.legendBufferText) {
+            el.legendBufferText.textContent = `${val}m buffer`;
+        }
+    }
+}
 
 async function handleSearch() {
     const q = el.searchQuery.value.trim();
@@ -414,7 +428,7 @@ async function addEstablishment(lat, lon, name) {
     el.polygonProgressText.textContent = `Filtering nodes near "${name}"...`;
 
     try {
-        // Filter nodes in 500m buffer
+        // Filter nodes using the configurable radius
         const nodesRes = await fetch('/api/li-project/filter-nodes', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -422,7 +436,7 @@ async function addEstablishment(lat, lon, name) {
                 nodes: state.nodes,
                 center_lat: lat,
                 center_lon: lon,
-                radius_m: 500,
+                radius_m: state.nodeRadius,
             }),
         });
         const nodesData = await nodesRes.json();
@@ -465,7 +479,7 @@ function updateEstablishmentsList() {
         div.innerHTML = `
             <div class="est-info">
                 <div class="est-name">${hasPoly} ${name}</div>
-                <div class="est-coords">Lat ${est.lat.toFixed(5)}, Lon ${est.lon.toFixed(5)} · ${nodes} nodes in buffer</div>
+                <div class="est-coords">Lat ${est.lat.toFixed(5)}, Lon ${est.lon.toFixed(5)} · ${nodes} nodes in ${state.nodeRadius}m radius</div>
             </div>
             <button class="btn-remove" data-index="${i}">✕ Remove</button>
         `;
@@ -478,6 +492,12 @@ function removeEstablishment(index) {
     state.establishments.splice(index, 1);
     state.nodesPerEst.splice(index, 1);
     state.buffers.splice(index, 1);
+    // Remove any buffer polygons for this establishment
+    state.bufferPolygons = state.bufferPolygons.filter(bp => bp.estIndex !== index);
+    // Adjust estIndex for buffer polygons with higher indices
+    state.bufferPolygons.forEach(bp => {
+        if (bp.estIndex > index) bp.estIndex--;
+    });
     updateEstablishmentsList();
 }
 
@@ -489,6 +509,11 @@ function initMap() {
     if (state.map) {
         state.map.remove();
         state.map = null;
+    }
+
+    // Update legend
+    if (el.legendBufferText) {
+        el.legendBufferText.textContent = `${state.nodeRadius}m buffer`;
     }
 
     // Determine which establishments still need polygons drawn
@@ -547,10 +572,25 @@ function initMap() {
             });
             geojsonLayer.eachLayer(l => {
                 l._estIndex = i;
+                l._isOriginal = true;
                 state.drawnItems.addLayer(l);
                 if (l.getBounds) bounds.extend(l.getBounds());
             });
         }
+    });
+
+    // Add buffer polygons back
+    state.bufferPolygons.forEach((bp, bpIdx) => {
+        const bufLayer = L.geoJSON(bp.polygon, {
+            style: { color: '#a855f7', fillColor: '#a855f7', fillOpacity: 0.15, weight: 2, dashArray: '4 3' },
+        });
+        bufLayer.eachLayer(l => {
+            l._bufferIndex = bpIdx;
+            l._isBuffer = true;
+            state.drawnItems.addLayer(l);
+            l.bindTooltip(bp.name, { permanent: true, direction: 'center', className: 'buffer-tooltip' });
+            if (l.getBounds) bounds.extend(l.getBounds());
+        });
     });
 
     // Add establishment center markers (red pins)
@@ -625,10 +665,14 @@ function initMap() {
         if (state.pendingDrawQueue.length > 0) {
             const estIdx = state.pendingDrawQueue.shift();
             layer._estIndex = estIdx;
+            layer._isOriginal = true;
             const geojson = layer.toGeoJSON();
             geojson.properties = { name: state.establishments[estIdx].name, poly_type: 'core' };
             state.establishments[estIdx].polygon = geojson;
             layer.bindTooltip(state.establishments[estIdx].name, { permanent: true, direction: 'center' });
+
+            // Show buffer creation option
+            showBufferCreationButton(estIdx, layer);
         }
 
         updatePolygonStats();
@@ -637,7 +681,7 @@ function initMap() {
     // Handle polygon edits → sync back
     state.map.on(L.Draw.Event.EDITED, (e) => {
         e.layers.eachLayer(layer => {
-            if (layer._estIndex !== undefined) {
+            if (layer._estIndex !== undefined && layer._isOriginal) {
                 const geojson = layer.toGeoJSON();
                 geojson.properties = { name: state.establishments[layer._estIndex].name, poly_type: 'core' };
                 state.establishments[layer._estIndex].polygon = geojson;
@@ -649,20 +693,199 @@ function initMap() {
     // Handle polygon deletion
     state.map.on(L.Draw.Event.DELETED, (e) => {
         e.layers.eachLayer(layer => {
-            if (layer._estIndex !== undefined) {
+            if (layer._estIndex !== undefined && layer._isOriginal) {
                 state.establishments[layer._estIndex].polygon = null;
                 state.pendingDrawQueue.push(layer._estIndex);
                 state.pendingDrawQueue.sort((a, b) => a - b);
+                // Remove associated buffer polygons
+                state.bufferPolygons = state.bufferPolygons.filter(bp => bp.estIndex !== layer._estIndex);
+            }
+            if (layer._isBuffer && layer._bufferIndex !== undefined) {
+                state.bufferPolygons.splice(layer._bufferIndex, 1);
             }
         });
         updatePolygonStats();
     });
 }
 
+// ==========================================
+// BUFFER POLYGON CREATION
+// ==========================================
+
+function showBufferCreationButton(estIdx, layer) {
+    const est = state.establishments[estIdx];
+    const popupContent = document.createElement('div');
+    popupContent.innerHTML = `
+        <div style="text-align:center; padding: 4px;">
+            <strong>${est.name}</strong><br>
+            <button class="btn-create-buffers" style="
+                margin-top: 8px;
+                padding: 6px 14px;
+                background: linear-gradient(135deg, #a855f7, #6366f1);
+                color: white;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 0.8rem;
+                font-weight: 600;
+            ">🔲 Create Buffers</button>
+        </div>
+    `;
+    popupContent.querySelector('.btn-create-buffers').addEventListener('click', () => {
+        state.map.closePopup();
+        openBufferModal(estIdx);
+    });
+    layer.bindPopup(popupContent).openPopup();
+}
+
+function openBufferModal(estIdx) {
+    const est = state.establishments[estIdx];
+
+    // Create modal overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'buffer-modal-overlay';
+    overlay.innerHTML = `
+        <div class="buffer-modal">
+            <h3>🔲 Create Buffer Polygons</h3>
+            <p class="text-secondary" style="margin-bottom: 1rem; font-size: 0.9rem;">
+                Create buffer polygons around <strong>${est.name}</strong>. Each buffer will expand the polygon outline by the specified distance.
+            </p>
+            <div id="buffer-rows">
+                <div class="buffer-row">
+                    <span class="text-secondary" style="min-width: 60px;">Buffer 1:</span>
+                    <input type="number" class="form-input buffer-distance" value="50" min="10" max="5000" step="10" placeholder="meters">
+                    <span class="text-muted">m</span>
+                </div>
+            </div>
+            <div style="margin: 1rem 0; display: flex; gap: 0.5rem;">
+                <button class="btn btn-ghost" id="btn-add-buffer-row" style="font-size: 0.85rem;">+ Add Buffer</button>
+            </div>
+            <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem;">
+                <button class="btn btn-secondary" id="btn-cancel-buffer">Cancel</button>
+                <button class="btn btn-primary" id="btn-confirm-buffer">Create Buffers</button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    // Add buffer row button
+    overlay.querySelector('#btn-add-buffer-row').addEventListener('click', () => {
+        const rows = overlay.querySelector('#buffer-rows');
+        const count = rows.children.length + 1;
+        const row = document.createElement('div');
+        row.className = 'buffer-row';
+        row.innerHTML = `
+            <span class="text-secondary" style="min-width: 60px;">Buffer ${count}:</span>
+            <input type="number" class="form-input buffer-distance" value="${count * 50}" min="10" max="5000" step="10" placeholder="meters">
+            <span class="text-muted">m</span>
+            <button class="btn-remove-buffer">✕</button>
+        `;
+        row.querySelector('.btn-remove-buffer').addEventListener('click', () => row.remove());
+        rows.appendChild(row);
+    });
+
+    // Cancel
+    overlay.querySelector('#btn-cancel-buffer').addEventListener('click', () => {
+        overlay.remove();
+    });
+
+    // Confirm
+    overlay.querySelector('#btn-confirm-buffer').addEventListener('click', async () => {
+        const distances = [];
+        overlay.querySelectorAll('.buffer-distance').forEach(input => {
+            const val = parseInt(input.value);
+            if (val && val > 0) distances.push(val);
+        });
+
+        if (distances.length === 0) {
+            alert('Please enter at least one buffer distance.');
+            return;
+        }
+
+        // Disable button
+        const confirmBtn = overlay.querySelector('#btn-confirm-buffer');
+        confirmBtn.disabled = true;
+        confirmBtn.innerHTML = '<div class="spinner" style="width:16px;height:16px;"></div> Creating...';
+
+        try {
+            await createBufferPolygons(estIdx, distances);
+            overlay.remove();
+        } catch (e) {
+            console.error('Error creating buffers:', e);
+            alert('Error creating buffer polygons. Please try again.');
+            confirmBtn.disabled = false;
+            confirmBtn.textContent = 'Create Buffers';
+        }
+    });
+
+    // Close on overlay click (not modal)
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) overlay.remove();
+    });
+}
+
+async function createBufferPolygons(estIdx, distances) {
+    const est = state.establishments[estIdx];
+    if (!est.polygon) return;
+
+    const res = await fetch('/api/li-project/buffer-polygon', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            geometry: est.polygon.geometry,
+            distances: distances,
+        }),
+    });
+    const data = await res.json();
+    if (!data.success) {
+        throw new Error(data.error || 'Failed to create buffer polygons');
+    }
+
+    // Remove existing buffer polygons for this establishment first
+    state.bufferPolygons = state.bufferPolygons.filter(bp => bp.estIndex !== estIdx);
+
+    // Add buffer polygons to state and map
+    data.buffers.forEach((bufGeo, i) => {
+        const distance = distances[i];
+        const bufferFeature = {
+            type: 'Feature',
+            properties: {
+                id: `AOI-${estIdx + 1}-${distance}`,
+                name: `${est.name} - ${distance}m`,
+                poly_type: 'core',
+            },
+            geometry: bufGeo,
+        };
+
+        const bpEntry = {
+            estIndex: estIdx,
+            distance: distance,
+            polygon: bufferFeature,
+            name: `${est.name} - ${distance}m`,
+            id: `AOI-${estIdx + 1}-${distance}`,
+        };
+        state.bufferPolygons.push(bpEntry);
+
+        // Add to map
+        const bufLayer = L.geoJSON(bufferFeature, {
+            style: { color: '#a855f7', fillColor: '#a855f7', fillOpacity: 0.15, weight: 2, dashArray: '4 3' },
+        });
+        bufLayer.eachLayer(l => {
+            l._bufferIndex = state.bufferPolygons.length - 1;
+            l._isBuffer = true;
+            state.drawnItems.addLayer(l);
+            l.bindTooltip(bpEntry.name, { permanent: true, direction: 'center', className: 'buffer-tooltip' });
+        });
+    });
+
+    updatePolygonStats();
+}
+
 function syncPolygonsFromMap() {
     // Sync all drawn items back to state
     state.drawnItems.eachLayer(layer => {
-        if (layer._estIndex !== undefined) {
+        if (layer._estIndex !== undefined && layer._isOriginal) {
             const geojson = layer.toGeoJSON();
             geojson.properties = { name: state.establishments[layer._estIndex].name, poly_type: 'core' };
             state.establishments[layer._estIndex].polygon = geojson;
@@ -670,10 +893,65 @@ function syncPolygonsFromMap() {
     });
 }
 
+// ==========================================
+// POLYGON STATS - Node counts per polygon
+// ==========================================
+
+function countNodesInPolygon(polygonFeature, nodesForEst) {
+    if (!polygonFeature || !nodesForEst || nodesForEst.length === 0) return 0;
+
+    // Use Turf.js for point-in-polygon if available
+    if (typeof turf !== 'undefined') {
+        let count = 0;
+        const poly = turf.feature(polygonFeature.geometry);
+        for (const node of nodesForEst) {
+            const pt = turf.point([node[1], node[0]]); // [lon, lat]
+            if (turf.booleanPointInPolygon(pt, poly)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    // Fallback: simple ray-casting point-in-polygon
+    const coords = polygonFeature.geometry.coordinates[0]; // outer ring
+    let count = 0;
+    for (const node of nodesForEst) {
+        if (pointInPolygon([node[1], node[0]], coords)) {
+            count++;
+        }
+    }
+    return count;
+}
+
+function pointInPolygon(point, polygon) {
+    const [x, y] = point;
+    let inside = false;
+    for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+        const xi = polygon[i][0], yi = polygon[i][1];
+        const xj = polygon[j][0], yj = polygon[j][1];
+        const intersect = ((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+        if (intersect) inside = !inside;
+    }
+    return inside;
+}
+
 function updatePolygonStats() {
     const pending = state.establishments.filter(e => !e.polygon).length;
     const drawn = state.establishments.filter(e => e.polygon).length;
     const total = state.establishments.length;
+
+    // Collect all nodes from all buffers into a flat set for per-polygon counting
+    const allNodes = [];
+    state.nodesPerEst.forEach(nodeList => {
+        nodeList.forEach(n => {
+            allNodes.push(n);
+        });
+    });
+    // Deduplicate
+    const nodeSet = new Map();
+    allNodes.forEach(n => nodeSet.set(`${n[0]},${n[1]}`, n));
+    const uniqueNodes = Array.from(nodeSet.values());
 
     let html = '';
     if (pending > 0) {
@@ -685,10 +963,24 @@ function updatePolygonStats() {
     if (drawn > 0) {
         html += `✅ ${drawn}/${total} establishment polygons drawn.<br>`;
     }
+
+    // Show per-polygon node counts
     state.establishments.forEach((est, i) => {
         const status = est.polygon ? '✅' : '⬜';
-        const nodes = state.nodesPerEst[i]?.length || 0;
-        html += `${status} <strong>${est.name}</strong>: ${nodes} nodes in buffer<br>`;
+        if (est.polygon) {
+            const nodesInPoly = countNodesInPolygon(est.polygon, uniqueNodes);
+            html += `${status} <strong>${est.name}</strong>: ${nodesInPoly} nodes<br>`;
+        } else {
+            html += `${status} <strong>${est.name}</strong>: polygon not drawn yet<br>`;
+        }
+
+        // Show buffer polygon node counts
+        const estBuffers = state.bufferPolygons.filter(bp => bp.estIndex === i);
+        estBuffers.sort((a, b) => a.distance - b.distance);
+        estBuffers.forEach(bp => {
+            const nodesInBuf = countNodesInPolygon(bp.polygon, uniqueNodes);
+            html += `&nbsp;&nbsp;&nbsp;&nbsp;↳ <strong>${bp.name}</strong>: ${nodesInBuf} nodes<br>`;
+        });
     });
 
     el.polygonStatsMsg.innerHTML = html;
@@ -767,11 +1059,13 @@ function handleCityChange() {
 
 function updateGenSummary() {
     const estNames = state.establishments.map(e => e.name || '?').join(', ');
+    const bufCount = state.bufferPolygons.length;
     el.genSummary.innerHTML = `
         <strong>Country:</strong> ${state.geoCountryName || '-'}<br>
         <strong>Region:</strong> ${state.regionName || '-'}<br>
         <strong>City:</strong> ${state.city || '-'}<br>
         <strong>Establishments (${state.establishments.length}):</strong> ${estNames || '-'}
+        ${bufCount > 0 ? `<br><strong>Buffer polygons:</strong> ${bufCount}` : ''}
     `;
 }
 
@@ -783,16 +1077,20 @@ async function handleGenerate() {
     el.btnGenerate.disabled = true;
 
     try {
-        // Extract polygon GeoJSON Features from state
+        // Extract polygon GeoJSON Features from state (original + buffers)
         const estFeatures = state.establishments
             .filter(e => e.polygon)
             .map(e => e.polygon);
+
+        // Add buffer polygon features
+        const bufferFeatures = state.bufferPolygons.map(bp => bp.polygon);
+        const allFeatures = [...estFeatures, ...bufferFeatures];
 
         const res = await fetch('/api/li-project/generate-project', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                establishments: estFeatures,
+                establishments: allFeatures,
                 country_code: state.geoCountry,
                 region_code: state.region,
                 city_name: state.city,
@@ -901,6 +1199,7 @@ function resetWizard() {
     state.establishments = [];
     state.buffers = [];
     state.nodesPerEst = [];
+    state.bufferPolygons = [];
     state.region = null;
     state.regionName = null;
     state.city = null;
@@ -908,16 +1207,17 @@ function resetWizard() {
     state.filename = null;
     state.featureCount = 0;
     state.projectId = null;
+    state.nodeRadius = 1000;
 
     if (state.map) { state.map.remove(); state.map = null; }
 
-    el.geoCountry.value = '';
     el.btnNext2.disabled = true;
     el.btnNext3.disabled = true;
     hideEl(el.uploadSuccess);
     hideEl(el.uploadError);
     hideEl(el.createSuccess);
     hideEl(el.createError);
+    el.nodeRadius.value = '1000';
     updateEstablishmentsList();
     goToStep(2);
 }

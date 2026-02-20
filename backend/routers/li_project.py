@@ -17,6 +17,7 @@ from services.li_project import (
     filter_nodes_in_buffer,
     create_buffer_circle_geojson,
     build_li_project_geojson,
+    create_polygon_buffers,
 )
 
 router = APIRouter(prefix="/api/li-project", tags=["li-project"])
@@ -43,7 +44,7 @@ class FilterNodesRequest(BaseModel):
     nodes: List[List[float]]  # [[lat, lon], ...]
     center_lat: float
     center_lon: float
-    radius_m: float = 500
+    radius_m: float = 1000
 
 
 class EstablishmentFeature(BaseModel):
@@ -57,6 +58,11 @@ class GenerateProjectRequest(BaseModel):
     country_code: str
     region_code: str
     city_name: str
+
+
+class BufferPolygonRequest(BaseModel):
+    geometry: dict  # GeoJSON geometry (Polygon)
+    distances: List[float]  # List of buffer distances in meters
 
 
 # ==========================================
@@ -178,3 +184,22 @@ async def generate_project(request: GenerateProjectRequest):
         return {"success": False, "error": str(e)}
     except Exception as e:
         return {"success": False, "error": f"Unexpected error: {str(e)}"}
+
+
+@router.post("/buffer-polygon")
+async def buffer_polygon(request: BufferPolygonRequest):
+    """
+    Create buffer polygons around a given polygon geometry.
+    Returns buffered polygon geometries for each distance.
+    """
+    try:
+        buffers = create_polygon_buffers(
+            geometry=request.geometry,
+            distances=request.distances,
+        )
+        return {
+            "success": True,
+            "buffers": buffers,
+        }
+    except Exception as e:
+        return {"success": False, "error": f"Error creating buffer polygons: {str(e)}"}
