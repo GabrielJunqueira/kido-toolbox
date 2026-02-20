@@ -4,6 +4,7 @@ API endpoints for creating Location Intelligence projects for establishments.
 """
 
 import json
+import uuid
 from typing import List, Optional
 
 from fastapi import APIRouter, UploadFile, File, Form, HTTPException
@@ -21,6 +22,9 @@ from services.li_project import (
 )
 
 router = APIRouter(prefix="/api/li-project", tags=["li-project"])
+
+# In-memory node store: { key: [[lat, lon], ...] }
+_node_store = {}
 
 
 # ==========================================
@@ -41,7 +45,7 @@ class EstablishmentPolygonRequest(BaseModel):
 
 
 class FilterNodesRequest(BaseModel):
-    nodes: List[List[float]]  # [[lat, lon], ...]
+    node_key: str  # Reference to stored nodes
     center_lat: float
     center_lon: float
     radius_m: float = 1000
@@ -73,15 +77,19 @@ class BufferPolygonRequest(BaseModel):
 async def upload_nodes(file: UploadFile = File(...)):
     """
     Upload a CSV file with node data.
-    Returns the nodes as [lat, lon] pairs and count.
+    Stores nodes server-side and returns a key + count.
     """
     try:
         contents = await file.read()
         nodes, count, extra = process_nodes_csv(contents)
 
+        # Store nodes server-side with a unique key
+        node_key = str(uuid.uuid4())
+        _node_store[node_key] = nodes
+
         return {
             "success": True,
-            "nodes": nodes,
+            "node_key": node_key,
             "count": count,
             "extra": extra,
         }
@@ -135,11 +143,16 @@ async def get_polygon(request: EstablishmentPolygonRequest):
 async def filter_nodes(request: FilterNodesRequest):
     """
     Filter nodes that are within a buffer radius of a center point.
+    Nodes are referenced by node_key from a previous upload.
     Also returns the buffer circle as GeoJSON for visualization.
     """
     try:
+        nodes = _node_store.get(request.node_key)
+        if nodes is None:
+            return {"success": False, "error": "Node data not found. Please re-upload the CSV."}
+
         filtered = filter_nodes_in_buffer(
-            request.nodes,
+            nodes,
             request.center_lat,
             request.center_lon,
             request.radius_m,

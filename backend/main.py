@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
-from routers import calibration, aoi, anonymizer, editor, scaling_factor, li_project, report
+from routers import aoi, anonymizer, editor, scaling_factor, li_project, report
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -28,7 +28,6 @@ app.add_middleware(
 )
 
 # Mount API routers
-app.include_router(calibration.router)
 app.include_router(aoi.router)
 app.include_router(anonymizer.router)
 app.include_router(editor.router)
@@ -59,14 +58,6 @@ async def root():
         return FileResponse(index_path)
     return {"message": "Kido Support Toolbox API", "docs": "/docs"}
 
-
-@app.get("/calibration")
-async def calibration_page():
-    """Serve the calibration tool page."""
-    page_path = os.path.join(FRONTEND_DIR, "pages", "calibration.html")
-    if os.path.exists(page_path):
-        return FileResponse(page_path)
-    return {"error": "Page not found"}
 
 
 @app.get("/aoi")

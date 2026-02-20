@@ -18,7 +18,7 @@ const state = {
     apiCountry: null,
 
     // Nodes
-    nodes: [],          // [[lat, lon], ...]
+    nodeKey: null,      // Server-side node storage key
     nodeCount: 0,
     geoCountry: null,
     geoCountryName: null,
@@ -307,7 +307,7 @@ async function uploadFile(file) {
         const res = await fetch('/api/li-project/upload-nodes', { method: 'POST', body: formData });
         const data = await res.json();
         if (data.success) {
-            state.nodes = data.nodes;
+            state.nodeKey = data.node_key;
             state.nodeCount = data.count;
             showEl(el.uploadSuccess);
             el.uploadSuccessMsg.textContent = `${data.count.toLocaleString()} nodes loaded from ${file.name}`;
@@ -428,12 +428,12 @@ async function addEstablishment(lat, lon, name) {
     el.polygonProgressText.textContent = `Filtering nodes near "${name}"...`;
 
     try {
-        // Filter nodes using the configurable radius
+        // Filter nodes using the configurable radius (reference stored nodes by key)
         const nodesRes = await fetch('/api/li-project/filter-nodes', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                nodes: state.nodes,
+                node_key: state.nodeKey,
                 center_lat: lat,
                 center_lon: lon,
                 radius_m: state.nodeRadius,
@@ -1194,7 +1194,7 @@ function hideEl(el) { el.classList.add('hidden'); }
 function showError(container, msgEl, msg) { container.classList.remove('hidden'); msgEl.textContent = msg; }
 
 function resetWizard() {
-    state.nodes = [];
+    state.nodeKey = null;
     state.nodeCount = 0;
     state.establishments = [];
     state.buffers = [];
