@@ -440,12 +440,13 @@
                 <div class="step-header">
                     <h2 class="step-title">Upload Nodes</h2>
                     <p class="step-description">
-                        Upload a CSV file with node data (telecom infrastructure points).
+                        Optionally upload a CSV file with node data (telecom infrastructure points).
+                        If skipped, polygon node counts won't be shown.
                     </p>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label required">Nodes CSV File</label>
+                    <label class="form-label">Nodes CSV File <span class="text-muted text-sm">(optional)</span></label>
                     <div class="file-upload-area" id="upload-area">
                         <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -850,7 +851,7 @@
     <!-- Turf.js for point-in-polygon -->
     <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
     <!-- Application JS -->
-    <script src="/js/li_project.js?v=2"></script>
+    <script src="/js/li_project.js?v=3"></script>
 </body>
 
 </html>

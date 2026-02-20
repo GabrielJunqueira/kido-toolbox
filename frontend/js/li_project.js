@@ -338,8 +338,8 @@ async function uploadFile(file) {
 }
 
 function checkStep2Ready() {
-    // Only need nodes loaded now — country is auto-set from login
-    el.btnNext2.disabled = !(state.nodeCount > 0);
+    // Nodes are optional — always allow continuing
+    el.btnNext2.disabled = false;
 }
 
 // ==========================================
@@ -425,27 +425,36 @@ async function handleAddByCoords() {
 
 async function addEstablishment(lat, lon, name) {
     showEl(el.polygonProgress);
-    el.polygonProgressText.textContent = `Filtering nodes near "${name}"...`;
+    el.polygonProgressText.textContent = state.nodeKey
+        ? `Filtering nodes near "${name}"...`
+        : `Adding "${name}"...`;
 
     try {
-        // Filter nodes using the configurable radius (reference stored nodes by key)
-        const nodesRes = await fetch('/api/li-project/filter-nodes', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                node_key: state.nodeKey,
-                center_lat: lat,
-                center_lon: lon,
-                radius_m: state.nodeRadius,
-            }),
-        });
-        const nodesData = await nodesRes.json();
+        let filteredNodes = [];
+        let bufferGeojson = null;
 
-        // Store establishment as {name, lat, lon, polygon: null}
-        // Polygon will be drawn by user on the map in Step 4
+        // Only filter nodes if they were uploaded
+        if (state.nodeKey) {
+            const nodesRes = await fetch('/api/li-project/filter-nodes', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    node_key: state.nodeKey,
+                    center_lat: lat,
+                    center_lon: lon,
+                    radius_m: state.nodeRadius,
+                }),
+            });
+            const nodesData = await nodesRes.json();
+            if (nodesData.success) {
+                filteredNodes = nodesData.filtered_nodes;
+                bufferGeojson = nodesData.buffer_geojson;
+            }
+        }
+
         state.establishments.push({ name, lat, lon, polygon: null });
-        state.nodesPerEst.push(nodesData.success ? nodesData.filtered_nodes : []);
-        state.buffers.push(nodesData.success ? nodesData.buffer_geojson : null);
+        state.nodesPerEst.push(filteredNodes);
+        state.buffers.push(bufferGeojson);
 
         updateEstablishmentsList();
     } catch (e) {
@@ -476,10 +485,14 @@ function updateEstablishmentsList() {
         const hasPoly = est.polygon ? '✅' : '⬜';
         const div = document.createElement('div');
         div.className = 'establishment-item';
+        const hasNodes = state.nodeCount > 0;
+        const nodeInfo = hasNodes
+            ? ` · ${nodes} nodes in ${state.nodeRadius}m radius`
+            : '';
         div.innerHTML = `
             <div class="est-info">
                 <div class="est-name">${hasPoly} ${name}</div>
-                <div class="est-coords">Lat ${est.lat.toFixed(5)}, Lon ${est.lon.toFixed(5)} · ${nodes} nodes in ${state.nodeRadius}m radius</div>
+                <div class="est-coords">Lat ${est.lat.toFixed(5)}, Lon ${est.lon.toFixed(5)}${nodeInfo}</div>
             </div>
             <button class="btn-remove" data-index="${i}">✕ Remove</button>
         `;
@@ -610,44 +623,46 @@ function initMap() {
         bounds.extend([est.lat, est.lon]);
     });
 
-    // Add buffer circles (non-editable, dashed)
+    // Add buffer circles and node markers only if nodes were uploaded
     state.bufferLayers = [];
-    state.buffers.forEach((buf, i) => {
-        if (!buf) return;
-        const bufLayer = L.geoJSON(buf, {
-            style: {
-                color: '#f59e0b',
-                fillColor: 'transparent',
-                fillOpacity: 0,
-                weight: 1.5,
-                dashArray: '6 4',
-            },
+    if (state.nodeCount > 0) {
+        state.buffers.forEach((buf, i) => {
+            if (!buf) return;
+            const bufLayer = L.geoJSON(buf, {
+                style: {
+                    color: '#f59e0b',
+                    fillColor: 'transparent',
+                    fillOpacity: 0,
+                    weight: 1.5,
+                    dashArray: '6 4',
+                },
+            });
+            bufLayer.addTo(state.map);
+            state.bufferLayers.push(bufLayer);
+            bufLayer.eachLayer(l => {
+                if (l.getBounds) bounds.extend(l.getBounds());
+            });
         });
-        bufLayer.addTo(state.map);
-        state.bufferLayers.push(bufLayer);
-        bufLayer.eachLayer(l => {
-            if (l.getBounds) bounds.extend(l.getBounds());
+
+        // Add nodes as small circle markers
+        state.nodeMarkers = L.layerGroup();
+        const allNodesInBuffers = new Set();
+        state.nodesPerEst.forEach(nodeList => {
+            nodeList.forEach(n => allNodesInBuffers.add(`${n[0]},${n[1]}`));
         });
-    });
 
-    // Add nodes as small circle markers
-    state.nodeMarkers = L.layerGroup();
-    const allNodesInBuffers = new Set();
-    state.nodesPerEst.forEach(nodeList => {
-        nodeList.forEach(n => allNodesInBuffers.add(`${n[0]},${n[1]}`));
-    });
-
-    allNodesInBuffers.forEach(key => {
-        const [lat, lon] = key.split(',').map(Number);
-        L.circleMarker([lat, lon], {
-            radius: 3,
-            color: '#6366f1',
-            fillColor: '#6366f1',
-            fillOpacity: 0.7,
-            weight: 1,
-        }).addTo(state.nodeMarkers);
-    });
-    state.nodeMarkers.addTo(state.map);
+        allNodesInBuffers.forEach(key => {
+            const [lat, lon] = key.split(',').map(Number);
+            L.circleMarker([lat, lon], {
+                radius: 3,
+                color: '#6366f1',
+                fillColor: '#6366f1',
+                fillOpacity: 0.7,
+                weight: 1,
+            }).addTo(state.nodeMarkers);
+        });
+        state.nodeMarkers.addTo(state.map);
+    }
 
     // Fit bounds
     if (bounds.isValid()) {
@@ -940,18 +955,17 @@ function updatePolygonStats() {
     const pending = state.establishments.filter(e => !e.polygon).length;
     const drawn = state.establishments.filter(e => e.polygon).length;
     const total = state.establishments.length;
+    const hasNodes = state.nodeCount > 0;
 
-    // Collect all nodes from all buffers into a flat set for per-polygon counting
-    const allNodes = [];
-    state.nodesPerEst.forEach(nodeList => {
-        nodeList.forEach(n => {
-            allNodes.push(n);
+    // Collect unique nodes for per-polygon counting (only if nodes were uploaded)
+    let uniqueNodes = [];
+    if (hasNodes) {
+        const nodeSet = new Map();
+        state.nodesPerEst.forEach(nodeList => {
+            nodeList.forEach(n => nodeSet.set(`${n[0]},${n[1]}`, n));
         });
-    });
-    // Deduplicate
-    const nodeSet = new Map();
-    allNodes.forEach(n => nodeSet.set(`${n[0]},${n[1]}`, n));
-    const uniqueNodes = Array.from(nodeSet.values());
+        uniqueNodes = Array.from(nodeSet.values());
+    }
 
     let html = '';
     if (pending > 0) {
@@ -964,22 +978,30 @@ function updatePolygonStats() {
         html += `✅ ${drawn}/${total} establishment polygons drawn.<br>`;
     }
 
-    // Show per-polygon node counts
+    // Show per-polygon info
     state.establishments.forEach((est, i) => {
         const status = est.polygon ? '✅' : '⬜';
         if (est.polygon) {
-            const nodesInPoly = countNodesInPolygon(est.polygon, uniqueNodes);
-            html += `${status} <strong>${est.name}</strong>: ${nodesInPoly} nodes<br>`;
+            if (hasNodes) {
+                const nodesInPoly = countNodesInPolygon(est.polygon, uniqueNodes);
+                html += `${status} <strong>${est.name}</strong>: ${nodesInPoly} nodes<br>`;
+            } else {
+                html += `${status} <strong>${est.name}</strong><br>`;
+            }
         } else {
             html += `${status} <strong>${est.name}</strong>: polygon not drawn yet<br>`;
         }
 
-        // Show buffer polygon node counts
+        // Show buffer polygon info
         const estBuffers = state.bufferPolygons.filter(bp => bp.estIndex === i);
         estBuffers.sort((a, b) => a.distance - b.distance);
         estBuffers.forEach(bp => {
-            const nodesInBuf = countNodesInPolygon(bp.polygon, uniqueNodes);
-            html += `&nbsp;&nbsp;&nbsp;&nbsp;↳ <strong>${bp.name}</strong>: ${nodesInBuf} nodes<br>`;
+            if (hasNodes) {
+                const nodesInBuf = countNodesInPolygon(bp.polygon, uniqueNodes);
+                html += `&nbsp;&nbsp;&nbsp;&nbsp;↳ <strong>${bp.name}</strong>: ${nodesInBuf} nodes<br>`;
+            } else {
+                html += `&nbsp;&nbsp;&nbsp;&nbsp;↳ <strong>${bp.name}</strong><br>`;
+            }
         });
     });
 
