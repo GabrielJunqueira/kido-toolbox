@@ -24,13 +24,13 @@ from services.aoi import generate_aoi_project
 # NODE PROCESSING
 # ==========================================
 
-def process_nodes_csv(file_bytes: bytes) -> Tuple[List[List[float]], int]:
+def process_nodes_csv(file_bytes: bytes) -> Tuple[np.ndarray, int, dict]:
     """
     Read a CSV file with node data, detect lat/lon columns,
-    and return a list of [lat, lon] pairs.
+    and return a numpy array of [[lat, lon], ...].
     
     Returns:
-        Tuple of (list of [lat, lon], total count)
+        Tuple of (numpy array of shape (N, 2), total count, extra_data dict)
     """
     # Try comma first, then semicolon
     try:
@@ -60,15 +60,15 @@ def process_nodes_csv(file_bytes: bytes) -> Tuple[List[List[float]], int]:
     df[lon_col] = pd.to_numeric(df[lon_col], errors='coerce')
     df = df.dropna(subset=[lat_col, lon_col])
     
-    # Build list of [lat, lon]
-    nodes = df[[lat_col, lon_col]].values.tolist()
+    # Keep as numpy array (fast — no Python list conversion)
+    nodes = df[[lat_col, lon_col]].values  # shape (N, 2), dtype float64
     
-    # Also keep extra columns if available (id, cusec)
+    # Extra data summary (don't convert full columns to lists)
     extra_data = {}
     if 'id' in df.columns:
-        extra_data['ids'] = df['id'].tolist()
+        extra_data['has_ids'] = True
     if 'cusec' in df.columns:
-        extra_data['cusecs'] = df['cusec'].tolist()
+        extra_data['has_cusecs'] = True
     
     return nodes, len(nodes), extra_data
 
@@ -254,22 +254,25 @@ def get_establishment_polygon(
 # ==========================================
 
 def filter_nodes_in_buffer(
-    nodes: List[List[float]],
+    nodes,
     center_lat: float,
     center_lon: float,
     radius_m: float = 1000
 ) -> List[List[float]]:
     """
-    Given a list of [lat, lon] nodes, return only those within
+    Given nodes (numpy array or list of [lat, lon]), return only those within
     `radius_m` meters of the center point.
     
     Uses vectorized haversine formula for performance.
     """
-    if not nodes:
-        return []
-    
-    # Convert to numpy array for vectorized operations
-    arr = np.array(nodes)  # shape (N, 2) — [lat, lon]
+    if not isinstance(nodes, np.ndarray):
+        if not nodes:
+            return []
+        arr = np.array(nodes)
+    else:
+        if len(nodes) == 0:
+            return []
+        arr = nodes
     
     # Haversine formula (vectorized)
     R = 6371000.0  # Earth radius in meters
@@ -283,7 +286,7 @@ def filter_nodes_in_buffer(
     c = 2 * np.arctan2(np.sqrt(a), np.sqrt(1 - a))
     distances = R * c
     
-    # Filter by radius
+    # Filter by radius — only convert the small subset to Python lists
     mask = distances <= radius_m
     filtered = arr[mask].tolist()
     
