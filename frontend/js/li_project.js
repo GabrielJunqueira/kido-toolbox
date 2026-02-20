@@ -219,6 +219,7 @@ function goToStep(step) {
     });
 
     // Step-specific init
+    if (step === 2) checkStep2Ready();
     if (step === 4) initMap();
     if (step === 5) initGenerateStep();
     if (step === 6) updateFinalSummary();
