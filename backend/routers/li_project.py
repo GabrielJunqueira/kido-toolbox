@@ -16,6 +16,7 @@ from services.li_project import (
     search_by_name,
     get_establishment_polygon,
     filter_nodes_in_buffer,
+    count_nodes_in_polygons,
     create_buffer_circle_geojson,
     build_li_project_geojson,
     create_polygon_buffers,
@@ -64,6 +65,11 @@ class GenerateProjectRequest(BaseModel):
     city_name: str
 
 
+class CountNodesRequest(BaseModel):
+    node_key: str
+    polygons: List[dict]  # List of GeoJSON Feature dicts
+
+
 class BufferPolygonRequest(BaseModel):
     geometry: dict  # GeoJSON geometry (Polygon)
     distances: List[float]  # List of buffer distances in meters
@@ -79,13 +85,22 @@ async def upload_nodes(file: UploadFile = File(...)):
     Upload a CSV file with node data.
     Stores nodes server-side and returns a key + count.
     """
+    import time
     try:
+        t0 = time.time()
         contents = await file.read()
+        t1 = time.time()
+        print(f"[upload-nodes] File read: {t1-t0:.2f}s ({len(contents)} bytes)")
+
         nodes, count, extra = process_nodes_csv(contents)
+        t2 = time.time()
+        print(f"[upload-nodes] CSV parsed: {t2-t1:.2f}s ({count} nodes)")
 
         # Store nodes server-side with a unique key
         node_key = str(uuid.uuid4())
         _node_store[node_key] = nodes
+        t3 = time.time()
+        print(f"[upload-nodes] Stored: {t3-t2:.2f}s | Total: {t3-t0:.2f}s")
 
         return {
             "success": True,
@@ -96,6 +111,8 @@ async def upload_nodes(file: UploadFile = File(...)):
     except ValueError as e:
         return {"success": False, "error": str(e)}
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         return {"success": False, "error": f"Error processing CSV: {str(e)}"}
 
 
@@ -197,6 +214,33 @@ async def generate_project(request: GenerateProjectRequest):
         return {"success": False, "error": str(e)}
     except Exception as e:
         return {"success": False, "error": f"Unexpected error: {str(e)}"}
+
+
+@router.post("/count-nodes-in-polygons")
+async def count_nodes_endpoint(request: CountNodesRequest):
+    """
+    Count nodes inside each polygon using vectorized operations.
+    Much faster than doing point-in-polygon in the browser with JS.
+    """
+    try:
+        nodes = _node_store.get(request.node_key)
+        if nodes is None:
+            return {"success": False, "error": "Node data not found. Please re-upload the CSV."}
+        
+        import time
+        t0 = time.time()
+        counts = count_nodes_in_polygons(nodes, request.polygons)
+        t1 = time.time()
+        print(f"[count-nodes-in-polygons] {len(request.polygons)} polygons, {len(nodes)} nodes -> {t1-t0:.2f}s")
+        
+        return {
+            "success": True,
+            "counts": counts,
+        }
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return {"success": False, "error": f"Error counting nodes: {str(e)}"}
 
 
 @router.post("/buffer-polygon")

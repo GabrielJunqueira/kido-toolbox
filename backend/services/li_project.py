@@ -293,6 +293,79 @@ def filter_nodes_in_buffer(
     return filtered
 
 
+def count_nodes_in_polygons(
+    nodes: np.ndarray,
+    polygons: List[Dict[str, Any]],
+) -> List[int]:
+    """
+    Count how many nodes fall inside each polygon.
+    Uses matplotlib Path for vectorized point-in-polygon (much faster than JS loops).
+    Pre-filters by bounding box for additional speed.
+    
+    Args:
+        nodes: numpy array of shape (N, 2) with [lat, lon]
+        polygons: list of GeoJSON Feature dicts with Polygon geometry
+    
+    Returns:
+        List of counts, one per polygon
+    """
+    from matplotlib.path import Path
+    
+    if len(nodes) == 0:
+        return [0] * len(polygons)
+    
+    # Nodes are [lat, lon] but GeoJSON coords are [lon, lat]
+    # Convert to [lon, lat] for polygon comparison
+    node_points = nodes[:, ::-1]  # flip to [lon, lat]
+    
+    counts = []
+    for poly_feature in polygons:
+        try:
+            geom = poly_feature.get('geometry', {})
+            coords = geom.get('coordinates', [[]])
+            
+            if geom.get('type') == 'Polygon':
+                ring = coords[0]  # outer ring
+            elif geom.get('type') == 'MultiPolygon':
+                # For MultiPolygon, use the first polygon's outer ring
+                ring = coords[0][0]
+            else:
+                counts.append(0)
+                continue
+            
+            if len(ring) < 3:
+                counts.append(0)
+                continue
+            
+            ring_arr = np.array(ring)
+            
+            # Bounding box pre-filter
+            min_lon, min_lat = ring_arr.min(axis=0)[:2]
+            max_lon, max_lat = ring_arr.max(axis=0)[:2]
+            
+            bbox_mask = (
+                (node_points[:, 0] >= min_lon) & (node_points[:, 0] <= max_lon) &
+                (node_points[:, 1] >= min_lat) & (node_points[:, 1] <= max_lat)
+            )
+            
+            candidates = node_points[bbox_mask]
+            
+            if len(candidates) == 0:
+                counts.append(0)
+                continue
+            
+            # Vectorized point-in-polygon using matplotlib Path
+            path = Path(ring_arr[:, :2])  # [lon, lat]
+            inside = path.contains_points(candidates)
+            counts.append(int(inside.sum()))
+            
+        except Exception as e:
+            print(f"[count_nodes_in_polygons] Error: {e}")
+            counts.append(0)
+    
+    return counts
+
+
 def create_buffer_circle_geojson(
     center_lat: float,
     center_lon: float,

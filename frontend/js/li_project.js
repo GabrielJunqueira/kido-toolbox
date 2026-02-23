@@ -910,63 +910,14 @@ function syncPolygonsFromMap() {
 }
 
 // ==========================================
-// POLYGON STATS - Node counts per polygon
+// POLYGON STATS - Node counts per polygon (via backend)
 // ==========================================
 
-function countNodesInPolygon(polygonFeature, nodesForEst) {
-    if (!polygonFeature || !nodesForEst || nodesForEst.length === 0) return 0;
-
-    // Use Turf.js for point-in-polygon if available
-    if (typeof turf !== 'undefined') {
-        let count = 0;
-        const poly = turf.feature(polygonFeature.geometry);
-        for (const node of nodesForEst) {
-            const pt = turf.point([node[1], node[0]]); // [lon, lat]
-            if (turf.booleanPointInPolygon(pt, poly)) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    // Fallback: simple ray-casting point-in-polygon
-    const coords = polygonFeature.geometry.coordinates[0]; // outer ring
-    let count = 0;
-    for (const node of nodesForEst) {
-        if (pointInPolygon([node[1], node[0]], coords)) {
-            count++;
-        }
-    }
-    return count;
-}
-
-function pointInPolygon(point, polygon) {
-    const [x, y] = point;
-    let inside = false;
-    for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
-        const xi = polygon[i][0], yi = polygon[i][1];
-        const xj = polygon[j][0], yj = polygon[j][1];
-        const intersect = ((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
-        if (intersect) inside = !inside;
-    }
-    return inside;
-}
-
-function updatePolygonStats() {
+async function updatePolygonStats() {
     const pending = state.establishments.filter(e => !e.polygon).length;
     const drawn = state.establishments.filter(e => e.polygon).length;
     const total = state.establishments.length;
-    const hasNodes = state.nodeCount > 0;
-
-    // Collect unique nodes for per-polygon counting (only if nodes were uploaded)
-    let uniqueNodes = [];
-    if (hasNodes) {
-        const nodeSet = new Map();
-        state.nodesPerEst.forEach(nodeList => {
-            nodeList.forEach(n => nodeSet.set(`${n[0]},${n[1]}`, n));
-        });
-        uniqueNodes = Array.from(nodeSet.values());
-    }
+    const hasNodes = state.nodeCount > 0 && state.nodeKey;
 
     let html = '';
     if (pending > 0) {
@@ -979,38 +930,93 @@ function updatePolygonStats() {
         html += `✅ ${drawn}/${total} establishment polygons drawn.<br>`;
     }
 
-    // Show per-polygon info
+    // If no nodes uploaded, show polygons without node counts
+    if (!hasNodes) {
+        state.establishments.forEach((est, i) => {
+            const status = est.polygon ? '✅' : '⬜';
+            if (est.polygon) {
+                html += `${status} <strong>${est.name}</strong><br>`;
+            } else {
+                html += `${status} <strong>${est.name}</strong>: polygon not drawn yet<br>`;
+            }
+            const estBuffers = state.bufferPolygons.filter(bp => bp.estIndex === i);
+            estBuffers.sort((a, b) => a.distance - b.distance);
+            estBuffers.forEach(bp => {
+                html += `&nbsp;&nbsp;&nbsp;&nbsp;↳ <strong>${bp.name}</strong><br>`;
+            });
+        });
+        el.polygonStatsMsg.innerHTML = html;
+        showEl(el.polygonStats);
+        el.btnNext4.disabled = pending > 0;
+        return;
+    }
+
+    // Show initial stats with "counting..." for polygons that have been drawn
     state.establishments.forEach((est, i) => {
         const status = est.polygon ? '✅' : '⬜';
         if (est.polygon) {
-            if (hasNodes) {
-                const nodesInPoly = countNodesInPolygon(est.polygon, uniqueNodes);
-                html += `${status} <strong>${est.name}</strong>: ${nodesInPoly} nodes<br>`;
-            } else {
-                html += `${status} <strong>${est.name}</strong><br>`;
-            }
+            html += `${status} <strong>${est.name}</strong>: <span id="node-count-est-${i}">counting...</span><br>`;
         } else {
             html += `${status} <strong>${est.name}</strong>: polygon not drawn yet<br>`;
         }
-
-        // Show buffer polygon info
         const estBuffers = state.bufferPolygons.filter(bp => bp.estIndex === i);
         estBuffers.sort((a, b) => a.distance - b.distance);
-        estBuffers.forEach(bp => {
-            if (hasNodes) {
-                const nodesInBuf = countNodesInPolygon(bp.polygon, uniqueNodes);
-                html += `&nbsp;&nbsp;&nbsp;&nbsp;↳ <strong>${bp.name}</strong>: ${nodesInBuf} nodes<br>`;
-            } else {
-                html += `&nbsp;&nbsp;&nbsp;&nbsp;↳ <strong>${bp.name}</strong><br>`;
-            }
+        estBuffers.forEach((bp, bIdx) => {
+            html += `&nbsp;&nbsp;&nbsp;&nbsp;↳ <strong>${bp.name}</strong>: <span id="node-count-buf-${i}-${bIdx}">counting...</span><br>`;
+        });
+    });
+    el.polygonStatsMsg.innerHTML = html;
+    showEl(el.polygonStats);
+    el.btnNext4.disabled = pending > 0;
+
+    // Collect all polygons to count (establishments + buffers)
+    const allPolygons = [];
+    const indexMap = []; // maps allPolygons index -> {type, estIndex, bufIndex}
+
+    state.establishments.forEach((est, i) => {
+        if (est.polygon) {
+            allPolygons.push(est.polygon);
+            indexMap.push({ type: 'est', estIndex: i });
+        }
+        const estBuffers = state.bufferPolygons.filter(bp => bp.estIndex === i);
+        estBuffers.sort((a, b) => a.distance - b.distance);
+        estBuffers.forEach((bp, bIdx) => {
+            allPolygons.push(bp.polygon);
+            indexMap.push({ type: 'buf', estIndex: i, bufIndex: bIdx });
         });
     });
 
-    el.polygonStatsMsg.innerHTML = html;
-    showEl(el.polygonStats);
+    if (allPolygons.length === 0) return;
 
-    // Disable continue if not all polygons drawn
-    el.btnNext4.disabled = pending > 0;
+    // Call backend for vectorized counting
+    try {
+        const res = await fetch('/api/li-project/count-nodes-in-polygons', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                node_key: state.nodeKey,
+                polygons: allPolygons,
+            }),
+        });
+        const data = await res.json();
+        if (data.success && data.counts) {
+            data.counts.forEach((count, idx) => {
+                const info = indexMap[idx];
+                let spanId;
+                if (info.type === 'est') {
+                    spanId = `node-count-est-${info.estIndex}`;
+                } else {
+                    spanId = `node-count-buf-${info.estIndex}-${info.bufIndex}`;
+                }
+                const span = document.getElementById(spanId);
+                if (span) {
+                    span.textContent = `${count} nodes`;
+                }
+            });
+        }
+    } catch (e) {
+        console.error('Error counting nodes:', e);
+    }
 }
 
 // ==========================================
