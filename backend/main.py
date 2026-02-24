@@ -8,7 +8,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
-from routers import aoi, anonymizer, editor, scaling_factor, li_project, report
+from routers import aoi, anonymizer, editor, scaling_factor, li_project, report, tourism_report
 from services.auth import login_kido
 
 # Initialize FastAPI app
@@ -34,6 +34,7 @@ app.include_router(editor.router)
 app.include_router(scaling_factor.router)
 app.include_router(li_project.router)
 app.include_router(report.router)
+app.include_router(tourism_report.router)
 
 # Get paths for static files
 BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -217,6 +218,15 @@ async def li_project_page():
 async def report_page():
     """Serve the AOI Report Generator page."""
     page_path = os.path.join(FRONTEND_DIR, "pages", "report.html")
+    if os.path.exists(page_path):
+        return FileResponse(page_path)
+    return {"error": "Page not found"}
+
+
+@app.get("/tourism-report")
+async def tourism_report_page():
+    """Serve the AOI Tourism Report page."""
+    page_path = os.path.join(FRONTEND_DIR, "pages", "tourism_report.html")
     if os.path.exists(page_path):
         return FileResponse(page_path)
     return {"error": "Page not found"}
