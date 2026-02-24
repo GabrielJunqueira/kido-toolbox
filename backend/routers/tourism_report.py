@@ -10,7 +10,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 from services.auth import login_kido
-from services.tourism_report import generate_tourism_report
+from services.tourism_report import fetch_single_month, generate_charts_from_data
 
 router = APIRouter(prefix="/api/tourism-report", tags=["tourism-report"])
 
@@ -33,12 +33,19 @@ class TourismLoginResponse(BaseModel):
     error: Optional[str] = None
 
 
-class GenerateTourismReportRequest(BaseModel):
+class FetchMonthRequest(BaseModel):
     token: str
     root_url: str
     project_id: str
     aoi_id: str
-    months: List[str]  # ["2025-09", "2025-10", ...]
+    month: str  # "2025-09"
+
+
+class GenerateChartsRequest(BaseModel):
+    project_id: str
+    aoi_id: str
+    csv_data: List[str]       # List of CSV strings (one per month)
+    months_count: int
 
 
 # ==========================================
@@ -52,28 +59,50 @@ async def tourism_report_login(request: TourismLoginRequest):
     return TourismLoginResponse(**result)
 
 
-@router.post("/generate")
-async def generate_report(request: GenerateTourismReportRequest):
+@router.post("/fetch-month")
+async def fetch_month(request: FetchMonthRequest):
     """
-    Generate a tourism report with 12 charts.
-    Returns JSON with base64-encoded chart images and summary statistics.
+    Fetch tourism data for a single month with retry logic.
+    Returns CSV data string + status message for live feedback.
     """
-    if not request.months:
-        raise HTTPException(status_code=400, detail="At least one month must be selected")
-
     if not request.project_id.strip():
         raise HTTPException(status_code=400, detail="Project ID is required")
-
     if not request.aoi_id.strip():
         raise HTTPException(status_code=400, detail="AOI ID is required")
 
     try:
-        summary = generate_tourism_report(
+        result = fetch_single_month(
             token=request.token,
             root_url=request.root_url,
             project_id=request.project_id.strip(),
             aoi_id=request.aoi_id.strip(),
-            months=sorted(request.months)
+            month=request.month.strip()
+        )
+        return JSONResponse(content=result)
+    except Exception as e:
+        return JSONResponse(content={
+            "month": request.month,
+            "success": False,
+            "data": None,
+            "message": f"❌ {request.month} — error: {str(e)}",
+            "was_slow": False
+        })
+
+
+@router.post("/generate-charts")
+async def generate_charts(request: GenerateChartsRequest):
+    """
+    Generate 12 tourism charts from pre-fetched CSV data.
+    """
+    if not request.csv_data:
+        raise HTTPException(status_code=400, detail="No data provided")
+
+    try:
+        summary = generate_charts_from_data(
+            csv_strings=request.csv_data,
+            project_id=request.project_id.strip(),
+            aoi_id=request.aoi_id.strip(),
+            months_count=request.months_count
         )
 
         return JSONResponse(content={
@@ -84,4 +113,4 @@ async def generate_report(request: GenerateTourismReportRequest):
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Tourism report generation failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Chart generation failed: {str(e)}")

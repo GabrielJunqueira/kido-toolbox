@@ -5,10 +5,10 @@ Fetches tourism data from Kido API and generates charts for visitors, tourists, 
 
 import io
 import json
+import time
 import base64
 from datetime import datetime
 from typing import List, Optional, Tuple
-from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import pandas as pd
 import requests
@@ -52,8 +52,13 @@ def _pick_palette(section: str, n: int) -> list:
 # 1. DATA FETCHING
 # ══════════════════════════════════════════════════════════════════════════════
 
+TIMEOUT_FIRST = 300   # 5 min on first attempt
+TIMEOUT_RETRY = 600   # 10 min on retry (uncached months)
+
+
 def _get_tourism_data(token: str, root_url: str, project_id: str, aoi_id: str,
                       start_date: str, end_date: str,
+                      timeout: int = TIMEOUT_FIRST,
                       session: Optional[requests.Session] = None) -> Optional[pd.DataFrame]:
     """Fetch tourism visitors_by_date_level dataset from the Kido API."""
     base_url = root_url.replace('/v1/', '/v2/').replace('/v1', '/v2')
@@ -70,7 +75,7 @@ def _get_tourism_data(token: str, root_url: str, project_id: str, aoi_id: str,
 
     http = session or requests
     try:
-        response = http.get(url, headers=headers, params=params, timeout=90)
+        response = http.get(url, headers=headers, params=params, timeout=timeout)
         if response.status_code == 200:
             csv_text = response.json() if response.text.startswith('"') else response.text
             if isinstance(csv_text, str) and csv_text.startswith('"'):
@@ -88,57 +93,68 @@ def _get_tourism_data(token: str, root_url: str, project_id: str, aoi_id: str,
         return None
 
 
-def _fetch_month(token: str, root_url: str, project_id: str, aoi_id: str,
-                 month: str, session: requests.Session) -> dict:
-    """Fetch tourism data for a single month."""
+def fetch_single_month(token: str, root_url: str, project_id: str, aoi_id: str,
+                       month: str) -> dict:
+    """
+    Fetch tourism data for a single month with retry logic.
+    Returns dict with: month, success, data (CSV string or None), message, was_slow
+    """
     dt = datetime.strptime(month, "%Y-%m")
     start_date = dt.replace(day=1).strftime("%Y-%m-%d")
     last_day = (dt + relativedelta(months=1) - relativedelta(days=1))
     end_date = last_day.strftime("%Y-%m-%d")
 
-    print(f"  📆 Processing tourism {month} ({start_date} → {end_date})...")
+    print(f"  📆 Fetching tourism {month} ({start_date} → {end_date})...")
 
+    # First attempt (300s timeout)
+    t0 = time.time()
     df = _get_tourism_data(token, root_url, project_id, aoi_id,
-                           start_date, end_date, session)
+                           start_date, end_date, timeout=TIMEOUT_FIRST)
+    elapsed = time.time() - t0
 
-    return {"month": month, "df": df}
+    if df is not None and not df.empty:
+        was_slow = elapsed > 30
+        msg = f"✅ {month} loaded ({elapsed:.0f}s)"
+        if was_slow:
+            msg += " — first-time data, took longer than usual"
+        print(f"  {msg}")
+        csv_buf = io.StringIO()
+        df.to_csv(csv_buf, index=False)
+        return {"month": month, "success": True, "data": csv_buf.getvalue(),
+                "message": msg, "was_slow": was_slow}
+
+    # Retry with longer timeout (600s) — likely uncached month
+    print(f"  ⏳ Retrying {month} with extended timeout (up to 10 min)...")
+    t0 = time.time()
+    df = _get_tourism_data(token, root_url, project_id, aoi_id,
+                           start_date, end_date, timeout=TIMEOUT_RETRY)
+    elapsed = time.time() - t0
+
+    if df is not None and not df.empty:
+        msg = f"✅ {month} loaded on retry ({elapsed:.0f}s) — data was being processed for the first time"
+        print(f"  {msg}")
+        csv_buf = io.StringIO()
+        df.to_csv(csv_buf, index=False)
+        return {"month": month, "success": True, "data": csv_buf.getvalue(),
+                "message": msg, "was_slow": True}
+
+    msg = f"❌ {month} — no data returned after retry. This month may not have tourism data available."
+    print(f"  {msg}")
+    return {"month": month, "success": False, "data": None,
+            "message": msg, "was_slow": False}
 
 
-def fetch_all_tourism_data(token: str, root_url: str, project_id: str,
-                           aoi_id: str, months: List[str]) -> pd.DataFrame:
-    """
-    Fetch tourism data for all selected months in parallel.
-    Returns a consolidated DataFrame with columns: visitor_type, visitor_level, date, visitors
-    """
+def parse_csv_data(csv_strings: List[str]) -> pd.DataFrame:
+    """Parse a list of CSV strings into a single consolidated DataFrame."""
     frames = []
-    unique_months = sorted(set(months))
-
-    session = requests.Session()
-    adapter = requests.adapters.HTTPAdapter(pool_connections=10, pool_maxsize=10)
-    session.mount('https://', adapter)
-    session.mount('http://', adapter)
-
-    with ThreadPoolExecutor(max_workers=min(6, len(unique_months))) as executor:
-        futures = {
-            executor.submit(_fetch_month, token, root_url, project_id, aoi_id, m, session): m
-            for m in unique_months
-        }
-        results = {}
-        for future in as_completed(futures):
-            result = future.result()
-            results[result["month"]] = result
-
-    for month in unique_months:
-        result = results[month]
-        if result["df"] is not None:
-            frames.append(result["df"])
-
-    session.close()
+    for csv_text in csv_strings:
+        if csv_text:
+            df = pd.read_csv(io.StringIO(csv_text))
+            frames.append(df)
 
     if frames:
         df = pd.concat(frames, ignore_index=True)
         df['date'] = pd.to_datetime(df['date'])
-        # Treat '<10' values as 2
         df['visitors'] = pd.to_numeric(df['visitors'].replace('<10', 2), errors='coerce').fillna(0)
         df = df.sort_values('date').reset_index(drop=True)
         return df
@@ -160,7 +176,6 @@ def _build_series(df: pd.DataFrame) -> dict:
 
     for vtype in ['tourist', 'hiker']:
         mask = df['visitor_type'] == vtype
-        # Total for this type
         total = df[mask].groupby('date')['visitors'].sum().reset_index()
         total.columns = ['date', 'visitors']
         series[f'{vtype}_total'] = total
@@ -228,7 +243,6 @@ def _chart_bars(df: pd.DataFrame, title: str, section: str, figsize=(14, 5), dpi
     ax.set_title(title, fontsize=13, fontweight='bold', pad=12)
     ax.grid(True, alpha=0.3, axis='y', linestyle='--')
 
-    # Month legend + moving avg
     legend_handles = [Patch(facecolor=cmap[str(ym)],
                             label=pd.Period(ym).strftime('%b/%y'), alpha=0.85)
                       for ym in unique_months]
@@ -238,7 +252,6 @@ def _chart_bars(df: pd.DataFrame, title: str, section: str, figsize=(14, 5), dpi
     ax.legend(handles=legend_handles, loc='upper right',
               ncol=min(len(legend_handles), 8), fontsize=8, framealpha=0.95)
 
-    # Stats annotation
     mean_val = df['visitors'].mean()
     max_val = df['visitors'].max()
     ax.text(0.02, 0.95,
@@ -262,43 +275,37 @@ def _fig_to_base64(fig, dpi=130) -> str:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# 4. MAIN REPORT GENERATION
+# 4. CHART-ONLY GENERATION (from pre-fetched data)
 # ══════════════════════════════════════════════════════════════════════════════
 
-def generate_tourism_report(token: str, root_url: str, project_id: str,
-                            aoi_id: str, months: List[str]) -> dict:
+def generate_charts_from_data(csv_strings: List[str], project_id: str,
+                              aoi_id: str, months_count: int) -> dict:
     """
-    Generate a tourism report with 12 charts.
+    Generate 12 charts from already-fetched CSV data strings.
 
     Returns:
         dict with chart images (base64), CSV data, and summary statistics
     """
-    print(f"📊 Starting tourism report for {project_id} / {aoi_id}")
-    print(f"   Months: {', '.join(months)}")
+    print(f"📊 Generating charts for {project_id} / {aoi_id}")
 
-    # 1. Fetch data
-    df = fetch_all_tourism_data(token, root_url, project_id, aoi_id, months)
+    df = parse_csv_data(csv_strings)
 
     if df.empty:
-        raise ValueError("No tourism data was returned from the API. "
-                         "Check if the project has tourism data and the AOI ID is correct.")
+        raise ValueError("No tourism data available to generate charts.")
 
-    # 2. Build all series
+    # Build all series
     series = _build_series(df)
 
-    # 3. Generate 12 charts
+    # Generate 12 charts
     chart_config = [
-        # Visitors (section='visitors' → teal/green palette)
         ('visitors_total', 'Visitors — Total by Day', 'visitors'),
         ('visitors_national', 'Visitors — National by Day', 'visitors'),
         ('visitors_local', 'Visitors — Local by Day', 'visitors'),
         ('visitors_international', 'Visitors — International by Day', 'visitors'),
-        # Tourists (section='tourist' → blue/indigo palette)
         ('tourist_total', 'Tourists — Total by Day', 'tourist'),
         ('tourist_national', 'Tourists — National by Day', 'tourist'),
         ('tourist_local', 'Tourists — Local by Day', 'tourist'),
         ('tourist_international', 'Tourists — International by Day', 'tourist'),
-        # Hikers (section='hiker' → red/orange/amber palette)
         ('hiker_total', 'Hikers (Excursionistas) — Total by Day', 'hiker'),
         ('hiker_national', 'Hikers (Excursionistas) — National by Day', 'hiker'),
         ('hiker_local', 'Hikers (Excursionistas) — Local by Day', 'hiker'),
@@ -311,12 +318,12 @@ def generate_tourism_report(token: str, root_url: str, project_id: str,
         fig = _chart_bars(s, title, section)
         charts[key] = _fig_to_base64(fig)
 
-    # 4. Build CSV for download
+    # Build CSV for download
     csv_buf = io.StringIO()
     df.to_csv(csv_buf, index=False)
     csv_b64 = base64.b64encode(csv_buf.getvalue().encode('utf-8')).decode('utf-8')
 
-    # 5. Build summary statistics
+    # Build summary statistics
     date_min = df['date'].min()
     date_max = df['date'].max()
     total_days = df['date'].nunique()
@@ -327,7 +334,7 @@ def generate_tourism_report(token: str, root_url: str, project_id: str,
 
     summary = {
         "total_days": int(total_days),
-        "months_processed": len(months),
+        "months_processed": months_count,
         "period_start": date_min.strftime('%d/%m/%Y'),
         "period_end": date_max.strftime('%d/%m/%Y'),
         "visitors_daily_mean": round(float(visitors_total_series['visitors'].mean()), 0) if not visitors_total_series.empty else 0,
@@ -338,5 +345,5 @@ def generate_tourism_report(token: str, root_url: str, project_id: str,
         "csv_data": csv_b64,
     }
 
-    print(f"✅ Tourism report generated: {total_days} days, 12 charts")
+    print(f"✅ Tourism charts generated: {total_days} days, 12 charts")
     return summary

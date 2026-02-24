@@ -1,6 +1,6 @@
 /**
  * AOI Tourism Report - Frontend JavaScript
- * Handles wizard navigation, API calls, and chart display
+ * Handles wizard navigation, per-month API fetching with live feedback, and chart display
  */
 
 // ══════════════════════════════════════════
@@ -42,7 +42,6 @@ function goToStep(step) {
     $$('.step-content').forEach(c => c.classList.remove('active'));
     $(`#step-${step}`)?.classList.add('active');
 
-    // Show wizard card, hide results when navigating back
     if (step <= 3) {
         show('#wizard-card');
         hide('#results');
@@ -257,7 +256,7 @@ $('#btn-download-csv')?.addEventListener('click', () => {
 });
 
 // ══════════════════════════════════════════
-// REPORT GENERATION
+// REPORT GENERATION (per-month fetching)
 // ══════════════════════════════════════════
 async function generateReport() {
     hide('#pre-generate');
@@ -287,54 +286,103 @@ async function generateReport() {
     }
 
     try {
-        log('🔐 Authenticating...', 'info');
-        setProgress(5, 'Authenticating...');
-
+        log('🔐 Authenticated. Starting data download...', 'info');
         log(`📋 Project: ${state.projectId}`, 'info');
         log(`📍 AOI: ${state.aoiId}`, 'info');
-        log(`📅 Months: ${state.selectedMonths.join(', ')}`, 'info');
 
-        setProgress(10, 'Sending request to server...');
-        log('📡 Sending tourism report request...', 'info');
+        const sortedMonths = [...state.selectedMonths].sort();
+        const totalMonths = sortedMonths.length;
+        const csvDataList = [];
+        const failedMonths = [];
+        const slowMonths = [];
 
-        let progressValue = 10;
-        const progressInterval = setInterval(() => {
-            if (progressValue < 85) {
-                progressValue += Math.random() * 3;
-                setProgress(progressValue, 'Fetching tourism data & generating charts...');
+        // ── Phase 1: Fetch each month individually with live feedback ──
+        for (let i = 0; i < totalMonths; i++) {
+            const month = sortedMonths[i];
+            const pctBase = (i / totalMonths) * 80;  // 0-80% for fetching
+            const pctNext = ((i + 1) / totalMonths) * 80;
+
+            setProgress(pctBase, `Downloading ${formatMonth(month)} (${i + 1}/${totalMonths})...`);
+            log(`📆 Fetching ${formatMonth(month)} (${i + 1}/${totalMonths})...`, 'info');
+
+            try {
+                const res = await fetch('/api/tourism-report/fetch-month', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        token: state.token,
+                        root_url: state.rootUrl,
+                        project_id: state.projectId,
+                        aoi_id: state.aoiId,
+                        month: month
+                    })
+                });
+
+                const result = await res.json();
+
+                if (result.success) {
+                    csvDataList.push(result.data);
+                    if (result.was_slow) {
+                        slowMonths.push(month);
+                        log(`⏳ ${result.message}`, 'info');
+                    } else {
+                        log(`${result.message}`, 'success');
+                    }
+                } else {
+                    failedMonths.push(month);
+                    log(`${result.message}`, 'error');
+                }
+            } catch (e) {
+                failedMonths.push(month);
+                log(`❌ ${formatMonth(month)} — connection error: ${e.message}`, 'error');
             }
-        }, 1000);
 
-        const res = await fetch('/api/tourism-report/generate', {
+            setProgress(pctNext, `Downloaded ${i + 1}/${totalMonths} months`);
+        }
+
+        // Check if we have any data
+        if (csvDataList.length === 0) {
+            throw new Error('No data was returned for any of the selected months. Please check the project/AOI settings or try different months.');
+        }
+
+        // Show warnings for failed months
+        if (failedMonths.length > 0) {
+            log(`⚠️ ${failedMonths.length} month(s) had no data: ${failedMonths.map(formatMonth).join(', ')}`, 'error');
+            log(`   Continuing with ${csvDataList.length} month(s) of available data...`, 'info');
+        }
+
+        // ── Phase 2: Generate charts from fetched data ──
+        setProgress(85, 'Generating 12 charts...');
+        log('📊 Generating charts from downloaded data...', 'info');
+
+        const chartRes = await fetch('/api/tourism-report/generate-charts', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                token: state.token,
-                root_url: state.rootUrl,
                 project_id: state.projectId,
                 aoi_id: state.aoiId,
-                months: state.selectedMonths
+                csv_data: csvDataList,
+                months_count: csvDataList.length
             })
         });
 
-        clearInterval(progressInterval);
+        const chartData = await chartRes.json();
 
-        const data = await res.json();
-
-        if (!res.ok || !data.success) {
-            throw new Error(data.detail || data.error || `Server error (${res.status})`);
+        if (!chartRes.ok || !chartData.success) {
+            throw new Error(chartData.detail || chartData.error || `Chart generation failed (${chartRes.status})`);
         }
 
-        setProgress(90, 'Processing charts...');
-        log('📊 Receiving chart data...', 'info');
-
-        state.csvDataB64 = data.summary.csv_data || null;
+        state.csvDataB64 = chartData.summary.csv_data || null;
 
         setProgress(100, 'Done!');
         log('✅ Tourism report generated successfully!', 'success');
 
+        if (failedMonths.length > 0) {
+            chartData.summary.failed_months = failedMonths.map(formatMonth);
+        }
+
         setTimeout(() => {
-            showResults(data.summary);
+            showResults(chartData.summary);
         }, 500);
 
     } catch (e) {
@@ -352,11 +400,13 @@ function showResults(summary) {
     hide('#wizard-card');
     show('#results');
 
-    // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // Result info
-    $('#result-info').innerHTML = `Tourism report for <strong>${state.aoiId}</strong> generated with <strong>${summary.months_processed}</strong> month(s) of data.`;
+    let infoHtml = `Tourism report for <strong>${state.aoiId}</strong> generated with <strong>${summary.months_processed}</strong> month(s) of data.`;
+    if (summary.failed_months && summary.failed_months.length > 0) {
+        infoHtml += `<br><br><span style="color: var(--warning);">⚠️ Months with no data: <strong>${summary.failed_months.join(', ')}</strong>. These were skipped.</span>`;
+    }
+    $('#result-info').innerHTML = infoHtml;
 
     // Summary stats
     const statsContainer = $('#summary-stats');
