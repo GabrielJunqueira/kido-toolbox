@@ -185,14 +185,43 @@ $('#month-input')?.addEventListener('keydown', (e) => {
 
 $$('.preset-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-        const numMonths = parseInt(btn.dataset.months);
         state.selectedMonths = [];
         const now = new Date();
-        for (let i = numMonths; i >= 1; i--) {
-            const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
-            const m = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
-            state.selectedMonths.push(m);
+
+        if (btn.dataset.months) {
+            // Last N months
+            const numMonths = parseInt(btn.dataset.months);
+            for (let i = numMonths; i >= 1; i--) {
+                const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+                const m = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+                state.selectedMonths.push(m);
+            }
+        } else if (btn.dataset.year) {
+            // Full year (Jan–Dec)
+            const year = parseInt(btn.dataset.year);
+            for (let m = 1; m <= 12; m++) {
+                state.selectedMonths.push(`${year}-${String(m).padStart(2, '0')}`);
+            }
+        } else if (btn.dataset.range) {
+            // Custom range "YYYY-MM,YYYY-MM"
+            const [startStr, endStr] = btn.dataset.range.split(',');
+            const [sy, sm] = startStr.split('-').map(Number);
+            const [ey, em] = endStr.split('-').map(Number);
+            let cur = new Date(sy, sm - 1, 1);
+            const end = new Date(ey, em - 1, 1);
+            while (cur <= end) {
+                state.selectedMonths.push(`${cur.getFullYear()}-${String(cur.getMonth() + 1).padStart(2, '0')}`);
+                cur.setMonth(cur.getMonth() + 1);
+            }
+        } else if (btn.dataset.ytd) {
+            // Year-to-date: Jan of that year up to last completed month
+            const year = parseInt(btn.dataset.ytd);
+            const lastMonth = (year === now.getFullYear()) ? now.getMonth() : 12;
+            for (let m = 1; m <= lastMonth; m++) {
+                state.selectedMonths.push(`${year}-${String(m).padStart(2, '0')}`);
+            }
         }
+
         renderMonthTags();
     });
 });
@@ -352,7 +381,7 @@ async function generateReport() {
         }
 
         // ── Phase 2: Generate charts from fetched data ──
-        setProgress(85, 'Generating 12 charts...');
+        setProgress(85, 'Generating 15 charts...');
         log('📊 Generating charts from downloaded data...', 'info');
 
         const chartRes = await fetch('/api/tourism-report/generate-charts', {
@@ -433,11 +462,11 @@ function showResults(summary) {
         });
     }
 
-    // Load all 12 chart images
+    // Load all 15 chart images
     const chartKeys = [
-        'visitors_total', 'visitors_national', 'visitors_local', 'visitors_international',
-        'tourist_total', 'tourist_national', 'tourist_local', 'tourist_international',
-        'hiker_total', 'hiker_national', 'hiker_local', 'hiker_international'
+        'visitors_total', 'visitors_local', 'visitors_regional', 'visitors_national', 'visitors_international',
+        'tourist_total', 'tourist_local', 'tourist_regional', 'tourist_national', 'tourist_international',
+        'hiker_total', 'hiker_local', 'hiker_regional', 'hiker_national', 'hiker_international'
     ];
 
     if (summary.charts) {

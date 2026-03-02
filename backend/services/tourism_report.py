@@ -296,19 +296,22 @@ def generate_charts_from_data(csv_strings: List[str], project_id: str,
     # Build all series
     series = _build_series(df)
 
-    # Generate 12 charts
+    # Generate 15 charts
     chart_config = [
         ('visitors_total', 'Visitors — Total by Day', 'visitors'),
-        ('visitors_national', 'Visitors — National by Day', 'visitors'),
         ('visitors_local', 'Visitors — Local by Day', 'visitors'),
+        ('visitors_regional', 'Visitors — Regional by Day', 'visitors'),
+        ('visitors_national', 'Visitors — National by Day', 'visitors'),
         ('visitors_international', 'Visitors — International by Day', 'visitors'),
         ('tourist_total', 'Tourists — Total by Day', 'tourist'),
-        ('tourist_national', 'Tourists — National by Day', 'tourist'),
         ('tourist_local', 'Tourists — Local by Day', 'tourist'),
+        ('tourist_regional', 'Tourists — Regional by Day', 'tourist'),
+        ('tourist_national', 'Tourists — National by Day', 'tourist'),
         ('tourist_international', 'Tourists — International by Day', 'tourist'),
         ('hiker_total', 'Hikers (Excursionistas) — Total by Day', 'hiker'),
-        ('hiker_national', 'Hikers (Excursionistas) — National by Day', 'hiker'),
         ('hiker_local', 'Hikers (Excursionistas) — Local by Day', 'hiker'),
+        ('hiker_regional', 'Hikers (Excursionistas) — Regional by Day', 'hiker'),
+        ('hiker_national', 'Hikers (Excursionistas) — National by Day', 'hiker'),
         ('hiker_international', 'Hikers (Excursionistas) — International by Day', 'hiker'),
     ]
 
@@ -345,5 +348,5 @@ def generate_charts_from_data(csv_strings: List[str], project_id: str,
         "csv_data": csv_b64,
     }
 
-    print(f"✅ Tourism charts generated: {total_days} days, 12 charts")
+    print(f"✅ Tourism charts generated: {total_days} days, 15 charts")
     return summary

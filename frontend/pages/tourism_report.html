@@ -100,8 +100,17 @@
         }
 
         @keyframes pulse-icon {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.7; }
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.7;
+            }
         }
 
         /* Log area */
@@ -123,13 +132,28 @@
             animation: fadeInLog 0.3s ease;
         }
 
-        .log-entry.success { color: var(--success); }
-        .log-entry.error { color: var(--error); }
-        .log-entry.info { color: var(--info); }
+        .log-entry.success {
+            color: var(--success);
+        }
+
+        .log-entry.error {
+            color: var(--error);
+        }
+
+        .log-entry.info {
+            color: var(--info);
+        }
 
         @keyframes fadeInLog {
-            from { opacity: 0; transform: translateX(-10px); }
-            to { opacity: 1; transform: translateX(0); }
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         /* Summary grid */
@@ -188,6 +212,7 @@
             .charts-grid {
                 grid-template-columns: 1fr 1fr;
             }
+
             .charts-grid .chart-full-width {
                 grid-column: 1 / -1;
             }
@@ -226,9 +251,21 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        .badge-visitors { background: rgba(26,26,46,0.1); color: #1a1a2e; }
-        .badge-tourists { background: rgba(17,138,178,0.1); color: #118AB2; }
-        .badge-hikers { background: rgba(230,57,70,0.1); color: #E63946; }
+
+        .badge-visitors {
+            background: rgba(26, 26, 46, 0.1);
+            color: #1a1a2e;
+        }
+
+        .badge-tourists {
+            background: rgba(17, 138, 178, 0.1);
+            color: #118AB2;
+        }
+
+        .badge-hikers {
+            background: rgba(230, 57, 70, 0.1);
+            color: #E63946;
+        }
     </style>
 </head>
 
@@ -238,7 +275,8 @@
         <div class="container navbar-content">
             <a href="/" class="navbar-brand">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                    <path
+                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
                 </svg>
                 Kido Toolbox
             </a>
@@ -308,7 +346,8 @@
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                                 <polyline points="22,6 12,13 2,6" />
                             </svg>
-                            <input type="email" id="username" class="form-input" placeholder="your.email@company.com" required>
+                            <input type="email" id="username" class="form-input" placeholder="your.email@company.com"
+                                required>
                         </div>
                     </div>
 
@@ -356,14 +395,16 @@
 
                 <div class="step-footer">
                     <a href="/" class="btn btn-ghost">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <path d="M19 12H5M12 19l-7-7 7-7" />
                         </svg>
                         Back to Home
                     </a>
                     <button type="button" class="btn btn-primary" id="btn-login">
                         Connect
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
                     </button>
@@ -381,7 +422,8 @@
 
                 <div class="form-group">
                     <label class="form-label required" for="project-id">Project ID</label>
-                    <input type="text" id="project-id" class="form-input" placeholder="e.g. 60116efe-945b-464a-b983-f50ebe272fd8" required>
+                    <input type="text" id="project-id" class="form-input"
+                        placeholder="e.g. 60116efe-945b-464a-b983-f50ebe272fd8" required>
                     <p class="form-hint">The UUID of your project in the Kido platform</p>
                 </div>
 
@@ -399,22 +441,26 @@
                     <div class="alert-content">
                         <div class="alert-title">Where to find these IDs?</div>
                         <div class="alert-message">
-                            The <strong>Project ID</strong> is visible in the Kido dashboard URL when you open the project.
-                            The <strong>AOI ID</strong> is the polygon identifier — you can find it in the GeoJSON or in the dashboard sidebar.
+                            The <strong>Project ID</strong> is visible in the Kido dashboard URL when you open the
+                            project.
+                            The <strong>AOI ID</strong> is the polygon identifier — you can find it in the GeoJSON or in
+                            the dashboard sidebar.
                         </div>
                     </div>
                 </div>
 
                 <div class="step-footer">
                     <button type="button" class="btn btn-secondary" id="btn-back-1">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <path d="M19 12H5M12 19l-7-7 7-7" />
                         </svg>
                         Back
                     </button>
                     <button type="button" class="btn btn-primary" id="btn-next-2" disabled>
                         Continue
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
                     </button>
@@ -437,7 +483,8 @@
                             <input type="month" id="month-input" class="form-input">
                         </div>
                         <button type="button" class="btn btn-primary" id="btn-add-month">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
                                 <path d="M12 5v14M5 12h14" />
                             </svg>
                             Add
@@ -449,10 +496,23 @@
                 <!-- Quick range presets -->
                 <div class="mb-lg">
                     <label class="form-label">Quick Presets</label>
-                    <div class="btn-group flex-wrap">
-                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-months="3">Last 3 months</button>
-                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-months="6">Last 6 months</button>
-                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-months="12">Last 12 months</button>
+                    <div class="btn-group flex-wrap" style="gap: 6px;">
+                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-months="3">Last 3
+                            months</button>
+                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-months="6">Last 6
+                            months</button>
+                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-months="12">Last 12
+                            months</button>
+                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-year="2025">📅 All
+                            2025</button>
+                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-year="2024">📅 All
+                            2024</button>
+                        <button type="button" class="btn btn-secondary btn-sm preset-btn"
+                            data-range="2025-06,2025-09">☀️ Summer 2025</button>
+                        <button type="button" class="btn btn-secondary btn-sm preset-btn"
+                            data-range="2025-10,2025-12">🍂 Q4 2025</button>
+                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-ytd="2026">📆 YTD
+                            2026</button>
                     </div>
                 </div>
 
@@ -465,14 +525,16 @@
 
                 <div class="step-footer">
                     <button type="button" class="btn btn-secondary" id="btn-back-2">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <path d="M19 12H5M12 19l-7-7 7-7" />
                         </svg>
                         Back
                     </button>
                     <button type="button" class="btn btn-primary" id="btn-next-3" disabled>
                         Continue
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
                     </button>
@@ -508,7 +570,8 @@
 
                     <div class="alert alert-warning mb-lg">
                         <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
                             <line x1="12" y1="9" x2="12" y2="13" />
                             <line x1="12" y1="17" x2="12.01" y2="17" />
                         </svg>
@@ -516,20 +579,22 @@
                             <div class="alert-title">Note</div>
                             <div class="alert-message">
                                 Report generation may take a few minutes. The system will fetch tourism data
-                                and generate 12 charts covering Visitors, Tourists, and Hikers.
+                                and generate 15 charts covering Visitors, Tourists, and Hikers.
                             </div>
                         </div>
                     </div>
 
                     <div class="step-footer">
                         <button type="button" class="btn btn-secondary" id="btn-back-3">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
                                 <path d="M19 12H5M12 19l-7-7 7-7" />
                             </svg>
                             Back
                         </button>
                         <button type="button" class="btn btn-primary" id="btn-generate">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                                 <polyline points="14 2 14 8 20 8" />
                                 <line x1="16" y1="13" x2="8" y2="13" />
@@ -581,7 +646,8 @@
 
                     <div class="step-footer">
                         <button type="button" class="btn btn-secondary" id="btn-back-error">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
                                 <path d="M19 12H5M12 19l-7-7 7-7" />
                             </svg>
                             Back
@@ -611,7 +677,8 @@
             </div>
 
             <!-- Summary stats -->
-            <div class="summary-grid" id="summary-stats" style="max-width: 800px; margin: 0 auto var(--space-2xl);"></div>
+            <div class="summary-grid" id="summary-stats" style="max-width: 800px; margin: 0 auto var(--space-2xl);">
+            </div>
 
             <!-- ─── Visitors Section ─── -->
             <div class="charts-section">
@@ -625,12 +692,16 @@
                         <img id="chart-visitors_total" alt="Visitors Total">
                     </div>
                     <div class="chart-wrapper">
-                        <div class="chart-label">National Visitors by Day</div>
-                        <img id="chart-visitors_national" alt="Visitors National">
-                    </div>
-                    <div class="chart-wrapper">
                         <div class="chart-label">Local Visitors by Day</div>
                         <img id="chart-visitors_local" alt="Visitors Local">
+                    </div>
+                    <div class="chart-wrapper">
+                        <div class="chart-label">Regional Visitors by Day</div>
+                        <img id="chart-visitors_regional" alt="Visitors Regional">
+                    </div>
+                    <div class="chart-wrapper">
+                        <div class="chart-label">National Visitors by Day</div>
+                        <img id="chart-visitors_national" alt="Visitors National">
                     </div>
                     <div class="chart-wrapper">
                         <div class="chart-label">International Visitors by Day</div>
@@ -651,12 +722,16 @@
                         <img id="chart-tourist_total" alt="Tourist Total">
                     </div>
                     <div class="chart-wrapper">
-                        <div class="chart-label">National Tourists by Day</div>
-                        <img id="chart-tourist_national" alt="Tourist National">
-                    </div>
-                    <div class="chart-wrapper">
                         <div class="chart-label">Local Tourists by Day</div>
                         <img id="chart-tourist_local" alt="Tourist Local">
+                    </div>
+                    <div class="chart-wrapper">
+                        <div class="chart-label">Regional Tourists by Day</div>
+                        <img id="chart-tourist_regional" alt="Tourist Regional">
+                    </div>
+                    <div class="chart-wrapper">
+                        <div class="chart-label">National Tourists by Day</div>
+                        <img id="chart-tourist_national" alt="Tourist National">
                     </div>
                     <div class="chart-wrapper">
                         <div class="chart-label">International Tourists by Day</div>
@@ -677,12 +752,16 @@
                         <img id="chart-hiker_total" alt="Hiker Total">
                     </div>
                     <div class="chart-wrapper">
-                        <div class="chart-label">National Hikers by Day</div>
-                        <img id="chart-hiker_national" alt="Hiker National">
-                    </div>
-                    <div class="chart-wrapper">
                         <div class="chart-label">Local Hikers by Day</div>
                         <img id="chart-hiker_local" alt="Hiker Local">
+                    </div>
+                    <div class="chart-wrapper">
+                        <div class="chart-label">Regional Hikers by Day</div>
+                        <img id="chart-hiker_regional" alt="Hiker Regional">
+                    </div>
+                    <div class="chart-wrapper">
+                        <div class="chart-label">National Hikers by Day</div>
+                        <img id="chart-hiker_national" alt="Hiker National">
                     </div>
                     <div class="chart-wrapper">
                         <div class="chart-label">International Hikers by Day</div>
@@ -692,7 +771,8 @@
             </div>
 
             <!-- Action buttons -->
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-md); margin-top: var(--space-2xl); max-width: 800px; margin-left: auto; margin-right: auto;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-md); margin-top: var(--space-2xl); max-width: 800px; margin-left: auto; margin-right: auto;">
                 <button type="button" class="btn btn-secondary" id="btn-new-report">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 5v14M5 12h14" />

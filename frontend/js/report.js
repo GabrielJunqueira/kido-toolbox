@@ -187,14 +187,43 @@ $('#month-input')?.addEventListener('keydown', (e) => {
 // Quick presets
 $$('.preset-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-        const numMonths = parseInt(btn.dataset.months);
         state.selectedMonths = [];
         const now = new Date();
-        for (let i = numMonths; i >= 1; i--) {
-            const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
-            const m = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
-            state.selectedMonths.push(m);
+
+        if (btn.dataset.months) {
+            // Last N months
+            const numMonths = parseInt(btn.dataset.months);
+            for (let i = numMonths; i >= 1; i--) {
+                const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+                const m = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+                state.selectedMonths.push(m);
+            }
+        } else if (btn.dataset.year) {
+            // Full year (Jan–Dec)
+            const year = parseInt(btn.dataset.year);
+            for (let m = 1; m <= 12; m++) {
+                state.selectedMonths.push(`${year}-${String(m).padStart(2, '0')}`);
+            }
+        } else if (btn.dataset.range) {
+            // Custom range "YYYY-MM,YYYY-MM"
+            const [startStr, endStr] = btn.dataset.range.split(',');
+            const [sy, sm] = startStr.split('-').map(Number);
+            const [ey, em] = endStr.split('-').map(Number);
+            let cur = new Date(sy, sm - 1, 1);
+            const end = new Date(ey, em - 1, 1);
+            while (cur <= end) {
+                state.selectedMonths.push(`${cur.getFullYear()}-${String(cur.getMonth() + 1).padStart(2, '0')}`);
+                cur.setMonth(cur.getMonth() + 1);
+            }
+        } else if (btn.dataset.ytd) {
+            // Year-to-date: Jan of that year up to last completed month
+            const year = parseInt(btn.dataset.ytd);
+            const lastMonth = (year === now.getFullYear()) ? now.getMonth() : 12;
+            for (let m = 1; m <= lastMonth; m++) {
+                state.selectedMonths.push(`${year}-${String(m).padStart(2, '0')}`);
+            }
         }
+
         renderMonthTags();
     });
 });
