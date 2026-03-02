@@ -336,8 +336,9 @@ async function handleCreateProject() {
                     geometry: geometry
                 }
             ]
-        }
-        // Note: Real API might need validation first, simplifying here
+        },
+        is_geoinsight: true,
+        with_traffic: false
     };
 
     elements.btnCreateProject.disabled = true;

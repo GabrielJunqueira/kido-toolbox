@@ -211,7 +211,8 @@ async def create_project(request: CreateProjectRequest):
             "name": request.name,
             "description": request.description,
             "geojson": clean_geojson,
-            "with_traffic": False  # AOI projects typically don't need traffic
+            "is_geoinsight": True,
+            "with_traffic": False
         }
         
         create_response = requests.post(
