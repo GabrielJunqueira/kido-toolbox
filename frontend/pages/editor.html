@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Interactive Map Editor - Edit polygons and visualize density">
-    <title>Interactive Map Editor | Kido Toolbox</title>
+    <meta name="description" content="Map Viewer - Visualize and filter geographic zones by density">
+    <title>Map Viewer | Kido Toolbox</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,11 +13,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
     <!-- Leaflet Draw CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/styles.css">
@@ -32,15 +32,18 @@
             width: 100%;
             border-radius: var(--radius-md);
             z-index: 1;
+            transition: height 0.3s ease;
         }
+
         .control-panel {
             background: rgba(255, 255, 255, 0.9);
             padding: 1rem;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             max-height: 80vh;
             overflow-y: auto;
         }
+
         .legend-color {
             display: inline-block;
             width: 20px;
@@ -48,6 +51,256 @@
             margin-right: 5px;
             vertical-align: middle;
             border-radius: 4px;
+        }
+
+        /* ── Dual Range Slider ────────────────────── */
+        .dual-range-container {
+            margin-bottom: var(--space-lg);
+        }
+
+        .dual-range-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .dual-range-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .dual-range-values {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .range-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-primary-hover);
+            background: rgba(99, 102, 241, 0.15);
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            min-width: 28px;
+            text-align: center;
+        }
+
+        .range-sep {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .dual-range-track {
+            position: relative;
+            height: 6px;
+            width: 100%;
+            margin: 12px 0;
+        }
+
+        .dual-range-track .track-bg {
+            position: absolute;
+            width: 100%;
+            height: 6px;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-full);
+            border: 1px solid var(--glass-border);
+        }
+
+        .dual-range-track .track-fill {
+            position: absolute;
+            height: 6px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            pointer-events: none;
+        }
+
+        .dual-range-track input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            position: absolute;
+            width: 100%;
+            height: 6px;
+            background: transparent;
+            pointer-events: none;
+            margin: 0;
+            padding: 0;
+            top: 0;
+            outline: none;
+            border: none;
+        }
+
+        .dual-range-track input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            cursor: pointer;
+            pointer-events: auto;
+            box-shadow: 0 0 8px rgba(99, 102, 241, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dual-range-track input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.25);
+            box-shadow: 0 0 14px rgba(99, 102, 241, 0.7), 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .dual-range-track input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            cursor: pointer;
+            pointer-events: auto;
+            border: none;
+            box-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
+        }
+
+        /* ── Fullscreen button ────────────────────── */
+        .fullscreen-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 1000;
+            width: 36px;
+            height: 36px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-md);
+        }
+
+        .fullscreen-btn:hover {
+            background: var(--bg-tertiary);
+            transform: scale(1.05);
+        }
+
+        .fullscreen-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Fullscreen mode */
+        .map-wrapper.is-fullscreen {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 9999;
+            border-radius: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        .map-wrapper.is-fullscreen #map {
+            height: 100vh !important;
+            border-radius: 0;
+        }
+
+        .map-wrapper.is-fullscreen .fullscreen-btn {
+            top: 16px;
+            right: 16px;
+        }
+
+        /* ── Layer toggle badges ──────────────────── */
+        .layer-badge {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        .layer-badge.nodes {
+            background: #4a4a4a;
+        }
+
+        .layer-badge.polygons {
+            background: #3b82f6;
+        }
+
+        .layer-badge.antennas {
+            background: #ef4444;
+        }
+
+        .layer-badge.radius {
+            background: rgba(59, 130, 246, 0.3);
+            border: 1px solid #3b82f6;
+        }
+
+        /* ── Refresh button ───────────────────────── */
+        .btn-refresh {
+            background: var(--gradient-primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-refresh::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+
+        .btn-refresh:active::after {
+            width: 200px;
+            height: 200px;
+        }
+
+        /* ── Separator ────────────────────────────── */
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--glass-border);
+            margin: var(--space-md) 0;
+        }
+
+        /* ── Stats mini grid ──────────────────────── */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: var(--space-sm);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: var(--space-sm);
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--glass-border);
+        }
+
+        .stat-number {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
@@ -65,7 +318,7 @@
             </a>
             <ul class="navbar-nav">
                 <li><a href="/" class="nav-link">Home</a></li>
-                <li><a href="/editor" class="nav-link active">Map Editor</a></li>
+                <li><a href="/editor" class="nav-link active">Map Viewer</a></li>
             </ul>
         </div>
     </nav>
@@ -77,14 +330,14 @@
             <div class="flex items-center gap-md">
                 <div class="icon-box">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                         <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                         <polyline points="2 17 12 22 22 17" />
-                         <polyline points="2 12 12 17 22 12" />
+                        <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                        <polyline points="2 17 12 22 22 17" />
+                        <polyline points="2 12 12 17 22 12" />
                     </svg>
                 </div>
                 <div>
-                    <h1 class="page-title">Interactive Map Editor</h1>
-                    <p class="page-subtitle">Visualize density and edit polygons with high-performance rendering.</p>
+                    <h1 class="page-title">Map Viewer</h1>
+                    <p class="page-subtitle">Visualize zones, filter by density, and refine geographic files.</p>
                 </div>
             </div>
         </header>
@@ -93,12 +346,14 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-lg">
             <!-- Sidebar -->
             <div class="md:col-span-1 space-y-md">
+                <!-- Upload Card -->
                 <div class="card">
                     <h3 class="font-bold mb-sm">1. Upload Data</h3>
                     <form id="uploadForm">
                         <div class="form-group">
                             <label class="form-label required">Polygons (GeoJSON)</label>
-                            <input type="file" id="polyFile" name="polygons" accept=".geojson,.json" class="form-input text-sm" required>
+                            <input type="file" id="polyFile" name="polygons" accept=".geojson,.json"
+                                class="form-input text-sm" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Nodes (CSV)</label>
@@ -107,7 +362,8 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">Antennas (CSV)</label>
-                            <input type="file" id="antennasFile" name="antennas" accept=".csv" class="form-input text-sm">
+                            <input type="file" id="antennasFile" name="antennas" accept=".csv"
+                                class="form-input text-sm">
                             <p class="text-xs text-secondary mt-xs">Optional. Lat/Lon columns.</p>
                         </div>
                         <button type="submit" class="btn btn-primary w-full" id="loadBtn">
@@ -116,35 +372,113 @@
                     </form>
                 </div>
 
+                <!-- Layers & Controls Card -->
                 <div class="card hidden" id="layerControl">
-                    <h3 class="font-bold mb-sm">2. Layers & Export</h3>
-                    
+                    <h3 class="font-bold mb-sm">2. Layers</h3>
+
                     <div class="form-group">
                         <label class="flex items-center gap-sm cursor-pointer">
                             <input type="checkbox" id="showPolygons" checked>
-                            <span>Show Polygons</span>
+                            <span><span class="layer-badge polygons"></span>Polygons</span>
                         </label>
                     </div>
                     <div class="form-group">
                         <label class="flex items-center gap-sm cursor-pointer">
-                            <input type="checkbox" id="showNodes" checked disabled>
-                            <span>Show Nodes <small class="text-secondary">(Gray)</small></span>
+                            <input type="checkbox" id="showNodes" checked>
+                            <span><span class="layer-badge nodes"></span>Nodes <small
+                                    class="text-secondary">(Gray)</small></span>
                         </label>
                     </div>
                     <div class="form-group">
                         <label class="flex items-center gap-sm cursor-pointer">
-                            <input type="checkbox" id="showAntennas" checked disabled>
-                            <span>Show Antennas <small class="text-danger">(Red)</small></span>
+                            <input type="checkbox" id="showAntennas" checked>
+                            <span><span class="layer-badge antennas"></span>Antennas <small class="text-secondary"
+                                    style="color: var(--error)">(Red)</small></span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="flex items-center gap-sm cursor-pointer">
+                            <input type="checkbox" id="showRadius" checked>
+                            <span><span class="layer-badge radius"></span>500m Radius</span>
                         </label>
                     </div>
 
-                    <hr class="border-glass my-md">
-                    
-                    <div id="stats" class="text-sm text-secondary mb-md">
-                        <p>Polygons: <span id="polyCount">0</span></p>
-                        <p>Nodes: <span id="nodeCount">0</span></p>
-                        <p>Antennas: <span id="antCount">0</span></p>
+                    <hr class="section-divider">
+
+                    <!-- Filter Sliders (Dual Range) -->
+                    <h3 class="font-bold mb-sm">3. Filters</h3>
+
+                    <!-- Nodes Dual Range -->
+                    <div class="dual-range-container">
+                        <div class="dual-range-header">
+                            <span class="dual-range-label">Nodes per Zone</span>
+                            <div class="dual-range-values">
+                                <span class="range-badge" id="nodeMinVal">0</span>
+                                <span class="range-sep">–</span>
+                                <span class="range-badge" id="nodeMaxVal">0</span>
+                            </div>
+                        </div>
+                        <div class="dual-range-track" id="nodeRangeTrack">
+                            <div class="track-bg"></div>
+                            <div class="track-fill" id="nodeFill"></div>
+                            <input type="range" id="nodeMin" min="0" max="100" value="0" step="1">
+                            <input type="range" id="nodeMax" min="0" max="100" value="100" step="1">
+                        </div>
                     </div>
+
+                    <!-- Antennas Dual Range -->
+                    <div class="dual-range-container">
+                        <div class="dual-range-header">
+                            <span class="dual-range-label">Antennas per Zone</span>
+                            <div class="dual-range-values">
+                                <span class="range-badge" id="antMinVal">0</span>
+                                <span class="range-sep">–</span>
+                                <span class="range-badge" id="antMaxVal">0</span>
+                            </div>
+                        </div>
+                        <div class="dual-range-track" id="antRangeTrack">
+                            <div class="track-bg"></div>
+                            <div class="track-fill" id="antFill"></div>
+                            <input type="range" id="antMin" min="0" max="100" value="0" step="1">
+                            <input type="range" id="antMax" min="0" max="100" value="100" step="1">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-refresh w-full mb-md" id="refreshBtn"
+                        title="Re-render map with current filters & layers">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            style="width:16px;height:16px;margin-right:4px">
+                            <path d="M23 4v6h-6" />
+                            <path d="M1 20v-6h6" />
+                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+                        </svg>
+                        Refresh Map
+                    </button>
+
+                    <hr class="section-divider">
+
+                    <!-- Stats -->
+                    <h3 class="font-bold mb-sm">Stats</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number" id="polyCount">0</div>
+                            <div class="stat-label">Polygons</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="nodeCount">0</div>
+                            <div class="stat-label">Nodes</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="antCount">0</div>
+                            <div class="stat-label">Antennas</div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-muted mt-sm" id="filteredInfo" style="display:none">
+                        Showing <strong id="filteredCount">0</strong> of <strong id="totalCount">0</strong> zones after
+                        filters.
+                    </p>
+
+                    <hr class="section-divider">
 
                     <button class="btn btn-success w-full" id="exportBtn">
                         Export GeoJSON
@@ -154,11 +488,20 @@
 
             <!-- Map Area -->
             <div class="md:col-span-3">
-                <div class="card h-full p-0 overflow-hidden relative">
+                <div class="card h-full p-0 overflow-hidden relative map-wrapper" id="mapWrapper">
+                    <!-- Fullscreen Toggle -->
+                    <button class="fullscreen-btn" id="fullscreenBtn" title="Toggle fullscreen">
+                        <svg id="fullscreenIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                        </svg>
+                    </button>
+
                     <div id="map"></div>
-                    
+
                     <!-- Loading Overlay -->
-                    <div id="loadingOverlay" class="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-[1000] hidden">
+                    <div id="loadingOverlay"
+                        class="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-[1000] hidden">
                         <div class="spinner mb-md"></div>
                         <p class="text-primary font-medium" id="loadingText">Processing spatial data...</p>
                         <p class="text-sm text-secondary mt-sm">This runs on the server (16GB RAM).</p>
@@ -169,12 +512,12 @@
     </main>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
     <!-- Glify for WebGL rendering of points -->
     <script src="https://unpkg.com/leaflet.glify@3.2.0/dist/glify-browser.js"></script>
-    
+
     <script src="/js/editor.js"></script>
 </body>
 

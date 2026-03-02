@@ -198,7 +198,7 @@ async def scaling_factor_page():
 
 @app.get("/editor")
 async def editor_page():
-    """Serve the interactive map editor page."""
+    """Serve the interactive map viewer page."""
     page_path = os.path.join(FRONTEND_DIR, "pages", "editor.html")
     if os.path.exists(page_path):
         return FileResponse(page_path)
