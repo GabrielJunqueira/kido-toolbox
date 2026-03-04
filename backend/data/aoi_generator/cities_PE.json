@@ -1,0 +1,840 @@
+{
+  "APURIMAC": [
+    {
+      "id": "MUN-01",
+      "name": "ABANCAY"
+    },
+    {
+      "id": "MUN-07",
+      "name": "ANDAHUAYLAS"
+    },
+    {
+      "id": "MUN-10",
+      "name": "ANTABAMBA"
+    },
+    {
+      "id": "MUN-17",
+      "name": "AYMARAES"
+    },
+    {
+      "id": "MUN-51",
+      "name": "CHINCHEROS"
+    },
+    {
+      "id": "MUN-63",
+      "name": "COTABAMBAS"
+    },
+    {
+      "id": "MUN-75",
+      "name": "GRAU"
+    }
+  ],
+  "HUANCAVELICA": [
+    {
+      "id": "MUN-02",
+      "name": "ACOBAMBA"
+    },
+    {
+      "id": "MUN-08",
+      "name": "ANGARAES"
+    },
+    {
+      "id": "MUN-43",
+      "name": "CASTROVIRREYNA"
+    },
+    {
+      "id": "MUN-56",
+      "name": "CHURCAMPA"
+    },
+    {
+      "id": "MUN-84",
+      "name": "HUANCAVELICA"
+    },
+    {
+      "id": "MUN-95",
+      "name": "HUAYTARA"
+    },
+    {
+      "id": "MUN-180",
+      "name": "TAYACAJA"
+    }
+  ],
+  "CUSCO": [
+    {
+      "id": "MUN-03",
+      "name": "ACOMAYO"
+    },
+    {
+      "id": "MUN-09",
+      "name": "ANTA"
+    },
+    {
+      "id": "MUN-28",
+      "name": "CALCA"
+    },
+    {
+      "id": "MUN-31",
+      "name": "CANAS"
+    },
+    {
+      "id": "MUN-32",
+      "name": "CANCHIS"
+    },
+    {
+      "id": "MUN-54",
+      "name": "CHUMBIVILCAS"
+    },
+    {
+      "id": "MUN-64",
+      "name": "CUSCO"
+    },
+    {
+      "id": "MUN-71",
+      "name": "ESPINAR"
+    },
+    {
+      "id": "MUN-104",
+      "name": "LA CONVENCION"
+    },
+    {
+      "id": "MUN-139",
+      "name": "PARURO"
+    },
+    {
+      "id": "MUN-143",
+      "name": "PAUCARTAMBO"
+    },
+    {
+      "id": "MUN-152",
+      "name": "QUISPICANCHI"
+    },
+    {
+      "id": "MUN-185",
+      "name": "URUBAMBA"
+    }
+  ],
+  "ANCASH": [
+    {
+      "id": "MUN-04",
+      "name": "AIJA"
+    },
+    {
+      "id": "MUN-11",
+      "name": "ANTONIO RAYMONDI"
+    },
+    {
+      "id": "MUN-14",
+      "name": "ASUNCION"
+    },
+    {
+      "id": "MUN-23",
+      "name": "BOLOGNESI"
+    },
+    {
+      "id": "MUN-39",
+      "name": "CARHUAZ"
+    },
+    {
+      "id": "MUN-40",
+      "name": "CARLOS FERMIN FITZCARRALD"
+    },
+    {
+      "id": "MUN-41",
+      "name": "CASMA"
+    },
+    {
+      "id": "MUN-62",
+      "name": "CORONGO"
+    },
+    {
+      "id": "MUN-89",
+      "name": "HUARAZ"
+    },
+    {
+      "id": "MUN-90",
+      "name": "HUARI"
+    },
+    {
+      "id": "MUN-91",
+      "name": "HUARMEY"
+    },
+    {
+      "id": "MUN-94",
+      "name": "HUAYLAS"
+    },
+    {
+      "id": "MUN-119",
+      "name": "MARISCAL LUZURIAGA"
+    },
+    {
+      "id": "MUN-128",
+      "name": "OCROS"
+    },
+    {
+      "id": "MUN-136",
+      "name": "PALLASCA"
+    },
+    {
+      "id": "MUN-147",
+      "name": "POMABAMBA"
+    },
+    {
+      "id": "MUN-153",
+      "name": "RECUAY"
+    },
+    {
+      "id": "MUN-166",
+      "name": "SANTA"
+    },
+    {
+      "id": "MUN-171",
+      "name": "SIHUAS"
+    },
+    {
+      "id": "MUN-194",
+      "name": "YUNGAY"
+    }
+  ],
+  "LORETO": [
+    {
+      "id": "MUN-05",
+      "name": "ALTO AMAZONAS"
+    },
+    {
+      "id": "MUN-67",
+      "name": "DATEM DEL MARAÑON"
+    },
+    {
+      "id": "MUN-113",
+      "name": "LORETO"
+    },
+    {
+      "id": "MUN-121",
+      "name": "MARISCAL RAMON CASTILLA"
+    },
+    {
+      "id": "MUN-122",
+      "name": "MAYNAS"
+    },
+    {
+      "id": "MUN-154",
+      "name": "REQUENA"
+    },
+    {
+      "id": "MUN-184",
+      "name": "UCAYALI"
+    }
+  ],
+  "HUANUCO": [
+    {
+      "id": "MUN-06",
+      "name": "AMBO"
+    },
+    {
+      "id": "MUN-68",
+      "name": "DOS DE MAYO"
+    },
+    {
+      "id": "MUN-76",
+      "name": "HUACAYBAMBA"
+    },
+    {
+      "id": "MUN-79",
+      "name": "HUAMALIES"
+    },
+    {
+      "id": "MUN-87",
+      "name": "HUANUCO"
+    },
+    {
+      "id": "MUN-110",
+      "name": "LAURICOCHA"
+    },
+    {
+      "id": "MUN-111",
+      "name": "LEONCIO PRADO"
+    },
+    {
+      "id": "MUN-117",
+      "name": "MARAÑON"
+    },
+    {
+      "id": "MUN-133",
+      "name": "PACHITEA"
+    },
+    {
+      "id": "MUN-148",
+      "name": "PUERTO INCA"
+    },
+    {
+      "id": "MUN-191",
+      "name": "YAROWILCA"
+    }
+  ],
+  "AREQUIPA": [
+    {
+      "id": "MUN-12",
+      "name": "AREQUIPA"
+    },
+    {
+      "id": "MUN-30",
+      "name": "CAMANA"
+    },
+    {
+      "id": "MUN-38",
+      "name": "CARAVELI"
+    },
+    {
+      "id": "MUN-42",
+      "name": "CASTILLA"
+    },
+    {
+      "id": "MUN-44",
+      "name": "CAYLLOMA"
+    },
+    {
+      "id": "MUN-58",
+      "name": "CONDESUYOS"
+    },
+    {
+      "id": "MUN-98",
+      "name": "ISLAY"
+    },
+    {
+      "id": "MUN-106",
+      "name": "LA UNION"
+    }
+  ],
+  "LA LIBERTAD": [
+    {
+      "id": "MUN-13",
+      "name": "ASCOPE"
+    },
+    {
+      "id": "MUN-22",
+      "name": "BOLIVAR"
+    },
+    {
+      "id": "MUN-48",
+      "name": "CHEPEN"
+    },
+    {
+      "id": "MUN-74",
+      "name": "GRAN CHIMU"
+    },
+    {
+      "id": "MUN-102",
+      "name": "JULCAN"
+    },
+    {
+      "id": "MUN-129",
+      "name": "OTUZCO"
+    },
+    {
+      "id": "MUN-132",
+      "name": "PACASMAYO"
+    },
+    {
+      "id": "MUN-141",
+      "name": "PATAZ"
+    },
+    {
+      "id": "MUN-164",
+      "name": "SANCHEZ CARRION"
+    },
+    {
+      "id": "MUN-168",
+      "name": "SANTIAGO DE CHUCO"
+    },
+    {
+      "id": "MUN-182",
+      "name": "TRUJILLO"
+    },
+    {
+      "id": "MUN-190",
+      "name": "VIRU"
+    }
+  ],
+  "UCAYALI": [
+    {
+      "id": "MUN-15",
+      "name": "ATALAYA"
+    },
+    {
+      "id": "MUN-61",
+      "name": "CORONEL PORTILLO"
+    },
+    {
+      "id": "MUN-134",
+      "name": "PADRE ABAD"
+    },
+    {
+      "id": "MUN-151",
+      "name": "PURUS"
+    }
+  ],
+  "PIURA": [
+    {
+      "id": "MUN-16",
+      "name": "AYABACA"
+    },
+    {
+      "id": "MUN-82",
+      "name": "HUANCABAMBA"
+    },
+    {
+      "id": "MUN-125",
+      "name": "MORROPON"
+    },
+    {
+      "id": "MUN-135",
+      "name": "PAITA"
+    },
+    {
+      "id": "MUN-146",
+      "name": "PIURA"
+    },
+    {
+      "id": "MUN-149",
+      "name": "PUIRA"
+    },
+    {
+      "id": "MUN-170",
+      "name": "SECHURA"
+    },
+    {
+      "id": "MUN-173",
+      "name": "SULLANA"
+    },
+    {
+      "id": "MUN-176",
+      "name": "TALARA"
+    }
+  ],
+  "PUNO": [
+    {
+      "id": "MUN-18",
+      "name": "AZANGARO"
+    },
+    {
+      "id": "MUN-37",
+      "name": "CARABAYA"
+    },
+    {
+      "id": "MUN-53",
+      "name": "CHUCUITO"
+    },
+    {
+      "id": "MUN-69",
+      "name": "EL COLLAO"
+    },
+    {
+      "id": "MUN-83",
+      "name": "HUANCANE"
+    },
+    {
+      "id": "MUN-109",
+      "name": "LAMPA"
+    },
+    {
+      "id": "MUN-123",
+      "name": "MELGAR"
+    },
+    {
+      "id": "MUN-124",
+      "name": "MOHO"
+    },
+    {
+      "id": "MUN-150",
+      "name": "PUNO"
+    },
+    {
+      "id": "MUN-157",
+      "name": "SAN ANTONIO DE PUTINA"
+    },
+    {
+      "id": "MUN-163",
+      "name": "SAN ROMAN"
+    },
+    {
+      "id": "MUN-165",
+      "name": "SANDIA"
+    },
+    {
+      "id": "MUN-195",
+      "name": "YUNGUYO"
+    }
+  ],
+  "AMAZONAS": [
+    {
+      "id": "MUN-19",
+      "name": "BAGUA"
+    },
+    {
+      "id": "MUN-24",
+      "name": "BONGARA"
+    },
+    {
+      "id": "MUN-46",
+      "name": "CHACHAPOYAS"
+    },
+    {
+      "id": "MUN-197",
+      "name": "CONDORCANQUI"
+    },
+    {
+      "id": "MUN-115",
+      "name": "LUYA"
+    },
+    {
+      "id": "MUN-156",
+      "name": "RODRIGUEZ DE MENDOZA"
+    },
+    {
+      "id": "MUN-186",
+      "name": "UTCUBAMBA"
+    }
+  ],
+  "LIMA": [
+    {
+      "id": "MUN-20",
+      "name": "BARRANCA"
+    },
+    {
+      "id": "MUN-27",
+      "name": "CAJATAMBO"
+    },
+    {
+      "id": "MUN-35",
+      "name": "CANTA"
+    },
+    {
+      "id": "MUN-36",
+      "name": "CAÑETE"
+    },
+    {
+      "id": "MUN-88",
+      "name": "HUARAL"
+    },
+    {
+      "id": "MUN-92",
+      "name": "HUAROCHIRI"
+    },
+    {
+      "id": "MUN-93",
+      "name": "HUAURA"
+    },
+    {
+      "id": "MUN-112",
+      "name": "LIMA"
+    },
+    {
+      "id": "MUN-131",
+      "name": "OYON"
+    },
+    {
+      "id": "MUN-193",
+      "name": "YAUYOS"
+    }
+  ],
+  "SAN MARTIN": [
+    {
+      "id": "MUN-21",
+      "name": "BELLAVISTA"
+    },
+    {
+      "id": "MUN-70",
+      "name": "EL DORADO"
+    },
+    {
+      "id": "MUN-78",
+      "name": "HUALLAGA"
+    },
+    {
+      "id": "MUN-107",
+      "name": "LAMAS"
+    },
+    {
+      "id": "MUN-118",
+      "name": "MARISCAL CACERES"
+    },
+    {
+      "id": "MUN-126",
+      "name": "MOYOBAMBA"
+    },
+    {
+      "id": "MUN-144",
+      "name": "PICOTA"
+    },
+    {
+      "id": "MUN-155",
+      "name": "RIOJA"
+    },
+    {
+      "id": "MUN-160",
+      "name": "SAN MARTIN"
+    },
+    {
+      "id": "MUN-181",
+      "name": "TOCACHE"
+    }
+  ],
+  "CAJAMARCA": [
+    {
+      "id": "MUN-25",
+      "name": "CAJABAMBA"
+    },
+    {
+      "id": "MUN-26",
+      "name": "CAJAMARCA"
+    },
+    {
+      "id": "MUN-45",
+      "name": "CELENDIN"
+    },
+    {
+      "id": "MUN-52",
+      "name": "CHOTA"
+    },
+    {
+      "id": "MUN-60",
+      "name": "CONTUMAZA"
+    },
+    {
+      "id": "MUN-65",
+      "name": "CUTERVO"
+    },
+    {
+      "id": "MUN-77",
+      "name": "HUALGAYOC"
+    },
+    {
+      "id": "MUN-99",
+      "name": "JAEN"
+    },
+    {
+      "id": "MUN-158",
+      "name": "SAN IGNACIO"
+    },
+    {
+      "id": "MUN-159",
+      "name": "SAN MARCOS"
+    },
+    {
+      "id": "MUN-161",
+      "name": "SAN MIGUEL"
+    },
+    {
+      "id": "MUN-162",
+      "name": "SAN PABLO"
+    },
+    {
+      "id": "MUN-167",
+      "name": "SANTA CRUZ"
+    }
+  ],
+  "CALLAO": [
+    {
+      "id": "MUN-29",
+      "name": "CALLAO"
+    }
+  ],
+  "TACNA": [
+    {
+      "id": "MUN-33",
+      "name": "CANDARAVE"
+    },
+    {
+      "id": "MUN-101",
+      "name": "JORGE BASADRE"
+    },
+    {
+      "id": "MUN-174",
+      "name": "TACNA"
+    },
+    {
+      "id": "MUN-178",
+      "name": "TARATA"
+    }
+  ],
+  "AYACUCHO": [
+    {
+      "id": "MUN-34",
+      "name": "CANGALLO"
+    },
+    {
+      "id": "MUN-80",
+      "name": "HUAMANGA"
+    },
+    {
+      "id": "MUN-81",
+      "name": "HUANCA SANCOS"
+    },
+    {
+      "id": "MUN-86",
+      "name": "HUANTA"
+    },
+    {
+      "id": "MUN-105",
+      "name": "LA MAR"
+    },
+    {
+      "id": "MUN-114",
+      "name": "LUCANAS"
+    },
+    {
+      "id": "MUN-138",
+      "name": "PARINACOCHAS"
+    },
+    {
+      "id": "MUN-142",
+      "name": "PAUCAR DEL SARA SARA"
+    },
+    {
+      "id": "MUN-172",
+      "name": "SUCRE"
+    },
+    {
+      "id": "MUN-187",
+      "name": "VICTOR FAFARDO"
+    },
+    {
+      "id": "MUN-188",
+      "name": "VICTOR FAJARDO"
+    },
+    {
+      "id": "MUN-189",
+      "name": "VILCAS HUAMAN"
+    }
+  ],
+  "JUNIN": [
+    {
+      "id": "MUN-47",
+      "name": "CHANCHAMAYO"
+    },
+    {
+      "id": "MUN-55",
+      "name": "CHUPACA"
+    },
+    {
+      "id": "MUN-57",
+      "name": "CONCEPCION"
+    },
+    {
+      "id": "MUN-85",
+      "name": "HUANCAYO"
+    },
+    {
+      "id": "MUN-100",
+      "name": "JAUJA"
+    },
+    {
+      "id": "MUN-103",
+      "name": "JUNIN"
+    },
+    {
+      "id": "MUN-169",
+      "name": "SATIPO"
+    },
+    {
+      "id": "MUN-179",
+      "name": "TARMA"
+    },
+    {
+      "id": "MUN-192",
+      "name": "YAULI"
+    }
+  ],
+  "LAMBAYEQUE": [
+    {
+      "id": "MUN-49",
+      "name": "CHICLAYO"
+    },
+    {
+      "id": "MUN-72",
+      "name": "FERREÑAFE"
+    },
+    {
+      "id": "MUN-108",
+      "name": "LAMBAYEQUE"
+    }
+  ],
+  "ICA": [
+    {
+      "id": "MUN-50",
+      "name": "CHINCHA"
+    },
+    {
+      "id": "MUN-96",
+      "name": "ICA"
+    },
+    {
+      "id": "MUN-127",
+      "name": "NAZCA"
+    },
+    {
+      "id": "MUN-137",
+      "name": "PALPA"
+    },
+    {
+      "id": "MUN-145",
+      "name": "PISCO"
+    }
+  ],
+  "TUMBES": [
+    {
+      "id": "MUN-59",
+      "name": "CONTRALMIRANTE VILLAR"
+    },
+    {
+      "id": "MUN-183",
+      "name": "TUMBES"
+    },
+    {
+      "id": "MUN-196",
+      "name": "ZARUMILLA"
+    }
+  ],
+  "PASCO": [
+    {
+      "id": "MUN-66",
+      "name": "DANIEL ALCIDES CARRION"
+    },
+    {
+      "id": "MUN-130",
+      "name": "OXAPAMPA"
+    },
+    {
+      "id": "MUN-140",
+      "name": "PASCO"
+    }
+  ],
+  "MOQUEGUA": [
+    {
+      "id": "MUN-73",
+      "name": "GENERAL SANCHEZ CERRO"
+    },
+    {
+      "id": "MUN-97",
+      "name": "ILO"
+    },
+    {
+      "id": "MUN-120",
+      "name": "MARISCAL NIETO"
+    }
+  ],
+  "MADRE DE DIOS": [
+    {
+      "id": "MUN-116",
+      "name": "MANU"
+    },
+    {
+      "id": "MUN-175",
+      "name": "TAHUAMANU"
+    },
+    {
+      "id": "MUN-177",
+      "name": "TAMBOPATA"
+    }
+  ]
+}

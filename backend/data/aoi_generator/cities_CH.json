@@ -1,0 +1,8742 @@
+{
+  "Thurgau": [
+    {
+      "id": "MUN-479",
+      "name": "Aadorf"
+    },
+    {
+      "id": "MUN-663",
+      "name": "Affeltrangen"
+    },
+    {
+      "id": "MUN-1322",
+      "name": "Altnau"
+    },
+    {
+      "id": "MUN-662",
+      "name": "Amlikon-Bissegg"
+    },
+    {
+      "id": "MUN-502",
+      "name": "Amriswil"
+    },
+    {
+      "id": "MUN-1423",
+      "name": "Arbon"
+    },
+    {
+      "id": "MUN-607",
+      "name": "Basadingen-Schlattingen"
+    },
+    {
+      "id": "MUN-730",
+      "name": "Berg (TG)"
+    },
+    {
+      "id": "MUN-1847",
+      "name": "Berlingen"
+    },
+    {
+      "id": "MUN-1799",
+      "name": "Bettwiesen"
+    },
+    {
+      "id": "MUN-805",
+      "name": "Bichelsee-Balterswil"
+    },
+    {
+      "id": "MUN-775",
+      "name": "Birwinken"
+    },
+    {
+      "id": "MUN-836",
+      "name": "Bischofszell"
+    },
+    {
+      "id": "MUN-2050",
+      "name": "Bottighofen"
+    },
+    {
+      "id": "MUN-1028",
+      "name": "Braunau"
+    },
+    {
+      "id": "MUN-505",
+      "name": "Bussnang"
+    },
+    {
+      "id": "MUN-825",
+      "name": "Bürglen (TG)"
+    },
+    {
+      "id": "MUN-950",
+      "name": "Diessenhofen"
+    },
+    {
+      "id": "MUN-2213",
+      "name": "Dozwil"
+    },
+    {
+      "id": "MUN-517",
+      "name": "Egnach"
+    },
+    {
+      "id": "MUN-788",
+      "name": "Erlen"
+    },
+    {
+      "id": "MUN-913",
+      "name": "Ermatingen"
+    },
+    {
+      "id": "MUN-801",
+      "name": "Eschenz"
+    },
+    {
+      "id": "MUN-1396",
+      "name": "Eschlikon"
+    },
+    {
+      "id": "MUN-1224",
+      "name": "Felben-Wellhausen"
+    },
+    {
+      "id": "MUN-307",
+      "name": "Fischingen"
+    },
+    {
+      "id": "MUN-337",
+      "name": "Frauenfeld"
+    },
+    {
+      "id": "MUN-979",
+      "name": "Gachnang"
+    },
+    {
+      "id": "MUN-2278",
+      "name": "Gottlieben"
+    },
+    {
+      "id": "MUN-994",
+      "name": "Güttingen"
+    },
+    {
+      "id": "MUN-759",
+      "name": "Hauptwil-Gottshaus"
+    },
+    {
+      "id": "MUN-1410",
+      "name": "Hefenhofen"
+    },
+    {
+      "id": "MUN-696",
+      "name": "Herdern"
+    },
+    {
+      "id": "MUN-1143",
+      "name": "Hohentannen"
+    },
+    {
+      "id": "MUN-386",
+      "name": "Homburg"
+    },
+    {
+      "id": "MUN-2164",
+      "name": "Horn"
+    },
+    {
+      "id": "MUN-833",
+      "name": "Hüttlingen"
+    },
+    {
+      "id": "MUN-540",
+      "name": "Hüttwilen"
+    },
+    {
+      "id": "MUN-363",
+      "name": "Kemmental"
+    },
+    {
+      "id": "MUN-1673",
+      "name": "Kesswil"
+    },
+    {
+      "id": "MUN-888",
+      "name": "Kradolf-Schönenberg"
+    },
+    {
+      "id": "MUN-837",
+      "name": "Kreuzlingen"
+    },
+    {
+      "id": "MUN-894",
+      "name": "Langrickenbach"
+    },
+    {
+      "id": "MUN-1060",
+      "name": "Lengwil"
+    },
+    {
+      "id": "MUN-1086",
+      "name": "Lommis"
+    },
+    {
+      "id": "MUN-1515",
+      "name": "Mammern"
+    },
+    {
+      "id": "MUN-1187",
+      "name": "Matzingen"
+    },
+    {
+      "id": "MUN-958",
+      "name": "Märstetten"
+    },
+    {
+      "id": "MUN-1079",
+      "name": "Müllheim"
+    },
+    {
+      "id": "MUN-1170",
+      "name": "Münchwilen (TG)"
+    },
+    {
+      "id": "MUN-1514",
+      "name": "Münsterlingen"
+    },
+    {
+      "id": "MUN-852",
+      "name": "Neunforn"
+    },
+    {
+      "id": "MUN-729",
+      "name": "Pfyn"
+    },
+    {
+      "id": "MUN-1186",
+      "name": "Raperswilen"
+    },
+    {
+      "id": "MUN-2184",
+      "name": "Rickenbach (TG)"
+    },
+    {
+      "id": "MUN-798",
+      "name": "Roggwil (TG)"
+    },
+    {
+      "id": "MUN-1062",
+      "name": "Romanshorn"
+    },
+    {
+      "id": "MUN-1347",
+      "name": "Salenstein"
+    },
+    {
+      "id": "MUN-2005",
+      "name": "Salmsach"
+    },
+    {
+      "id": "MUN-611",
+      "name": "Schlatt (TG)"
+    },
+    {
+      "id": "MUN-890",
+      "name": "Schönholzerswilen"
+    },
+    {
+      "id": "MUN-768",
+      "name": "Sirnach"
+    },
+    {
+      "id": "MUN-1726",
+      "name": "Sommeri"
+    },
+    {
+      "id": "MUN-1072",
+      "name": "Steckborn"
+    },
+    {
+      "id": "MUN-1376",
+      "name": "Stettfurt"
+    },
+    {
+      "id": "MUN-1033",
+      "name": "Sulgen"
+    },
+    {
+      "id": "MUN-608",
+      "name": "Thundorf"
+    },
+    {
+      "id": "MUN-1255",
+      "name": "Tobel-Tägerschen"
+    },
+    {
+      "id": "MUN-838",
+      "name": "Tägerwilen"
+    },
+    {
+      "id": "MUN-686",
+      "name": "Uesslingen-Buch"
+    },
+    {
+      "id": "MUN-1702",
+      "name": "Uttwil"
+    },
+    {
+      "id": "MUN-820",
+      "name": "Wagenhausen"
+    },
+    {
+      "id": "MUN-1130",
+      "name": "Warth-Weiningen"
+    },
+    {
+      "id": "MUN-617",
+      "name": "Weinfelden"
+    },
+    {
+      "id": "MUN-555",
+      "name": "Wigoltingen"
+    },
+    {
+      "id": "MUN-2075",
+      "name": "Wilen (TG)"
+    },
+    {
+      "id": "MUN-793",
+      "name": "Wuppenau"
+    },
+    {
+      "id": "MUN-782",
+      "name": "Wäldi"
+    },
+    {
+      "id": "MUN-575",
+      "name": "Wängi"
+    },
+    {
+      "id": "MUN-784",
+      "name": "Zihlschlacht-Sitterdorf"
+    }
+  ],
+  "Aargau": [
+    {
+      "id": "MUN-772",
+      "name": "Aarau"
+    },
+    {
+      "id": "MUN-1686",
+      "name": "Aarburg"
+    },
+    {
+      "id": "MUN-1746",
+      "name": "Abtwil"
+    },
+    {
+      "id": "MUN-1914",
+      "name": "Ammerswil"
+    },
+    {
+      "id": "MUN-1085",
+      "name": "Aristau"
+    },
+    {
+      "id": "MUN-1884",
+      "name": "Arni (AG)"
+    },
+    {
+      "id": "MUN-1471",
+      "name": "Auenstein"
+    },
+    {
+      "id": "MUN-1093",
+      "name": "Auw"
+    },
+    {
+      "id": "MUN-1354",
+      "name": "Bad Zurzach"
+    },
+    {
+      "id": "MUN-762",
+      "name": "Baden"
+    },
+    {
+      "id": "MUN-1984",
+      "name": "Baldingen"
+    },
+    {
+      "id": "MUN-859",
+      "name": "Beinwil (Freiamt)"
+    },
+    {
+      "id": "MUN-1461",
+      "name": "Beinwil am See"
+    },
+    {
+      "id": "MUN-1592",
+      "name": "Bellikon"
+    },
+    {
+      "id": "MUN-1432",
+      "name": "Bergdietikon"
+    },
+    {
+      "id": "MUN-1531",
+      "name": "Berikon"
+    },
+    {
+      "id": "MUN-2059",
+      "name": "Besenbüren"
+    },
+    {
+      "id": "MUN-1720",
+      "name": "Bettwil"
+    },
+    {
+      "id": "MUN-1752",
+      "name": "Biberstein"
+    },
+    {
+      "id": "MUN-1173",
+      "name": "Birmenstorf (AG)"
+    },
+    {
+      "id": "MUN-1577",
+      "name": "Birr"
+    },
+    {
+      "id": "MUN-1947",
+      "name": "Birrhard"
+    },
+    {
+      "id": "MUN-1494",
+      "name": "Birrwil"
+    },
+    {
+      "id": "MUN-1990",
+      "name": "Boniswil"
+    },
+    {
+      "id": "MUN-821",
+      "name": "Boswil"
+    },
+    {
+      "id": "MUN-1568",
+      "name": "Bottenwil"
+    },
+    {
+      "id": "MUN-851",
+      "name": "Bremgarten (AG)"
+    },
+    {
+      "id": "MUN-698",
+      "name": "Brittnau"
+    },
+    {
+      "id": "MUN-1124",
+      "name": "Brugg"
+    },
+    {
+      "id": "MUN-2186",
+      "name": "Brunegg"
+    },
+    {
+      "id": "MUN-1543",
+      "name": "Buchs (AG)"
+    },
+    {
+      "id": "MUN-2244",
+      "name": "Burg (AG)"
+    },
+    {
+      "id": "MUN-1654",
+      "name": "Buttwil"
+    },
+    {
+      "id": "MUN-2024",
+      "name": "Böbikon"
+    },
+    {
+      "id": "MUN-1221",
+      "name": "Böttstein"
+    },
+    {
+      "id": "MUN-614",
+      "name": "Bözberg"
+    },
+    {
+      "id": "MUN-1774",
+      "name": "Bözen"
+    },
+    {
+      "id": "MUN-1457",
+      "name": "Bünzen"
+    },
+    {
+      "id": "MUN-1985",
+      "name": "Büttikon"
+    },
+    {
+      "id": "MUN-757",
+      "name": "Densbüren"
+    },
+    {
+      "id": "MUN-1508",
+      "name": "Dietwil"
+    },
+    {
+      "id": "MUN-1827",
+      "name": "Dintikon"
+    },
+    {
+      "id": "MUN-1792",
+      "name": "Dottikon"
+    },
+    {
+      "id": "MUN-1294",
+      "name": "Döttingen"
+    },
+    {
+      "id": "MUN-1436",
+      "name": "Dürrenäsch"
+    },
+    {
+      "id": "MUN-1306",
+      "name": "Effingen"
+    },
+    {
+      "id": "MUN-2041",
+      "name": "Eggenwil"
+    },
+    {
+      "id": "MUN-1387",
+      "name": "Egliswil"
+    },
+    {
+      "id": "MUN-1230",
+      "name": "Ehrendingen"
+    },
+    {
+      "id": "MUN-1259",
+      "name": "Eiken"
+    },
+    {
+      "id": "MUN-1724",
+      "name": "Elfingen"
+    },
+    {
+      "id": "MUN-810",
+      "name": "Endingen"
+    },
+    {
+      "id": "MUN-2101",
+      "name": "Ennetbaden"
+    },
+    {
+      "id": "MUN-967",
+      "name": "Erlinsbach (AG)"
+    },
+    {
+      "id": "MUN-1584",
+      "name": "Fahrwangen"
+    },
+    {
+      "id": "MUN-1934",
+      "name": "Fischbach-Göslikon"
+    },
+    {
+      "id": "MUN-1459",
+      "name": "Fisibach"
+    },
+    {
+      "id": "MUN-1576",
+      "name": "Fislisbach"
+    },
+    {
+      "id": "MUN-1764",
+      "name": "Freienwil"
+    },
+    {
+      "id": "MUN-959",
+      "name": "Frick"
+    },
+    {
+      "id": "MUN-1619",
+      "name": "Full-Reuenthal"
+    },
+    {
+      "id": "MUN-1075",
+      "name": "Gansingen"
+    },
+    {
+      "id": "MUN-1477",
+      "name": "Gebenstorf"
+    },
+    {
+      "id": "MUN-1902",
+      "name": "Geltwil"
+    },
+    {
+      "id": "MUN-946",
+      "name": "Gipf-Oberfrick"
+    },
+    {
+      "id": "MUN-977",
+      "name": "Gontenschwil"
+    },
+    {
+      "id": "MUN-552",
+      "name": "Gränichen"
+    },
+    {
+      "id": "MUN-2079",
+      "name": "Habsburg"
+    },
+    {
+      "id": "MUN-2087",
+      "name": "Hallwil"
+    },
+    {
+      "id": "MUN-1911",
+      "name": "Hausen (AG)"
+    },
+    {
+      "id": "MUN-1266",
+      "name": "Hellikon"
+    },
+    {
+      "id": "MUN-1859",
+      "name": "Hendschiken"
+    },
+    {
+      "id": "MUN-1393",
+      "name": "Herznach"
+    },
+    {
+      "id": "MUN-1856",
+      "name": "Hirschthal"
+    },
+    {
+      "id": "MUN-2067",
+      "name": "Holderbank (AG)"
+    },
+    {
+      "id": "MUN-1974",
+      "name": "Holziken"
+    },
+    {
+      "id": "MUN-1231",
+      "name": "Hornussen"
+    },
+    {
+      "id": "MUN-1904",
+      "name": "Hunzenschwil"
+    },
+    {
+      "id": "MUN-1179",
+      "name": "Hägglingen"
+    },
+    {
+      "id": "MUN-2170",
+      "name": "Islisberg"
+    },
+    {
+      "id": "MUN-1467",
+      "name": "Jonen"
+    },
+    {
+      "id": "MUN-1599",
+      "name": "Kaiseraugst"
+    },
+    {
+      "id": "MUN-2280",
+      "name": "Kaiserstuhl"
+    },
+    {
+      "id": "MUN-529",
+      "name": "Kaisten"
+    },
+    {
+      "id": "MUN-2011",
+      "name": "Kallern"
+    },
+    {
+      "id": "MUN-2051",
+      "name": "Killwangen"
+    },
+    {
+      "id": "MUN-1705",
+      "name": "Kirchleerau"
+    },
+    {
+      "id": "MUN-1327",
+      "name": "Klingnau"
+    },
+    {
+      "id": "MUN-1755",
+      "name": "Koblenz"
+    },
+    {
+      "id": "MUN-1061",
+      "name": "Kölliken"
+    },
+    {
+      "id": "MUN-1602",
+      "name": "Künten"
+    },
+    {
+      "id": "MUN-812",
+      "name": "Küttigen"
+    },
+    {
+      "id": "MUN-661",
+      "name": "Laufenburg"
+    },
+    {
+      "id": "MUN-1370",
+      "name": "Leibstadt"
+    },
+    {
+      "id": "MUN-2226",
+      "name": "Leimbach (AG)"
+    },
+    {
+      "id": "MUN-748",
+      "name": "Lengnau (AG)"
+    },
+    {
+      "id": "MUN-858",
+      "name": "Lenzburg"
+    },
+    {
+      "id": "MUN-695",
+      "name": "Leuggern"
+    },
+    {
+      "id": "MUN-1822",
+      "name": "Leutwil"
+    },
+    {
+      "id": "MUN-1101",
+      "name": "Lupfig"
+    },
+    {
+      "id": "MUN-878",
+      "name": "Magden"
+    },
+    {
+      "id": "MUN-1492",
+      "name": "Mandach"
+    },
+    {
+      "id": "MUN-1303",
+      "name": "Meisterschwanden"
+    },
+    {
+      "id": "MUN-2008",
+      "name": "Mellikon"
+    },
+    {
+      "id": "MUN-1607",
+      "name": "Mellingen"
+    },
+    {
+      "id": "MUN-1372",
+      "name": "Menziken"
+    },
+    {
+      "id": "MUN-706",
+      "name": "Merenschwand"
+    },
+    {
+      "id": "MUN-448",
+      "name": "Mettauertal"
+    },
+    {
+      "id": "MUN-1809",
+      "name": "Moosleerau"
+    },
+    {
+      "id": "MUN-1271",
+      "name": "Muhen"
+    },
+    {
+      "id": "MUN-1919",
+      "name": "Mumpf"
+    },
+    {
+      "id": "MUN-514",
+      "name": "Murgenthal"
+    },
+    {
+      "id": "MUN-771",
+      "name": "Muri (AG)"
+    },
+    {
+      "id": "MUN-1864",
+      "name": "Mägenwil"
+    },
+    {
+      "id": "MUN-508",
+      "name": "Möhlin"
+    },
+    {
+      "id": "MUN-1778",
+      "name": "Mönthal"
+    },
+    {
+      "id": "MUN-1337",
+      "name": "Möriken-Wildegg"
+    },
+    {
+      "id": "MUN-1496",
+      "name": "Mühlau"
+    },
+    {
+      "id": "MUN-1915",
+      "name": "Mülligen"
+    },
+    {
+      "id": "MUN-2040",
+      "name": "Münchwilen (AG)"
+    },
+    {
+      "id": "MUN-1529",
+      "name": "Neuenhof"
+    },
+    {
+      "id": "MUN-1892",
+      "name": "Niederlenz"
+    },
+    {
+      "id": "MUN-1890",
+      "name": "Niederrohrdorf"
+    },
+    {
+      "id": "MUN-1406",
+      "name": "Niederwil (AG)"
+    },
+    {
+      "id": "MUN-1244",
+      "name": "Oberentfelden"
+    },
+    {
+      "id": "MUN-1131",
+      "name": "Oberhof"
+    },
+    {
+      "id": "MUN-1005",
+      "name": "Oberkulm"
+    },
+    {
+      "id": "MUN-1905",
+      "name": "Oberlunkhofen"
+    },
+    {
+      "id": "MUN-1580",
+      "name": "Obermumpf"
+    },
+    {
+      "id": "MUN-1712",
+      "name": "Oberrohrdorf"
+    },
+    {
+      "id": "MUN-1530",
+      "name": "Oberrüti"
+    },
+    {
+      "id": "MUN-1108",
+      "name": "Obersiggenthal"
+    },
+    {
+      "id": "MUN-1539",
+      "name": "Oberwil-Lieli"
+    },
+    {
+      "id": "MUN-1701",
+      "name": "Oeschgen"
+    },
+    {
+      "id": "MUN-741",
+      "name": "Oftringen"
+    },
+    {
+      "id": "MUN-1728",
+      "name": "Olsberg"
+    },
+    {
+      "id": "MUN-1631",
+      "name": "Othmarsingen"
+    },
+    {
+      "id": "MUN-998",
+      "name": "Reinach (AG)"
+    },
+    {
+      "id": "MUN-1142",
+      "name": "Reitnau"
+    },
+    {
+      "id": "MUN-1929",
+      "name": "Rekingen (AG)"
+    },
+    {
+      "id": "MUN-1794",
+      "name": "Remetschwil"
+    },
+    {
+      "id": "MUN-1160",
+      "name": "Remigen"
+    },
+    {
+      "id": "MUN-590",
+      "name": "Rheinfelden"
+    },
+    {
+      "id": "MUN-1781",
+      "name": "Rietheim"
+    },
+    {
+      "id": "MUN-1627",
+      "name": "Riniken"
+    },
+    {
+      "id": "MUN-816",
+      "name": "Rothrist"
+    },
+    {
+      "id": "MUN-1668",
+      "name": "Rottenschwil"
+    },
+    {
+      "id": "MUN-1600",
+      "name": "Rudolfstetten-Friedlisberg"
+    },
+    {
+      "id": "MUN-1399",
+      "name": "Rupperswil"
+    },
+    {
+      "id": "MUN-1736",
+      "name": "Rüfenach"
+    },
+    {
+      "id": "MUN-1954",
+      "name": "Rümikon"
+    },
+    {
+      "id": "MUN-1425",
+      "name": "Safenwil"
+    },
+    {
+      "id": "MUN-1117",
+      "name": "Sarmenstorf"
+    },
+    {
+      "id": "MUN-1381",
+      "name": "Schafisheim"
+    },
+    {
+      "id": "MUN-780",
+      "name": "Schinznach"
+    },
+    {
+      "id": "MUN-1235",
+      "name": "Schlossrued"
+    },
+    {
+      "id": "MUN-1084",
+      "name": "Schmiedrued"
+    },
+    {
+      "id": "MUN-1122",
+      "name": "Schneisingen"
+    },
+    {
+      "id": "MUN-1265",
+      "name": "Schupfart"
+    },
+    {
+      "id": "MUN-1993",
+      "name": "Schwaderloch"
+    },
+    {
+      "id": "MUN-1390",
+      "name": "Schöftland"
+    },
+    {
+      "id": "MUN-922",
+      "name": "Seengen"
+    },
+    {
+      "id": "MUN-988",
+      "name": "Seon"
+    },
+    {
+      "id": "MUN-1501",
+      "name": "Siglistorf"
+    },
+    {
+      "id": "MUN-472",
+      "name": "Sins"
+    },
+    {
+      "id": "MUN-2032",
+      "name": "Sisseln"
+    },
+    {
+      "id": "MUN-1088",
+      "name": "Spreitenbach"
+    },
+    {
+      "id": "MUN-1053",
+      "name": "Staffelbach"
+    },
+    {
+      "id": "MUN-1846",
+      "name": "Staufen"
+    },
+    {
+      "id": "MUN-1981",
+      "name": "Stein (AG)"
+    },
+    {
+      "id": "MUN-1685",
+      "name": "Stetten (AG)"
+    },
+    {
+      "id": "MUN-1418",
+      "name": "Strengelbach"
+    },
+    {
+      "id": "MUN-903",
+      "name": "Suhr"
+    },
+    {
+      "id": "MUN-1253",
+      "name": "Tegerfelden"
+    },
+    {
+      "id": "MUN-1849",
+      "name": "Teufenthal (AG)"
+    },
+    {
+      "id": "MUN-963",
+      "name": "Thalheim (AG)"
+    },
+    {
+      "id": "MUN-2189",
+      "name": "Turgi"
+    },
+    {
+      "id": "MUN-1898",
+      "name": "Tägerig"
+    },
+    {
+      "id": "MUN-1566",
+      "name": "Ueken"
+    },
+    {
+      "id": "MUN-1257",
+      "name": "Uerkheim"
+    },
+    {
+      "id": "MUN-2048",
+      "name": "Uezwil"
+    },
+    {
+      "id": "MUN-1968",
+      "name": "Unterentfelden"
+    },
+    {
+      "id": "MUN-1063",
+      "name": "Unterkulm"
+    },
+    {
+      "id": "MUN-1669",
+      "name": "Unterlunkhofen"
+    },
+    {
+      "id": "MUN-1120",
+      "name": "Untersiggenthal"
+    },
+    {
+      "id": "MUN-1553",
+      "name": "Veltheim (AG)"
+    },
+    {
+      "id": "MUN-865",
+      "name": "Villigen"
+    },
+    {
+      "id": "MUN-808",
+      "name": "Villmergen"
+    },
+    {
+      "id": "MUN-1464",
+      "name": "Villnachern"
+    },
+    {
+      "id": "MUN-947",
+      "name": "Vordemwald"
+    },
+    {
+      "id": "MUN-1658",
+      "name": "Wallbach"
+    },
+    {
+      "id": "MUN-1659",
+      "name": "Waltenschwil"
+    },
+    {
+      "id": "MUN-1252",
+      "name": "Wegenstetten"
+    },
+    {
+      "id": "MUN-905",
+      "name": "Wettingen"
+    },
+    {
+      "id": "MUN-2021",
+      "name": "Widen"
+    },
+    {
+      "id": "MUN-2224",
+      "name": "Wiliberg"
+    },
+    {
+      "id": "MUN-1597",
+      "name": "Windisch"
+    },
+    {
+      "id": "MUN-1821",
+      "name": "Wislikofen"
+    },
+    {
+      "id": "MUN-863",
+      "name": "Wittnau"
+    },
+    {
+      "id": "MUN-760",
+      "name": "Wohlen (AG)"
+    },
+    {
+      "id": "MUN-1693",
+      "name": "Wohlenschwil"
+    },
+    {
+      "id": "MUN-996",
+      "name": "Wölflinswil"
+    },
+    {
+      "id": "MUN-1009",
+      "name": "Würenlingen"
+    },
+    {
+      "id": "MUN-1042",
+      "name": "Würenlos"
+    },
+    {
+      "id": "MUN-1302",
+      "name": "Zeihen"
+    },
+    {
+      "id": "MUN-849",
+      "name": "Zeiningen"
+    },
+    {
+      "id": "MUN-1452",
+      "name": "Zetzwil"
+    },
+    {
+      "id": "MUN-876",
+      "name": "Zofingen"
+    },
+    {
+      "id": "MUN-1612",
+      "name": "Zufikon"
+    },
+    {
+      "id": "MUN-1105",
+      "name": "Zuzgen"
+    }
+  ],
+  "Vaud": [
+    {
+      "id": "MUN-1789",
+      "name": "Aclens"
+    },
+    {
+      "id": "MUN-1513",
+      "name": "Agiez"
+    },
+    {
+      "id": "MUN-576",
+      "name": "Aigle"
+    },
+    {
+      "id": "MUN-2023",
+      "name": "Allaman"
+    },
+    {
+      "id": "MUN-740",
+      "name": "Apples"
+    },
+    {
+      "id": "MUN-2113",
+      "name": "Arnex-sur-Nyon"
+    },
+    {
+      "id": "MUN-1194",
+      "name": "Arnex-sur-Orbe"
+    },
+    {
+      "id": "MUN-166",
+      "name": "Arzier-Le Muids"
+    },
+    {
+      "id": "MUN-1541",
+      "name": "Assens"
+    },
+    {
+      "id": "MUN-665",
+      "name": "Aubonne"
+    },
+    {
+      "id": "MUN-490",
+      "name": "Avenches"
+    },
+    {
+      "id": "MUN-1037",
+      "name": "Ballaigues"
+    },
+    {
+      "id": "MUN-1100",
+      "name": "Ballens"
+    },
+    {
+      "id": "MUN-465",
+      "name": "Bassins"
+    },
+    {
+      "id": "MUN-423",
+      "name": "Baulmes"
+    },
+    {
+      "id": "MUN-1012",
+      "name": "Bavois"
+    },
+    {
+      "id": "MUN-1618",
+      "name": "Begnins"
+    },
+    {
+      "id": "MUN-2015",
+      "name": "Belmont-sur-Lausanne"
+    },
+    {
+      "id": "MUN-1363",
+      "name": "Belmont-sur-Yverdon"
+    },
+    {
+      "id": "MUN-1719",
+      "name": "Bercher"
+    },
+    {
+      "id": "MUN-989",
+      "name": "Berolle"
+    },
+    {
+      "id": "MUN-1823",
+      "name": "Bettens"
+    },
+    {
+      "id": "MUN-072",
+      "name": "Bex"
+    },
+    {
+      "id": "MUN-1715",
+      "name": "Bioley-Magnoux"
+    },
+    {
+      "id": "MUN-1922",
+      "name": "Bioley-Orjulaz"
+    },
+    {
+      "id": "MUN-362",
+      "name": "Bière"
+    },
+    {
+      "id": "MUN-588",
+      "name": "Blonay"
+    },
+    {
+      "id": "MUN-1729",
+      "name": "Bofflens"
+    },
+    {
+      "id": "MUN-2045",
+      "name": "Bogis-Bossey"
+    },
+    {
+      "id": "MUN-1210",
+      "name": "Bonvillars"
+    },
+    {
+      "id": "MUN-2124",
+      "name": "Borex"
+    },
+    {
+      "id": "MUN-1300",
+      "name": "Bottens"
+    },
+    {
+      "id": "MUN-2160",
+      "name": "Bougy-Villars"
+    },
+    {
+      "id": "MUN-1875",
+      "name": "Boulens"
+    },
+    {
+      "id": "MUN-986",
+      "name": "Bourg-en-Lavaux"
+    },
+    {
+      "id": "MUN-1786",
+      "name": "Bournens"
+    },
+    {
+      "id": "MUN-1917",
+      "name": "Boussens"
+    },
+    {
+      "id": "MUN-1962",
+      "name": "Bremblens"
+    },
+    {
+      "id": "MUN-1970",
+      "name": "Bretigny-sur-Morrens"
+    },
+    {
+      "id": "MUN-1517",
+      "name": "Bretonnières"
+    },
+    {
+      "id": "MUN-2105",
+      "name": "Buchillon"
+    },
+    {
+      "id": "MUN-560",
+      "name": "Bullet"
+    },
+    {
+      "id": "MUN-2158",
+      "name": "Bursinel"
+    },
+    {
+      "id": "MUN-1885",
+      "name": "Bursins"
+    },
+    {
+      "id": "MUN-1470",
+      "name": "Burtigny"
+    },
+    {
+      "id": "MUN-1611",
+      "name": "Bussigny"
+    },
+    {
+      "id": "MUN-1937",
+      "name": "Bussy-Chardonney"
+    },
+    {
+      "id": "MUN-1921",
+      "name": "Bussy-sur-Moudon"
+    },
+    {
+      "id": "MUN-1976",
+      "name": "Chamblon"
+    },
+    {
+      "id": "MUN-1784",
+      "name": "Champagne"
+    },
+    {
+      "id": "MUN-1940",
+      "name": "Champtauroz"
+    },
+    {
+      "id": "MUN-1039",
+      "name": "Champvent"
+    },
+    {
+      "id": "MUN-923",
+      "name": "Chardonne"
+    },
+    {
+      "id": "MUN-1977",
+      "name": "Chavannes-de-Bogis"
+    },
+    {
+      "id": "MUN-2099",
+      "name": "Chavannes-des-Bois"
+    },
+    {
+      "id": "MUN-1762",
+      "name": "Chavannes-le-Chêne"
+    },
+    {
+      "id": "MUN-2016",
+      "name": "Chavannes-le-Veyron"
+    },
+    {
+      "id": "MUN-2178",
+      "name": "Chavannes-près-Renens"
+    },
+    {
+      "id": "MUN-1561",
+      "name": "Chavannes-sur-Moudon"
+    },
+    {
+      "id": "MUN-494",
+      "name": "Chavornay"
+    },
+    {
+      "id": "MUN-1438",
+      "name": "Cheseaux-Noréaz"
+    },
+    {
+      "id": "MUN-1650",
+      "name": "Cheseaux-sur-Lausanne"
+    },
+    {
+      "id": "MUN-1853",
+      "name": "Chessel"
+    },
+    {
+      "id": "MUN-1791",
+      "name": "Chevilly"
+    },
+    {
+      "id": "MUN-1863",
+      "name": "Chevroux"
+    },
+    {
+      "id": "MUN-2097",
+      "name": "Chexbres"
+    },
+    {
+      "id": "MUN-2248",
+      "name": "Chigny"
+    },
+    {
+      "id": "MUN-055",
+      "name": "Château-d'Oex"
+    },
+    {
+      "id": "MUN-907",
+      "name": "Chéserex"
+    },
+    {
+      "id": "MUN-2102",
+      "name": "Chêne-Pâquier"
+    },
+    {
+      "id": "MUN-2240",
+      "name": "Clarmont"
+    },
+    {
+      "id": "MUN-1960",
+      "name": "Coinsins"
+    },
+    {
+      "id": "MUN-1351",
+      "name": "Commugny"
+    },
+    {
+      "id": "MUN-848",
+      "name": "Concise"
+    },
+    {
+      "id": "MUN-2140",
+      "name": "Coppet"
+    },
+    {
+      "id": "MUN-436",
+      "name": "Corbeyrier"
+    },
+    {
+      "id": "MUN-1148",
+      "name": "Corcelles-le-Jorat"
+    },
+    {
+      "id": "MUN-1756",
+      "name": "Corcelles-près-Concise"
+    },
+    {
+      "id": "MUN-792",
+      "name": "Corcelles-près-Payerne"
+    },
+    {
+      "id": "MUN-2234",
+      "name": "Corseaux"
+    },
+    {
+      "id": "MUN-1321",
+      "name": "Corsier-sur-Vevey"
+    },
+    {
+      "id": "MUN-1118",
+      "name": "Cossonay"
+    },
+    {
+      "id": "MUN-2062",
+      "name": "Cottens (VD)"
+    },
+    {
+      "id": "MUN-1710",
+      "name": "Crans (VD)"
+    },
+    {
+      "id": "MUN-2115",
+      "name": "Crassier"
+    },
+    {
+      "id": "MUN-1506",
+      "name": "Crissier"
+    },
+    {
+      "id": "MUN-1344",
+      "name": "Cronay"
+    },
+    {
+      "id": "MUN-1735",
+      "name": "Croy"
+    },
+    {
+      "id": "MUN-1249",
+      "name": "Cuarnens"
+    },
+    {
+      "id": "MUN-1656",
+      "name": "Cuarny"
+    },
+    {
+      "id": "MUN-612",
+      "name": "Cudrefin"
+    },
+    {
+      "id": "MUN-1961",
+      "name": "Cugy (VD)"
+    },
+    {
+      "id": "MUN-1590",
+      "name": "Curtilles"
+    },
+    {
+      "id": "MUN-1497",
+      "name": "Daillens"
+    },
+    {
+      "id": "MUN-1895",
+      "name": "Denens"
+    },
+    {
+      "id": "MUN-2173",
+      "name": "Denges"
+    },
+    {
+      "id": "MUN-1943",
+      "name": "Dizy"
+    },
+    {
+      "id": "MUN-1909",
+      "name": "Dompierre (VD)"
+    },
+    {
+      "id": "MUN-1043",
+      "name": "Donneloye"
+    },
+    {
+      "id": "MUN-1751",
+      "name": "Duillier"
+    },
+    {
+      "id": "MUN-2175",
+      "name": "Dully"
+    },
+    {
+      "id": "MUN-1717",
+      "name": "Démoret"
+    },
+    {
+      "id": "MUN-1331",
+      "name": "Echallens"
+    },
+    {
+      "id": "MUN-1795",
+      "name": "Echandens"
+    },
+    {
+      "id": "MUN-719",
+      "name": "Echichens"
+    },
+    {
+      "id": "MUN-1451",
+      "name": "Eclépens"
+    },
+    {
+      "id": "MUN-1466",
+      "name": "Ecublens (VD)"
+    },
+    {
+      "id": "MUN-1653",
+      "name": "Epalinges"
+    },
+    {
+      "id": "MUN-1610",
+      "name": "Ependes (VD)"
+    },
+    {
+      "id": "MUN-2171",
+      "name": "Essertes"
+    },
+    {
+      "id": "MUN-1283",
+      "name": "Essertines-sur-Rolle"
+    },
+    {
+      "id": "MUN-974",
+      "name": "Essertines-sur-Yverdon"
+    },
+    {
+      "id": "MUN-1818",
+      "name": "Etagnières"
+    },
+    {
+      "id": "MUN-1593",
+      "name": "Etoy"
+    },
+    {
+      "id": "MUN-2058",
+      "name": "Eysins"
+    },
+    {
+      "id": "MUN-1857",
+      "name": "Faoug"
+    },
+    {
+      "id": "MUN-1918",
+      "name": "Ferreyres"
+    },
+    {
+      "id": "MUN-1226",
+      "name": "Fey"
+    },
+    {
+      "id": "MUN-1683",
+      "name": "Fiez"
+    },
+    {
+      "id": "MUN-1163",
+      "name": "Fontaines-sur-Grandson"
+    },
+    {
+      "id": "MUN-518",
+      "name": "Forel (Lavaux)"
+    },
+    {
+      "id": "MUN-1615",
+      "name": "Founex"
+    },
+    {
+      "id": "MUN-1260",
+      "name": "Froideville"
+    },
+    {
+      "id": "MUN-2009",
+      "name": "Féchy"
+    },
+    {
+      "id": "MUN-1609",
+      "name": "Genolier"
+    },
+    {
+      "id": "MUN-1626",
+      "name": "Giez"
+    },
+    {
+      "id": "MUN-1176",
+      "name": "Gilly"
+    },
+    {
+      "id": "MUN-506",
+      "name": "Gimel"
+    },
+    {
+      "id": "MUN-756",
+      "name": "Gingins"
+    },
+    {
+      "id": "MUN-1772",
+      "name": "Givrins"
+    },
+    {
+      "id": "MUN-1114",
+      "name": "Gland"
+    },
+    {
+      "id": "MUN-1516",
+      "name": "Gollion"
+    },
+    {
+      "id": "MUN-899",
+      "name": "Goumoëns"
+    },
+    {
+      "id": "MUN-1474",
+      "name": "Grancy"
+    },
+    {
+      "id": "MUN-941",
+      "name": "Grandcour"
+    },
+    {
+      "id": "MUN-1871",
+      "name": "Grandevent"
+    },
+    {
+      "id": "MUN-1165",
+      "name": "Grandson"
+    },
+    {
+      "id": "MUN-2028",
+      "name": "Grens"
+    },
+    {
+      "id": "MUN-628",
+      "name": "Gryon"
+    },
+    {
+      "id": "MUN-2022",
+      "name": "Henniez"
+    },
+    {
+      "id": "MUN-1622",
+      "name": "Hermenches"
+    },
+    {
+      "id": "MUN-2091",
+      "name": "Jongny"
+    },
+    {
+      "id": "MUN-541",
+      "name": "Jorat-Menthue"
+    },
+    {
+      "id": "MUN-874",
+      "name": "Jorat-Mézières"
+    },
+    {
+      "id": "MUN-2130",
+      "name": "Jouxtens-Mézery"
+    },
+    {
+      "id": "MUN-1011",
+      "name": "Juriens"
+    },
+    {
+      "id": "MUN-291",
+      "name": "L'Abbaye"
+    },
+    {
+      "id": "MUN-1454",
+      "name": "L'Abergement"
+    },
+    {
+      "id": "MUN-583",
+      "name": "L'Isle"
+    },
+    {
+      "id": "MUN-1324",
+      "name": "La Chaux (Cossonay)"
+    },
+    {
+      "id": "MUN-1564",
+      "name": "La Praz"
+    },
+    {
+      "id": "MUN-571",
+      "name": "La Rippe"
+    },
+    {
+      "id": "MUN-1183",
+      "name": "La Sarraz"
+    },
+    {
+      "id": "MUN-1901",
+      "name": "La Tour-de-Peilz"
+    },
+    {
+      "id": "MUN-248",
+      "name": "Lausanne"
+    },
+    {
+      "id": "MUN-675",
+      "name": "Lavey-Morcles"
+    },
+    {
+      "id": "MUN-1761",
+      "name": "Lavigny"
+    },
+    {
+      "id": "MUN-068",
+      "name": "Le Chenit"
+    },
+    {
+      "id": "MUN-283",
+      "name": "Le Lieu"
+    },
+    {
+      "id": "MUN-971",
+      "name": "Le Mont-sur-Lausanne"
+    },
+    {
+      "id": "MUN-1926",
+      "name": "Le Vaud"
+    },
+    {
+      "id": "MUN-1269",
+      "name": "Les Clées"
+    },
+    {
+      "id": "MUN-515",
+      "name": "Leysin"
+    },
+    {
+      "id": "MUN-902",
+      "name": "Lignerolle"
+    },
+    {
+      "id": "MUN-1828",
+      "name": "Lonay"
+    },
+    {
+      "id": "MUN-1001",
+      "name": "Longirod"
+    },
+    {
+      "id": "MUN-1865",
+      "name": "Lovatens"
+    },
+    {
+      "id": "MUN-773",
+      "name": "Lucens"
+    },
+    {
+      "id": "MUN-2014",
+      "name": "Luins"
+    },
+    {
+      "id": "MUN-2112",
+      "name": "Lully (VD)"
+    },
+    {
+      "id": "MUN-1824",
+      "name": "Lussery-Villars"
+    },
+    {
+      "id": "MUN-2066",
+      "name": "Lussy-sur-Morges"
+    },
+    {
+      "id": "MUN-1096",
+      "name": "Lutry"
+    },
+    {
+      "id": "MUN-1695",
+      "name": "Maracon"
+    },
+    {
+      "id": "MUN-802",
+      "name": "Marchissy"
+    },
+    {
+      "id": "MUN-1341",
+      "name": "Mathod"
+    },
+    {
+      "id": "MUN-1499",
+      "name": "Mauborget"
+    },
+    {
+      "id": "MUN-2269",
+      "name": "Mauraz"
+    },
+    {
+      "id": "MUN-1982",
+      "name": "Mex (VD)"
+    },
+    {
+      "id": "MUN-1870",
+      "name": "Mies"
+    },
+    {
+      "id": "MUN-1923",
+      "name": "Missy"
+    },
+    {
+      "id": "MUN-1330",
+      "name": "Moiry"
+    },
+    {
+      "id": "MUN-882",
+      "name": "Mollens (VD)"
+    },
+    {
+      "id": "MUN-1507",
+      "name": "Molondin"
+    },
+    {
+      "id": "MUN-483",
+      "name": "Mont-la-Ville"
+    },
+    {
+      "id": "MUN-1798",
+      "name": "Mont-sur-Rolle"
+    },
+    {
+      "id": "MUN-1858",
+      "name": "Montagny-près-Yverdon"
+    },
+    {
+      "id": "MUN-272",
+      "name": "Montanaire"
+    },
+    {
+      "id": "MUN-1932",
+      "name": "Montcherand"
+    },
+    {
+      "id": "MUN-814",
+      "name": "Montilliez"
+    },
+    {
+      "id": "MUN-1747",
+      "name": "Montpreveyres"
+    },
+    {
+      "id": "MUN-273",
+      "name": "Montreux"
+    },
+    {
+      "id": "MUN-348",
+      "name": "Montricher"
+    },
+    {
+      "id": "MUN-1802",
+      "name": "Morges"
+    },
+    {
+      "id": "MUN-1837",
+      "name": "Morrens (VD)"
+    },
+    {
+      "id": "MUN-606",
+      "name": "Moudon"
+    },
+    {
+      "id": "MUN-1907",
+      "name": "Mutrux"
+    },
+    {
+      "id": "MUN-2110",
+      "name": "Novalles"
+    },
+    {
+      "id": "MUN-919",
+      "name": "Noville"
+    },
+    {
+      "id": "MUN-1314",
+      "name": "Nyon"
+    },
+    {
+      "id": "MUN-1878",
+      "name": "Ogens"
+    },
+    {
+      "id": "MUN-132",
+      "name": "Ollon"
+    },
+    {
+      "id": "MUN-1562",
+      "name": "Onnens (VD)"
+    },
+    {
+      "id": "MUN-1844",
+      "name": "Oppens"
+    },
+    {
+      "id": "MUN-796",
+      "name": "Orbe"
+    },
+    {
+      "id": "MUN-1758",
+      "name": "Orges"
+    },
+    {
+      "id": "MUN-116",
+      "name": "Ormont-Dessous"
+    },
+    {
+      "id": "MUN-127",
+      "name": "Ormont-Dessus"
+    },
+    {
+      "id": "MUN-1490",
+      "name": "Orny"
+    },
+    {
+      "id": "MUN-373",
+      "name": "Oron"
+    },
+    {
+      "id": "MUN-1732",
+      "name": "Orzens"
+    },
+    {
+      "id": "MUN-1441",
+      "name": "Oulens-sous-Echallens"
+    },
+    {
+      "id": "MUN-1460",
+      "name": "Pailly"
+    },
+    {
+      "id": "MUN-873",
+      "name": "Pampigny"
+    },
+    {
+      "id": "MUN-2270",
+      "name": "Paudex"
+    },
+    {
+      "id": "MUN-385",
+      "name": "Payerne"
+    },
+    {
+      "id": "MUN-1797",
+      "name": "Penthalaz"
+    },
+    {
+      "id": "MUN-1801",
+      "name": "Penthaz"
+    },
+    {
+      "id": "MUN-1473",
+      "name": "Penthéréaz"
+    },
+    {
+      "id": "MUN-1959",
+      "name": "Perroy"
+    },
+    {
+      "id": "MUN-1582",
+      "name": "Poliez-Pittet"
+    },
+    {
+      "id": "MUN-1677",
+      "name": "Pompaples"
+    },
+    {
+      "id": "MUN-1481",
+      "name": "Pomy"
+    },
+    {
+      "id": "MUN-1409",
+      "name": "Prangins"
+    },
+    {
+      "id": "MUN-1407",
+      "name": "Premier"
+    },
+    {
+      "id": "MUN-2081",
+      "name": "Prilly"
+    },
+    {
+      "id": "MUN-292",
+      "name": "Provence"
+    },
+    {
+      "id": "MUN-2138",
+      "name": "Préverenges"
+    },
+    {
+      "id": "MUN-2149",
+      "name": "Prévonloup"
+    },
+    {
+      "id": "MUN-415",
+      "name": "Puidoux"
+    },
+    {
+      "id": "MUN-1440",
+      "name": "Pully"
+    },
+    {
+      "id": "MUN-969",
+      "name": "Rances"
+    },
+    {
+      "id": "MUN-1952",
+      "name": "Renens (VD)"
+    },
+    {
+      "id": "MUN-2086",
+      "name": "Rennaz"
+    },
+    {
+      "id": "MUN-2222",
+      "name": "Reverolle"
+    },
+    {
+      "id": "MUN-2282",
+      "name": "Rivaz"
+    },
+    {
+      "id": "MUN-1366",
+      "name": "Roche (VD)"
+    },
+    {
+      "id": "MUN-1996",
+      "name": "Rolle"
+    },
+    {
+      "id": "MUN-1276",
+      "name": "Romainmôtier-Envy"
+    },
+    {
+      "id": "MUN-1966",
+      "name": "Romanel-sur-Lausanne"
+    },
+    {
+      "id": "MUN-2161",
+      "name": "Romanel-sur-Morges"
+    },
+    {
+      "id": "MUN-1636",
+      "name": "Ropraz"
+    },
+    {
+      "id": "MUN-2232",
+      "name": "Rossenges"
+    },
+    {
+      "id": "MUN-404",
+      "name": "Rossinière"
+    },
+    {
+      "id": "MUN-181",
+      "name": "Rougemont"
+    },
+    {
+      "id": "MUN-1913",
+      "name": "Rovray"
+    },
+    {
+      "id": "MUN-2120",
+      "name": "Rueyres"
+    },
+    {
+      "id": "MUN-1748",
+      "name": "Saint-Barthélemy (VD)"
+    },
+    {
+      "id": "MUN-383",
+      "name": "Saint-Cergue"
+    },
+    {
+      "id": "MUN-774",
+      "name": "Saint-George"
+    },
+    {
+      "id": "MUN-1137",
+      "name": "Saint-Livres"
+    },
+    {
+      "id": "MUN-629",
+      "name": "Saint-Légier-La Chiésaz"
+    },
+    {
+      "id": "MUN-1939",
+      "name": "Saint-Oyens"
+    },
+    {
+      "id": "MUN-1493",
+      "name": "Saint-Prex"
+    },
+    {
+      "id": "MUN-2249",
+      "name": "Saint-Saphorin (Lavaux)"
+    },
+    {
+      "id": "MUN-2143",
+      "name": "Saint-Sulpice (VD)"
+    },
+    {
+      "id": "MUN-232",
+      "name": "Sainte-Croix"
+    },
+    {
+      "id": "MUN-1831",
+      "name": "Saubraz"
+    },
+    {
+      "id": "MUN-591",
+      "name": "Savigny"
+    },
+    {
+      "id": "MUN-1769",
+      "name": "Senarclens"
+    },
+    {
+      "id": "MUN-2197",
+      "name": "Sergey"
+    },
+    {
+      "id": "MUN-1384",
+      "name": "Servion"
+    },
+    {
+      "id": "MUN-2128",
+      "name": "Signy-Avenex"
+    },
+    {
+      "id": "MUN-1333",
+      "name": "Suchy"
+    },
+    {
+      "id": "MUN-1788",
+      "name": "Sullens"
+    },
+    {
+      "id": "MUN-1738",
+      "name": "Suscévaz"
+    },
+    {
+      "id": "MUN-2031",
+      "name": "Syens"
+    },
+    {
+      "id": "MUN-2057",
+      "name": "Sévery"
+    },
+    {
+      "id": "MUN-2153",
+      "name": "Tannay"
+    },
+    {
+      "id": "MUN-2231",
+      "name": "Tartegnin"
+    },
+    {
+      "id": "MUN-2181",
+      "name": "Tolochenaz"
+    },
+    {
+      "id": "MUN-1816",
+      "name": "Trey"
+    },
+    {
+      "id": "MUN-2106",
+      "name": "Treycovagnes"
+    },
+    {
+      "id": "MUN-1931",
+      "name": "Treytorrens (Payerne)"
+    },
+    {
+      "id": "MUN-1458",
+      "name": "Trélex"
+    },
+    {
+      "id": "MUN-670",
+      "name": "Tévenon"
+    },
+    {
+      "id": "MUN-1888",
+      "name": "Ursins"
+    },
+    {
+      "id": "MUN-364",
+      "name": "Valbroye"
+    },
+    {
+      "id": "MUN-2071",
+      "name": "Valeyres-sous-Montagny"
+    },
+    {
+      "id": "MUN-1378",
+      "name": "Valeyres-sous-Rances"
+    },
+    {
+      "id": "MUN-1969",
+      "name": "Valeyres-sous-Ursins"
+    },
+    {
+      "id": "MUN-407",
+      "name": "Vallorbe"
+    },
+    {
+      "id": "MUN-728",
+      "name": "Vaulion"
+    },
+    {
+      "id": "MUN-2104",
+      "name": "Vaux-sur-Morges"
+    },
+    {
+      "id": "MUN-2055",
+      "name": "Vevey"
+    },
+    {
+      "id": "MUN-1317",
+      "name": "Veytaux"
+    },
+    {
+      "id": "MUN-2187",
+      "name": "Vich"
+    },
+    {
+      "id": "MUN-2250",
+      "name": "Villars-Epeney"
+    },
+    {
+      "id": "MUN-2176",
+      "name": "Villars-Sainte-Croix"
+    },
+    {
+      "id": "MUN-1733",
+      "name": "Villars-le-Comte"
+    },
+    {
+      "id": "MUN-1258",
+      "name": "Villars-le-Terroir"
+    },
+    {
+      "id": "MUN-1942",
+      "name": "Villars-sous-Yens"
+    },
+    {
+      "id": "MUN-1189",
+      "name": "Villarzel"
+    },
+    {
+      "id": "MUN-288",
+      "name": "Villeneuve (VD)"
+    },
+    {
+      "id": "MUN-2230",
+      "name": "Vinzel"
+    },
+    {
+      "id": "MUN-1048",
+      "name": "Vuarrens"
+    },
+    {
+      "id": "MUN-1903",
+      "name": "Vucherens"
+    },
+    {
+      "id": "MUN-1528",
+      "name": "Vufflens-la-Ville"
+    },
+    {
+      "id": "MUN-2098",
+      "name": "Vufflens-le-Château"
+    },
+    {
+      "id": "MUN-1936",
+      "name": "Vugelles-La Mothe"
+    },
+    {
+      "id": "MUN-1573",
+      "name": "Vuiteboeuf"
+    },
+    {
+      "id": "MUN-1335",
+      "name": "Vulliens"
+    },
+    {
+      "id": "MUN-1308",
+      "name": "Vullierens"
+    },
+    {
+      "id": "MUN-461",
+      "name": "Vully-les-Lacs"
+    },
+    {
+      "id": "MUN-995",
+      "name": "Yens"
+    },
+    {
+      "id": "MUN-705",
+      "name": "Yverdon-les-Bains"
+    },
+    {
+      "id": "MUN-714",
+      "name": "Yvonand"
+    },
+    {
+      "id": "MUN-786",
+      "name": "Yvorne"
+    }
+  ],
+  "Ticino": [
+    {
+      "id": "MUN-123",
+      "name": "Acquarossa"
+    },
+    {
+      "id": "MUN-1944",
+      "name": "Agno"
+    },
+    {
+      "id": "MUN-073",
+      "name": "Airolo"
+    },
+    {
+      "id": "MUN-435",
+      "name": "Alto Malcantone"
+    },
+    {
+      "id": "MUN-2025",
+      "name": "Aranno"
+    },
+    {
+      "id": "MUN-452",
+      "name": "Arbedo-Castione"
+    },
+    {
+      "id": "MUN-1097",
+      "name": "Arogno"
+    },
+    {
+      "id": "MUN-790",
+      "name": "Ascona"
+    },
+    {
+      "id": "MUN-1812",
+      "name": "Astano"
+    },
+    {
+      "id": "MUN-338",
+      "name": "Avegno Gordevio"
+    },
+    {
+      "id": "MUN-2030",
+      "name": "Balerna"
+    },
+    {
+      "id": "MUN-2137",
+      "name": "Bedano"
+    },
+    {
+      "id": "MUN-2046",
+      "name": "Bedigliora"
+    },
+    {
+      "id": "MUN-101",
+      "name": "Bedretto"
+    },
+    {
+      "id": "MUN-029",
+      "name": "Bellinzona"
+    },
+    {
+      "id": "MUN-135",
+      "name": "Biasca"
+    },
+    {
+      "id": "MUN-1369",
+      "name": "Bioggio"
+    },
+    {
+      "id": "MUN-1833",
+      "name": "Bissone"
+    },
+    {
+      "id": "MUN-015",
+      "name": "Blenio"
+    },
+    {
+      "id": "MUN-1360",
+      "name": "Bodio"
+    },
+    {
+      "id": "MUN-437",
+      "name": "Bosco/Gurin"
+    },
+    {
+      "id": "MUN-355",
+      "name": "Breggia"
+    },
+    {
+      "id": "MUN-1804",
+      "name": "Brione sopra Minusio"
+    },
+    {
+      "id": "MUN-402",
+      "name": "Brissago"
+    },
+    {
+      "id": "MUN-1402",
+      "name": "Brusino Arsizio"
+    },
+    {
+      "id": "MUN-1776",
+      "name": "Cademario"
+    },
+    {
+      "id": "MUN-2254",
+      "name": "Cadempino"
+    },
+    {
+      "id": "MUN-1107",
+      "name": "Cadenazzo"
+    },
+    {
+      "id": "MUN-209",
+      "name": "Campo (Vallemaggia)"
+    },
+    {
+      "id": "MUN-2218",
+      "name": "Canobbio"
+    },
+    {
+      "id": "MUN-254",
+      "name": "Capriasca"
+    },
+    {
+      "id": "MUN-1642",
+      "name": "Caslano"
+    },
+    {
+      "id": "MUN-819",
+      "name": "Castel San Pietro"
+    },
+    {
+      "id": "MUN-162",
+      "name": "Centovalli"
+    },
+    {
+      "id": "MUN-476",
+      "name": "Cerentino"
+    },
+    {
+      "id": "MUN-034",
+      "name": "Cevio"
+    },
+    {
+      "id": "MUN-1540",
+      "name": "Chiasso"
+    },
+    {
+      "id": "MUN-2042",
+      "name": "Coldrerio"
+    },
+    {
+      "id": "MUN-1217",
+      "name": "Collina d'Oro"
+    },
+    {
+      "id": "MUN-2109",
+      "name": "Comano"
+    },
+    {
+      "id": "MUN-1967",
+      "name": "Comunanza Cadenazzo/Monteceneri"
+    },
+    {
+      "id": "MUN-2298",
+      "name": "Comunanza Capriasca/Lugano"
+    },
+    {
+      "id": "MUN-524",
+      "name": "Cugnasco-Gerra"
+    },
+    {
+      "id": "MUN-2237",
+      "name": "Cureglia"
+    },
+    {
+      "id": "MUN-2089",
+      "name": "Curio"
+    },
+    {
+      "id": "MUN-657",
+      "name": "Dalpe"
+    },
+    {
+      "id": "MUN-045",
+      "name": "Faido"
+    },
+    {
+      "id": "MUN-114",
+      "name": "Gambarogno"
+    },
+    {
+      "id": "MUN-489",
+      "name": "Giornico"
+    },
+    {
+      "id": "MUN-1285",
+      "name": "Gordola"
+    },
+    {
+      "id": "MUN-2265",
+      "name": "Grancia"
+    },
+    {
+      "id": "MUN-2259",
+      "name": "Gravesano"
+    },
+    {
+      "id": "MUN-742",
+      "name": "Isone"
+    },
+    {
+      "id": "MUN-2141",
+      "name": "Lamone"
+    },
+    {
+      "id": "MUN-2246",
+      "name": "Lavertezzo"
+    },
+    {
+      "id": "MUN-020",
+      "name": "Lavizzara"
+    },
+    {
+      "id": "MUN-1332",
+      "name": "Linescio"
+    },
+    {
+      "id": "MUN-724",
+      "name": "Locarno"
+    },
+    {
+      "id": "MUN-1020",
+      "name": "Losone"
+    },
+    {
+      "id": "MUN-085",
+      "name": "Lugano"
+    },
+    {
+      "id": "MUN-949",
+      "name": "Lumino"
+    },
+    {
+      "id": "MUN-058",
+      "name": "Maggia"
+    },
+    {
+      "id": "MUN-2162",
+      "name": "Magliaso"
+    },
+    {
+      "id": "MUN-2061",
+      "name": "Manno"
+    },
+    {
+      "id": "MUN-2188",
+      "name": "Maroggia"
+    },
+    {
+      "id": "MUN-2256",
+      "name": "Massagno"
+    },
+    {
+      "id": "MUN-1534",
+      "name": "Melano"
+    },
+    {
+      "id": "MUN-1558",
+      "name": "Melide"
+    },
+    {
+      "id": "MUN-287",
+      "name": "Mendrisio"
+    },
+    {
+      "id": "MUN-791",
+      "name": "Mergoscia"
+    },
+    {
+      "id": "MUN-939",
+      "name": "Mezzovico-Vira"
+    },
+    {
+      "id": "MUN-1567",
+      "name": "Miglieglia"
+    },
+    {
+      "id": "MUN-1069",
+      "name": "Minusio"
+    },
+    {
+      "id": "MUN-259",
+      "name": "Monteceneri"
+    },
+    {
+      "id": "MUN-2073",
+      "name": "Morbio Inferiore"
+    },
+    {
+      "id": "MUN-1547",
+      "name": "Morcote"
+    },
+    {
+      "id": "MUN-2253",
+      "name": "Muralto"
+    },
+    {
+      "id": "MUN-2167",
+      "name": "Muzzano"
+    },
+    {
+      "id": "MUN-2247",
+      "name": "Neggio"
+    },
+    {
+      "id": "MUN-1703",
+      "name": "Novaggio"
+    },
+    {
+      "id": "MUN-1554",
+      "name": "Novazzano"
+    },
+    {
+      "id": "MUN-064",
+      "name": "Onsernone"
+    },
+    {
+      "id": "MUN-2107",
+      "name": "Origlio"
+    },
+    {
+      "id": "MUN-2129",
+      "name": "Orselina"
+    },
+    {
+      "id": "MUN-2083",
+      "name": "Paradiso"
+    },
+    {
+      "id": "MUN-237",
+      "name": "Personico"
+    },
+    {
+      "id": "MUN-1430",
+      "name": "Pollegio"
+    },
+    {
+      "id": "MUN-1691",
+      "name": "Ponte Capriasca"
+    },
+    {
+      "id": "MUN-2185",
+      "name": "Porza"
+    },
+    {
+      "id": "MUN-561",
+      "name": "Prato (Leventina)"
+    },
+    {
+      "id": "MUN-1941",
+      "name": "Pura"
+    },
+    {
+      "id": "MUN-100",
+      "name": "Quinto"
+    },
+    {
+      "id": "MUN-1182",
+      "name": "Riva San Vitale"
+    },
+    {
+      "id": "MUN-088",
+      "name": "Riviera"
+    },
+    {
+      "id": "MUN-1026",
+      "name": "Ronco sopra Ascona"
+    },
+    {
+      "id": "MUN-1482",
+      "name": "Rovio"
+    },
+    {
+      "id": "MUN-1348",
+      "name": "Sant'Antonino"
+    },
+    {
+      "id": "MUN-2255",
+      "name": "Savosa"
+    },
+    {
+      "id": "MUN-070",
+      "name": "Serravalle"
+    },
+    {
+      "id": "MUN-2251",
+      "name": "Sorengo"
+    },
+    {
+      "id": "MUN-1405",
+      "name": "Stabio"
+    },
+    {
+      "id": "MUN-1536",
+      "name": "Tenero-Contra"
+    },
+    {
+      "id": "MUN-835",
+      "name": "Terre di Pedemonte"
+    },
+    {
+      "id": "MUN-1550",
+      "name": "Torricella-Taverne"
+    },
+    {
+      "id": "MUN-1692",
+      "name": "Tresa"
+    },
+    {
+      "id": "MUN-2179",
+      "name": "Vacallo"
+    },
+    {
+      "id": "MUN-2192",
+      "name": "Vernate"
+    },
+    {
+      "id": "MUN-013",
+      "name": "Verzasca"
+    },
+    {
+      "id": "MUN-2203",
+      "name": "Vezia"
+    },
+    {
+      "id": "MUN-2047",
+      "name": "Vico Morcote"
+    }
+  ],
+  "Zürich": [
+    {
+      "id": "MUN-1345",
+      "name": "Adlikon"
+    },
+    {
+      "id": "MUN-1175",
+      "name": "Adliswil"
+    },
+    {
+      "id": "MUN-1552",
+      "name": "Aesch (ZH)"
+    },
+    {
+      "id": "MUN-1153",
+      "name": "Aeugst am Albis"
+    },
+    {
+      "id": "MUN-906",
+      "name": "Affoltern am Albis"
+    },
+    {
+      "id": "MUN-1184",
+      "name": "Altikon"
+    },
+    {
+      "id": "MUN-1325",
+      "name": "Andelfingen"
+    },
+    {
+      "id": "MUN-1709",
+      "name": "Bachenbülach"
+    },
+    {
+      "id": "MUN-1031",
+      "name": "Bachs"
+    },
+    {
+      "id": "MUN-1040",
+      "name": "Bassersdorf"
+    },
+    {
+      "id": "MUN-317",
+      "name": "Bauma"
+    },
+    {
+      "id": "MUN-1476",
+      "name": "Benken (ZH)"
+    },
+    {
+      "id": "MUN-1273",
+      "name": "Berg am Irchel"
+    },
+    {
+      "id": "MUN-843",
+      "name": "Birmensdorf (ZH)"
+    },
+    {
+      "id": "MUN-1219",
+      "name": "Bonstetten"
+    },
+    {
+      "id": "MUN-1771",
+      "name": "Boppelsen"
+    },
+    {
+      "id": "MUN-1339",
+      "name": "Brütten"
+    },
+    {
+      "id": "MUN-832",
+      "name": "Bubikon"
+    },
+    {
+      "id": "MUN-938",
+      "name": "Buch am Irchel"
+    },
+    {
+      "id": "MUN-1446",
+      "name": "Buchs (ZH)"
+    },
+    {
+      "id": "MUN-430",
+      "name": "Bäretswil"
+    },
+    {
+      "id": "MUN-587",
+      "name": "Bülach"
+    },
+    {
+      "id": "MUN-2006",
+      "name": "Dachsen"
+    },
+    {
+      "id": "MUN-1442",
+      "name": "Dielsdorf"
+    },
+    {
+      "id": "MUN-1014",
+      "name": "Dietikon"
+    },
+    {
+      "id": "MUN-1721",
+      "name": "Dietlikon"
+    },
+    {
+      "id": "MUN-1262",
+      "name": "Dinhard"
+    },
+    {
+      "id": "MUN-1489",
+      "name": "Dorf"
+    },
+    {
+      "id": "MUN-1146",
+      "name": "Dägerlen"
+    },
+    {
+      "id": "MUN-1664",
+      "name": "Dällikon"
+    },
+    {
+      "id": "MUN-1971",
+      "name": "Dänikon"
+    },
+    {
+      "id": "MUN-1965",
+      "name": "Dättlikon"
+    },
+    {
+      "id": "MUN-700",
+      "name": "Dübendorf"
+    },
+    {
+      "id": "MUN-937",
+      "name": "Dürnten"
+    },
+    {
+      "id": "MUN-659",
+      "name": "Egg"
+    },
+    {
+      "id": "MUN-1036",
+      "name": "Eglisau"
+    },
+    {
+      "id": "MUN-378",
+      "name": "Elgg"
+    },
+    {
+      "id": "MUN-1581",
+      "name": "Ellikon an der Thur"
+    },
+    {
+      "id": "MUN-1140",
+      "name": "Elsau"
+    },
+    {
+      "id": "MUN-747",
+      "name": "Embrach"
+    },
+    {
+      "id": "MUN-1964",
+      "name": "Erlenbach (ZH)"
+    },
+    {
+      "id": "MUN-999",
+      "name": "Fehraltorf"
+    },
+    {
+      "id": "MUN-2037",
+      "name": "Feuerthalen"
+    },
+    {
+      "id": "MUN-311",
+      "name": "Fischenthal"
+    },
+    {
+      "id": "MUN-945",
+      "name": "Flaach"
+    },
+    {
+      "id": "MUN-2052",
+      "name": "Flurlingen"
+    },
+    {
+      "id": "MUN-1104",
+      "name": "Freienstein-Teufen"
+    },
+    {
+      "id": "MUN-1373",
+      "name": "Fällanden"
+    },
+    {
+      "id": "MUN-2131",
+      "name": "Geroldswil"
+    },
+    {
+      "id": "MUN-811",
+      "name": "Glattfelden"
+    },
+    {
+      "id": "MUN-522",
+      "name": "Gossau (ZH)"
+    },
+    {
+      "id": "MUN-2072",
+      "name": "Greifensee"
+    },
+    {
+      "id": "MUN-1073",
+      "name": "Grüningen"
+    },
+    {
+      "id": "MUN-1136",
+      "name": "Hagenbuch"
+    },
+    {
+      "id": "MUN-701",
+      "name": "Hausen am Albis"
+    },
+    {
+      "id": "MUN-1350",
+      "name": "Hedingen"
+    },
+    {
+      "id": "MUN-1945",
+      "name": "Henggart"
+    },
+    {
+      "id": "MUN-1045",
+      "name": "Herrliberg"
+    },
+    {
+      "id": "MUN-1439",
+      "name": "Hettlingen"
+    },
+    {
+      "id": "MUN-427",
+      "name": "Hinwil"
+    },
+    {
+      "id": "MUN-736",
+      "name": "Hittnau"
+    },
+    {
+      "id": "MUN-1404",
+      "name": "Hochfelden"
+    },
+    {
+      "id": "MUN-789",
+      "name": "Hombrechtikon"
+    },
+    {
+      "id": "MUN-305",
+      "name": "Horgen"
+    },
+    {
+      "id": "MUN-1836",
+      "name": "Humlikon"
+    },
+    {
+      "id": "MUN-1616",
+      "name": "Höri"
+    },
+    {
+      "id": "MUN-1596",
+      "name": "Hüntwangen"
+    },
+    {
+      "id": "MUN-2182",
+      "name": "Hüttikon"
+    },
+    {
+      "id": "MUN-278",
+      "name": "Illnau-Effretikon"
+    },
+    {
+      "id": "MUN-1152",
+      "name": "Kappel am Albis"
+    },
+    {
+      "id": "MUN-2026",
+      "name": "Kilchberg (ZH)"
+    },
+    {
+      "id": "MUN-930",
+      "name": "Kleinandelfingen"
+    },
+    {
+      "id": "MUN-495",
+      "name": "Kloten"
+    },
+    {
+      "id": "MUN-1364",
+      "name": "Knonau"
+    },
+    {
+      "id": "MUN-769",
+      "name": "Küsnacht (ZH)"
+    },
+    {
+      "id": "MUN-1082",
+      "name": "Langnau am Albis"
+    },
+    {
+      "id": "MUN-1388",
+      "name": "Laufen-Uhwiesen"
+    },
+    {
+      "id": "MUN-800",
+      "name": "Lindau"
+    },
+    {
+      "id": "MUN-1559",
+      "name": "Lufingen"
+    },
+    {
+      "id": "MUN-678",
+      "name": "Marthalen"
+    },
+    {
+      "id": "MUN-1637",
+      "name": "Maschwanden"
+    },
+    {
+      "id": "MUN-650",
+      "name": "Maur"
+    },
+    {
+      "id": "MUN-807",
+      "name": "Meilen"
+    },
+    {
+      "id": "MUN-734",
+      "name": "Mettmenstetten"
+    },
+    {
+      "id": "MUN-1624",
+      "name": "Männedorf"
+    },
+    {
+      "id": "MUN-1232",
+      "name": "Mönchaltorf"
+    },
+    {
+      "id": "MUN-1416",
+      "name": "Neerach"
+    },
+    {
+      "id": "MUN-635",
+      "name": "Neftenbach"
+    },
+    {
+      "id": "MUN-1843",
+      "name": "Niederglatt"
+    },
+    {
+      "id": "MUN-860",
+      "name": "Niederhasli"
+    },
+    {
+      "id": "MUN-1307",
+      "name": "Niederweningen"
+    },
+    {
+      "id": "MUN-953",
+      "name": "Nürensdorf"
+    },
+    {
+      "id": "MUN-935",
+      "name": "Oberembrach"
+    },
+    {
+      "id": "MUN-2095",
+      "name": "Oberengstringen"
+    },
+    {
+      "id": "MUN-1125",
+      "name": "Oberglatt"
+    },
+    {
+      "id": "MUN-1989",
+      "name": "Oberrieden"
+    },
+    {
+      "id": "MUN-1591",
+      "name": "Oberweningen"
+    },
+    {
+      "id": "MUN-1205",
+      "name": "Obfelden"
+    },
+    {
+      "id": "MUN-1408",
+      "name": "Oetwil am See"
+    },
+    {
+      "id": "MUN-1995",
+      "name": "Oetwil an der Limmat"
+    },
+    {
+      "id": "MUN-1486",
+      "name": "Opfikon"
+    },
+    {
+      "id": "MUN-731",
+      "name": "Ossingen"
+    },
+    {
+      "id": "MUN-1246",
+      "name": "Otelfingen"
+    },
+    {
+      "id": "MUN-1579",
+      "name": "Ottenbach"
+    },
+    {
+      "id": "MUN-1587",
+      "name": "Pfungen"
+    },
+    {
+      "id": "MUN-488",
+      "name": "Pfäffikon"
+    },
+    {
+      "id": "MUN-901",
+      "name": "Rafz"
+    },
+    {
+      "id": "MUN-2060",
+      "name": "Regensberg"
+    },
+    {
+      "id": "MUN-655",
+      "name": "Regensdorf"
+    },
+    {
+      "id": "MUN-1051",
+      "name": "Rheinau"
+    },
+    {
+      "id": "MUN-1207",
+      "name": "Richterswil"
+    },
+    {
+      "id": "MUN-1419",
+      "name": "Rickenbach (ZH)"
+    },
+    {
+      "id": "MUN-1356",
+      "name": "Rifferswil"
+    },
+    {
+      "id": "MUN-1679",
+      "name": "Rorbas"
+    },
+    {
+      "id": "MUN-674",
+      "name": "Russikon"
+    },
+    {
+      "id": "MUN-765",
+      "name": "Rümlang"
+    },
+    {
+      "id": "MUN-1955",
+      "name": "Rüschlikon"
+    },
+    {
+      "id": "MUN-952",
+      "name": "Rüti (ZH)"
+    },
+    {
+      "id": "MUN-1050",
+      "name": "Schlatt (ZH)"
+    },
+    {
+      "id": "MUN-1472",
+      "name": "Schleinikon"
+    },
+    {
+      "id": "MUN-1340",
+      "name": "Schlieren"
+    },
+    {
+      "id": "MUN-2020",
+      "name": "Schwerzenbach"
+    },
+    {
+      "id": "MUN-1759",
+      "name": "Schöfflisdorf"
+    },
+    {
+      "id": "MUN-1819",
+      "name": "Seegräben"
+    },
+    {
+      "id": "MUN-1201",
+      "name": "Seuzach"
+    },
+    {
+      "id": "MUN-739",
+      "name": "Stadel"
+    },
+    {
+      "id": "MUN-799",
+      "name": "Stallikon"
+    },
+    {
+      "id": "MUN-391",
+      "name": "Stammheim"
+    },
+    {
+      "id": "MUN-1007",
+      "name": "Steinmaur"
+    },
+    {
+      "id": "MUN-1089",
+      "name": "Stäfa"
+    },
+    {
+      "id": "MUN-1367",
+      "name": "Thalheim an der Thur"
+    },
+    {
+      "id": "MUN-1505",
+      "name": "Thalwil"
+    },
+    {
+      "id": "MUN-1687",
+      "name": "Truttikon"
+    },
+    {
+      "id": "MUN-993",
+      "name": "Trüllikon"
+    },
+    {
+      "id": "MUN-360",
+      "name": "Turbenthal"
+    },
+    {
+      "id": "MUN-1868",
+      "name": "Uetikon am See"
+    },
+    {
+      "id": "MUN-1700",
+      "name": "Uitikon"
+    },
+    {
+      "id": "MUN-1889",
+      "name": "Unterengstringen"
+    },
+    {
+      "id": "MUN-1200",
+      "name": "Urdorf"
+    },
+    {
+      "id": "MUN-328",
+      "name": "Uster"
+    },
+    {
+      "id": "MUN-1912",
+      "name": "Volken"
+    },
+    {
+      "id": "MUN-683",
+      "name": "Volketswil"
+    },
+    {
+      "id": "MUN-359",
+      "name": "Wald (ZH)"
+    },
+    {
+      "id": "MUN-1368",
+      "name": "Wallisellen"
+    },
+    {
+      "id": "MUN-1151",
+      "name": "Wangen-Brüttisellen"
+    },
+    {
+      "id": "MUN-1775",
+      "name": "Wasterkingen"
+    },
+    {
+      "id": "MUN-991",
+      "name": "Weiach"
+    },
+    {
+      "id": "MUN-1533",
+      "name": "Weiningen (ZH)"
+    },
+    {
+      "id": "MUN-745",
+      "name": "Weisslingen"
+    },
+    {
+      "id": "MUN-1820",
+      "name": "Wettswil am Albis"
+    },
+    {
+      "id": "MUN-562",
+      "name": "Wetzikon (ZH)"
+    },
+    {
+      "id": "MUN-497",
+      "name": "Wiesendangen"
+    },
+    {
+      "id": "MUN-1052",
+      "name": "Wil (ZH)"
+    },
+    {
+      "id": "MUN-1024",
+      "name": "Wila"
+    },
+    {
+      "id": "MUN-908",
+      "name": "Wildberg"
+    },
+    {
+      "id": "MUN-1138",
+      "name": "Winkel"
+    },
+    {
+      "id": "MUN-111",
+      "name": "Winterthur"
+    },
+    {
+      "id": "MUN-260",
+      "name": "Wädenswil"
+    },
+    {
+      "id": "MUN-735",
+      "name": "Zell (ZH)"
+    },
+    {
+      "id": "MUN-1164",
+      "name": "Zollikon"
+    },
+    {
+      "id": "MUN-1510",
+      "name": "Zumikon"
+    },
+    {
+      "id": "MUN-079",
+      "name": "Zürich"
+    }
+  ],
+  "Solothurn": [
+    {
+      "id": "MUN-738",
+      "name": "Aedermannsdorf"
+    },
+    {
+      "id": "MUN-1807",
+      "name": "Aeschi (SO)"
+    },
+    {
+      "id": "MUN-1512",
+      "name": "Balm bei Günsberg"
+    },
+    {
+      "id": "MUN-602",
+      "name": "Balsthal"
+    },
+    {
+      "id": "MUN-418",
+      "name": "Beinwil (SO)"
+    },
+    {
+      "id": "MUN-1546",
+      "name": "Bellach"
+    },
+    {
+      "id": "MUN-787",
+      "name": "Bettlach"
+    },
+    {
+      "id": "MUN-779",
+      "name": "Biberist"
+    },
+    {
+      "id": "MUN-1739",
+      "name": "Biezwil"
+    },
+    {
+      "id": "MUN-2100",
+      "name": "Bolken"
+    },
+    {
+      "id": "MUN-1998",
+      "name": "Boningen"
+    },
+    {
+      "id": "MUN-1313",
+      "name": "Breitenbach"
+    },
+    {
+      "id": "MUN-421",
+      "name": "Buchegg"
+    },
+    {
+      "id": "MUN-868",
+      "name": "Bärschwil"
+    },
+    {
+      "id": "MUN-2169",
+      "name": "Bättwil"
+    },
+    {
+      "id": "MUN-1394",
+      "name": "Büren (SO)"
+    },
+    {
+      "id": "MUN-1204",
+      "name": "Büsserach"
+    },
+    {
+      "id": "MUN-1196",
+      "name": "Deitingen"
+    },
+    {
+      "id": "MUN-1478",
+      "name": "Derendingen"
+    },
+    {
+      "id": "MUN-1456",
+      "name": "Dornach"
+    },
+    {
+      "id": "MUN-1652",
+      "name": "Drei Höfe"
+    },
+    {
+      "id": "MUN-1417",
+      "name": "Dulliken"
+    },
+    {
+      "id": "MUN-1520",
+      "name": "Däniken"
+    },
+    {
+      "id": "MUN-1284",
+      "name": "Egerkingen"
+    },
+    {
+      "id": "MUN-2152",
+      "name": "Eppenberg-Wöschnau"
+    },
+    {
+      "id": "MUN-1066",
+      "name": "Erlinsbach (SO)"
+    },
+    {
+      "id": "MUN-1220",
+      "name": "Erschwil"
+    },
+    {
+      "id": "MUN-1886",
+      "name": "Etziken"
+    },
+    {
+      "id": "MUN-2195",
+      "name": "Fehren"
+    },
+    {
+      "id": "MUN-2034",
+      "name": "Feldbrunnen-St. Niklaus"
+    },
+    {
+      "id": "MUN-1928",
+      "name": "Flumenthal"
+    },
+    {
+      "id": "MUN-1670",
+      "name": "Fulenbach"
+    },
+    {
+      "id": "MUN-1426",
+      "name": "Gempen"
+    },
+    {
+      "id": "MUN-2144",
+      "name": "Gerlafingen"
+    },
+    {
+      "id": "MUN-347",
+      "name": "Grenchen"
+    },
+    {
+      "id": "MUN-1448",
+      "name": "Gretzenbach"
+    },
+    {
+      "id": "MUN-1930",
+      "name": "Grindel"
+    },
+    {
+      "id": "MUN-1783",
+      "name": "Gunzgen"
+    },
+    {
+      "id": "MUN-1548",
+      "name": "Günsberg"
+    },
+    {
+      "id": "MUN-2146",
+      "name": "Halten"
+    },
+    {
+      "id": "MUN-1537",
+      "name": "Hauenstein-Ifenthal"
+    },
+    {
+      "id": "MUN-581",
+      "name": "Herbetswil"
+    },
+    {
+      "id": "MUN-1420",
+      "name": "Himmelried"
+    },
+    {
+      "id": "MUN-1110",
+      "name": "Hochwald"
+    },
+    {
+      "id": "MUN-1211",
+      "name": "Hofstetten-Flüh"
+    },
+    {
+      "id": "MUN-1178",
+      "name": "Holderbank (SO)"
+    },
+    {
+      "id": "MUN-2018",
+      "name": "Horriwil"
+    },
+    {
+      "id": "MUN-2207",
+      "name": "Hubersdorf"
+    },
+    {
+      "id": "MUN-691",
+      "name": "Hägendorf"
+    },
+    {
+      "id": "MUN-1504",
+      "name": "Härkingen"
+    },
+    {
+      "id": "MUN-2238",
+      "name": "Hüniken"
+    },
+    {
+      "id": "MUN-2243",
+      "name": "Kammersrohr"
+    },
+    {
+      "id": "MUN-1565",
+      "name": "Kappel (SO)"
+    },
+    {
+      "id": "MUN-1090",
+      "name": "Kestenholz"
+    },
+    {
+      "id": "MUN-1095",
+      "name": "Kienberg"
+    },
+    {
+      "id": "MUN-579",
+      "name": "Kleinlützel"
+    },
+    {
+      "id": "MUN-2228",
+      "name": "Kriegstetten"
+    },
+    {
+      "id": "MUN-2126",
+      "name": "Langendorf"
+    },
+    {
+      "id": "MUN-615",
+      "name": "Laupersdorf"
+    },
+    {
+      "id": "MUN-1671",
+      "name": "Lohn-Ammannsegg"
+    },
+    {
+      "id": "MUN-1462",
+      "name": "Lommiswil"
+    },
+    {
+      "id": "MUN-722",
+      "name": "Lostorf"
+    },
+    {
+      "id": "MUN-1663",
+      "name": "Luterbach"
+    },
+    {
+      "id": "MUN-1171",
+      "name": "Lüsslingen-Nennigkofen"
+    },
+    {
+      "id": "MUN-1680",
+      "name": "Lüterkofen-Ichertswil"
+    },
+    {
+      "id": "MUN-1938",
+      "name": "Lüterswil-Gächliwil"
+    },
+    {
+      "id": "MUN-862",
+      "name": "Matzendorf"
+    },
+    {
+      "id": "MUN-1463",
+      "name": "Meltingen"
+    },
+    {
+      "id": "MUN-813",
+      "name": "Messen"
+    },
+    {
+      "id": "MUN-1098",
+      "name": "Metzerlen-Mariastein"
+    },
+    {
+      "id": "MUN-261",
+      "name": "Mümliswil-Ramiswil"
+    },
+    {
+      "id": "MUN-1247",
+      "name": "Neuendorf"
+    },
+    {
+      "id": "MUN-1509",
+      "name": "Niederbuchsiten"
+    },
+    {
+      "id": "MUN-1708",
+      "name": "Niedergösgen"
+    },
+    {
+      "id": "MUN-1379",
+      "name": "Nuglar-St. Pantaleon"
+    },
+    {
+      "id": "MUN-926",
+      "name": "Nunningen"
+    },
+    {
+      "id": "MUN-1008",
+      "name": "Oberbuchsiten"
+    },
+    {
+      "id": "MUN-809",
+      "name": "Oberdorf (SO)"
+    },
+    {
+      "id": "MUN-2191",
+      "name": "Obergerlafingen"
+    },
+    {
+      "id": "MUN-1840",
+      "name": "Obergösgen"
+    },
+    {
+      "id": "MUN-2056",
+      "name": "Oekingen"
+    },
+    {
+      "id": "MUN-795",
+      "name": "Oensingen"
+    },
+    {
+      "id": "MUN-841",
+      "name": "Olten"
+    },
+    {
+      "id": "MUN-1887",
+      "name": "Recherswil"
+    },
+    {
+      "id": "MUN-1999",
+      "name": "Rickenbach (SO)"
+    },
+    {
+      "id": "MUN-1245",
+      "name": "Riedholz"
+    },
+    {
+      "id": "MUN-1538",
+      "name": "Rodersdorf"
+    },
+    {
+      "id": "MUN-1078",
+      "name": "Rüttenen"
+    },
+    {
+      "id": "MUN-1243",
+      "name": "Schnottwil"
+    },
+    {
+      "id": "MUN-1829",
+      "name": "Schönenwerd"
+    },
+    {
+      "id": "MUN-580",
+      "name": "Seewen"
+    },
+    {
+      "id": "MUN-491",
+      "name": "Selzach"
+    },
+    {
+      "id": "MUN-1389",
+      "name": "Solothurn"
+    },
+    {
+      "id": "MUN-2147",
+      "name": "Starrkirch-Wil"
+    },
+    {
+      "id": "MUN-1106",
+      "name": "Stüsslingen"
+    },
+    {
+      "id": "MUN-1391",
+      "name": "Subingen"
+    },
+    {
+      "id": "MUN-1199",
+      "name": "Trimbach"
+    },
+    {
+      "id": "MUN-2183",
+      "name": "Unterramsern"
+    },
+    {
+      "id": "MUN-1672",
+      "name": "Walterswil (SO)"
+    },
+    {
+      "id": "MUN-1278",
+      "name": "Wangen bei Olten"
+    },
+    {
+      "id": "MUN-377",
+      "name": "Welschenrohr-Gänsbrunnen"
+    },
+    {
+      "id": "MUN-1779",
+      "name": "Winznau"
+    },
+    {
+      "id": "MUN-1614",
+      "name": "Wisen (SO)"
+    },
+    {
+      "id": "MUN-2013",
+      "name": "Witterswil"
+    },
+    {
+      "id": "MUN-1301",
+      "name": "Wolfwil"
+    },
+    {
+      "id": "MUN-1644",
+      "name": "Zuchwil"
+    },
+    {
+      "id": "MUN-1839",
+      "name": "Zullwil"
+    }
+  ],
+  "Jura": [
+    {
+      "id": "MUN-904",
+      "name": "Alle"
+    },
+    {
+      "id": "MUN-412",
+      "name": "Basse-Allaine"
+    },
+    {
+      "id": "MUN-1570",
+      "name": "Beurnevésin"
+    },
+    {
+      "id": "MUN-1041",
+      "name": "Boncourt"
+    },
+    {
+      "id": "MUN-702",
+      "name": "Bonfol"
+    },
+    {
+      "id": "MUN-704",
+      "name": "Bourrignon"
+    },
+    {
+      "id": "MUN-770",
+      "name": "Boécourt"
+    },
+    {
+      "id": "MUN-697",
+      "name": "Bure"
+    },
+    {
+      "id": "MUN-1544",
+      "name": "Châtillon (JU)"
+    },
+    {
+      "id": "MUN-124",
+      "name": "Clos du Doubs"
+    },
+    {
+      "id": "MUN-831",
+      "name": "Coeuve"
+    },
+    {
+      "id": "MUN-915",
+      "name": "Cornol"
+    },
+    {
+      "id": "MUN-1371",
+      "name": "Courchapoix"
+    },
+    {
+      "id": "MUN-1403",
+      "name": "Courchavon"
+    },
+    {
+      "id": "MUN-519",
+      "name": "Courgenay"
+    },
+    {
+      "id": "MUN-451",
+      "name": "Courrendlin"
+    },
+    {
+      "id": "MUN-485",
+      "name": "Courroux"
+    },
+    {
+      "id": "MUN-1128",
+      "name": "Courtedoux"
+    },
+    {
+      "id": "MUN-703",
+      "name": "Courtételle"
+    },
+    {
+      "id": "MUN-1475",
+      "name": "Damphreux"
+    },
+    {
+      "id": "MUN-439",
+      "name": "Delémont"
+    },
+    {
+      "id": "MUN-761",
+      "name": "Develier"
+    },
+    {
+      "id": "MUN-1893",
+      "name": "Ederswiler"
+    },
+    {
+      "id": "MUN-1174",
+      "name": "Fahy"
+    },
+    {
+      "id": "MUN-478",
+      "name": "Fontenais"
+    },
+    {
+      "id": "MUN-1047",
+      "name": "Grandfontaine"
+    },
+    {
+      "id": "MUN-223",
+      "name": "Haute-Ajoie"
+    },
+    {
+      "id": "MUN-108",
+      "name": "Haute-Sorne"
+    },
+    {
+      "id": "MUN-303",
+      "name": "La Baroche"
+    },
+    {
+      "id": "MUN-1757",
+      "name": "La Chaux-des-Breuleux"
+    },
+    {
+      "id": "MUN-767",
+      "name": "Lajoux (JU)"
+    },
+    {
+      "id": "MUN-828",
+      "name": "Le Bémont (JU)"
+    },
+    {
+      "id": "MUN-470",
+      "name": "Le Noirmont"
+    },
+    {
+      "id": "MUN-371",
+      "name": "Les Bois"
+    },
+    {
+      "id": "MUN-895",
+      "name": "Les Breuleux"
+    },
+    {
+      "id": "MUN-1264",
+      "name": "Les Enfers"
+    },
+    {
+      "id": "MUN-699",
+      "name": "Les Genevez (JU)"
+    },
+    {
+      "id": "MUN-1569",
+      "name": "Lugnez"
+    },
+    {
+      "id": "MUN-978",
+      "name": "Mervelier"
+    },
+    {
+      "id": "MUN-2064",
+      "name": "Mettembert"
+    },
+    {
+      "id": "MUN-523",
+      "name": "Montfaucon"
+    },
+    {
+      "id": "MUN-1139",
+      "name": "Movelier"
+    },
+    {
+      "id": "MUN-885",
+      "name": "Muriaux"
+    },
+    {
+      "id": "MUN-533",
+      "name": "Pleigne"
+    },
+    {
+      "id": "MUN-651",
+      "name": "Porrentruy"
+    },
+    {
+      "id": "MUN-2136",
+      "name": "Rossemaison"
+    },
+    {
+      "id": "MUN-293",
+      "name": "Saignelégier"
+    },
+    {
+      "id": "MUN-637",
+      "name": "Saint-Brais"
+    },
+    {
+      "id": "MUN-1162",
+      "name": "Saulcy"
+    },
+    {
+      "id": "MUN-709",
+      "name": "Soubey"
+    },
+    {
+      "id": "MUN-1212",
+      "name": "Soyhières"
+    },
+    {
+      "id": "MUN-195",
+      "name": "Val Terbi"
+    },
+    {
+      "id": "MUN-1030",
+      "name": "Vendlincourt"
+    }
+  ],
+  "Obwalden": [
+    {
+      "id": "MUN-145",
+      "name": "Alpnach"
+    },
+    {
+      "id": "MUN-104",
+      "name": "Engelberg"
+    },
+    {
+      "id": "MUN-091",
+      "name": "Giswil"
+    },
+    {
+      "id": "MUN-078",
+      "name": "Kerns"
+    },
+    {
+      "id": "MUN-197",
+      "name": "Lungern"
+    },
+    {
+      "id": "MUN-142",
+      "name": "Sachseln"
+    },
+    {
+      "id": "MUN-099",
+      "name": "Sarnen"
+    }
+  ],
+  "Schwyz": [
+    {
+      "id": "MUN-414",
+      "name": "Alpthal"
+    },
+    {
+      "id": "MUN-375",
+      "name": "Altendorf"
+    },
+    {
+      "id": "MUN-183",
+      "name": "Arth"
+    },
+    {
+      "id": "MUN-060",
+      "name": "Einsiedeln"
+    },
+    {
+      "id": "MUN-546",
+      "name": "Feusisberg"
+    },
+    {
+      "id": "MUN-467",
+      "name": "Freienbach"
+    },
+    {
+      "id": "MUN-721",
+      "name": "Galgenen"
+    },
+    {
+      "id": "MUN-400",
+      "name": "Gersau"
+    },
+    {
+      "id": "MUN-886",
+      "name": "Illgau"
+    },
+    {
+      "id": "MUN-568",
+      "name": "Ingenbohl"
+    },
+    {
+      "id": "MUN-177",
+      "name": "Innerthal"
+    },
+    {
+      "id": "MUN-258",
+      "name": "Küssnacht (SZ)"
+    },
+    {
+      "id": "MUN-1706",
+      "name": "Lachen"
+    },
+    {
+      "id": "MUN-1025",
+      "name": "Lauerz"
+    },
+    {
+      "id": "MUN-403",
+      "name": "Morschach"
+    },
+    {
+      "id": "MUN-023",
+      "name": "Muotathal"
+    },
+    {
+      "id": "MUN-276",
+      "name": "Oberiberg"
+    },
+    {
+      "id": "MUN-839",
+      "name": "Reichenburg"
+    },
+    {
+      "id": "MUN-866",
+      "name": "Riemenstalden"
+    },
+    {
+      "id": "MUN-417",
+      "name": "Rothenthurm"
+    },
+    {
+      "id": "MUN-548",
+      "name": "Sattel"
+    },
+    {
+      "id": "MUN-163",
+      "name": "Schwyz"
+    },
+    {
+      "id": "MUN-321",
+      "name": "Schübelbach"
+    },
+    {
+      "id": "MUN-818",
+      "name": "Steinen"
+    },
+    {
+      "id": "MUN-1295",
+      "name": "Steinerberg"
+    },
+    {
+      "id": "MUN-631",
+      "name": "Tuggen"
+    },
+    {
+      "id": "MUN-198",
+      "name": "Unteriberg"
+    },
+    {
+      "id": "MUN-331",
+      "name": "Vorderthal"
+    },
+    {
+      "id": "MUN-880",
+      "name": "Wangen (SZ)"
+    },
+    {
+      "id": "MUN-1352",
+      "name": "Wollerau"
+    }
+  ],
+  "Uri": [
+    {
+      "id": "MUN-940",
+      "name": "Altdorf (UR)"
+    },
+    {
+      "id": "MUN-121",
+      "name": "Andermatt"
+    },
+    {
+      "id": "MUN-194",
+      "name": "Attinghausen"
+    },
+    {
+      "id": "MUN-164",
+      "name": "Bürglen (UR)"
+    },
+    {
+      "id": "MUN-134",
+      "name": "Erstfeld"
+    },
+    {
+      "id": "MUN-600",
+      "name": "Flüelen"
+    },
+    {
+      "id": "MUN-095",
+      "name": "Gurtnellen"
+    },
+    {
+      "id": "MUN-065",
+      "name": "Göschenen"
+    },
+    {
+      "id": "MUN-263",
+      "name": "Hospental"
+    },
+    {
+      "id": "MUN-125",
+      "name": "Isenthal"
+    },
+    {
+      "id": "MUN-097",
+      "name": "Realp"
+    },
+    {
+      "id": "MUN-578",
+      "name": "Schattdorf"
+    },
+    {
+      "id": "MUN-525",
+      "name": "Seedorf (UR)"
+    },
+    {
+      "id": "MUN-504",
+      "name": "Seelisberg"
+    },
+    {
+      "id": "MUN-037",
+      "name": "Silenen"
+    },
+    {
+      "id": "MUN-481",
+      "name": "Sisikon"
+    },
+    {
+      "id": "MUN-216",
+      "name": "Spiringen"
+    },
+    {
+      "id": "MUN-096",
+      "name": "Unterschächen"
+    },
+    {
+      "id": "MUN-069",
+      "name": "Wassen"
+    }
+  ],
+  "St. Gallen": [
+    {
+      "id": "MUN-301",
+      "name": "Altstätten"
+    },
+    {
+      "id": "MUN-190",
+      "name": "Amden"
+    },
+    {
+      "id": "MUN-1386",
+      "name": "Andwil (SG)"
+    },
+    {
+      "id": "MUN-1643",
+      "name": "Au (SG)"
+    },
+    {
+      "id": "MUN-356",
+      "name": "Bad Ragaz"
+    },
+    {
+      "id": "MUN-1353",
+      "name": "Balgach"
+    },
+    {
+      "id": "MUN-573",
+      "name": "Benken (SG)"
+    },
+    {
+      "id": "MUN-1994",
+      "name": "Berg (SG)"
+    },
+    {
+      "id": "MUN-1479",
+      "name": "Berneck"
+    },
+    {
+      "id": "MUN-594",
+      "name": "Buchs (SG)"
+    },
+    {
+      "id": "MUN-443",
+      "name": "Bütschwil-Ganterschwil"
+    },
+    {
+      "id": "MUN-689",
+      "name": "Degersheim"
+    },
+    {
+      "id": "MUN-864",
+      "name": "Diepoldsau"
+    },
+    {
+      "id": "MUN-207",
+      "name": "Ebnat-Kappel"
+    },
+    {
+      "id": "MUN-1056",
+      "name": "Eggersriet"
+    },
+    {
+      "id": "MUN-1518",
+      "name": "Eichberg"
+    },
+    {
+      "id": "MUN-155",
+      "name": "Eschenbach (SG)"
+    },
+    {
+      "id": "MUN-842",
+      "name": "Flawil"
+    },
+    {
+      "id": "MUN-102",
+      "name": "Flums"
+    },
+    {
+      "id": "MUN-750",
+      "name": "Gaiserwald"
+    },
+    {
+      "id": "MUN-428",
+      "name": "Gams"
+    },
+    {
+      "id": "MUN-1633",
+      "name": "Goldach"
+    },
+    {
+      "id": "MUN-270",
+      "name": "Gommiswald"
+    },
+    {
+      "id": "MUN-336",
+      "name": "Gossau (SG)"
+    },
+    {
+      "id": "MUN-156",
+      "name": "Grabs"
+    },
+    {
+      "id": "MUN-474",
+      "name": "Hemberg"
+    },
+    {
+      "id": "MUN-1059",
+      "name": "Häggenschwil"
+    },
+    {
+      "id": "MUN-881",
+      "name": "Jonschwil"
+    },
+    {
+      "id": "MUN-513",
+      "name": "Kaltbrunn"
+    },
+    {
+      "id": "MUN-212",
+      "name": "Kirchberg (SG)"
+    },
+    {
+      "id": "MUN-1983",
+      "name": "Lichtensteig"
+    },
+    {
+      "id": "MUN-679",
+      "name": "Lütisburg"
+    },
+    {
+      "id": "MUN-1698",
+      "name": "Marbach (SG)"
+    },
+    {
+      "id": "MUN-038",
+      "name": "Mels"
+    },
+    {
+      "id": "MUN-173",
+      "name": "Mosnang"
+    },
+    {
+      "id": "MUN-924",
+      "name": "Muolen"
+    },
+    {
+      "id": "MUN-968",
+      "name": "Mörschwil"
+    },
+    {
+      "id": "MUN-179",
+      "name": "Neckertal"
+    },
+    {
+      "id": "MUN-076",
+      "name": "Nesslau"
+    },
+    {
+      "id": "MUN-597",
+      "name": "Niederbüren"
+    },
+    {
+      "id": "MUN-577",
+      "name": "Niederhelfenschwil"
+    },
+    {
+      "id": "MUN-534",
+      "name": "Oberbüren"
+    },
+    {
+      "id": "MUN-749",
+      "name": "Oberhelfenschwil"
+    },
+    {
+      "id": "MUN-267",
+      "name": "Oberriet (SG)"
+    },
+    {
+      "id": "MUN-681",
+      "name": "Oberuzwil"
+    },
+    {
+      "id": "MUN-048",
+      "name": "Pfäfers"
+    },
+    {
+      "id": "MUN-105",
+      "name": "Quarten"
+    },
+    {
+      "id": "MUN-296",
+      "name": "Rapperswil-Jona"
+    },
+    {
+      "id": "MUN-1690",
+      "name": "Rebstein"
+    },
+    {
+      "id": "MUN-2080",
+      "name": "Rheineck"
+    },
+    {
+      "id": "MUN-2155",
+      "name": "Rorschach"
+    },
+    {
+      "id": "MUN-1256",
+      "name": "Rorschacherberg"
+    },
+    {
+      "id": "MUN-1015",
+      "name": "Rüthi (SG)"
+    },
+    {
+      "id": "MUN-1000",
+      "name": "Sargans"
+    },
+    {
+      "id": "MUN-1427",
+      "name": "Schmerikon"
+    },
+    {
+      "id": "MUN-230",
+      "name": "Schänis"
+    },
+    {
+      "id": "MUN-221",
+      "name": "Sennwald"
+    },
+    {
+      "id": "MUN-310",
+      "name": "Sevelen"
+    },
+    {
+      "id": "MUN-233",
+      "name": "St. Gallen"
+    },
+    {
+      "id": "MUN-1304",
+      "name": "St. Margrethen"
+    },
+    {
+      "id": "MUN-1665",
+      "name": "Steinach"
+    },
+    {
+      "id": "MUN-983",
+      "name": "Thal"
+    },
+    {
+      "id": "MUN-2123",
+      "name": "Tübach"
+    },
+    {
+      "id": "MUN-1248",
+      "name": "Untereggen"
+    },
+    {
+      "id": "MUN-1206",
+      "name": "Uznach"
+    },
+    {
+      "id": "MUN-660",
+      "name": "Uzwil"
+    },
+    {
+      "id": "MUN-281",
+      "name": "Vilters-Wangs"
+    },
+    {
+      "id": "MUN-297",
+      "name": "Waldkirch"
+    },
+    {
+      "id": "MUN-180",
+      "name": "Walenstadt"
+    },
+    {
+      "id": "MUN-219",
+      "name": "Wartau"
+    },
+    {
+      "id": "MUN-169",
+      "name": "Wattwil"
+    },
+    {
+      "id": "MUN-1465",
+      "name": "Weesen"
+    },
+    {
+      "id": "MUN-1725",
+      "name": "Widnau"
+    },
+    {
+      "id": "MUN-464",
+      "name": "Wil (SG)"
+    },
+    {
+      "id": "MUN-087",
+      "name": "Wildhaus-Alt St. Johann"
+    },
+    {
+      "id": "MUN-823",
+      "name": "Wittenbach"
+    },
+    {
+      "id": "MUN-1049",
+      "name": "Zuzwil (SG)"
+    }
+  ],
+  "Appenzell Innerrhoden": [
+    {
+      "id": "MUN-559",
+      "name": "Appenzell"
+    },
+    {
+      "id": "MUN-370",
+      "name": "Gonten"
+    },
+    {
+      "id": "MUN-1013",
+      "name": "Oberegg"
+    },
+    {
+      "id": "MUN-224",
+      "name": "Rüte"
+    },
+    {
+      "id": "MUN-531",
+      "name": "Schlatt-Haslen"
+    },
+    {
+      "id": "MUN-141",
+      "name": "Schwende"
+    }
+  ],
+  "Fribourg": [
+    {
+      "id": "MUN-976",
+      "name": "Attalens"
+    },
+    {
+      "id": "MUN-2132",
+      "name": "Auboranges"
+    },
+    {
+      "id": "MUN-1398",
+      "name": "Autigny"
+    },
+    {
+      "id": "MUN-1447",
+      "name": "Avry"
+    },
+    {
+      "id": "MUN-274",
+      "name": "Bas-Intyamon"
+    },
+    {
+      "id": "MUN-1065",
+      "name": "Belfaux"
+    },
+    {
+      "id": "MUN-351",
+      "name": "Belmont-Broye"
+    },
+    {
+      "id": "MUN-1601",
+      "name": "Billens-Hennens"
+    },
+    {
+      "id": "MUN-776",
+      "name": "Bois-d'Amont"
+    },
+    {
+      "id": "MUN-1749",
+      "name": "Bossonnens"
+    },
+    {
+      "id": "MUN-1660",
+      "name": "Botterens"
+    },
+    {
+      "id": "MUN-954",
+      "name": "Broc"
+    },
+    {
+      "id": "MUN-1906",
+      "name": "Brünisried"
+    },
+    {
+      "id": "MUN-396",
+      "name": "Bulle"
+    },
+    {
+      "id": "MUN-666",
+      "name": "Bösingen"
+    },
+    {
+      "id": "MUN-2117",
+      "name": "Chapelle (Glâne)"
+    },
+    {
+      "id": "MUN-426",
+      "name": "Cheyres-Châbles"
+    },
+    {
+      "id": "MUN-188",
+      "name": "Châtel-Saint-Denis"
+    },
+    {
+      "id": "MUN-2116",
+      "name": "Châtel-sur-Montsalvens"
+    },
+    {
+      "id": "MUN-2217",
+      "name": "Châtillon (FR)"
+    },
+    {
+      "id": "MUN-1385",
+      "name": "Châtonnaye"
+    },
+    {
+      "id": "MUN-1780",
+      "name": "Chénens"
+    },
+    {
+      "id": "MUN-897",
+      "name": "Corbières"
+    },
+    {
+      "id": "MUN-1236",
+      "name": "Corminboeuf"
+    },
+    {
+      "id": "MUN-1589",
+      "name": "Cottens (FR)"
+    },
+    {
+      "id": "MUN-1881",
+      "name": "Courgevaux"
+    },
+    {
+      "id": "MUN-440",
+      "name": "Courtepin"
+    },
+    {
+      "id": "MUN-1737",
+      "name": "Cressier (FR)"
+    },
+    {
+      "id": "MUN-2154",
+      "name": "Crésuz"
+    },
+    {
+      "id": "MUN-965",
+      "name": "Cugy (FR)"
+    },
+    {
+      "id": "MUN-570",
+      "name": "Delley-Portalban"
+    },
+    {
+      "id": "MUN-306",
+      "name": "Düdingen"
+    },
+    {
+      "id": "MUN-1628",
+      "name": "Echarlens"
+    },
+    {
+      "id": "MUN-1605",
+      "name": "Ecublens (FR)"
+    },
+    {
+      "id": "MUN-159",
+      "name": "Estavayer"
+    },
+    {
+      "id": "MUN-2239",
+      "name": "Ferpicloz"
+    },
+    {
+      "id": "MUN-1018",
+      "name": "Fribourg"
+    },
+    {
+      "id": "MUN-1927",
+      "name": "Fräschels"
+    },
+    {
+      "id": "MUN-1753",
+      "name": "Fétigny"
+    },
+    {
+      "id": "MUN-962",
+      "name": "Galmiz"
+    },
+    {
+      "id": "MUN-2168",
+      "name": "Gempenach"
+    },
+    {
+      "id": "MUN-256",
+      "name": "Gibloux"
+    },
+    {
+      "id": "MUN-1556",
+      "name": "Giffers"
+    },
+    {
+      "id": "MUN-1869",
+      "name": "Givisiez"
+    },
+    {
+      "id": "MUN-1254",
+      "name": "Gletterens"
+    },
+    {
+      "id": "MUN-382",
+      "name": "Grandvillard"
+    },
+    {
+      "id": "MUN-1674",
+      "name": "Granges (Veveyse)"
+    },
+    {
+      "id": "MUN-1765",
+      "name": "Granges-Paccot"
+    },
+    {
+      "id": "MUN-1894",
+      "name": "Grangettes"
+    },
+    {
+      "id": "MUN-2039",
+      "name": "Greng"
+    },
+    {
+      "id": "MUN-1542",
+      "name": "Grolley"
+    },
+    {
+      "id": "MUN-329",
+      "name": "Gruyères"
+    },
+    {
+      "id": "MUN-593",
+      "name": "Gurmels"
+    },
+    {
+      "id": "MUN-130",
+      "name": "Haut-Intyamon"
+    },
+    {
+      "id": "MUN-804",
+      "name": "Hauterive (FR)"
+    },
+    {
+      "id": "MUN-815",
+      "name": "Hauteville"
+    },
+    {
+      "id": "MUN-1032",
+      "name": "Heitenried"
+    },
+    {
+      "id": "MUN-152",
+      "name": "Jaun"
+    },
+    {
+      "id": "MUN-777",
+      "name": "Kerzers"
+    },
+    {
+      "id": "MUN-1946",
+      "name": "Kleinbösingen"
+    },
+    {
+      "id": "MUN-928",
+      "name": "La Brillaz"
+    },
+    {
+      "id": "MUN-387",
+      "name": "La Roche"
+    },
+    {
+      "id": "MUN-1279",
+      "name": "La Sonnaz"
+    },
+    {
+      "id": "MUN-713",
+      "name": "La Verrerie"
+    },
+    {
+      "id": "MUN-1215",
+      "name": "Le Châtelard"
+    },
+    {
+      "id": "MUN-992",
+      "name": "Le Flon"
+    },
+    {
+      "id": "MUN-516",
+      "name": "Le Mouret"
+    },
+    {
+      "id": "MUN-1666",
+      "name": "Le Pâquier (FR)"
+    },
+    {
+      "id": "MUN-931",
+      "name": "Les Montets"
+    },
+    {
+      "id": "MUN-1498",
+      "name": "Lully (FR)"
+    },
+    {
+      "id": "MUN-1180",
+      "name": "Marly"
+    },
+    {
+      "id": "MUN-1115",
+      "name": "Marsens"
+    },
+    {
+      "id": "MUN-1714",
+      "name": "Massonnens"
+    },
+    {
+      "id": "MUN-1957",
+      "name": "Matran"
+    },
+    {
+      "id": "MUN-2145",
+      "name": "Meyriez"
+    },
+    {
+      "id": "MUN-853",
+      "name": "Misery-Courtion"
+    },
+    {
+      "id": "MUN-380",
+      "name": "Mont-Vully"
+    },
+    {
+      "id": "MUN-544",
+      "name": "Montagny (FR)"
+    },
+    {
+      "id": "MUN-2082",
+      "name": "Montet (Glâne)"
+    },
+    {
+      "id": "MUN-1722",
+      "name": "Morlon"
+    },
+    {
+      "id": "MUN-2035",
+      "name": "Muntelier"
+    },
+    {
+      "id": "MUN-438",
+      "name": "Murten"
+    },
+    {
+      "id": "MUN-1696",
+      "name": "Ménières"
+    },
+    {
+      "id": "MUN-1054",
+      "name": "Mézières (FR)"
+    },
+    {
+      "id": "MUN-1495",
+      "name": "Neyruz (FR)"
+    },
+    {
+      "id": "MUN-1766",
+      "name": "Nuvilly"
+    },
+    {
+      "id": "MUN-1575",
+      "name": "Pierrafortscha"
+    },
+    {
+      "id": "MUN-113",
+      "name": "Plaffeien"
+    },
+    {
+      "id": "MUN-528",
+      "name": "Plasselb"
+    },
+    {
+      "id": "MUN-803",
+      "name": "Pont-en-Ogoz"
+    },
+    {
+      "id": "MUN-1502",
+      "name": "Pont-la-Ville"
+    },
+    {
+      "id": "MUN-1435",
+      "name": "Ponthaux"
+    },
+    {
+      "id": "MUN-589",
+      "name": "Prez"
+    },
+    {
+      "id": "MUN-2151",
+      "name": "Prévondavaux"
+    },
+    {
+      "id": "MUN-1228",
+      "name": "Rechthalten"
+    },
+    {
+      "id": "MUN-1437",
+      "name": "Remaufens"
+    },
+    {
+      "id": "MUN-1177",
+      "name": "Riaz"
+    },
+    {
+      "id": "MUN-1203",
+      "name": "Ried bei Kerzers"
+    },
+    {
+      "id": "MUN-891",
+      "name": "Romont (FR)"
+    },
+    {
+      "id": "MUN-867",
+      "name": "Rue"
+    },
+    {
+      "id": "MUN-1156",
+      "name": "Saint-Aubin (FR)"
+    },
+    {
+      "id": "MUN-972",
+      "name": "Saint-Martin (FR)"
+    },
+    {
+      "id": "MUN-708",
+      "name": "Schmitten (FR)"
+    },
+    {
+      "id": "MUN-318",
+      "name": "Semsales"
+    },
+    {
+      "id": "MUN-473",
+      "name": "Siviriez"
+    },
+    {
+      "id": "MUN-1080",
+      "name": "Sorens"
+    },
+    {
+      "id": "MUN-1268",
+      "name": "St. Silvester"
+    },
+    {
+      "id": "MUN-601",
+      "name": "St. Ursen"
+    },
+    {
+      "id": "MUN-2027",
+      "name": "Staatswald Galm"
+    },
+    {
+      "id": "MUN-648",
+      "name": "Surpierre"
+    },
+    {
+      "id": "MUN-507",
+      "name": "Sâles"
+    },
+    {
+      "id": "MUN-2036",
+      "name": "Sévaz"
+    },
+    {
+      "id": "MUN-222",
+      "name": "Tafers"
+    },
+    {
+      "id": "MUN-1842",
+      "name": "Tentlingen"
+    },
+    {
+      "id": "MUN-943",
+      "name": "Torny"
+    },
+    {
+      "id": "MUN-844",
+      "name": "Treyvaux"
+    },
+    {
+      "id": "MUN-585",
+      "name": "Ueberstorf"
+    },
+    {
+      "id": "MUN-1979",
+      "name": "Ulmiz"
+    },
+    {
+      "id": "MUN-642",
+      "name": "Ursy"
+    },
+    {
+      "id": "MUN-057",
+      "name": "Val-de-Charmey"
+    },
+    {
+      "id": "MUN-1861",
+      "name": "Vallon"
+    },
+    {
+      "id": "MUN-948",
+      "name": "Vaulruz"
+    },
+    {
+      "id": "MUN-1511",
+      "name": "Villars-sur-Glâne"
+    },
+    {
+      "id": "MUN-2202",
+      "name": "Villarsel-sur-Marly"
+    },
+    {
+      "id": "MUN-621",
+      "name": "Villaz"
+    },
+    {
+      "id": "MUN-619",
+      "name": "Villorsonnens"
+    },
+    {
+      "id": "MUN-914",
+      "name": "Vuadens"
+    },
+    {
+      "id": "MUN-390",
+      "name": "Vuisternens-devant-Romont"
+    },
+    {
+      "id": "MUN-720",
+      "name": "Wünnewil-Flamatt"
+    }
+  ],
+  "Zug": [
+    {
+      "id": "MUN-365",
+      "name": "Baar"
+    },
+    {
+      "id": "MUN-500",
+      "name": "Cham"
+    },
+    {
+      "id": "MUN-511",
+      "name": "Hünenberg"
+    },
+    {
+      "id": "MUN-335",
+      "name": "Menzingen"
+    },
+    {
+      "id": "MUN-1150",
+      "name": "Neuheim"
+    },
+    {
+      "id": "MUN-257",
+      "name": "Oberägeri"
+    },
+    {
+      "id": "MUN-413",
+      "name": "Risch"
+    },
+    {
+      "id": "MUN-1578",
+      "name": "Steinhausen"
+    },
+    {
+      "id": "MUN-342",
+      "name": "Unterägeri"
+    },
+    {
+      "id": "MUN-595",
+      "name": "Walchwil"
+    },
+    {
+      "id": "MUN-280",
+      "name": "Zug"
+    }
+  ],
+  "Schaffhausen": [
+    {
+      "id": "MUN-1121",
+      "name": "Bargen (SH)"
+    },
+    {
+      "id": "MUN-753",
+      "name": "Beggingen"
+    },
+    {
+      "id": "MUN-510",
+      "name": "Beringen"
+    },
+    {
+      "id": "MUN-1813",
+      "name": "Buch (SH)"
+    },
+    {
+      "id": "MUN-1594",
+      "name": "Buchberg"
+    },
+    {
+      "id": "MUN-1763",
+      "name": "Büttenhardt"
+    },
+    {
+      "id": "MUN-1449",
+      "name": "Dörflingen"
+    },
+    {
+      "id": "MUN-1250",
+      "name": "Gächlingen"
+    },
+    {
+      "id": "MUN-623",
+      "name": "Hallau"
+    },
+    {
+      "id": "MUN-1155",
+      "name": "Hemishofen"
+    },
+    {
+      "id": "MUN-1608",
+      "name": "Lohn (SH)"
+    },
+    {
+      "id": "MUN-1309",
+      "name": "Löhningen"
+    },
+    {
+      "id": "MUN-543",
+      "name": "Merishausen"
+    },
+    {
+      "id": "MUN-1144",
+      "name": "Neuhausen am Rheinfall"
+    },
+    {
+      "id": "MUN-532",
+      "name": "Neunkirch"
+    },
+    {
+      "id": "MUN-1415",
+      "name": "Oberhallau"
+    },
+    {
+      "id": "MUN-707",
+      "name": "Ramsen"
+    },
+    {
+      "id": "MUN-1500",
+      "name": "Rüdlingen"
+    },
+    {
+      "id": "MUN-217",
+      "name": "Schaffhausen"
+    },
+    {
+      "id": "MUN-447",
+      "name": "Schleitheim"
+    },
+    {
+      "id": "MUN-1003",
+      "name": "Siblingen"
+    },
+    {
+      "id": "MUN-1411",
+      "name": "Stein am Rhein"
+    },
+    {
+      "id": "MUN-1632",
+      "name": "Stetten (SH)"
+    },
+    {
+      "id": "MUN-480",
+      "name": "Thayngen"
+    },
+    {
+      "id": "MUN-1743",
+      "name": "Trasadingen"
+    },
+    {
+      "id": "MUN-458",
+      "name": "Wilchingen"
+    }
+  ],
+  "Nidwalden": [
+    {
+      "id": "MUN-277",
+      "name": "Beckenried"
+    },
+    {
+      "id": "MUN-797",
+      "name": "Buochs"
+    },
+    {
+      "id": "MUN-618",
+      "name": "Dallenwil"
+    },
+    {
+      "id": "MUN-326",
+      "name": "Emmetten"
+    },
+    {
+      "id": "MUN-535",
+      "name": "Ennetbürgen"
+    },
+    {
+      "id": "MUN-641",
+      "name": "Ennetmoos"
+    },
+    {
+      "id": "MUN-557",
+      "name": "Hergiswil (NW)"
+    },
+    {
+      "id": "MUN-584",
+      "name": "Oberdorf (NW)"
+    },
+    {
+      "id": "MUN-875",
+      "name": "Stans"
+    },
+    {
+      "id": "MUN-556",
+      "name": "Stansstad"
+    },
+    {
+      "id": "MUN-077",
+      "name": "Wolfenschiessen"
+    }
+  ],
+  "Appenzell Ausserrhoden": [
+    {
+      "id": "MUN-1484",
+      "name": "Bühler"
+    },
+    {
+      "id": "MUN-453",
+      "name": "Gais"
+    },
+    {
+      "id": "MUN-1727",
+      "name": "Grub (AR)"
+    },
+    {
+      "id": "MUN-1216",
+      "name": "Heiden"
+    },
+    {
+      "id": "MUN-361",
+      "name": "Herisau"
+    },
+    {
+      "id": "MUN-388",
+      "name": "Hundwil"
+    },
+    {
+      "id": "MUN-2199",
+      "name": "Lutzenberg"
+    },
+    {
+      "id": "MUN-1326",
+      "name": "Rehetobel"
+    },
+    {
+      "id": "MUN-1586",
+      "name": "Reute (AR)"
+    },
+    {
+      "id": "MUN-547",
+      "name": "Schwellbrunn"
+    },
+    {
+      "id": "MUN-1557",
+      "name": "Schönengrund"
+    },
+    {
+      "id": "MUN-1132",
+      "name": "Speicher"
+    },
+    {
+      "id": "MUN-1010",
+      "name": "Stein (AR)"
+    },
+    {
+      "id": "MUN-625",
+      "name": "Teufen (AR)"
+    },
+    {
+      "id": "MUN-955",
+      "name": "Trogen"
+    },
+    {
+      "id": "MUN-185",
+      "name": "Urnäsch"
+    },
+    {
+      "id": "MUN-1310",
+      "name": "Wald (AR)"
+    },
+    {
+      "id": "MUN-1320",
+      "name": "Waldstatt"
+    },
+    {
+      "id": "MUN-1274",
+      "name": "Walzenhausen"
+    },
+    {
+      "id": "MUN-1288",
+      "name": "Wolfhalden"
+    }
+  ],
+  "Glarus": [
+    {
+      "id": "MUN-066",
+      "name": "Glarus"
+    },
+    {
+      "id": "MUN-032",
+      "name": "Glarus Nord"
+    },
+    {
+      "id": "MUN-002",
+      "name": "Glarus Süd"
+    }
+  ],
+  "Basel Landschaft": [
+    {
+      "id": "MUN-1223",
+      "name": "Aesch (BL)"
+    },
+    {
+      "id": "MUN-1058",
+      "name": "Allschwil"
+    },
+    {
+      "id": "MUN-1777",
+      "name": "Anwil"
+    },
+    {
+      "id": "MUN-1867",
+      "name": "Arboldswil"
+    },
+    {
+      "id": "MUN-957",
+      "name": "Arisdorf"
+    },
+    {
+      "id": "MUN-1292",
+      "name": "Arlesheim"
+    },
+    {
+      "id": "MUN-2174",
+      "name": "Augst"
+    },
+    {
+      "id": "MUN-1349",
+      "name": "Bennwil"
+    },
+    {
+      "id": "MUN-1750",
+      "name": "Biel-Benken"
+    },
+    {
+      "id": "MUN-1675",
+      "name": "Binningen"
+    },
+    {
+      "id": "MUN-2033",
+      "name": "Birsfelden"
+    },
+    {
+      "id": "MUN-1251",
+      "name": "Blauen"
+    },
+    {
+      "id": "MUN-1948",
+      "name": "Bottmingen"
+    },
+    {
+      "id": "MUN-1227",
+      "name": "Bretzwil"
+    },
+    {
+      "id": "MUN-1004",
+      "name": "Brislach"
+    },
+    {
+      "id": "MUN-896",
+      "name": "Bubendorf"
+    },
+    {
+      "id": "MUN-2121",
+      "name": "Buckten"
+    },
+    {
+      "id": "MUN-1978",
+      "name": "Burg im Leimental"
+    },
+    {
+      "id": "MUN-1068",
+      "name": "Buus"
+    },
+    {
+      "id": "MUN-2069",
+      "name": "Böckten"
+    },
+    {
+      "id": "MUN-987",
+      "name": "Diegten"
+    },
+    {
+      "id": "MUN-2200",
+      "name": "Diepflingen"
+    },
+    {
+      "id": "MUN-1319",
+      "name": "Dittingen"
+    },
+    {
+      "id": "MUN-1443",
+      "name": "Duggingen"
+    },
+    {
+      "id": "MUN-870",
+      "name": "Eptingen"
+    },
+    {
+      "id": "MUN-1383",
+      "name": "Ettingen"
+    },
+    {
+      "id": "MUN-1649",
+      "name": "Frenkendorf"
+    },
+    {
+      "id": "MUN-1646",
+      "name": "Füllinsdorf"
+    },
+    {
+      "id": "MUN-973",
+      "name": "Gelterkinden"
+    },
+    {
+      "id": "MUN-2209",
+      "name": "Giebenach"
+    },
+    {
+      "id": "MUN-1897",
+      "name": "Grellingen"
+    },
+    {
+      "id": "MUN-1880",
+      "name": "Hemmiken"
+    },
+    {
+      "id": "MUN-2177",
+      "name": "Hersberg"
+    },
+    {
+      "id": "MUN-1768",
+      "name": "Häfelfingen"
+    },
+    {
+      "id": "MUN-1421",
+      "name": "Hölstein"
+    },
+    {
+      "id": "MUN-1920",
+      "name": "Itingen"
+    },
+    {
+      "id": "MUN-2180",
+      "name": "Kilchberg (BL)"
+    },
+    {
+      "id": "MUN-2193",
+      "name": "Känerkinden"
+    },
+    {
+      "id": "MUN-1760",
+      "name": "Lampenberg"
+    },
+    {
+      "id": "MUN-604",
+      "name": "Langenbruck"
+    },
+    {
+      "id": "MUN-847",
+      "name": "Laufen"
+    },
+    {
+      "id": "MUN-1487",
+      "name": "Lausen"
+    },
+    {
+      "id": "MUN-1229",
+      "name": "Lauwil"
+    },
+    {
+      "id": "MUN-2127",
+      "name": "Liedertswil"
+    },
+    {
+      "id": "MUN-763",
+      "name": "Liesberg"
+    },
+    {
+      "id": "MUN-526",
+      "name": "Liestal"
+    },
+    {
+      "id": "MUN-1924",
+      "name": "Lupsingen"
+    },
+    {
+      "id": "MUN-1134",
+      "name": "Läufelfingen"
+    },
+    {
+      "id": "MUN-1571",
+      "name": "Maisprach"
+    },
+    {
+      "id": "MUN-569",
+      "name": "Muttenz"
+    },
+    {
+      "id": "MUN-1238",
+      "name": "Münchenstein"
+    },
+    {
+      "id": "MUN-1838",
+      "name": "Nenzlingen"
+    },
+    {
+      "id": "MUN-1688",
+      "name": "Niederdorf"
+    },
+    {
+      "id": "MUN-2165",
+      "name": "Nusshof"
+    },
+    {
+      "id": "MUN-1400",
+      "name": "Oberdorf (BL)"
+    },
+    {
+      "id": "MUN-1157",
+      "name": "Oberwil (BL)"
+    },
+    {
+      "id": "MUN-1240",
+      "name": "Oltingen"
+    },
+    {
+      "id": "MUN-1289",
+      "name": "Ormalingen"
+    },
+    {
+      "id": "MUN-1603",
+      "name": "Pfeffingen"
+    },
+    {
+      "id": "MUN-898",
+      "name": "Pratteln"
+    },
+    {
+      "id": "MUN-2076",
+      "name": "Ramlinsburg"
+    },
+    {
+      "id": "MUN-1021",
+      "name": "Reigoldswil"
+    },
+    {
+      "id": "MUN-1277",
+      "name": "Reinach (BL)"
+    },
+    {
+      "id": "MUN-1963",
+      "name": "Rickenbach (BL)"
+    },
+    {
+      "id": "MUN-1329",
+      "name": "Roggenburg"
+    },
+    {
+      "id": "MUN-889",
+      "name": "Rothenfluh"
+    },
+    {
+      "id": "MUN-951",
+      "name": "Röschenz"
+    },
+    {
+      "id": "MUN-2070",
+      "name": "Rümlingen"
+    },
+    {
+      "id": "MUN-1588",
+      "name": "Rünenberg"
+    },
+    {
+      "id": "MUN-2208",
+      "name": "Schönenbuch"
+    },
+    {
+      "id": "MUN-1851",
+      "name": "Seltisberg"
+    },
+    {
+      "id": "MUN-1057",
+      "name": "Sissach"
+    },
+    {
+      "id": "MUN-2063",
+      "name": "Tecknau"
+    },
+    {
+      "id": "MUN-1640",
+      "name": "Tenniken"
+    },
+    {
+      "id": "MUN-1188",
+      "name": "Therwil"
+    },
+    {
+      "id": "MUN-2074",
+      "name": "Thürnen"
+    },
+    {
+      "id": "MUN-1830",
+      "name": "Titterten"
+    },
+    {
+      "id": "MUN-1524",
+      "name": "Wahlen"
+    },
+    {
+      "id": "MUN-1112",
+      "name": "Waldenburg"
+    },
+    {
+      "id": "MUN-1434",
+      "name": "Wenslingen"
+    },
+    {
+      "id": "MUN-1282",
+      "name": "Wintersingen"
+    },
+    {
+      "id": "MUN-1910",
+      "name": "Wittinsburg"
+    },
+    {
+      "id": "MUN-1154",
+      "name": "Zeglingen"
+    },
+    {
+      "id": "MUN-1168",
+      "name": "Ziefen"
+    },
+    {
+      "id": "MUN-1305",
+      "name": "Zunzgen"
+    },
+    {
+      "id": "MUN-1648",
+      "name": "Zwingen"
+    }
+  ],
+  "Basel Stadt": [
+    {
+      "id": "MUN-397",
+      "name": "Basel"
+    },
+    {
+      "id": "MUN-2078",
+      "name": "Bettingen"
+    },
+    {
+      "id": "MUN-893",
+      "name": "Riehen"
+    }
+  ],
+  "Bern": [
+    {
+      "id": "MUN-1149",
+      "name": "Aarberg"
+    },
+    {
+      "id": "MUN-964",
+      "name": "Aarwangen"
+    },
+    {
+      "id": "MUN-086",
+      "name": "Adelboden"
+    },
+    {
+      "id": "MUN-2114",
+      "name": "Aefligen"
+    },
+    {
+      "id": "MUN-2093",
+      "name": "Aegerten"
+    },
+    {
+      "id": "MUN-304",
+      "name": "Aeschi bei Spiez"
+    },
+    {
+      "id": "MUN-840",
+      "name": "Affoltern im Emmental"
+    },
+    {
+      "id": "MUN-1346",
+      "name": "Alchenstorf"
+    },
+    {
+      "id": "MUN-1810",
+      "name": "Allmendingen"
+    },
+    {
+      "id": "MUN-1634",
+      "name": "Amsoldingen"
+    },
+    {
+      "id": "MUN-1375",
+      "name": "Arch"
+    },
+    {
+      "id": "MUN-917",
+      "name": "Arni (BE)"
+    },
+    {
+      "id": "MUN-1190",
+      "name": "Attiswil"
+    },
+    {
+      "id": "MUN-1645",
+      "name": "Auswil"
+    },
+    {
+      "id": "MUN-1620",
+      "name": "Bannwil"
+    },
+    {
+      "id": "MUN-1161",
+      "name": "Bargen (BE)"
+    },
+    {
+      "id": "MUN-319",
+      "name": "Beatenberg"
+    },
+    {
+      "id": "MUN-1814",
+      "name": "Bellmund"
+    },
+    {
+      "id": "MUN-405",
+      "name": "Belp"
+    },
+    {
+      "id": "MUN-1808",
+      "name": "Belprahon"
+    },
+    {
+      "id": "MUN-2204",
+      "name": "Berken"
+    },
+    {
+      "id": "MUN-168",
+      "name": "Bern"
+    },
+    {
+      "id": "MUN-1782",
+      "name": "Bettenhausen"
+    },
+    {
+      "id": "MUN-454",
+      "name": "Biel/Bienne"
+    },
+    {
+      "id": "MUN-1845",
+      "name": "Biglen"
+    },
+    {
+      "id": "MUN-1468",
+      "name": "Bleienbach"
+    },
+    {
+      "id": "MUN-613",
+      "name": "Blumenstein"
+    },
+    {
+      "id": "MUN-572",
+      "name": "Bolligen"
+    },
+    {
+      "id": "MUN-098",
+      "name": "Boltigen"
+    },
+    {
+      "id": "MUN-654",
+      "name": "Bowil"
+    },
+    {
+      "id": "MUN-2134",
+      "name": "Bremgarten bei Bern"
+    },
+    {
+      "id": "MUN-2084",
+      "name": "Brenzikofen"
+    },
+    {
+      "id": "MUN-187",
+      "name": "Brienz (BE)"
+    },
+    {
+      "id": "MUN-956",
+      "name": "Brienzwiler"
+    },
+    {
+      "id": "MUN-1583",
+      "name": "Brügg"
+    },
+    {
+      "id": "MUN-1336",
+      "name": "Brüttelen"
+    },
+    {
+      "id": "MUN-622",
+      "name": "Buchholterberg"
+    },
+    {
+      "id": "MUN-609",
+      "name": "Burgdorf"
+    },
+    {
+      "id": "MUN-1209",
+      "name": "Burgistein"
+    },
+    {
+      "id": "MUN-1973",
+      "name": "Busswil bei Melchnau"
+    },
+    {
+      "id": "MUN-2001",
+      "name": "Bäriswil"
+    },
+    {
+      "id": "MUN-942",
+      "name": "Bätterkinden"
+    },
+    {
+      "id": "MUN-633",
+      "name": "Bönigen"
+    },
+    {
+      "id": "MUN-1841",
+      "name": "Büetigen"
+    },
+    {
+      "id": "MUN-1949",
+      "name": "Bühl"
+    },
+    {
+      "id": "MUN-752",
+      "name": "Büren an der Aare"
+    },
+    {
+      "id": "MUN-1241",
+      "name": "Champoz"
+    },
+    {
+      "id": "MUN-2241",
+      "name": "Clavaleyres"
+    },
+    {
+      "id": "MUN-1315",
+      "name": "Corcelles (BE)"
+    },
+    {
+      "id": "MUN-539",
+      "name": "Corgémont"
+    },
+    {
+      "id": "MUN-710",
+      "name": "Cormoret"
+    },
+    {
+      "id": "MUN-652",
+      "name": "Cortébert"
+    },
+    {
+      "id": "MUN-374",
+      "name": "Court"
+    },
+    {
+      "id": "MUN-429",
+      "name": "Courtelary"
+    },
+    {
+      "id": "MUN-997",
+      "name": "Crémines"
+    },
+    {
+      "id": "MUN-2092",
+      "name": "Deisswil bei Münchenbuchsee"
+    },
+    {
+      "id": "MUN-1972",
+      "name": "Diemerswil"
+    },
+    {
+      "id": "MUN-046",
+      "name": "Diemtigen"
+    },
+    {
+      "id": "MUN-1380",
+      "name": "Diessbach bei Büren"
+    },
+    {
+      "id": "MUN-1723",
+      "name": "Dotzigen"
+    },
+    {
+      "id": "MUN-1293",
+      "name": "Därligen"
+    },
+    {
+      "id": "MUN-279",
+      "name": "Därstetten"
+    },
+    {
+      "id": "MUN-677",
+      "name": "Dürrenroth"
+    },
+    {
+      "id": "MUN-129",
+      "name": "Eggiwil"
+    },
+    {
+      "id": "MUN-1877",
+      "name": "Epsach"
+    },
+    {
+      "id": "MUN-856",
+      "name": "Eriswil"
+    },
+    {
+      "id": "MUN-446",
+      "name": "Eriz"
+    },
+    {
+      "id": "MUN-1975",
+      "name": "Erlach"
+    },
+    {
+      "id": "MUN-252",
+      "name": "Erlenbach im Simmental"
+    },
+    {
+      "id": "MUN-620",
+      "name": "Ersigen"
+    },
+    {
+      "id": "MUN-1342",
+      "name": "Eschert"
+    },
+    {
+      "id": "MUN-1832",
+      "name": "Evilard"
+    },
+    {
+      "id": "MUN-1328",
+      "name": "Fahrni"
+    },
+    {
+      "id": "MUN-1835",
+      "name": "Farnern"
+    },
+    {
+      "id": "MUN-1169",
+      "name": "Ferenbalm"
+    },
+    {
+      "id": "MUN-1850",
+      "name": "Finsterhennen"
+    },
+    {
+      "id": "MUN-1667",
+      "name": "Forst-Längenbühl"
+    },
+    {
+      "id": "MUN-290",
+      "name": "Fraubrunnen"
+    },
+    {
+      "id": "MUN-1017",
+      "name": "Frauenkappelen"
+    },
+    {
+      "id": "MUN-1951",
+      "name": "Freimettigen"
+    },
+    {
+      "id": "MUN-107",
+      "name": "Frutigen"
+    },
+    {
+      "id": "MUN-1166",
+      "name": "Gals"
+    },
+    {
+      "id": "MUN-911",
+      "name": "Gampelen"
+    },
+    {
+      "id": "MUN-1172",
+      "name": "Gerzensee"
+    },
+    {
+      "id": "MUN-1006",
+      "name": "Gondiswil"
+    },
+    {
+      "id": "MUN-1916",
+      "name": "Graben"
+    },
+    {
+      "id": "MUN-1127",
+      "name": "Grandval"
+    },
+    {
+      "id": "MUN-024",
+      "name": "Grindelwald"
+    },
+    {
+      "id": "MUN-632",
+      "name": "Grossaffoltern"
+    },
+    {
+      "id": "MUN-1290",
+      "name": "Grosshöchstetten"
+    },
+    {
+      "id": "MUN-120",
+      "name": "Gsteig"
+    },
+    {
+      "id": "MUN-1270",
+      "name": "Gsteigwiler"
+    },
+    {
+      "id": "MUN-154",
+      "name": "Guggisberg"
+    },
+    {
+      "id": "MUN-2142",
+      "name": "Gurbrü"
+    },
+    {
+      "id": "MUN-1662",
+      "name": "Gurzelen"
+    },
+    {
+      "id": "MUN-016",
+      "name": "Guttannen"
+    },
+    {
+      "id": "MUN-567",
+      "name": "Gündlischwand"
+    },
+    {
+      "id": "MUN-171",
+      "name": "Habkern"
+    },
+    {
+      "id": "MUN-2148",
+      "name": "Hagneck"
+    },
+    {
+      "id": "MUN-442",
+      "name": "Hasle bei Burgdorf"
+    },
+    {
+      "id": "MUN-220",
+      "name": "Hasliberg"
+    },
+    {
+      "id": "MUN-1491",
+      "name": "Heiligenschwendi"
+    },
+    {
+      "id": "MUN-1519",
+      "name": "Heimberg"
+    },
+    {
+      "id": "MUN-1445",
+      "name": "Heimenhausen"
+    },
+    {
+      "id": "MUN-431",
+      "name": "Heimiswil"
+    },
+    {
+      "id": "MUN-2194",
+      "name": "Hellsau"
+    },
+    {
+      "id": "MUN-1997",
+      "name": "Herbligen"
+    },
+    {
+      "id": "MUN-1876",
+      "name": "Hermrigen"
+    },
+    {
+      "id": "MUN-970",
+      "name": "Herzogenbuchsee"
+    },
+    {
+      "id": "MUN-1987",
+      "name": "Hilterfingen"
+    },
+    {
+      "id": "MUN-982",
+      "name": "Hindelbank"
+    },
+    {
+      "id": "MUN-1074",
+      "name": "Hofstetten bei Brienz"
+    },
+    {
+      "id": "MUN-1355",
+      "name": "Homberg"
+    },
+    {
+      "id": "MUN-536",
+      "name": "Horrenbach-Buchen"
+    },
+    {
+      "id": "MUN-551",
+      "name": "Huttwil"
+    },
+    {
+      "id": "MUN-1935",
+      "name": "Häutligen"
+    },
+    {
+      "id": "MUN-2019",
+      "name": "Höchstetten"
+    },
+    {
+      "id": "MUN-1574",
+      "name": "Iffwil"
+    },
+    {
+      "id": "MUN-1883",
+      "name": "Inkwil"
+    },
+    {
+      "id": "MUN-011",
+      "name": "Innertkirchen"
+    },
+    {
+      "id": "MUN-394",
+      "name": "Ins"
+    },
+    {
+      "id": "MUN-1718",
+      "name": "Interlaken"
+    },
+    {
+      "id": "MUN-2135",
+      "name": "Ipsach"
+    },
+    {
+      "id": "MUN-441",
+      "name": "Iseltwald"
+    },
+    {
+      "id": "MUN-1730",
+      "name": "Ittigen"
+    },
+    {
+      "id": "MUN-2211",
+      "name": "Jaberg"
+    },
+    {
+      "id": "MUN-857",
+      "name": "Jegenstorf"
+    },
+    {
+      "id": "MUN-1651",
+      "name": "Jens"
+    },
+    {
+      "id": "MUN-530",
+      "name": "Kallnach"
+    },
+    {
+      "id": "MUN-286",
+      "name": "Kandergrund"
+    },
+    {
+      "id": "MUN-042",
+      "name": "Kandersteg"
+    },
+    {
+      "id": "MUN-884",
+      "name": "Kappelen"
+    },
+    {
+      "id": "MUN-2111",
+      "name": "Kaufdorf"
+    },
+    {
+      "id": "MUN-1678",
+      "name": "Kehrsatz"
+    },
+    {
+      "id": "MUN-1891",
+      "name": "Kernenried"
+    },
+    {
+      "id": "MUN-1639",
+      "name": "Kiesen"
+    },
+    {
+      "id": "MUN-1038",
+      "name": "Kirchberg (BE)"
+    },
+    {
+      "id": "MUN-656",
+      "name": "Kirchdorf (BE)"
+    },
+    {
+      "id": "MUN-806",
+      "name": "Kirchlindach"
+    },
+    {
+      "id": "MUN-746",
+      "name": "Konolfingen"
+    },
+    {
+      "id": "MUN-1291",
+      "name": "Koppigen"
+    },
+    {
+      "id": "MUN-1424",
+      "name": "Krattigen"
+    },
+    {
+      "id": "MUN-492",
+      "name": "Krauchthal"
+    },
+    {
+      "id": "MUN-1625",
+      "name": "Kriechenwil"
+    },
+    {
+      "id": "MUN-170",
+      "name": "Köniz"
+    },
+    {
+      "id": "MUN-676",
+      "name": "La Ferrière"
+    },
+    {
+      "id": "MUN-1316",
+      "name": "La Neuveville"
+    },
+    {
+      "id": "MUN-934",
+      "name": "Landiswil"
+    },
+    {
+      "id": "MUN-457",
+      "name": "Langenthal"
+    },
+    {
+      "id": "MUN-184",
+      "name": "Langnau im Emmental"
+    },
+    {
+      "id": "MUN-139",
+      "name": "Lauenen"
+    },
+    {
+      "id": "MUN-1745",
+      "name": "Laupen"
+    },
+    {
+      "id": "MUN-455",
+      "name": "Lauperswil"
+    },
+    {
+      "id": "MUN-028",
+      "name": "Lauterbrunnen"
+    },
+    {
+      "id": "MUN-920",
+      "name": "Leissigen"
+    },
+    {
+      "id": "MUN-1222",
+      "name": "Lengnau (BE)"
+    },
+    {
+      "id": "MUN-052",
+      "name": "Lenk"
+    },
+    {
+      "id": "MUN-932",
+      "name": "Leuzigen"
+    },
+    {
+      "id": "MUN-2156",
+      "name": "Ligerz"
+    },
+    {
+      "id": "MUN-723",
+      "name": "Linden"
+    },
+    {
+      "id": "MUN-1397",
+      "name": "Lotzwil"
+    },
+    {
+      "id": "MUN-1638",
+      "name": "Loveresse"
+    },
+    {
+      "id": "MUN-646",
+      "name": "Lyss"
+    },
+    {
+      "id": "MUN-1413",
+      "name": "Lyssach"
+    },
+    {
+      "id": "MUN-1521",
+      "name": "Lüscherz"
+    },
+    {
+      "id": "MUN-778",
+      "name": "Lütschental"
+    },
+    {
+      "id": "MUN-456",
+      "name": "Lützelflüh"
+    },
+    {
+      "id": "MUN-408",
+      "name": "Madiswil"
+    },
+    {
+      "id": "MUN-1800",
+      "name": "Matten bei Interlaken"
+    },
+    {
+      "id": "MUN-1817",
+      "name": "Mattstetten"
+    },
+    {
+      "id": "MUN-2262",
+      "name": "Meienried"
+    },
+    {
+      "id": "MUN-936",
+      "name": "Meikirch"
+    },
+    {
+      "id": "MUN-1689",
+      "name": "Meinisberg"
+    },
+    {
+      "id": "MUN-226",
+      "name": "Meiringen"
+    },
+    {
+      "id": "MUN-933",
+      "name": "Melchnau"
+    },
+    {
+      "id": "MUN-2068",
+      "name": "Merzligen"
+    },
+    {
+      "id": "MUN-2065",
+      "name": "Mirchel"
+    },
+    {
+      "id": "MUN-1711",
+      "name": "Mont-Tramelan"
+    },
+    {
+      "id": "MUN-1374",
+      "name": "Moosseedorf"
+    },
+    {
+      "id": "MUN-487",
+      "name": "Moutier"
+    },
+    {
+      "id": "MUN-1193",
+      "name": "Muri bei Bern"
+    },
+    {
+      "id": "MUN-2094",
+      "name": "Mörigen"
+    },
+    {
+      "id": "MUN-346",
+      "name": "Mühleberg"
+    },
+    {
+      "id": "MUN-1070",
+      "name": "Münchenbuchsee"
+    },
+    {
+      "id": "MUN-2038",
+      "name": "Münchenwiler"
+    },
+    {
+      "id": "MUN-599",
+      "name": "Münsingen"
+    },
+    {
+      "id": "MUN-1606",
+      "name": "Müntschemier"
+    },
+    {
+      "id": "MUN-444",
+      "name": "Neuenegg"
+    },
+    {
+      "id": "MUN-2190",
+      "name": "Nidau"
+    },
+    {
+      "id": "MUN-484",
+      "name": "Niederbipp"
+    },
+    {
+      "id": "MUN-1522",
+      "name": "Niederhünigen"
+    },
+    {
+      "id": "MUN-1233",
+      "name": "Niedermuhlern"
+    },
+    {
+      "id": "MUN-1741",
+      "name": "Niederried bei Interlaken"
+    },
+    {
+      "id": "MUN-1988",
+      "name": "Niederönz"
+    },
+    {
+      "id": "MUN-343",
+      "name": "Nods"
+    },
+    {
+      "id": "MUN-766",
+      "name": "Oberbalm"
+    },
+    {
+      "id": "MUN-1099",
+      "name": "Oberbipp"
+    },
+    {
+      "id": "MUN-830",
+      "name": "Oberburg"
+    },
+    {
+      "id": "MUN-574",
+      "name": "Oberdiessbach"
+    },
+    {
+      "id": "MUN-2004",
+      "name": "Oberhofen am Thunersee"
+    },
+    {
+      "id": "MUN-1422",
+      "name": "Oberhünigen"
+    },
+    {
+      "id": "MUN-1029",
+      "name": "Oberlangenegg"
+    },
+    {
+      "id": "MUN-475",
+      "name": "Oberried am Brienzersee"
+    },
+    {
+      "id": "MUN-909",
+      "name": "Oberthal"
+    },
+    {
+      "id": "MUN-1323",
+      "name": "Oberwil bei Büren"
+    },
+    {
+      "id": "MUN-202",
+      "name": "Oberwil im Simmental"
+    },
+    {
+      "id": "MUN-794",
+      "name": "Ochlenberg"
+    },
+    {
+      "id": "MUN-1785",
+      "name": "Oeschenbach"
+    },
+    {
+      "id": "MUN-1879",
+      "name": "Oppligen"
+    },
+    {
+      "id": "MUN-1770",
+      "name": "Orpund"
+    },
+    {
+      "id": "MUN-449",
+      "name": "Orvin"
+    },
+    {
+      "id": "MUN-1429",
+      "name": "Ostermundigen"
+    },
+    {
+      "id": "MUN-1092",
+      "name": "Perrefitte"
+    },
+    {
+      "id": "MUN-392",
+      "name": "Petit-Val"
+    },
+    {
+      "id": "MUN-1109",
+      "name": "Pieterlen"
+    },
+    {
+      "id": "MUN-354",
+      "name": "Plateau de Diesse"
+    },
+    {
+      "id": "MUN-966",
+      "name": "Pohlern"
+    },
+    {
+      "id": "MUN-2044",
+      "name": "Port"
+    },
+    {
+      "id": "MUN-398",
+      "name": "Péry-La Heutte"
+    },
+    {
+      "id": "MUN-653",
+      "name": "Radelfingen"
+    },
+    {
+      "id": "MUN-422",
+      "name": "Rapperswil (BE)"
+    },
+    {
+      "id": "MUN-1854",
+      "name": "Rebévelier"
+    },
+    {
+      "id": "MUN-1126",
+      "name": "Reconvilier"
+    },
+    {
+      "id": "MUN-049",
+      "name": "Reichenbach im Kandertal"
+    },
+    {
+      "id": "MUN-2119",
+      "name": "Reisiswil"
+    },
+    {
+      "id": "MUN-751",
+      "name": "Renan (BE)"
+    },
+    {
+      "id": "MUN-861",
+      "name": "Reutigen"
+    },
+    {
+      "id": "MUN-268",
+      "name": "Riggisberg"
+    },
+    {
+      "id": "MUN-1064",
+      "name": "Ringgenberg (BE)"
+    },
+    {
+      "id": "MUN-1035",
+      "name": "Roches (BE)"
+    },
+    {
+      "id": "MUN-1167",
+      "name": "Roggwil (BE)"
+    },
+    {
+      "id": "MUN-1754",
+      "name": "Rohrbach"
+    },
+    {
+      "id": "MUN-1365",
+      "name": "Rohrbachgraben"
+    },
+    {
+      "id": "MUN-1272",
+      "name": "Romont (BE)"
+    },
+    {
+      "id": "MUN-1296",
+      "name": "Rubigen"
+    },
+    {
+      "id": "MUN-2049",
+      "name": "Rumendingen"
+    },
+    {
+      "id": "MUN-1563",
+      "name": "Rumisberg"
+    },
+    {
+      "id": "MUN-251",
+      "name": "Röthenbach im Emmental"
+    },
+    {
+      "id": "MUN-554",
+      "name": "Rüderswil"
+    },
+    {
+      "id": "MUN-2003",
+      "name": "Rüdtligen-Alchenflüh"
+    },
+    {
+      "id": "MUN-289",
+      "name": "Rüeggisberg"
+    },
+    {
+      "id": "MUN-636",
+      "name": "Rüegsau"
+    },
+    {
+      "id": "MUN-143",
+      "name": "Rüschegg"
+    },
+    {
+      "id": "MUN-1357",
+      "name": "Rüti bei Büren"
+    },
+    {
+      "id": "MUN-2215",
+      "name": "Rüti bei Lyssach"
+    },
+    {
+      "id": "MUN-1767",
+      "name": "Rütschelen"
+    },
+    {
+      "id": "MUN-053",
+      "name": "Saanen"
+    },
+    {
+      "id": "MUN-1480",
+      "name": "Safnern"
+    },
+    {
+      "id": "MUN-694",
+      "name": "Saicourt"
+    },
+    {
+      "id": "MUN-462",
+      "name": "Saint-Imier"
+    },
+    {
+      "id": "MUN-712",
+      "name": "Sauge"
+    },
+    {
+      "id": "MUN-1716",
+      "name": "Saules (BE)"
+    },
+    {
+      "id": "MUN-493",
+      "name": "Saxeten"
+    },
+    {
+      "id": "MUN-253",
+      "name": "Schangnau"
+    },
+    {
+      "id": "MUN-295",
+      "name": "Schattenhalb"
+    },
+    {
+      "id": "MUN-1488",
+      "name": "Schelten"
+    },
+    {
+      "id": "MUN-2103",
+      "name": "Scheuren"
+    },
+    {
+      "id": "MUN-1742",
+      "name": "Schwadernau"
+    },
+    {
+      "id": "MUN-1263",
+      "name": "Schwanden bei Brienz"
+    },
+    {
+      "id": "MUN-205",
+      "name": "Schwarzenburg"
+    },
+    {
+      "id": "MUN-1815",
+      "name": "Schwarzhäusern"
+    },
+    {
+      "id": "MUN-482",
+      "name": "Schüpfen"
+    },
+    {
+      "id": "MUN-563",
+      "name": "Seeberg"
+    },
+    {
+      "id": "MUN-463",
+      "name": "Seedorf (BE)"
+    },
+    {
+      "id": "MUN-1102",
+      "name": "Seehof"
+    },
+    {
+      "id": "MUN-1790",
+      "name": "Seftigen"
+    },
+    {
+      "id": "MUN-432",
+      "name": "Signau"
+    },
+    {
+      "id": "MUN-150",
+      "name": "Sigriswil"
+    },
+    {
+      "id": "MUN-1503",
+      "name": "Siselen"
+    },
+    {
+      "id": "MUN-640",
+      "name": "Sonceboz-Sombeval"
+    },
+    {
+      "id": "MUN-399",
+      "name": "Sonvilier"
+    },
+    {
+      "id": "MUN-1298",
+      "name": "Sorvilier"
+    },
+    {
+      "id": "MUN-565",
+      "name": "Spiez"
+    },
+    {
+      "id": "MUN-128",
+      "name": "St. Stephan"
+    },
+    {
+      "id": "MUN-647",
+      "name": "Steffisburg"
+    },
+    {
+      "id": "MUN-1862",
+      "name": "Stettlen"
+    },
+    {
+      "id": "MUN-673",
+      "name": "Stocken-Höfen"
+    },
+    {
+      "id": "MUN-2002",
+      "name": "Studen (BE)"
+    },
+    {
+      "id": "MUN-133",
+      "name": "Sumiswald"
+    },
+    {
+      "id": "MUN-1848",
+      "name": "Sutz-Lattrigen"
+    },
+    {
+      "id": "MUN-649",
+      "name": "Tavannes"
+    },
+    {
+      "id": "MUN-1661",
+      "name": "Teuffenthal (BE)"
+    },
+    {
+      "id": "MUN-1208",
+      "name": "Thierachern"
+    },
+    {
+      "id": "MUN-450",
+      "name": "Thun"
+    },
+    {
+      "id": "MUN-985",
+      "name": "Thunstetten"
+    },
+    {
+      "id": "MUN-1431",
+      "name": "Thurnen"
+    },
+    {
+      "id": "MUN-1657",
+      "name": "Thörigen"
+    },
+    {
+      "id": "MUN-1604",
+      "name": "Toffen"
+    },
+    {
+      "id": "MUN-592",
+      "name": "Trachselwald"
+    },
+    {
+      "id": "MUN-366",
+      "name": "Tramelan"
+    },
+    {
+      "id": "MUN-1629",
+      "name": "Treiten"
+    },
+    {
+      "id": "MUN-122",
+      "name": "Trub"
+    },
+    {
+      "id": "MUN-605",
+      "name": "Trubschachen"
+    },
+    {
+      "id": "MUN-1899",
+      "name": "Tschugg"
+    },
+    {
+      "id": "MUN-869",
+      "name": "Twann-Tüscherz"
+    },
+    {
+      "id": "MUN-1704",
+      "name": "Täuffelen"
+    },
+    {
+      "id": "MUN-1682",
+      "name": "Uebeschi"
+    },
+    {
+      "id": "MUN-944",
+      "name": "Uetendorf"
+    },
+    {
+      "id": "MUN-1312",
+      "name": "Unterlangenegg"
+    },
+    {
+      "id": "MUN-687",
+      "name": "Unterseen"
+    },
+    {
+      "id": "MUN-1027",
+      "name": "Ursenbach"
+    },
+    {
+      "id": "MUN-1239",
+      "name": "Urtenen-Schönbühl"
+    },
+    {
+      "id": "MUN-1811",
+      "name": "Uttigen"
+    },
+    {
+      "id": "MUN-558",
+      "name": "Utzenstorf"
+    },
+    {
+      "id": "MUN-509",
+      "name": "Valbirse"
+    },
+    {
+      "id": "MUN-368",
+      "name": "Vechigen"
+    },
+    {
+      "id": "MUN-582",
+      "name": "Villeret"
+    },
+    {
+      "id": "MUN-1655",
+      "name": "Vinelz"
+    },
+    {
+      "id": "MUN-1860",
+      "name": "Wachseldorn"
+    },
+    {
+      "id": "MUN-718",
+      "name": "Wald (BE)"
+    },
+    {
+      "id": "MUN-553",
+      "name": "Walkringen"
+    },
+    {
+      "id": "MUN-2196",
+      "name": "Walliswil bei Niederbipp"
+    },
+    {
+      "id": "MUN-1933",
+      "name": "Walliswil bei Wangen"
+    },
+    {
+      "id": "MUN-1280",
+      "name": "Walperswil"
+    },
+    {
+      "id": "MUN-1159",
+      "name": "Walterswil (BE)"
+    },
+    {
+      "id": "MUN-1555",
+      "name": "Wangen an der Aare"
+    },
+    {
+      "id": "MUN-1958",
+      "name": "Wangenried"
+    },
+    {
+      "id": "MUN-658",
+      "name": "Wattenwil"
+    },
+    {
+      "id": "MUN-1261",
+      "name": "Wengi"
+    },
+    {
+      "id": "MUN-834",
+      "name": "Wichtrach"
+    },
+    {
+      "id": "MUN-1213",
+      "name": "Wiedlisbach"
+    },
+    {
+      "id": "MUN-2198",
+      "name": "Wiggiswil"
+    },
+    {
+      "id": "MUN-727",
+      "name": "Wilderswil"
+    },
+    {
+      "id": "MUN-1805",
+      "name": "Wiler bei Utzenstorf"
+    },
+    {
+      "id": "MUN-1740",
+      "name": "Wileroltigen"
+    },
+    {
+      "id": "MUN-2090",
+      "name": "Willadingen"
+    },
+    {
+      "id": "MUN-425",
+      "name": "Wimmis"
+    },
+    {
+      "id": "MUN-255",
+      "name": "Wohlen bei Bern"
+    },
+    {
+      "id": "MUN-459",
+      "name": "Worb"
+    },
+    {
+      "id": "MUN-2000",
+      "name": "Worben"
+    },
+    {
+      "id": "MUN-1572",
+      "name": "Wynau"
+    },
+    {
+      "id": "MUN-330",
+      "name": "Wynigen"
+    },
+    {
+      "id": "MUN-826",
+      "name": "Wyssachen"
+    },
+    {
+      "id": "MUN-2133",
+      "name": "Zielebach"
+    },
+    {
+      "id": "MUN-1526",
+      "name": "Zollikofen"
+    },
+    {
+      "id": "MUN-1866",
+      "name": "Zuzwil (BE)"
+    },
+    {
+      "id": "MUN-106",
+      "name": "Zweisimmen"
+    },
+    {
+      "id": "MUN-2043",
+      "name": "Zwieselberg"
+    },
+    {
+      "id": "MUN-1525",
+      "name": "Zäziwil"
+    }
+  ],
+  "Geneve": [
+    {
+      "id": "MUN-1956",
+      "name": "Aire-la-Ville"
+    },
+    {
+      "id": "MUN-1076",
+      "name": "Anières"
+    },
+    {
+      "id": "MUN-1647",
+      "name": "Avully"
+    },
+    {
+      "id": "MUN-1560",
+      "name": "Avusy"
+    },
+    {
+      "id": "MUN-1585",
+      "name": "Bardonnex"
+    },
+    {
+      "id": "MUN-1377",
+      "name": "Bellevue"
+    },
+    {
+      "id": "MUN-737",
+      "name": "Bernex"
+    },
+    {
+      "id": "MUN-2010",
+      "name": "Carouge (GE)"
+    },
+    {
+      "id": "MUN-1694",
+      "name": "Cartigny"
+    },
+    {
+      "id": "MUN-1527",
+      "name": "Chancy"
+    },
+    {
+      "id": "MUN-1787",
+      "name": "Choulex"
+    },
+    {
+      "id": "MUN-1744",
+      "name": "Chêne-Bougeries"
+    },
+    {
+      "id": "MUN-2216",
+      "name": "Chêne-Bourg"
+    },
+    {
+      "id": "MUN-1299",
+      "name": "Collex-Bossy"
+    },
+    {
+      "id": "MUN-900",
+      "name": "Collonge-Bellerive"
+    },
+    {
+      "id": "MUN-1218",
+      "name": "Cologny"
+    },
+    {
+      "id": "MUN-1992",
+      "name": "Confignon"
+    },
+    {
+      "id": "MUN-1713",
+      "name": "Corsier (GE)"
+    },
+    {
+      "id": "MUN-1147",
+      "name": "Céligny"
+    },
+    {
+      "id": "MUN-1087",
+      "name": "Dardagny"
+    },
+    {
+      "id": "MUN-1545",
+      "name": "Genthod"
+    },
+    {
+      "id": "MUN-521",
+      "name": "Genève"
+    },
+    {
+      "id": "MUN-1900",
+      "name": "Gy"
+    },
+    {
+      "id": "MUN-1598",
+      "name": "Hermance"
+    },
+    {
+      "id": "MUN-854",
+      "name": "Jussy"
+    },
+    {
+      "id": "MUN-1803",
+      "name": "Laconnex"
+    },
+    {
+      "id": "MUN-1621",
+      "name": "Lancy"
+    },
+    {
+      "id": "MUN-1697",
+      "name": "Le Grand-Saconnex"
+    },
+    {
+      "id": "MUN-1281",
+      "name": "Meinier"
+    },
+    {
+      "id": "MUN-961",
+      "name": "Meyrin"
+    },
+    {
+      "id": "MUN-1986",
+      "name": "Onex"
+    },
+    {
+      "id": "MUN-2029",
+      "name": "Perly-Certoux"
+    },
+    {
+      "id": "MUN-1444",
+      "name": "Plan-les-Ouates"
+    },
+    {
+      "id": "MUN-1392",
+      "name": "Pregny-Chambésy"
+    },
+    {
+      "id": "MUN-1635",
+      "name": "Presinge"
+    },
+    {
+      "id": "MUN-2012",
+      "name": "Puplinge"
+    },
+    {
+      "id": "MUN-1595",
+      "name": "Russin"
+    },
+    {
+      "id": "MUN-503",
+      "name": "Satigny"
+    },
+    {
+      "id": "MUN-1953",
+      "name": "Soral"
+    },
+    {
+      "id": "MUN-1806",
+      "name": "Thônex"
+    },
+    {
+      "id": "MUN-1873",
+      "name": "Troinex"
+    },
+    {
+      "id": "MUN-1681",
+      "name": "Vandoeuvres"
+    },
+    {
+      "id": "MUN-1185",
+      "name": "Vernier"
+    },
+    {
+      "id": "MUN-630",
+      "name": "Versoix"
+    },
+    {
+      "id": "MUN-1359",
+      "name": "Veyrier"
+    }
+  ],
+  "Grisons": [
+    {
+      "id": "MUN-074",
+      "name": "Albula/Alvra"
+    },
+    {
+      "id": "MUN-200",
+      "name": "Andeer"
+    },
+    {
+      "id": "MUN-031",
+      "name": "Arosa"
+    },
+    {
+      "id": "MUN-075",
+      "name": "Avers"
+    },
+    {
+      "id": "MUN-019",
+      "name": "Bergün Filisur"
+    },
+    {
+      "id": "MUN-409",
+      "name": "Bever"
+    },
+    {
+      "id": "MUN-664",
+      "name": "Bonaduz"
+    },
+    {
+      "id": "MUN-008",
+      "name": "Bregaglia"
+    },
+    {
+      "id": "MUN-071",
+      "name": "Breil/Brigels"
+    },
+    {
+      "id": "MUN-201",
+      "name": "Brusio"
+    },
+    {
+      "id": "MUN-871",
+      "name": "Buseno"
+    },
+    {
+      "id": "MUN-244",
+      "name": "Calanca"
+    },
+    {
+      "id": "MUN-639",
+      "name": "Cama"
+    },
+    {
+      "id": "MUN-1773",
+      "name": "Castaneda"
+    },
+    {
+      "id": "MUN-300",
+      "name": "Cazis"
+    },
+    {
+      "id": "MUN-389",
+      "name": "Celerina/Schlarigna"
+    },
+    {
+      "id": "MUN-158",
+      "name": "Chur"
+    },
+    {
+      "id": "MUN-182",
+      "name": "Churwalden"
+    },
+    {
+      "id": "MUN-520",
+      "name": "Conters im Prättigau"
+    },
+    {
+      "id": "MUN-007",
+      "name": "Davos"
+    },
+    {
+      "id": "MUN-081",
+      "name": "Disentis/Mustér"
+    },
+    {
+      "id": "MUN-384",
+      "name": "Domat/Ems"
+    },
+    {
+      "id": "MUN-203",
+      "name": "Domleschg"
+    },
+    {
+      "id": "MUN-424",
+      "name": "Falera"
+    },
+    {
+      "id": "MUN-715",
+      "name": "Felsberg"
+    },
+    {
+      "id": "MUN-103",
+      "name": "Ferrera"
+    },
+    {
+      "id": "MUN-357",
+      "name": "Fideris"
+    },
+    {
+      "id": "MUN-1699",
+      "name": "Flerden"
+    },
+    {
+      "id": "MUN-174",
+      "name": "Flims"
+    },
+    {
+      "id": "MUN-682",
+      "name": "Fläsch"
+    },
+    {
+      "id": "MUN-275",
+      "name": "Furna"
+    },
+    {
+      "id": "MUN-2210",
+      "name": "Fürstenau"
+    },
+    {
+      "id": "MUN-323",
+      "name": "Grono"
+    },
+    {
+      "id": "MUN-210",
+      "name": "Grüsch"
+    },
+    {
+      "id": "MUN-044",
+      "name": "Ilanz/Glion"
+    },
+    {
+      "id": "MUN-349",
+      "name": "Jenaz"
+    },
+    {
+      "id": "MUN-910",
+      "name": "Jenins"
+    },
+    {
+      "id": "MUN-012",
+      "name": "Klosters"
+    },
+    {
+      "id": "MUN-1135",
+      "name": "Küblis"
+    },
+    {
+      "id": "MUN-119",
+      "name": "La Punt Chamues-ch"
+    },
+    {
+      "id": "MUN-294",
+      "name": "Laax"
+    },
+    {
+      "id": "MUN-892",
+      "name": "Landquart"
+    },
+    {
+      "id": "MUN-445",
+      "name": "Lantsch/Lenz"
+    },
+    {
+      "id": "MUN-172",
+      "name": "Lostallo"
+    },
+    {
+      "id": "MUN-025",
+      "name": "Lumnezia"
+    },
+    {
+      "id": "MUN-094",
+      "name": "Luzein"
+    },
+    {
+      "id": "MUN-1103",
+      "name": "Madulain"
+    },
+    {
+      "id": "MUN-285",
+      "name": "Maienfeld"
+    },
+    {
+      "id": "MUN-846",
+      "name": "Malans"
+    },
+    {
+      "id": "MUN-1731",
+      "name": "Masein"
+    },
+    {
+      "id": "MUN-041",
+      "name": "Medel (Lucmagn)"
+    },
+    {
+      "id": "MUN-027",
+      "name": "Mesocco"
+    },
+    {
+      "id": "MUN-160",
+      "name": "Muntogna da Schons"
+    },
+    {
+      "id": "MUN-110",
+      "name": "Obersaxen Mundaun"
+    },
+    {
+      "id": "MUN-054",
+      "name": "Pontresina"
+    },
+    {
+      "id": "MUN-018",
+      "name": "Poschiavo"
+    },
+    {
+      "id": "MUN-040",
+      "name": "Rheinwald"
+    },
+    {
+      "id": "MUN-717",
+      "name": "Rhäzüns"
+    },
+    {
+      "id": "MUN-2118",
+      "name": "Rongellen"
+    },
+    {
+      "id": "MUN-136",
+      "name": "Rossa"
+    },
+    {
+      "id": "MUN-1925",
+      "name": "Rothenbrunnen"
+    },
+    {
+      "id": "MUN-239",
+      "name": "Roveredo (GR)"
+    },
+    {
+      "id": "MUN-039",
+      "name": "S-chanf"
+    },
+    {
+      "id": "MUN-033",
+      "name": "Safiental"
+    },
+    {
+      "id": "MUN-1297",
+      "name": "Sagogn"
+    },
+    {
+      "id": "MUN-118",
+      "name": "Samedan"
+    },
+    {
+      "id": "MUN-146",
+      "name": "Samnaun"
+    },
+    {
+      "id": "MUN-496",
+      "name": "San Vittore"
+    },
+    {
+      "id": "MUN-1016",
+      "name": "Santa Maria in Calanca"
+    },
+    {
+      "id": "MUN-669",
+      "name": "Scharans"
+    },
+    {
+      "id": "MUN-126",
+      "name": "Schiers"
+    },
+    {
+      "id": "MUN-1617",
+      "name": "Schluein"
+    },
+    {
+      "id": "MUN-855",
+      "name": "Schmitten (GR)"
+    },
+    {
+      "id": "MUN-001",
+      "name": "Scuol"
+    },
+    {
+      "id": "MUN-178",
+      "name": "Seewis im Prättigau"
+    },
+    {
+      "id": "MUN-1019",
+      "name": "Sils im Domleschg"
+    },
+    {
+      "id": "MUN-117",
+      "name": "Sils im Engadin/Segl"
+    },
+    {
+      "id": "MUN-206",
+      "name": "Silvaplana"
+    },
+    {
+      "id": "MUN-199",
+      "name": "Soazza"
+    },
+    {
+      "id": "MUN-325",
+      "name": "St. Moritz"
+    },
+    {
+      "id": "MUN-266",
+      "name": "Sufers"
+    },
+    {
+      "id": "MUN-067",
+      "name": "Sumvitg"
+    },
+    {
+      "id": "MUN-004",
+      "name": "Surses"
+    },
+    {
+      "id": "MUN-225",
+      "name": "Tamins"
+    },
+    {
+      "id": "MUN-960",
+      "name": "Thusis"
+    },
+    {
+      "id": "MUN-211",
+      "name": "Trimmis"
+    },
+    {
+      "id": "MUN-193",
+      "name": "Trin"
+    },
+    {
+      "id": "MUN-165",
+      "name": "Trun"
+    },
+    {
+      "id": "MUN-372",
+      "name": "Tschappina"
+    },
+    {
+      "id": "MUN-333",
+      "name": "Tschiertschen-Praden"
+    },
+    {
+      "id": "MUN-043",
+      "name": "Tujetsch"
+    },
+    {
+      "id": "MUN-334",
+      "name": "Untervaz"
+    },
+    {
+      "id": "MUN-1707",
+      "name": "Urmein"
+    },
+    {
+      "id": "MUN-017",
+      "name": "Val Müstair"
+    },
+    {
+      "id": "MUN-021",
+      "name": "Vals"
+    },
+    {
+      "id": "MUN-035",
+      "name": "Valsot"
+    },
+    {
+      "id": "MUN-213",
+      "name": "Vaz/Obervaz"
+    },
+    {
+      "id": "MUN-003",
+      "name": "Zernez"
+    },
+    {
+      "id": "MUN-376",
+      "name": "Zillis-Reischen"
+    },
+    {
+      "id": "MUN-879",
+      "name": "Zizers"
+    },
+    {
+      "id": "MUN-144",
+      "name": "Zuoz"
+    }
+  ],
+  "Lucerne": [
+    {
+      "id": "MUN-1275",
+      "name": "Adligenswil"
+    },
+    {
+      "id": "MUN-1453",
+      "name": "Aesch (LU)"
+    },
+    {
+      "id": "MUN-1855",
+      "name": "Alberswil"
+    },
+    {
+      "id": "MUN-1318",
+      "name": "Altbüron"
+    },
+    {
+      "id": "MUN-684",
+      "name": "Altishofen"
+    },
+    {
+      "id": "MUN-1077",
+      "name": "Ballwil"
+    },
+    {
+      "id": "MUN-214",
+      "name": "Beromünster"
+    },
+    {
+      "id": "MUN-1613",
+      "name": "Buchrain"
+    },
+    {
+      "id": "MUN-566",
+      "name": "Buttisholz"
+    },
+    {
+      "id": "MUN-1535",
+      "name": "Büron"
+    },
+    {
+      "id": "MUN-395",
+      "name": "Dagmersellen"
+    },
+    {
+      "id": "MUN-1991",
+      "name": "Dierikon"
+    },
+    {
+      "id": "MUN-1286",
+      "name": "Doppleschwand"
+    },
+    {
+      "id": "MUN-984",
+      "name": "Ebikon"
+    },
+    {
+      "id": "MUN-1734",
+      "name": "Egolzwil"
+    },
+    {
+      "id": "MUN-1023",
+      "name": "Eich"
+    },
+    {
+      "id": "MUN-471",
+      "name": "Emmen"
+    },
+    {
+      "id": "MUN-147",
+      "name": "Entlebuch"
+    },
+    {
+      "id": "MUN-1469",
+      "name": "Ermensee"
+    },
+    {
+      "id": "MUN-725",
+      "name": "Eschenbach (LU)"
+    },
+    {
+      "id": "MUN-063",
+      "name": "Escholzmatt-Marbach"
+    },
+    {
+      "id": "MUN-754",
+      "name": "Ettiswil"
+    },
+    {
+      "id": "MUN-1141",
+      "name": "Fischbach"
+    },
+    {
+      "id": "MUN-061",
+      "name": "Flühli"
+    },
+    {
+      "id": "MUN-1362",
+      "name": "Geuensee"
+    },
+    {
+      "id": "MUN-2233",
+      "name": "Gisikon"
+    },
+    {
+      "id": "MUN-1551",
+      "name": "Greppen"
+    },
+    {
+      "id": "MUN-1343",
+      "name": "Grossdietwil"
+    },
+    {
+      "id": "MUN-486",
+      "name": "Grosswangen"
+    },
+    {
+      "id": "MUN-228",
+      "name": "Hasle (LU)"
+    },
+    {
+      "id": "MUN-298",
+      "name": "Hergiswil bei Willisau"
+    },
+    {
+      "id": "MUN-1267",
+      "name": "Hildisrieden"
+    },
+    {
+      "id": "MUN-299",
+      "name": "Hitzkirch"
+    },
+    {
+      "id": "MUN-929",
+      "name": "Hochdorf"
+    },
+    {
+      "id": "MUN-401",
+      "name": "Hohenrain"
+    },
+    {
+      "id": "MUN-2220",
+      "name": "Honau"
+    },
+    {
+      "id": "MUN-468",
+      "name": "Horw"
+    },
+    {
+      "id": "MUN-925",
+      "name": "Inwil"
+    },
+    {
+      "id": "MUN-975",
+      "name": "Knutwil"
+    },
+    {
+      "id": "MUN-339",
+      "name": "Kriens"
+    },
+    {
+      "id": "MUN-243",
+      "name": "Luthern"
+    },
+    {
+      "id": "MUN-302",
+      "name": "Luzern"
+    },
+    {
+      "id": "MUN-327",
+      "name": "Malters"
+    },
+    {
+      "id": "MUN-1237",
+      "name": "Mauensee"
+    },
+    {
+      "id": "MUN-692",
+      "name": "Meggen"
+    },
+    {
+      "id": "MUN-1022",
+      "name": "Meierskappel"
+    },
+    {
+      "id": "MUN-309",
+      "name": "Menznau"
+    },
+    {
+      "id": "MUN-1826",
+      "name": "Nebikon"
+    },
+    {
+      "id": "MUN-345",
+      "name": "Neuenkirch"
+    },
+    {
+      "id": "MUN-645",
+      "name": "Nottwil"
+    },
+    {
+      "id": "MUN-887",
+      "name": "Oberkirch"
+    },
+    {
+      "id": "MUN-537",
+      "name": "Pfaffnau"
+    },
+    {
+      "id": "MUN-1002",
+      "name": "Rain"
+    },
+    {
+      "id": "MUN-340",
+      "name": "Reiden"
+    },
+    {
+      "id": "MUN-817",
+      "name": "Rickenbach (LU)"
+    },
+    {
+      "id": "MUN-1401",
+      "name": "Roggliswil"
+    },
+    {
+      "id": "MUN-247",
+      "name": "Romoos"
+    },
+    {
+      "id": "MUN-1083",
+      "name": "Root"
+    },
+    {
+      "id": "MUN-616",
+      "name": "Rothenburg"
+    },
+    {
+      "id": "MUN-204",
+      "name": "Ruswil"
+    },
+    {
+      "id": "MUN-549",
+      "name": "Römerswil"
+    },
+    {
+      "id": "MUN-1181",
+      "name": "Schenkon"
+    },
+    {
+      "id": "MUN-1242",
+      "name": "Schlierbach"
+    },
+    {
+      "id": "MUN-764",
+      "name": "Schongau"
+    },
+    {
+      "id": "MUN-234",
+      "name": "Schwarzenberg"
+    },
+    {
+      "id": "MUN-624",
+      "name": "Schötz"
+    },
+    {
+      "id": "MUN-240",
+      "name": "Schüpfheim"
+    },
+    {
+      "id": "MUN-829",
+      "name": "Sempach"
+    },
+    {
+      "id": "MUN-1412",
+      "name": "Sursee"
+    },
+    {
+      "id": "MUN-433",
+      "name": "Triengen"
+    },
+    {
+      "id": "MUN-1395",
+      "name": "Udligenswil"
+    },
+    {
+      "id": "MUN-783",
+      "name": "Ufhusen"
+    },
+    {
+      "id": "MUN-822",
+      "name": "Vitznau"
+    },
+    {
+      "id": "MUN-1950",
+      "name": "Wauwil"
+    },
+    {
+      "id": "MUN-358",
+      "name": "Weggis"
+    },
+    {
+      "id": "MUN-598",
+      "name": "Werthenstein"
+    },
+    {
+      "id": "MUN-1119",
+      "name": "Wikon"
+    },
+    {
+      "id": "MUN-192",
+      "name": "Willisau"
+    },
+    {
+      "id": "MUN-667",
+      "name": "Wolhusen"
+    },
+    {
+      "id": "MUN-693",
+      "name": "Zell (LU)"
+    }
+  ],
+  "Neuchatel": [
+    {
+      "id": "MUN-564",
+      "name": "Boudry"
+    },
+    {
+      "id": "MUN-586",
+      "name": "Brot-Plamboz"
+    },
+    {
+      "id": "MUN-1630",
+      "name": "Cornaux"
+    },
+    {
+      "id": "MUN-1825",
+      "name": "Cortaillod"
+    },
+    {
+      "id": "MUN-1091",
+      "name": "Cressier (NE)"
+    },
+    {
+      "id": "MUN-990",
+      "name": "Enges"
+    },
+    {
+      "id": "MUN-2096",
+      "name": "Hauterive (NE)"
+    },
+    {
+      "id": "MUN-218",
+      "name": "La Brévine"
+    },
+    {
+      "id": "MUN-149",
+      "name": "La Chaux-de-Fonds"
+    },
+    {
+      "id": "MUN-550",
+      "name": "La Chaux-du-Milieu"
+    },
+    {
+      "id": "MUN-743",
+      "name": "La Côte-aux-Fées"
+    },
+    {
+      "id": "MUN-215",
+      "name": "La Grande Béroche"
+    },
+    {
+      "id": "MUN-353",
+      "name": "La Sagne"
+    },
+    {
+      "id": "MUN-1532",
+      "name": "La Tène"
+    },
+    {
+      "id": "MUN-603",
+      "name": "Le Cerneux-Péquignot"
+    },
+    {
+      "id": "MUN-927",
+      "name": "Le Landeron"
+    },
+    {
+      "id": "MUN-265",
+      "name": "Le Locle"
+    },
+    {
+      "id": "MUN-824",
+      "name": "Les Planchettes"
+    },
+    {
+      "id": "MUN-527",
+      "name": "Les Ponts-de-Martel"
+    },
+    {
+      "id": "MUN-322",
+      "name": "Les Verrières"
+    },
+    {
+      "id": "MUN-758",
+      "name": "Lignières"
+    },
+    {
+      "id": "MUN-1067",
+      "name": "Milvignes"
+    },
+    {
+      "id": "MUN-313",
+      "name": "Neuchâtel"
+    },
+    {
+      "id": "MUN-350",
+      "name": "Rochefort"
+    },
+    {
+      "id": "MUN-1055",
+      "name": "Saint-Blaise"
+    },
+    {
+      "id": "MUN-051",
+      "name": "Val-de-Ruz"
+    },
+    {
+      "id": "MUN-050",
+      "name": "Val-de-Travers"
+    }
+  ],
+  "Valais": [
+    {
+      "id": "MUN-1191",
+      "name": "Agarn"
+    },
+    {
+      "id": "MUN-610",
+      "name": "Albinen"
+    },
+    {
+      "id": "MUN-009",
+      "name": "Anniviers"
+    },
+    {
+      "id": "MUN-498",
+      "name": "Arbaz"
+    },
+    {
+      "id": "MUN-469",
+      "name": "Ardon"
+    },
+    {
+      "id": "MUN-638",
+      "name": "Ausserberg"
+    },
+    {
+      "id": "MUN-151",
+      "name": "Ayent"
+    },
+    {
+      "id": "MUN-320",
+      "name": "Baltschieder"
+    },
+    {
+      "id": "MUN-690",
+      "name": "Bellwald"
+    },
+    {
+      "id": "MUN-324",
+      "name": "Bettmeralp"
+    },
+    {
+      "id": "MUN-115",
+      "name": "Binn"
+    },
+    {
+      "id": "MUN-1450",
+      "name": "Bister"
+    },
+    {
+      "id": "MUN-1455",
+      "name": "Bitsch"
+    },
+    {
+      "id": "MUN-082",
+      "name": "Blatten"
+    },
+    {
+      "id": "MUN-083",
+      "name": "Bourg-Saint-Pierre"
+    },
+    {
+      "id": "MUN-732",
+      "name": "Bovernier"
+    },
+    {
+      "id": "MUN-245",
+      "name": "Brig-Glis"
+    },
+    {
+      "id": "MUN-711",
+      "name": "Bürchen"
+    },
+    {
+      "id": "MUN-379",
+      "name": "Chalais"
+    },
+    {
+      "id": "MUN-284",
+      "name": "Chamoson"
+    },
+    {
+      "id": "MUN-238",
+      "name": "Champéry"
+    },
+    {
+      "id": "MUN-2125",
+      "name": "Chippis"
+    },
+    {
+      "id": "MUN-314",
+      "name": "Collombey-Muraz"
+    },
+    {
+      "id": "MUN-785",
+      "name": "Collonges"
+    },
+    {
+      "id": "MUN-092",
+      "name": "Conthey"
+    },
+    {
+      "id": "MUN-131",
+      "name": "Crans-Montana"
+    },
+    {
+      "id": "MUN-755",
+      "name": "Dorénaz"
+    },
+    {
+      "id": "MUN-1414",
+      "name": "Eggerberg"
+    },
+    {
+      "id": "MUN-680",
+      "name": "Eischoll"
+    },
+    {
+      "id": "MUN-241",
+      "name": "Eisten"
+    },
+    {
+      "id": "MUN-716",
+      "name": "Embd"
+    },
+    {
+      "id": "MUN-316",
+      "name": "Ergisch"
+    },
+    {
+      "id": "MUN-262",
+      "name": "Ernen"
+    },
+    {
+      "id": "MUN-186",
+      "name": "Evionnaz"
+    },
+    {
+      "id": "MUN-014",
+      "name": "Evolène"
+    },
+    {
+      "id": "MUN-332",
+      "name": "Ferden"
+    },
+    {
+      "id": "MUN-877",
+      "name": "Fiesch"
+    },
+    {
+      "id": "MUN-022",
+      "name": "Fieschertal"
+    },
+    {
+      "id": "MUN-416",
+      "name": "Finhaut"
+    },
+    {
+      "id": "MUN-242",
+      "name": "Fully"
+    },
+    {
+      "id": "MUN-411",
+      "name": "Gampel-Bratsch"
+    },
+    {
+      "id": "MUN-047",
+      "name": "Goms"
+    },
+    {
+      "id": "MUN-138",
+      "name": "Grengiols"
+    },
+    {
+      "id": "MUN-1676",
+      "name": "Grimisuat"
+    },
+    {
+      "id": "MUN-672",
+      "name": "Grächen"
+    },
+    {
+      "id": "MUN-466",
+      "name": "Grône"
+    },
+    {
+      "id": "MUN-918",
+      "name": "Guttet-Feschel"
+    },
+    {
+      "id": "MUN-062",
+      "name": "Hérémence"
+    },
+    {
+      "id": "MUN-367",
+      "name": "Icogne"
+    },
+    {
+      "id": "MUN-980",
+      "name": "Inden"
+    },
+    {
+      "id": "MUN-626",
+      "name": "Isérables"
+    },
+    {
+      "id": "MUN-827",
+      "name": "Kippel"
+    },
+    {
+      "id": "MUN-2214",
+      "name": "Lalden"
+    },
+    {
+      "id": "MUN-1523",
+      "name": "Lax"
+    },
+    {
+      "id": "MUN-688",
+      "name": "Lens"
+    },
+    {
+      "id": "MUN-153",
+      "name": "Leuk"
+    },
+    {
+      "id": "MUN-112",
+      "name": "Leukerbad"
+    },
+    {
+      "id": "MUN-341",
+      "name": "Leytron"
+    },
+    {
+      "id": "MUN-140",
+      "name": "Liddes"
+    },
+    {
+      "id": "MUN-282",
+      "name": "Martigny"
+    },
+    {
+      "id": "MUN-246",
+      "name": "Martigny-Combe"
+    },
+    {
+      "id": "MUN-1334",
+      "name": "Massongex"
+    },
+    {
+      "id": "MUN-208",
+      "name": "Mont-Noble"
+    },
+    {
+      "id": "MUN-477",
+      "name": "Monthey"
+    },
+    {
+      "id": "MUN-1094",
+      "name": "Mörel-Filet"
+    },
+    {
+      "id": "MUN-036",
+      "name": "Naters"
+    },
+    {
+      "id": "MUN-090",
+      "name": "Nendaz"
+    },
+    {
+      "id": "MUN-542",
+      "name": "Niedergesteln"
+    },
+    {
+      "id": "MUN-1358",
+      "name": "Noble-Contrée"
+    },
+    {
+      "id": "MUN-176",
+      "name": "Oberems"
+    },
+    {
+      "id": "MUN-030",
+      "name": "Obergoms"
+    },
+    {
+      "id": "MUN-026",
+      "name": "Orsières"
+    },
+    {
+      "id": "MUN-634",
+      "name": "Port-Valais"
+    },
+    {
+      "id": "MUN-157",
+      "name": "Randa"
+    },
+    {
+      "id": "MUN-308",
+      "name": "Raron"
+    },
+    {
+      "id": "MUN-393",
+      "name": "Riddes"
+    },
+    {
+      "id": "MUN-191",
+      "name": "Ried-Brig"
+    },
+    {
+      "id": "MUN-501",
+      "name": "Riederalp"
+    },
+    {
+      "id": "MUN-059",
+      "name": "Saas-Almagell"
+    },
+    {
+      "id": "MUN-312",
+      "name": "Saas-Balen"
+    },
+    {
+      "id": "MUN-229",
+      "name": "Saas-Fee"
+    },
+    {
+      "id": "MUN-369",
+      "name": "Saas-Grund"
+    },
+    {
+      "id": "MUN-1034",
+      "name": "Saillon"
+    },
+    {
+      "id": "MUN-381",
+      "name": "Saint-Gingolph"
+    },
+    {
+      "id": "MUN-1793",
+      "name": "Saint-Léonard"
+    },
+    {
+      "id": "MUN-249",
+      "name": "Saint-Martin (VS)"
+    },
+    {
+      "id": "MUN-643",
+      "name": "Saint-Maurice"
+    },
+    {
+      "id": "MUN-850",
+      "name": "Salgesch"
+    },
+    {
+      "id": "MUN-161",
+      "name": "Salvan"
+    },
+    {
+      "id": "MUN-109",
+      "name": "Savièse"
+    },
+    {
+      "id": "MUN-406",
+      "name": "Saxon"
+    },
+    {
+      "id": "MUN-538",
+      "name": "Sembrancher"
+    },
+    {
+      "id": "MUN-499",
+      "name": "Sierre"
+    },
+    {
+      "id": "MUN-080",
+      "name": "Simplon"
+    },
+    {
+      "id": "MUN-264",
+      "name": "Sion"
+    },
+    {
+      "id": "MUN-084",
+      "name": "St. Niklaus"
+    },
+    {
+      "id": "MUN-912",
+      "name": "Stalden (VS)"
+    },
+    {
+      "id": "MUN-671",
+      "name": "Staldenried"
+    },
+    {
+      "id": "MUN-685",
+      "name": "Steg-Hohtenn"
+    },
+    {
+      "id": "MUN-512",
+      "name": "Termen"
+    },
+    {
+      "id": "MUN-231",
+      "name": "Trient"
+    },
+    {
+      "id": "MUN-250",
+      "name": "Troistorrents"
+    },
+    {
+      "id": "MUN-269",
+      "name": "Turtmann-Unterems"
+    },
+    {
+      "id": "MUN-137",
+      "name": "Täsch"
+    },
+    {
+      "id": "MUN-545",
+      "name": "Törbel"
+    },
+    {
+      "id": "MUN-434",
+      "name": "Unterbäch"
+    },
+    {
+      "id": "MUN-005",
+      "name": "Val de Bagnes"
+    },
+    {
+      "id": "MUN-235",
+      "name": "Val-d'Illiez"
+    },
+    {
+      "id": "MUN-744",
+      "name": "Varen"
+    },
+    {
+      "id": "MUN-1485",
+      "name": "Vernayaz"
+    },
+    {
+      "id": "MUN-733",
+      "name": "Vex"
+    },
+    {
+      "id": "MUN-2227",
+      "name": "Veysonnaz"
+    },
+    {
+      "id": "MUN-460",
+      "name": "Vionnaz"
+    },
+    {
+      "id": "MUN-726",
+      "name": "Visp"
+    },
+    {
+      "id": "MUN-167",
+      "name": "Visperterminen"
+    },
+    {
+      "id": "MUN-271",
+      "name": "Vouvry"
+    },
+    {
+      "id": "MUN-668",
+      "name": "Vérossaz"
+    },
+    {
+      "id": "MUN-916",
+      "name": "Vétroz"
+    },
+    {
+      "id": "MUN-644",
+      "name": "Wiler (Lötschen)"
+    },
+    {
+      "id": "MUN-1202",
+      "name": "Zeneggen"
+    },
+    {
+      "id": "MUN-010",
+      "name": "Zermatt"
+    },
+    {
+      "id": "MUN-089",
+      "name": "Zwischbergen"
+    }
+  ]
+}

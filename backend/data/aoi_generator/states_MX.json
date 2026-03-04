@@ -1,0 +1,130 @@
+[
+  {
+    "id": 2610002,
+    "name": "Aguascalientes"
+  },
+  {
+    "id": 2589601,
+    "name": "Baja California"
+  },
+  {
+    "id": 2589611,
+    "name": "Baja California Sur"
+  },
+  {
+    "id": 2568834,
+    "name": "Campeche"
+  },
+  {
+    "id": 2556679,
+    "name": "Chiapas"
+  },
+  {
+    "id": 1673425,
+    "name": "Chihuahua"
+  },
+  {
+    "id": 1376330,
+    "name": "Ciudad de México"
+  },
+  {
+    "id": 1661524,
+    "name": "Coahuila"
+  },
+  {
+    "id": 2340912,
+    "name": "Colima"
+  },
+  {
+    "id": 2399740,
+    "name": "Durango"
+  },
+  {
+    "id": 1376489,
+    "name": "Estado de México"
+  },
+  {
+    "id": 2340909,
+    "name": "Guanajuato"
+  },
+  {
+    "id": 2439316,
+    "name": "Guerrero"
+  },
+  {
+    "id": 1376490,
+    "name": "Hidalgo"
+  },
+  {
+    "id": 2340910,
+    "name": "Jalisco"
+  },
+  {
+    "id": 2340636,
+    "name": "Michoacán"
+  },
+  {
+    "id": 1376332,
+    "name": "Morelos"
+  },
+  {
+    "id": 18522414,
+    "name": "Nayarit"
+  },
+  {
+    "id": 1661523,
+    "name": "Nuevo León"
+  },
+  {
+    "id": 2529822,
+    "name": "Oaxaca"
+  },
+  {
+    "id": 1376491,
+    "name": "Puebla"
+  },
+  {
+    "id": 2340903,
+    "name": "Querétaro"
+  },
+  {
+    "id": 2614434,
+    "name": "Quintana Roo"
+  },
+  {
+    "id": 4086617,
+    "name": "San Luis Potosí"
+  },
+  {
+    "id": 2455086,
+    "name": "Sinaloa"
+  },
+  {
+    "id": 1673426,
+    "name": "Sonora"
+  },
+  {
+    "id": 2556680,
+    "name": "Tabasco"
+  },
+  {
+    "id": 2415518,
+    "name": "Tamaulipas"
+  },
+  {
+    "id": 1375274,
+    "name": "Tlaxcala"
+  },
+  {
+    "id": 2415761,
+    "name": "Veracruz"
+  },
+  {
+    "id": 2614435,
+    "name": "Yucatán"
+  },
+  {
+    "id": 2399704,
+    "name": "Zacatecas"
+  }
+]

@@ -1,0 +1,9966 @@
+{
+  "Aguascalientes": [
+    {
+      "id": "MUN-01001",
+      "name": "Aguascalientes"
+    },
+    {
+      "id": "MUN-01002",
+      "name": "Asientos"
+    },
+    {
+      "id": "MUN-01003",
+      "name": "Calvillo"
+    },
+    {
+      "id": "MUN-01004",
+      "name": "Cosío"
+    },
+    {
+      "id": "MUN-01010",
+      "name": "El Llano"
+    },
+    {
+      "id": "MUN-01005",
+      "name": "Jesús María"
+    },
+    {
+      "id": "MUN-01006",
+      "name": "Pabellón de Arteaga"
+    },
+    {
+      "id": "MUN-01007",
+      "name": "Rincón de Romos"
+    },
+    {
+      "id": "MUN-01011",
+      "name": "San Francisco de los Romo"
+    },
+    {
+      "id": "MUN-01008",
+      "name": "San José de Gracia"
+    },
+    {
+      "id": "MUN-01009",
+      "name": "Tepezalá"
+    }
+  ],
+  "Baja California": [
+    {
+      "id": "MUN-02001",
+      "name": "Ensenada"
+    },
+    {
+      "id": "MUN-02002",
+      "name": "Mexicali"
+    },
+    {
+      "id": "MUN-02005",
+      "name": "Playas de Rosarito"
+    },
+    {
+      "id": "MUN-02007",
+      "name": "San Felipe"
+    },
+    {
+      "id": "MUN-02006",
+      "name": "San Quintín"
+    },
+    {
+      "id": "MUN-02003",
+      "name": "Tecate"
+    },
+    {
+      "id": "MUN-02004",
+      "name": "Tijuana"
+    }
+  ],
+  "Baja California Sur": [
+    {
+      "id": "MUN-03001",
+      "name": "Comondú"
+    },
+    {
+      "id": "MUN-03003",
+      "name": "La Paz"
+    },
+    {
+      "id": "MUN-03009",
+      "name": "Loreto"
+    },
+    {
+      "id": "MUN-03008",
+      "name": "Los Cabos"
+    },
+    {
+      "id": "MUN-03002",
+      "name": "Mulegé"
+    }
+  ],
+  "Campeche": [
+    {
+      "id": "MUN-04010",
+      "name": "Calakmul"
+    },
+    {
+      "id": "MUN-04001",
+      "name": "Calkiní"
+    },
+    {
+      "id": "MUN-04002",
+      "name": "Campeche"
+    },
+    {
+      "id": "MUN-04011",
+      "name": "Candelaria"
+    },
+    {
+      "id": "MUN-04003",
+      "name": "Carmen"
+    },
+    {
+      "id": "MUN-04004",
+      "name": "Champotón"
+    },
+    {
+      "id": "MUN-04013",
+      "name": "Dzitbalché"
+    },
+    {
+      "id": "MUN-04009",
+      "name": "Escárcega"
+    },
+    {
+      "id": "MUN-04005",
+      "name": "Hecelchakán"
+    },
+    {
+      "id": "MUN-04006",
+      "name": "Hopelchén"
+    },
+    {
+      "id": "MUN-04007",
+      "name": "Palizada"
+    },
+    {
+      "id": "MUN-04012",
+      "name": "Seybaplaya"
+    },
+    {
+      "id": "MUN-04008",
+      "name": "Tenabo"
+    }
+  ],
+  "Coahuila de Zaragoza": [
+    {
+      "id": "MUN-05001",
+      "name": "Abasolo"
+    },
+    {
+      "id": "MUN-05002",
+      "name": "Acuña"
+    },
+    {
+      "id": "MUN-05003",
+      "name": "Allende"
+    },
+    {
+      "id": "MUN-05004",
+      "name": "Arteaga"
+    },
+    {
+      "id": "MUN-05005",
+      "name": "Candela"
+    },
+    {
+      "id": "MUN-05006",
+      "name": "Castaños"
+    },
+    {
+      "id": "MUN-05007",
+      "name": "Cuatro Ciénegas"
+    },
+    {
+      "id": "MUN-05008",
+      "name": "Escobedo"
+    },
+    {
+      "id": "MUN-05009",
+      "name": "Francisco I. Madero"
+    },
+    {
+      "id": "MUN-05010",
+      "name": "Frontera"
+    },
+    {
+      "id": "MUN-05011",
+      "name": "General Cepeda"
+    },
+    {
+      "id": "MUN-05012",
+      "name": "Guerrero"
+    },
+    {
+      "id": "MUN-05013",
+      "name": "Hidalgo"
+    },
+    {
+      "id": "MUN-05014",
+      "name": "Jiménez"
+    },
+    {
+      "id": "MUN-05015",
+      "name": "Juárez"
+    },
+    {
+      "id": "MUN-05016",
+      "name": "Lamadrid"
+    },
+    {
+      "id": "MUN-05017",
+      "name": "Matamoros"
+    },
+    {
+      "id": "MUN-05018",
+      "name": "Monclova"
+    },
+    {
+      "id": "MUN-05019",
+      "name": "Morelos"
+    },
+    {
+      "id": "MUN-05020",
+      "name": "Múzquiz"
+    },
+    {
+      "id": "MUN-05021",
+      "name": "Nadadores"
+    },
+    {
+      "id": "MUN-05022",
+      "name": "Nava"
+    },
+    {
+      "id": "MUN-05023",
+      "name": "Ocampo"
+    },
+    {
+      "id": "MUN-05024",
+      "name": "Parras"
+    },
+    {
+      "id": "MUN-05025",
+      "name": "Piedras Negras"
+    },
+    {
+      "id": "MUN-05026",
+      "name": "Progreso"
+    },
+    {
+      "id": "MUN-05027",
+      "name": "Ramos Arizpe"
+    },
+    {
+      "id": "MUN-05028",
+      "name": "Sabinas"
+    },
+    {
+      "id": "MUN-05029",
+      "name": "Sacramento"
+    },
+    {
+      "id": "MUN-05030",
+      "name": "Saltillo"
+    },
+    {
+      "id": "MUN-05031",
+      "name": "San Buenaventura"
+    },
+    {
+      "id": "MUN-05032",
+      "name": "San Juan de Sabinas"
+    },
+    {
+      "id": "MUN-05033",
+      "name": "San Pedro"
+    },
+    {
+      "id": "MUN-05034",
+      "name": "Sierra Mojada"
+    },
+    {
+      "id": "MUN-05035",
+      "name": "Torreón"
+    },
+    {
+      "id": "MUN-05036",
+      "name": "Viesca"
+    },
+    {
+      "id": "MUN-05037",
+      "name": "Villa Unión"
+    },
+    {
+      "id": "MUN-05038",
+      "name": "Zaragoza"
+    }
+  ],
+  "Colima": [
+    {
+      "id": "MUN-06001",
+      "name": "Armería"
+    },
+    {
+      "id": "MUN-06002",
+      "name": "Colima"
+    },
+    {
+      "id": "MUN-06003",
+      "name": "Comala"
+    },
+    {
+      "id": "MUN-06004",
+      "name": "Coquimatlán"
+    },
+    {
+      "id": "MUN-06005",
+      "name": "Cuauhtémoc"
+    },
+    {
+      "id": "MUN-06006",
+      "name": "Ixtlahuacán"
+    },
+    {
+      "id": "MUN-06007",
+      "name": "Manzanillo"
+    },
+    {
+      "id": "MUN-06008",
+      "name": "Minatitlán"
+    },
+    {
+      "id": "MUN-06009",
+      "name": "Tecomán"
+    },
+    {
+      "id": "MUN-06010",
+      "name": "Villa de Álvarez"
+    }
+  ],
+  "Chiapas": [
+    {
+      "id": "MUN-07001",
+      "name": "Acacoyagua"
+    },
+    {
+      "id": "MUN-07002",
+      "name": "Acala"
+    },
+    {
+      "id": "MUN-07003",
+      "name": "Acapetahua"
+    },
+    {
+      "id": "MUN-07113",
+      "name": "Aldama"
+    },
+    {
+      "id": "MUN-07004",
+      "name": "Altamirano"
+    },
+    {
+      "id": "MUN-07006",
+      "name": "Amatenango de la Frontera"
+    },
+    {
+      "id": "MUN-07007",
+      "name": "Amatenango del Valle"
+    },
+    {
+      "id": "MUN-07005",
+      "name": "Amatán"
+    },
+    {
+      "id": "MUN-07009",
+      "name": "Arriaga"
+    },
+    {
+      "id": "MUN-07010",
+      "name": "Bejucal de Ocampo"
+    },
+    {
+      "id": "MUN-07011",
+      "name": "Bella Vista"
+    },
+    {
+      "id": "MUN-07114",
+      "name": "Benemérito de las Américas"
+    },
+    {
+      "id": "MUN-07012",
+      "name": "Berriozábal"
+    },
+    {
+      "id": "MUN-07013",
+      "name": "Bochil"
+    },
+    {
+      "id": "MUN-07015",
+      "name": "Cacahoatán"
+    },
+    {
+      "id": "MUN-07120",
+      "name": "Capitán Luis Ángel Vidal"
+    },
+    {
+      "id": "MUN-07016",
+      "name": "Catazajá"
+    },
+    {
+      "id": "MUN-07022",
+      "name": "Chalchihuitán"
+    },
+    {
+      "id": "MUN-07023",
+      "name": "Chamula"
+    },
+    {
+      "id": "MUN-07024",
+      "name": "Chanal"
+    },
+    {
+      "id": "MUN-07025",
+      "name": "Chapultenango"
+    },
+    {
+      "id": "MUN-07026",
+      "name": "Chenalhó"
+    },
+    {
+      "id": "MUN-07027",
+      "name": "Chiapa de Corzo"
+    },
+    {
+      "id": "MUN-07028",
+      "name": "Chiapilla"
+    },
+    {
+      "id": "MUN-07029",
+      "name": "Chicoasén"
+    },
+    {
+      "id": "MUN-07030",
+      "name": "Chicomuselo"
+    },
+    {
+      "id": "MUN-07031",
+      "name": "Chilón"
+    },
+    {
+      "id": "MUN-07017",
+      "name": "Cintalapa de Figueroa"
+    },
+    {
+      "id": "MUN-07018",
+      "name": "Coapilla"
+    },
+    {
+      "id": "MUN-07019",
+      "name": "Comitán de Domínguez"
+    },
+    {
+      "id": "MUN-07021",
+      "name": "Copainalá"
+    },
+    {
+      "id": "MUN-07014",
+      "name": "El Bosque"
+    },
+    {
+      "id": "MUN-07122",
+      "name": "El Parral"
+    },
+    {
+      "id": "MUN-07070",
+      "name": "El Porvenir"
+    },
+    {
+      "id": "MUN-07123",
+      "name": "Emiliano Zapata"
+    },
+    {
+      "id": "MUN-07032",
+      "name": "Escuintla"
+    },
+    {
+      "id": "MUN-07033",
+      "name": "Francisco León"
+    },
+    {
+      "id": "MUN-07034",
+      "name": "Frontera Comalapa"
+    },
+    {
+      "id": "MUN-07035",
+      "name": "Frontera Hidalgo"
+    },
+    {
+      "id": "MUN-07125",
+      "name": "Honduras de la Sierra"
+    },
+    {
+      "id": "MUN-07037",
+      "name": "Huehuetán"
+    },
+    {
+      "id": "MUN-07039",
+      "name": "Huitiupán"
+    },
+    {
+      "id": "MUN-07040",
+      "name": "Huixtla"
+    },
+    {
+      "id": "MUN-07038",
+      "name": "Huixtán"
+    },
+    {
+      "id": "MUN-07042",
+      "name": "Ixhuatán"
+    },
+    {
+      "id": "MUN-07043",
+      "name": "Ixtacomitán"
+    },
+    {
+      "id": "MUN-07044",
+      "name": "Ixtapa"
+    },
+    {
+      "id": "MUN-07045",
+      "name": "Ixtapangajoya"
+    },
+    {
+      "id": "MUN-07046",
+      "name": "Jiquipilas"
+    },
+    {
+      "id": "MUN-07047",
+      "name": "Jitotol"
+    },
+    {
+      "id": "MUN-07048",
+      "name": "Juárez"
+    },
+    {
+      "id": "MUN-07020",
+      "name": "La Concordia"
+    },
+    {
+      "id": "MUN-07036",
+      "name": "La Grandeza"
+    },
+    {
+      "id": "MUN-07041",
+      "name": "La Independencia"
+    },
+    {
+      "id": "MUN-07050",
+      "name": "La Libertad"
+    },
+    {
+      "id": "MUN-07099",
+      "name": "La Trinitaria"
+    },
+    {
+      "id": "MUN-07049",
+      "name": "Larráinzar"
+    },
+    {
+      "id": "MUN-07052",
+      "name": "Las Margaritas"
+    },
+    {
+      "id": "MUN-07075",
+      "name": "Las Rosas"
+    },
+    {
+      "id": "MUN-07051",
+      "name": "Mapastepec"
+    },
+    {
+      "id": "MUN-07115",
+      "name": "Maravilla Tenejapa"
+    },
+    {
+      "id": "MUN-07116",
+      "name": "Marqués de Comillas"
+    },
+    {
+      "id": "MUN-07053",
+      "name": "Mazapa de Madero"
+    },
+    {
+      "id": "MUN-07054",
+      "name": "Mazatán"
+    },
+    {
+      "id": "MUN-07055",
+      "name": "Metapa"
+    },
+    {
+      "id": "MUN-07124",
+      "name": "Mezcalapa"
+    },
+    {
+      "id": "MUN-07056",
+      "name": "Mitontic"
+    },
+    {
+      "id": "MUN-07117",
+      "name": "Montecristo de Guerrero"
+    },
+    {
+      "id": "MUN-07057",
+      "name": "Motozintla"
+    },
+    {
+      "id": "MUN-07058",
+      "name": "Nicolás Ruíz"
+    },
+    {
+      "id": "MUN-07059",
+      "name": "Ocosingo"
+    },
+    {
+      "id": "MUN-07060",
+      "name": "Ocotepec"
+    },
+    {
+      "id": "MUN-07061",
+      "name": "Ocozocoautla de Espinosa"
+    },
+    {
+      "id": "MUN-07062",
+      "name": "Ostuacán"
+    },
+    {
+      "id": "MUN-07063",
+      "name": "Osumacinta"
+    },
+    {
+      "id": "MUN-07064",
+      "name": "Oxchuc"
+    },
+    {
+      "id": "MUN-07065",
+      "name": "Palenque"
+    },
+    {
+      "id": "MUN-07066",
+      "name": "Pantelhó"
+    },
+    {
+      "id": "MUN-07067",
+      "name": "Pantepec"
+    },
+    {
+      "id": "MUN-07068",
+      "name": "Pichucalco"
+    },
+    {
+      "id": "MUN-07069",
+      "name": "Pijijiapan"
+    },
+    {
+      "id": "MUN-07072",
+      "name": "Pueblo Nuevo Solistahuacán"
+    },
+    {
+      "id": "MUN-07073",
+      "name": "Rayón"
+    },
+    {
+      "id": "MUN-07074",
+      "name": "Reforma"
+    },
+    {
+      "id": "MUN-07121",
+      "name": "Rincón Chamula San Pedro"
+    },
+    {
+      "id": "MUN-07076",
+      "name": "Sabanilla"
+    },
+    {
+      "id": "MUN-07077",
+      "name": "Salto de Agua"
+    },
+    {
+      "id": "MUN-07118",
+      "name": "San Andrés Duraznal"
+    },
+    {
+      "id": "MUN-07078",
+      "name": "San Cristóbal de las Casas"
+    },
+    {
+      "id": "MUN-07079",
+      "name": "San Fernando"
+    },
+    {
+      "id": "MUN-07112",
+      "name": "San Juan Cancuc"
+    },
+    {
+      "id": "MUN-07110",
+      "name": "San Lucas"
+    },
+    {
+      "id": "MUN-07119",
+      "name": "Santiago el Pinar"
+    },
+    {
+      "id": "MUN-07080",
+      "name": "Siltepec"
+    },
+    {
+      "id": "MUN-07081",
+      "name": "Simojovel"
+    },
+    {
+      "id": "MUN-07082",
+      "name": "Sitalá"
+    },
+    {
+      "id": "MUN-07083",
+      "name": "Socoltenango"
+    },
+    {
+      "id": "MUN-07084",
+      "name": "Solosuchiapa"
+    },
+    {
+      "id": "MUN-07085",
+      "name": "Soyaló"
+    },
+    {
+      "id": "MUN-07086",
+      "name": "Suchiapa"
+    },
+    {
+      "id": "MUN-07087",
+      "name": "Suchiate"
+    },
+    {
+      "id": "MUN-07088",
+      "name": "Sunuapa"
+    },
+    {
+      "id": "MUN-07089",
+      "name": "Tapachula"
+    },
+    {
+      "id": "MUN-07090",
+      "name": "Tapalapa"
+    },
+    {
+      "id": "MUN-07091",
+      "name": "Tapilula"
+    },
+    {
+      "id": "MUN-07092",
+      "name": "Tecpatán"
+    },
+    {
+      "id": "MUN-07093",
+      "name": "Tenejapa"
+    },
+    {
+      "id": "MUN-07094",
+      "name": "Teopisca"
+    },
+    {
+      "id": "MUN-07096",
+      "name": "Tila"
+    },
+    {
+      "id": "MUN-07097",
+      "name": "Tonalá"
+    },
+    {
+      "id": "MUN-07098",
+      "name": "Totolapa"
+    },
+    {
+      "id": "MUN-07100",
+      "name": "Tumbalá"
+    },
+    {
+      "id": "MUN-07102",
+      "name": "Tuxtla Chico"
+    },
+    {
+      "id": "MUN-07101",
+      "name": "Tuxtla Gutiérrez"
+    },
+    {
+      "id": "MUN-07103",
+      "name": "Tuzantán"
+    },
+    {
+      "id": "MUN-07104",
+      "name": "Tzimol"
+    },
+    {
+      "id": "MUN-07105",
+      "name": "Unión Juárez"
+    },
+    {
+      "id": "MUN-07106",
+      "name": "Venustiano Carranza"
+    },
+    {
+      "id": "MUN-07071",
+      "name": "Villa Comaltitlán"
+    },
+    {
+      "id": "MUN-07107",
+      "name": "Villa Corzo"
+    },
+    {
+      "id": "MUN-07108",
+      "name": "Villaflores"
+    },
+    {
+      "id": "MUN-07109",
+      "name": "Yajalón"
+    },
+    {
+      "id": "MUN-07111",
+      "name": "Zinacantán"
+    },
+    {
+      "id": "MUN-07008",
+      "name": "Ángel Albino Corzo"
+    }
+  ],
+  "Chihuahua": [
+    {
+      "id": "MUN-08001",
+      "name": "Ahumada"
+    },
+    {
+      "id": "MUN-08002",
+      "name": "Aldama"
+    },
+    {
+      "id": "MUN-08003",
+      "name": "Allende"
+    },
+    {
+      "id": "MUN-08004",
+      "name": "Aquiles Serdán"
+    },
+    {
+      "id": "MUN-08005",
+      "name": "Ascensión"
+    },
+    {
+      "id": "MUN-08006",
+      "name": "Bachíniva"
+    },
+    {
+      "id": "MUN-08007",
+      "name": "Balleza"
+    },
+    {
+      "id": "MUN-08008",
+      "name": "Batopilas de Manuel Gómez Morín"
+    },
+    {
+      "id": "MUN-08009",
+      "name": "Bocoyna"
+    },
+    {
+      "id": "MUN-08010",
+      "name": "Buenaventura"
+    },
+    {
+      "id": "MUN-08011",
+      "name": "Camargo"
+    },
+    {
+      "id": "MUN-08012",
+      "name": "Carichí"
+    },
+    {
+      "id": "MUN-08013",
+      "name": "Casas Grandes"
+    },
+    {
+      "id": "MUN-08019",
+      "name": "Chihuahua"
+    },
+    {
+      "id": "MUN-08020",
+      "name": "Chínipas"
+    },
+    {
+      "id": "MUN-08014",
+      "name": "Coronado"
+    },
+    {
+      "id": "MUN-08015",
+      "name": "Coyame del Sotol"
+    },
+    {
+      "id": "MUN-08017",
+      "name": "Cuauhtémoc"
+    },
+    {
+      "id": "MUN-08018",
+      "name": "Cusihuiriachi"
+    },
+    {
+      "id": "MUN-08021",
+      "name": "Delicias"
+    },
+    {
+      "id": "MUN-08022",
+      "name": "Dr. Belisario Domínguez"
+    },
+    {
+      "id": "MUN-08064",
+      "name": "El Tule"
+    },
+    {
+      "id": "MUN-08023",
+      "name": "Galeana"
+    },
+    {
+      "id": "MUN-08026",
+      "name": "Gran Morelos"
+    },
+    {
+      "id": "MUN-08027",
+      "name": "Guachochi"
+    },
+    {
+      "id": "MUN-08028",
+      "name": "Guadalupe"
+    },
+    {
+      "id": "MUN-08029",
+      "name": "Guadalupe y Calvo"
+    },
+    {
+      "id": "MUN-08030",
+      "name": "Guazapares"
+    },
+    {
+      "id": "MUN-08031",
+      "name": "Guerrero"
+    },
+    {
+      "id": "MUN-08025",
+      "name": "Gómez Farías"
+    },
+    {
+      "id": "MUN-08032",
+      "name": "Hidalgo del Parral"
+    },
+    {
+      "id": "MUN-08033",
+      "name": "Huejotitán"
+    },
+    {
+      "id": "MUN-08034",
+      "name": "Ignacio Zaragoza"
+    },
+    {
+      "id": "MUN-08035",
+      "name": "Janos"
+    },
+    {
+      "id": "MUN-08036",
+      "name": "Jiménez"
+    },
+    {
+      "id": "MUN-08038",
+      "name": "Julimes"
+    },
+    {
+      "id": "MUN-08037",
+      "name": "Juárez"
+    },
+    {
+      "id": "MUN-08016",
+      "name": "La Cruz"
+    },
+    {
+      "id": "MUN-08039",
+      "name": "López"
+    },
+    {
+      "id": "MUN-08040",
+      "name": "Madera"
+    },
+    {
+      "id": "MUN-08041",
+      "name": "Maguarichi"
+    },
+    {
+      "id": "MUN-08042",
+      "name": "Manuel Benavides"
+    },
+    {
+      "id": "MUN-08043",
+      "name": "Matachí"
+    },
+    {
+      "id": "MUN-08044",
+      "name": "Matamoros"
+    },
+    {
+      "id": "MUN-08045",
+      "name": "Meoqui"
+    },
+    {
+      "id": "MUN-08046",
+      "name": "Morelos"
+    },
+    {
+      "id": "MUN-08047",
+      "name": "Moris"
+    },
+    {
+      "id": "MUN-08048",
+      "name": "Namiquipa"
+    },
+    {
+      "id": "MUN-08049",
+      "name": "Nonoava"
+    },
+    {
+      "id": "MUN-08050",
+      "name": "Nuevo Casas Grandes"
+    },
+    {
+      "id": "MUN-08051",
+      "name": "Ocampo"
+    },
+    {
+      "id": "MUN-08052",
+      "name": "Ojinaga"
+    },
+    {
+      "id": "MUN-08053",
+      "name": "Praxedis G. Guerrero"
+    },
+    {
+      "id": "MUN-08054",
+      "name": "Riva Palacio"
+    },
+    {
+      "id": "MUN-08055",
+      "name": "Rosales"
+    },
+    {
+      "id": "MUN-08056",
+      "name": "Rosario"
+    },
+    {
+      "id": "MUN-08057",
+      "name": "San Francisco de Borja"
+    },
+    {
+      "id": "MUN-08058",
+      "name": "San Francisco de Conchos"
+    },
+    {
+      "id": "MUN-08059",
+      "name": "San Francisco del Oro"
+    },
+    {
+      "id": "MUN-08060",
+      "name": "Santa Bárbara"
+    },
+    {
+      "id": "MUN-08024",
+      "name": "Santa Isabel"
+    },
+    {
+      "id": "MUN-08061",
+      "name": "Satevó"
+    },
+    {
+      "id": "MUN-08062",
+      "name": "Saucillo"
+    },
+    {
+      "id": "MUN-08063",
+      "name": "Temósachic"
+    },
+    {
+      "id": "MUN-08065",
+      "name": "Urique"
+    },
+    {
+      "id": "MUN-08066",
+      "name": "Uruachi"
+    },
+    {
+      "id": "MUN-08067",
+      "name": "Valle de Zaragoza"
+    }
+  ],
+  "Ciudad de México": [
+    {
+      "id": "MUN-09002",
+      "name": "Azcapotzalco"
+    },
+    {
+      "id": "MUN-09014",
+      "name": "Benito Juárez"
+    },
+    {
+      "id": "MUN-09003",
+      "name": "Coyoacán"
+    },
+    {
+      "id": "MUN-09004",
+      "name": "Cuajimalpa de Morelos"
+    },
+    {
+      "id": "MUN-09015",
+      "name": "Cuauhtémoc"
+    },
+    {
+      "id": "MUN-09005",
+      "name": "Gustavo A. Madero"
+    },
+    {
+      "id": "MUN-09006",
+      "name": "Iztacalco"
+    },
+    {
+      "id": "MUN-09007",
+      "name": "Iztapalapa"
+    },
+    {
+      "id": "MUN-09008",
+      "name": "La Magdalena Contreras"
+    },
+    {
+      "id": "MUN-09016",
+      "name": "Miguel Hidalgo"
+    },
+    {
+      "id": "MUN-09009",
+      "name": "Milpa Alta"
+    },
+    {
+      "id": "MUN-09012",
+      "name": "Tlalpan"
+    },
+    {
+      "id": "MUN-09011",
+      "name": "Tláhuac"
+    },
+    {
+      "id": "MUN-09017",
+      "name": "Venustiano Carranza"
+    },
+    {
+      "id": "MUN-09013",
+      "name": "Xochimilco"
+    },
+    {
+      "id": "MUN-09010",
+      "name": "Álvaro Obregón"
+    }
+  ],
+  "Durango": [
+    {
+      "id": "MUN-10001",
+      "name": "Canatlán"
+    },
+    {
+      "id": "MUN-10002",
+      "name": "Canelas"
+    },
+    {
+      "id": "MUN-10003",
+      "name": "Coneto de Comonfort"
+    },
+    {
+      "id": "MUN-10004",
+      "name": "Cuencamé"
+    },
+    {
+      "id": "MUN-10005",
+      "name": "Durango"
+    },
+    {
+      "id": "MUN-10018",
+      "name": "El Oro"
+    },
+    {
+      "id": "MUN-10006",
+      "name": "General Simón Bolívar"
+    },
+    {
+      "id": "MUN-10008",
+      "name": "Guadalupe Victoria"
+    },
+    {
+      "id": "MUN-10009",
+      "name": "Guanaceví"
+    },
+    {
+      "id": "MUN-10007",
+      "name": "Gómez Palacio"
+    },
+    {
+      "id": "MUN-10010",
+      "name": "Hidalgo"
+    },
+    {
+      "id": "MUN-10011",
+      "name": "Indé"
+    },
+    {
+      "id": "MUN-10012",
+      "name": "Lerdo"
+    },
+    {
+      "id": "MUN-10013",
+      "name": "Mapimí"
+    },
+    {
+      "id": "MUN-10014",
+      "name": "Mezquital"
+    },
+    {
+      "id": "MUN-10015",
+      "name": "Nazas"
+    },
+    {
+      "id": "MUN-10016",
+      "name": "Nombre de Dios"
+    },
+    {
+      "id": "MUN-10039",
+      "name": "Nuevo Ideal"
+    },
+    {
+      "id": "MUN-10017",
+      "name": "Ocampo"
+    },
+    {
+      "id": "MUN-10019",
+      "name": "Otáez"
+    },
+    {
+      "id": "MUN-10021",
+      "name": "Peñón Blanco"
+    },
+    {
+      "id": "MUN-10022",
+      "name": "Poanas"
+    },
+    {
+      "id": "MUN-10023",
+      "name": "Pueblo Nuevo"
+    },
+    {
+      "id": "MUN-10020",
+      "name": "Pánuco de Coronado"
+    },
+    {
+      "id": "MUN-10024",
+      "name": "Rodeo"
+    },
+    {
+      "id": "MUN-10025",
+      "name": "San Bernardo"
+    },
+    {
+      "id": "MUN-10026",
+      "name": "San Dimas"
+    },
+    {
+      "id": "MUN-10027",
+      "name": "San Juan de Guadalupe"
+    },
+    {
+      "id": "MUN-10028",
+      "name": "San Juan del Río"
+    },
+    {
+      "id": "MUN-10029",
+      "name": "San Luis del Cordero"
+    },
+    {
+      "id": "MUN-10030",
+      "name": "San Pedro del Gallo"
+    },
+    {
+      "id": "MUN-10031",
+      "name": "Santa Clara"
+    },
+    {
+      "id": "MUN-10032",
+      "name": "Santiago Papasquiaro"
+    },
+    {
+      "id": "MUN-10033",
+      "name": "Súchil"
+    },
+    {
+      "id": "MUN-10034",
+      "name": "Tamazula"
+    },
+    {
+      "id": "MUN-10035",
+      "name": "Tepehuanes"
+    },
+    {
+      "id": "MUN-10036",
+      "name": "Tlahualilo"
+    },
+    {
+      "id": "MUN-10037",
+      "name": "Topia"
+    },
+    {
+      "id": "MUN-10038",
+      "name": "Vicente Guerrero"
+    }
+  ],
+  "Guanajuato": [
+    {
+      "id": "MUN-11001",
+      "name": "Abasolo"
+    },
+    {
+      "id": "MUN-11002",
+      "name": "Acámbaro"
+    },
+    {
+      "id": "MUN-11004",
+      "name": "Apaseo el Alto"
+    },
+    {
+      "id": "MUN-11005",
+      "name": "Apaseo el Grande"
+    },
+    {
+      "id": "MUN-11006",
+      "name": "Atarjea"
+    },
+    {
+      "id": "MUN-11007",
+      "name": "Celaya"
+    },
+    {
+      "id": "MUN-11009",
+      "name": "Comonfort"
+    },
+    {
+      "id": "MUN-11010",
+      "name": "Coroneo"
+    },
+    {
+      "id": "MUN-11011",
+      "name": "Cortazar"
+    },
+    {
+      "id": "MUN-11012",
+      "name": "Cuerámaro"
+    },
+    {
+      "id": "MUN-11013",
+      "name": "Doctor Mora"
+    },
+    {
+      "id": "MUN-11014",
+      "name": "Dolores Hidalgo Cuna de la Independencia Nacional"
+    },
+    {
+      "id": "MUN-11015",
+      "name": "Guanajuato"
+    },
+    {
+      "id": "MUN-11016",
+      "name": "Huanímaro"
+    },
+    {
+      "id": "MUN-11017",
+      "name": "Irapuato"
+    },
+    {
+      "id": "MUN-11018",
+      "name": "Jaral del Progreso"
+    },
+    {
+      "id": "MUN-11019",
+      "name": "Jerécuaro"
+    },
+    {
+      "id": "MUN-11020",
+      "name": "León"
+    },
+    {
+      "id": "MUN-11008",
+      "name": "Manuel Doblado"
+    },
+    {
+      "id": "MUN-11021",
+      "name": "Moroleón"
+    },
+    {
+      "id": "MUN-11022",
+      "name": "Ocampo"
+    },
+    {
+      "id": "MUN-11024",
+      "name": "Pueblo Nuevo"
+    },
+    {
+      "id": "MUN-11025",
+      "name": "Purísima del Rincón"
+    },
+    {
+      "id": "MUN-11023",
+      "name": "Pénjamo"
+    },
+    {
+      "id": "MUN-11026",
+      "name": "Romita"
+    },
+    {
+      "id": "MUN-11027",
+      "name": "Salamanca"
+    },
+    {
+      "id": "MUN-11028",
+      "name": "Salvatierra"
+    },
+    {
+      "id": "MUN-11029",
+      "name": "San Diego de la Unión"
+    },
+    {
+      "id": "MUN-11030",
+      "name": "San Felipe"
+    },
+    {
+      "id": "MUN-11031",
+      "name": "San Francisco del Rincón"
+    },
+    {
+      "id": "MUN-11032",
+      "name": "San José Iturbide"
+    },
+    {
+      "id": "MUN-11033",
+      "name": "San Luis de la Paz"
+    },
+    {
+      "id": "MUN-11003",
+      "name": "San Miguel de Allende"
+    },
+    {
+      "id": "MUN-11034",
+      "name": "Santa Catarina"
+    },
+    {
+      "id": "MUN-11035",
+      "name": "Santa Cruz de Juventino Rosas"
+    },
+    {
+      "id": "MUN-11036",
+      "name": "Santiago Maravatío"
+    },
+    {
+      "id": "MUN-11037",
+      "name": "Silao de la Victoria"
+    },
+    {
+      "id": "MUN-11038",
+      "name": "Tarandacuao"
+    },
+    {
+      "id": "MUN-11039",
+      "name": "Tarimoro"
+    },
+    {
+      "id": "MUN-11040",
+      "name": "Tierra Blanca"
+    },
+    {
+      "id": "MUN-11041",
+      "name": "Uriangato"
+    },
+    {
+      "id": "MUN-11042",
+      "name": "Valle de Santiago"
+    },
+    {
+      "id": "MUN-11043",
+      "name": "Victoria"
+    },
+    {
+      "id": "MUN-11044",
+      "name": "Villagrán"
+    },
+    {
+      "id": "MUN-11045",
+      "name": "Xichú"
+    },
+    {
+      "id": "MUN-11046",
+      "name": "Yuriria"
+    }
+  ],
+  "Guerrero": [
+    {
+      "id": "MUN-12001",
+      "name": "Acapulco de Juárez"
+    },
+    {
+      "id": "MUN-12076",
+      "name": "Acatepec"
+    },
+    {
+      "id": "MUN-12002",
+      "name": "Ahuacuotzingo"
+    },
+    {
+      "id": "MUN-12003",
+      "name": "Ajuchitlán del Progreso"
+    },
+    {
+      "id": "MUN-12004",
+      "name": "Alcozauca de Guerrero"
+    },
+    {
+      "id": "MUN-12005",
+      "name": "Alpoyeca"
+    },
+    {
+      "id": "MUN-12006",
+      "name": "Apaxtla"
+    },
+    {
+      "id": "MUN-12007",
+      "name": "Arcelia"
+    },
+    {
+      "id": "MUN-12008",
+      "name": "Atenango del Río"
+    },
+    {
+      "id": "MUN-12009",
+      "name": "Atlamajalcingo del Monte"
+    },
+    {
+      "id": "MUN-12010",
+      "name": "Atlixtac"
+    },
+    {
+      "id": "MUN-12011",
+      "name": "Atoyac de Álvarez"
+    },
+    {
+      "id": "MUN-12012",
+      "name": "Ayutla de los Libres"
+    },
+    {
+      "id": "MUN-12013",
+      "name": "Azoyú"
+    },
+    {
+      "id": "MUN-12014",
+      "name": "Benito Juárez"
+    },
+    {
+      "id": "MUN-12015",
+      "name": "Buenavista de Cuéllar"
+    },
+    {
+      "id": "MUN-12028",
+      "name": "Chilapa de Álvarez"
+    },
+    {
+      "id": "MUN-12029",
+      "name": "Chilpancingo de los Bravo"
+    },
+    {
+      "id": "MUN-12016",
+      "name": "Coahuayutla de José María Izazaga"
+    },
+    {
+      "id": "MUN-12078",
+      "name": "Cochoapa el Grande"
+    },
+    {
+      "id": "MUN-12017",
+      "name": "Cocula"
+    },
+    {
+      "id": "MUN-12018",
+      "name": "Copala"
+    },
+    {
+      "id": "MUN-12019",
+      "name": "Copalillo"
+    },
+    {
+      "id": "MUN-12020",
+      "name": "Copanatoyac"
+    },
+    {
+      "id": "MUN-12021",
+      "name": "Coyuca de Benítez"
+    },
+    {
+      "id": "MUN-12022",
+      "name": "Coyuca de Catalán"
+    },
+    {
+      "id": "MUN-12023",
+      "name": "Cuajinicuilapa"
+    },
+    {
+      "id": "MUN-12024",
+      "name": "Cualác"
+    },
+    {
+      "id": "MUN-12025",
+      "name": "Cuautepec"
+    },
+    {
+      "id": "MUN-12026",
+      "name": "Cuetzala del Progreso"
+    },
+    {
+      "id": "MUN-12027",
+      "name": "Cutzamala de Pinzón"
+    },
+    {
+      "id": "MUN-12075",
+      "name": "Eduardo Neri"
+    },
+    {
+      "id": "MUN-12030",
+      "name": "Florencio Villarreal"
+    },
+    {
+      "id": "MUN-12031",
+      "name": "General Canuto A. Neri"
+    },
+    {
+      "id": "MUN-12032",
+      "name": "General Heliodoro Castillo"
+    },
+    {
+      "id": "MUN-12033",
+      "name": "Huamuxtitlán"
+    },
+    {
+      "id": "MUN-12034",
+      "name": "Huitzuco de los Figueroa"
+    },
+    {
+      "id": "MUN-12035",
+      "name": "Iguala de la Independencia"
+    },
+    {
+      "id": "MUN-12036",
+      "name": "Igualapa"
+    },
+    {
+      "id": "MUN-12081",
+      "name": "Iliatenco"
+    },
+    {
+      "id": "MUN-12037",
+      "name": "Ixcateopan de Cuauhtémoc"
+    },
+    {
+      "id": "MUN-12079",
+      "name": "José Joaquín de Herrera"
+    },
+    {
+      "id": "MUN-12039",
+      "name": "Juan R. Escudero"
+    },
+    {
+      "id": "MUN-12080",
+      "name": "Juchitán"
+    },
+    {
+      "id": "MUN-12068",
+      "name": "La Unión de Isidoro Montes de Oca"
+    },
+    {
+      "id": "MUN-12082",
+      "name": "Las Vigas"
+    },
+    {
+      "id": "MUN-12040",
+      "name": "Leonardo Bravo"
+    },
+    {
+      "id": "MUN-12041",
+      "name": "Malinaltepec"
+    },
+    {
+      "id": "MUN-12077",
+      "name": "Marquelia"
+    },
+    {
+      "id": "MUN-12043",
+      "name": "Metlatónoc"
+    },
+    {
+      "id": "MUN-12044",
+      "name": "Mochitlán"
+    },
+    {
+      "id": "MUN-12042",
+      "name": "Mártir de Cuilapan"
+    },
+    {
+      "id": "MUN-12045",
+      "name": "Olinalá"
+    },
+    {
+      "id": "MUN-12046",
+      "name": "Ometepec"
+    },
+    {
+      "id": "MUN-12047",
+      "name": "Pedro Ascencio Alquisiras"
+    },
+    {
+      "id": "MUN-12048",
+      "name": "Petatlán"
+    },
+    {
+      "id": "MUN-12049",
+      "name": "Pilcaya"
+    },
+    {
+      "id": "MUN-12050",
+      "name": "Pungarabato"
+    },
+    {
+      "id": "MUN-12051",
+      "name": "Quechultenango"
+    },
+    {
+      "id": "MUN-12052",
+      "name": "San Luis Acatlán"
+    },
+    {
+      "id": "MUN-12053",
+      "name": "San Marcos"
+    },
+    {
+      "id": "MUN-12054",
+      "name": "San Miguel Totolapan"
+    },
+    {
+      "id": "MUN-12085",
+      "name": "San Nicolás"
+    },
+    {
+      "id": "MUN-12084",
+      "name": "Santa Cruz del Rincón"
+    },
+    {
+      "id": "MUN-12055",
+      "name": "Taxco de Alarcón"
+    },
+    {
+      "id": "MUN-12056",
+      "name": "Tecoanapa"
+    },
+    {
+      "id": "MUN-12058",
+      "name": "Teloloapan"
+    },
+    {
+      "id": "MUN-12059",
+      "name": "Tepecoacuilco de Trujano"
+    },
+    {
+      "id": "MUN-12060",
+      "name": "Tetipac"
+    },
+    {
+      "id": "MUN-12061",
+      "name": "Tixtla de Guerrero"
+    },
+    {
+      "id": "MUN-12062",
+      "name": "Tlacoachistlahuaca"
+    },
+    {
+      "id": "MUN-12063",
+      "name": "Tlacoapa"
+    },
+    {
+      "id": "MUN-12064",
+      "name": "Tlalchapa"
+    },
+    {
+      "id": "MUN-12065",
+      "name": "Tlalixtaquilla de Maldonado"
+    },
+    {
+      "id": "MUN-12066",
+      "name": "Tlapa de Comonfort"
+    },
+    {
+      "id": "MUN-12067",
+      "name": "Tlapehuala"
+    },
+    {
+      "id": "MUN-12057",
+      "name": "Técpan de Galeana"
+    },
+    {
+      "id": "MUN-12069",
+      "name": "Xalpatláhuac"
+    },
+    {
+      "id": "MUN-12070",
+      "name": "Xochihuehuetlán"
+    },
+    {
+      "id": "MUN-12071",
+      "name": "Xochistlahuaca"
+    },
+    {
+      "id": "MUN-12072",
+      "name": "Zapotitlán Tablas"
+    },
+    {
+      "id": "MUN-12038",
+      "name": "Zihuatanejo de Azueta"
+    },
+    {
+      "id": "MUN-12073",
+      "name": "Zirándaro"
+    },
+    {
+      "id": "MUN-12074",
+      "name": "Zitlala"
+    },
+    {
+      "id": "MUN-12083",
+      "name": "Ñuu Savi"
+    }
+  ],
+  "Hidalgo": [
+    {
+      "id": "MUN-13001",
+      "name": "Acatlán"
+    },
+    {
+      "id": "MUN-13002",
+      "name": "Acaxochitlán"
+    },
+    {
+      "id": "MUN-13003",
+      "name": "Actopan"
+    },
+    {
+      "id": "MUN-13004",
+      "name": "Agua Blanca de Iturbide"
+    },
+    {
+      "id": "MUN-13005",
+      "name": "Ajacuba"
+    },
+    {
+      "id": "MUN-13006",
+      "name": "Alfajayucan"
+    },
+    {
+      "id": "MUN-13007",
+      "name": "Almoloya"
+    },
+    {
+      "id": "MUN-13008",
+      "name": "Apan"
+    },
+    {
+      "id": "MUN-13010",
+      "name": "Atitalaquia"
+    },
+    {
+      "id": "MUN-13011",
+      "name": "Atlapexco"
+    },
+    {
+      "id": "MUN-13013",
+      "name": "Atotonilco de Tula"
+    },
+    {
+      "id": "MUN-13012",
+      "name": "Atotonilco el Grande"
+    },
+    {
+      "id": "MUN-13014",
+      "name": "Calnali"
+    },
+    {
+      "id": "MUN-13015",
+      "name": "Cardonal"
+    },
+    {
+      "id": "MUN-13017",
+      "name": "Chapantongo"
+    },
+    {
+      "id": "MUN-13018",
+      "name": "Chapulhuacán"
+    },
+    {
+      "id": "MUN-13019",
+      "name": "Chilcuautla"
+    },
+    {
+      "id": "MUN-13016",
+      "name": "Cuautepec de Hinojosa"
+    },
+    {
+      "id": "MUN-13009",
+      "name": "El Arenal"
+    },
+    {
+      "id": "MUN-13020",
+      "name": "Eloxochitlán"
+    },
+    {
+      "id": "MUN-13021",
+      "name": "Emiliano Zapata"
+    },
+    {
+      "id": "MUN-13022",
+      "name": "Epazoyucan"
+    },
+    {
+      "id": "MUN-13023",
+      "name": "Francisco I. Madero"
+    },
+    {
+      "id": "MUN-13024",
+      "name": "Huasca de Ocampo"
+    },
+    {
+      "id": "MUN-13025",
+      "name": "Huautla"
+    },
+    {
+      "id": "MUN-13026",
+      "name": "Huazalingo"
+    },
+    {
+      "id": "MUN-13027",
+      "name": "Huehuetla"
+    },
+    {
+      "id": "MUN-13028",
+      "name": "Huejutla de Reyes"
+    },
+    {
+      "id": "MUN-13029",
+      "name": "Huichapan"
+    },
+    {
+      "id": "MUN-13030",
+      "name": "Ixmiquilpan"
+    },
+    {
+      "id": "MUN-13031",
+      "name": "Jacala de Ledezma"
+    },
+    {
+      "id": "MUN-13032",
+      "name": "Jaltocán"
+    },
+    {
+      "id": "MUN-13033",
+      "name": "Juárez Hidalgo"
+    },
+    {
+      "id": "MUN-13040",
+      "name": "La Misión"
+    },
+    {
+      "id": "MUN-13034",
+      "name": "Lolotla"
+    },
+    {
+      "id": "MUN-13035",
+      "name": "Metepec"
+    },
+    {
+      "id": "MUN-13037",
+      "name": "Metztitlán"
+    },
+    {
+      "id": "MUN-13051",
+      "name": "Mineral de la Reforma"
+    },
+    {
+      "id": "MUN-13038",
+      "name": "Mineral del Chico"
+    },
+    {
+      "id": "MUN-13039",
+      "name": "Mineral del Monte"
+    },
+    {
+      "id": "MUN-13041",
+      "name": "Mixquiahuala de Juárez"
+    },
+    {
+      "id": "MUN-13042",
+      "name": "Molango de Escamilla"
+    },
+    {
+      "id": "MUN-13043",
+      "name": "Nicolás Flores"
+    },
+    {
+      "id": "MUN-13044",
+      "name": "Nopala de Villagrán"
+    },
+    {
+      "id": "MUN-13045",
+      "name": "Omitlán de Juárez"
+    },
+    {
+      "id": "MUN-13048",
+      "name": "Pachuca de Soto"
+    },
+    {
+      "id": "MUN-13047",
+      "name": "Pacula"
+    },
+    {
+      "id": "MUN-13049",
+      "name": "Pisaflores"
+    },
+    {
+      "id": "MUN-13050",
+      "name": "Progreso de Obregón"
+    },
+    {
+      "id": "MUN-13036",
+      "name": "San Agustín Metzquititlán"
+    },
+    {
+      "id": "MUN-13052",
+      "name": "San Agustín Tlaxiaca"
+    },
+    {
+      "id": "MUN-13053",
+      "name": "San Bartolo Tutotepec"
+    },
+    {
+      "id": "MUN-13046",
+      "name": "San Felipe Orizatlán"
+    },
+    {
+      "id": "MUN-13054",
+      "name": "San Salvador"
+    },
+    {
+      "id": "MUN-13056",
+      "name": "Santiago Tulantepec de Lugo Guerrero"
+    },
+    {
+      "id": "MUN-13055",
+      "name": "Santiago de Anaya"
+    },
+    {
+      "id": "MUN-13057",
+      "name": "Singuilucan"
+    },
+    {
+      "id": "MUN-13058",
+      "name": "Tasquillo"
+    },
+    {
+      "id": "MUN-13059",
+      "name": "Tecozautla"
+    },
+    {
+      "id": "MUN-13060",
+      "name": "Tenango de Doria"
+    },
+    {
+      "id": "MUN-13061",
+      "name": "Tepeapulco"
+    },
+    {
+      "id": "MUN-13062",
+      "name": "Tepehuacán de Guerrero"
+    },
+    {
+      "id": "MUN-13063",
+      "name": "Tepeji del Río de Ocampo"
+    },
+    {
+      "id": "MUN-13064",
+      "name": "Tepetitlán"
+    },
+    {
+      "id": "MUN-13065",
+      "name": "Tetepango"
+    },
+    {
+      "id": "MUN-13067",
+      "name": "Tezontepec de Aldama"
+    },
+    {
+      "id": "MUN-13068",
+      "name": "Tianguistengo"
+    },
+    {
+      "id": "MUN-13069",
+      "name": "Tizayuca"
+    },
+    {
+      "id": "MUN-13070",
+      "name": "Tlahuelilpan"
+    },
+    {
+      "id": "MUN-13071",
+      "name": "Tlahuiltepa"
+    },
+    {
+      "id": "MUN-13072",
+      "name": "Tlanalapa"
+    },
+    {
+      "id": "MUN-13073",
+      "name": "Tlanchinol"
+    },
+    {
+      "id": "MUN-13074",
+      "name": "Tlaxcoapan"
+    },
+    {
+      "id": "MUN-13075",
+      "name": "Tolcayuca"
+    },
+    {
+      "id": "MUN-13076",
+      "name": "Tula de Allende"
+    },
+    {
+      "id": "MUN-13077",
+      "name": "Tulancingo de Bravo"
+    },
+    {
+      "id": "MUN-13066",
+      "name": "Villa de Tezontepec"
+    },
+    {
+      "id": "MUN-13078",
+      "name": "Xochiatipan"
+    },
+    {
+      "id": "MUN-13079",
+      "name": "Xochicoatlán"
+    },
+    {
+      "id": "MUN-13080",
+      "name": "Yahualica"
+    },
+    {
+      "id": "MUN-13081",
+      "name": "Zacualtipán de Ángeles"
+    },
+    {
+      "id": "MUN-13082",
+      "name": "Zapotlán de Juárez"
+    },
+    {
+      "id": "MUN-13083",
+      "name": "Zempoala"
+    },
+    {
+      "id": "MUN-13084",
+      "name": "Zimapán"
+    }
+  ],
+  "Jalisco": [
+    {
+      "id": "MUN-14001",
+      "name": "Acatic"
+    },
+    {
+      "id": "MUN-14002",
+      "name": "Acatlán de Juárez"
+    },
+    {
+      "id": "MUN-14003",
+      "name": "Ahualulco de Mercado"
+    },
+    {
+      "id": "MUN-14004",
+      "name": "Amacueca"
+    },
+    {
+      "id": "MUN-14005",
+      "name": "Amatitán"
+    },
+    {
+      "id": "MUN-14006",
+      "name": "Ameca"
+    },
+    {
+      "id": "MUN-14008",
+      "name": "Arandas"
+    },
+    {
+      "id": "MUN-14010",
+      "name": "Atemajac de Brizuela"
+    },
+    {
+      "id": "MUN-14011",
+      "name": "Atengo"
+    },
+    {
+      "id": "MUN-14012",
+      "name": "Atenguillo"
+    },
+    {
+      "id": "MUN-14013",
+      "name": "Atotonilco el Alto"
+    },
+    {
+      "id": "MUN-14014",
+      "name": "Atoyac"
+    },
+    {
+      "id": "MUN-14015",
+      "name": "Autlán de Navarro"
+    },
+    {
+      "id": "MUN-14016",
+      "name": "Ayotlán"
+    },
+    {
+      "id": "MUN-14017",
+      "name": "Ayutla"
+    },
+    {
+      "id": "MUN-14019",
+      "name": "Bolaños"
+    },
+    {
+      "id": "MUN-14020",
+      "name": "Cabo Corrientes"
+    },
+    {
+      "id": "MUN-14021",
+      "name": "Casimiro Castillo"
+    },
+    {
+      "id": "MUN-14117",
+      "name": "Cañadas de Obregón"
+    },
+    {
+      "id": "MUN-14030",
+      "name": "Chapala"
+    },
+    {
+      "id": "MUN-14031",
+      "name": "Chimaltitán"
+    },
+    {
+      "id": "MUN-14032",
+      "name": "Chiquilistlán"
+    },
+    {
+      "id": "MUN-14022",
+      "name": "Cihuatlán"
+    },
+    {
+      "id": "MUN-14024",
+      "name": "Cocula"
+    },
+    {
+      "id": "MUN-14025",
+      "name": "Colotlán"
+    },
+    {
+      "id": "MUN-14026",
+      "name": "Concepción de Buenos Aires"
+    },
+    {
+      "id": "MUN-14027",
+      "name": "Cuautitlán de García Barragán"
+    },
+    {
+      "id": "MUN-14028",
+      "name": "Cuautla"
+    },
+    {
+      "id": "MUN-14029",
+      "name": "Cuquío"
+    },
+    {
+      "id": "MUN-14033",
+      "name": "Degollado"
+    },
+    {
+      "id": "MUN-14034",
+      "name": "Ejutla"
+    },
+    {
+      "id": "MUN-14009",
+      "name": "El Arenal"
+    },
+    {
+      "id": "MUN-14037",
+      "name": "El Grullo"
+    },
+    {
+      "id": "MUN-14054",
+      "name": "El Limón"
+    },
+    {
+      "id": "MUN-14070",
+      "name": "El Salto"
+    },
+    {
+      "id": "MUN-14035",
+      "name": "Encarnación de Díaz"
+    },
+    {
+      "id": "MUN-14036",
+      "name": "Etzatlán"
+    },
+    {
+      "id": "MUN-14038",
+      "name": "Guachinango"
+    },
+    {
+      "id": "MUN-14039",
+      "name": "Guadalajara"
+    },
+    {
+      "id": "MUN-14079",
+      "name": "Gómez Farías"
+    },
+    {
+      "id": "MUN-14040",
+      "name": "Hostotipaquillo"
+    },
+    {
+      "id": "MUN-14042",
+      "name": "Huejuquilla el Alto"
+    },
+    {
+      "id": "MUN-14041",
+      "name": "Huejúcar"
+    },
+    {
+      "id": "MUN-14044",
+      "name": "Ixtlahuacán de los Membrillos"
+    },
+    {
+      "id": "MUN-14045",
+      "name": "Ixtlahuacán del Río"
+    },
+    {
+      "id": "MUN-14046",
+      "name": "Jalostotitlán"
+    },
+    {
+      "id": "MUN-14047",
+      "name": "Jamay"
+    },
+    {
+      "id": "MUN-14048",
+      "name": "Jesús María"
+    },
+    {
+      "id": "MUN-14049",
+      "name": "Jilotlán de los Dolores"
+    },
+    {
+      "id": "MUN-14050",
+      "name": "Jocotepec"
+    },
+    {
+      "id": "MUN-14051",
+      "name": "Juanacatlán"
+    },
+    {
+      "id": "MUN-14052",
+      "name": "Juchitlán"
+    },
+    {
+      "id": "MUN-14018",
+      "name": "La Barca"
+    },
+    {
+      "id": "MUN-14043",
+      "name": "La Huerta"
+    },
+    {
+      "id": "MUN-14057",
+      "name": "La Manzanilla de la Paz"
+    },
+    {
+      "id": "MUN-14053",
+      "name": "Lagos de Moreno"
+    },
+    {
+      "id": "MUN-14055",
+      "name": "Magdalena"
+    },
+    {
+      "id": "MUN-14058",
+      "name": "Mascota"
+    },
+    {
+      "id": "MUN-14059",
+      "name": "Mazamitla"
+    },
+    {
+      "id": "MUN-14060",
+      "name": "Mexticacán"
+    },
+    {
+      "id": "MUN-14061",
+      "name": "Mezquitic"
+    },
+    {
+      "id": "MUN-14062",
+      "name": "Mixtlán"
+    },
+    {
+      "id": "MUN-14063",
+      "name": "Ocotlán"
+    },
+    {
+      "id": "MUN-14064",
+      "name": "Ojuelos de Jalisco"
+    },
+    {
+      "id": "MUN-14065",
+      "name": "Pihuamo"
+    },
+    {
+      "id": "MUN-14066",
+      "name": "Poncitlán"
+    },
+    {
+      "id": "MUN-14067",
+      "name": "Puerto Vallarta"
+    },
+    {
+      "id": "MUN-14069",
+      "name": "Quitupan"
+    },
+    {
+      "id": "MUN-14071",
+      "name": "San Cristóbal de la Barranca"
+    },
+    {
+      "id": "MUN-14072",
+      "name": "San Diego de Alejandría"
+    },
+    {
+      "id": "MUN-14113",
+      "name": "San Gabriel"
+    },
+    {
+      "id": "MUN-14125",
+      "name": "San Ignacio Cerro Gordo"
+    },
+    {
+      "id": "MUN-14073",
+      "name": "San Juan de los Lagos"
+    },
+    {
+      "id": "MUN-14007",
+      "name": "San Juanito de Escobedo"
+    },
+    {
+      "id": "MUN-14074",
+      "name": "San Julián"
+    },
+    {
+      "id": "MUN-14075",
+      "name": "San Marcos"
+    },
+    {
+      "id": "MUN-14077",
+      "name": "San Martín Hidalgo"
+    },
+    {
+      "id": "MUN-14076",
+      "name": "San Martín de Bolaños"
+    },
+    {
+      "id": "MUN-14078",
+      "name": "San Miguel el Alto"
+    },
+    {
+      "id": "MUN-14098",
+      "name": "San Pedro Tlaquepaque"
+    },
+    {
+      "id": "MUN-14080",
+      "name": "San Sebastián del Oeste"
+    },
+    {
+      "id": "MUN-14081",
+      "name": "Santa María de los Ángeles"
+    },
+    {
+      "id": "MUN-14056",
+      "name": "Santa María del Oro"
+    },
+    {
+      "id": "MUN-14082",
+      "name": "Sayula"
+    },
+    {
+      "id": "MUN-14083",
+      "name": "Tala"
+    },
+    {
+      "id": "MUN-14084",
+      "name": "Talpa de Allende"
+    },
+    {
+      "id": "MUN-14085",
+      "name": "Tamazula de Gordiano"
+    },
+    {
+      "id": "MUN-14086",
+      "name": "Tapalpa"
+    },
+    {
+      "id": "MUN-14087",
+      "name": "Tecalitlán"
+    },
+    {
+      "id": "MUN-14089",
+      "name": "Techaluta de Montenegro"
+    },
+    {
+      "id": "MUN-14088",
+      "name": "Tecolotlán"
+    },
+    {
+      "id": "MUN-14090",
+      "name": "Tenamaxtlán"
+    },
+    {
+      "id": "MUN-14091",
+      "name": "Teocaltiche"
+    },
+    {
+      "id": "MUN-14092",
+      "name": "Teocuitatlán de Corona"
+    },
+    {
+      "id": "MUN-14093",
+      "name": "Tepatitlán de Morelos"
+    },
+    {
+      "id": "MUN-14094",
+      "name": "Tequila"
+    },
+    {
+      "id": "MUN-14095",
+      "name": "Teuchitlán"
+    },
+    {
+      "id": "MUN-14096",
+      "name": "Tizapán el Alto"
+    },
+    {
+      "id": "MUN-14097",
+      "name": "Tlajomulco de Zúñiga"
+    },
+    {
+      "id": "MUN-14099",
+      "name": "Tolimán"
+    },
+    {
+      "id": "MUN-14100",
+      "name": "Tomatlán"
+    },
+    {
+      "id": "MUN-14101",
+      "name": "Tonalá"
+    },
+    {
+      "id": "MUN-14102",
+      "name": "Tonaya"
+    },
+    {
+      "id": "MUN-14103",
+      "name": "Tonila"
+    },
+    {
+      "id": "MUN-14104",
+      "name": "Totatiche"
+    },
+    {
+      "id": "MUN-14105",
+      "name": "Tototlán"
+    },
+    {
+      "id": "MUN-14106",
+      "name": "Tuxcacuesco"
+    },
+    {
+      "id": "MUN-14107",
+      "name": "Tuxcueca"
+    },
+    {
+      "id": "MUN-14108",
+      "name": "Tuxpan"
+    },
+    {
+      "id": "MUN-14109",
+      "name": "Unión de San Antonio"
+    },
+    {
+      "id": "MUN-14110",
+      "name": "Unión de Tula"
+    },
+    {
+      "id": "MUN-14111",
+      "name": "Valle de Guadalupe"
+    },
+    {
+      "id": "MUN-14112",
+      "name": "Valle de Juárez"
+    },
+    {
+      "id": "MUN-14114",
+      "name": "Villa Corona"
+    },
+    {
+      "id": "MUN-14115",
+      "name": "Villa Guerrero"
+    },
+    {
+      "id": "MUN-14116",
+      "name": "Villa Hidalgo"
+    },
+    {
+      "id": "MUN-14068",
+      "name": "Villa Purificación"
+    },
+    {
+      "id": "MUN-14118",
+      "name": "Yahualica de González Gallo"
+    },
+    {
+      "id": "MUN-14119",
+      "name": "Zacoalco de Torres"
+    },
+    {
+      "id": "MUN-14120",
+      "name": "Zapopan"
+    },
+    {
+      "id": "MUN-14121",
+      "name": "Zapotiltic"
+    },
+    {
+      "id": "MUN-14122",
+      "name": "Zapotitlán de Vadillo"
+    },
+    {
+      "id": "MUN-14124",
+      "name": "Zapotlanejo"
+    },
+    {
+      "id": "MUN-14123",
+      "name": "Zapotlán del Rey"
+    },
+    {
+      "id": "MUN-14023",
+      "name": "Zapotlán el Grande"
+    }
+  ],
+  "México": [
+    {
+      "id": "MUN-15001",
+      "name": "Acambay de Ruíz Castañeda"
+    },
+    {
+      "id": "MUN-15002",
+      "name": "Acolman"
+    },
+    {
+      "id": "MUN-15003",
+      "name": "Aculco"
+    },
+    {
+      "id": "MUN-15004",
+      "name": "Almoloya de Alquisiras"
+    },
+    {
+      "id": "MUN-15005",
+      "name": "Almoloya de Juárez"
+    },
+    {
+      "id": "MUN-15006",
+      "name": "Almoloya del Río"
+    },
+    {
+      "id": "MUN-15007",
+      "name": "Amanalco"
+    },
+    {
+      "id": "MUN-15008",
+      "name": "Amatepec"
+    },
+    {
+      "id": "MUN-15009",
+      "name": "Amecameca"
+    },
+    {
+      "id": "MUN-15010",
+      "name": "Apaxco"
+    },
+    {
+      "id": "MUN-15011",
+      "name": "Atenco"
+    },
+    {
+      "id": "MUN-15012",
+      "name": "Atizapán"
+    },
+    {
+      "id": "MUN-15013",
+      "name": "Atizapán de Zaragoza"
+    },
+    {
+      "id": "MUN-15014",
+      "name": "Atlacomulco"
+    },
+    {
+      "id": "MUN-15015",
+      "name": "Atlautla"
+    },
+    {
+      "id": "MUN-15016",
+      "name": "Axapusco"
+    },
+    {
+      "id": "MUN-15017",
+      "name": "Ayapango"
+    },
+    {
+      "id": "MUN-15018",
+      "name": "Calimaya"
+    },
+    {
+      "id": "MUN-15019",
+      "name": "Capulhuac"
+    },
+    {
+      "id": "MUN-15025",
+      "name": "Chalco"
+    },
+    {
+      "id": "MUN-15026",
+      "name": "Chapa de Mota"
+    },
+    {
+      "id": "MUN-15027",
+      "name": "Chapultepec"
+    },
+    {
+      "id": "MUN-15028",
+      "name": "Chiautla"
+    },
+    {
+      "id": "MUN-15029",
+      "name": "Chicoloapan"
+    },
+    {
+      "id": "MUN-15030",
+      "name": "Chiconcuac"
+    },
+    {
+      "id": "MUN-15031",
+      "name": "Chimalhuacán"
+    },
+    {
+      "id": "MUN-15020",
+      "name": "Coacalco de Berriozábal"
+    },
+    {
+      "id": "MUN-15021",
+      "name": "Coatepec Harinas"
+    },
+    {
+      "id": "MUN-15022",
+      "name": "Cocotitlán"
+    },
+    {
+      "id": "MUN-15023",
+      "name": "Coyotepec"
+    },
+    {
+      "id": "MUN-15024",
+      "name": "Cuautitlán"
+    },
+    {
+      "id": "MUN-15121",
+      "name": "Cuautitlán Izcalli"
+    },
+    {
+      "id": "MUN-15032",
+      "name": "Donato Guerra"
+    },
+    {
+      "id": "MUN-15033",
+      "name": "Ecatepec de Morelos"
+    },
+    {
+      "id": "MUN-15034",
+      "name": "Ecatzingo"
+    },
+    {
+      "id": "MUN-15064",
+      "name": "El Oro"
+    },
+    {
+      "id": "MUN-15035",
+      "name": "Huehuetoca"
+    },
+    {
+      "id": "MUN-15036",
+      "name": "Hueypoxtla"
+    },
+    {
+      "id": "MUN-15037",
+      "name": "Huixquilucan"
+    },
+    {
+      "id": "MUN-15038",
+      "name": "Isidro Fabela"
+    },
+    {
+      "id": "MUN-15039",
+      "name": "Ixtapaluca"
+    },
+    {
+      "id": "MUN-15040",
+      "name": "Ixtapan de la Sal"
+    },
+    {
+      "id": "MUN-15041",
+      "name": "Ixtapan del Oro"
+    },
+    {
+      "id": "MUN-15042",
+      "name": "Ixtlahuaca"
+    },
+    {
+      "id": "MUN-15044",
+      "name": "Jaltenco"
+    },
+    {
+      "id": "MUN-15045",
+      "name": "Jilotepec"
+    },
+    {
+      "id": "MUN-15046",
+      "name": "Jilotzingo"
+    },
+    {
+      "id": "MUN-15047",
+      "name": "Jiquipilco"
+    },
+    {
+      "id": "MUN-15048",
+      "name": "Jocotitlán"
+    },
+    {
+      "id": "MUN-15049",
+      "name": "Joquicingo"
+    },
+    {
+      "id": "MUN-15050",
+      "name": "Juchitepec"
+    },
+    {
+      "id": "MUN-15070",
+      "name": "La Paz"
+    },
+    {
+      "id": "MUN-15051",
+      "name": "Lerma"
+    },
+    {
+      "id": "MUN-15123",
+      "name": "Luvianos"
+    },
+    {
+      "id": "MUN-15052",
+      "name": "Malinalco"
+    },
+    {
+      "id": "MUN-15053",
+      "name": "Melchor Ocampo"
+    },
+    {
+      "id": "MUN-15054",
+      "name": "Metepec"
+    },
+    {
+      "id": "MUN-15055",
+      "name": "Mexicaltzingo"
+    },
+    {
+      "id": "MUN-15056",
+      "name": "Morelos"
+    },
+    {
+      "id": "MUN-15057",
+      "name": "Naucalpan de Juárez"
+    },
+    {
+      "id": "MUN-15059",
+      "name": "Nextlalpan"
+    },
+    {
+      "id": "MUN-15058",
+      "name": "Nezahualcóyotl"
+    },
+    {
+      "id": "MUN-15060",
+      "name": "Nicolás Romero"
+    },
+    {
+      "id": "MUN-15061",
+      "name": "Nopaltepec"
+    },
+    {
+      "id": "MUN-15062",
+      "name": "Ocoyoacac"
+    },
+    {
+      "id": "MUN-15063",
+      "name": "Ocuilan"
+    },
+    {
+      "id": "MUN-15065",
+      "name": "Otumba"
+    },
+    {
+      "id": "MUN-15066",
+      "name": "Otzoloapan"
+    },
+    {
+      "id": "MUN-15067",
+      "name": "Otzolotepec"
+    },
+    {
+      "id": "MUN-15068",
+      "name": "Ozumba"
+    },
+    {
+      "id": "MUN-15069",
+      "name": "Papalotla"
+    },
+    {
+      "id": "MUN-15071",
+      "name": "Polotitlán"
+    },
+    {
+      "id": "MUN-15072",
+      "name": "Rayón"
+    },
+    {
+      "id": "MUN-15073",
+      "name": "San Antonio la Isla"
+    },
+    {
+      "id": "MUN-15074",
+      "name": "San Felipe del Progreso"
+    },
+    {
+      "id": "MUN-15124",
+      "name": "San José del Rincón"
+    },
+    {
+      "id": "MUN-15075",
+      "name": "San Martín de las Pirámides"
+    },
+    {
+      "id": "MUN-15076",
+      "name": "San Mateo Atenco"
+    },
+    {
+      "id": "MUN-15077",
+      "name": "San Simón de Guerrero"
+    },
+    {
+      "id": "MUN-15078",
+      "name": "Santo Tomás"
+    },
+    {
+      "id": "MUN-15079",
+      "name": "Soyaniquilpan de Juárez"
+    },
+    {
+      "id": "MUN-15080",
+      "name": "Sultepec"
+    },
+    {
+      "id": "MUN-15081",
+      "name": "Tecámac"
+    },
+    {
+      "id": "MUN-15082",
+      "name": "Tejupilco"
+    },
+    {
+      "id": "MUN-15083",
+      "name": "Temamatla"
+    },
+    {
+      "id": "MUN-15084",
+      "name": "Temascalapa"
+    },
+    {
+      "id": "MUN-15085",
+      "name": "Temascalcingo"
+    },
+    {
+      "id": "MUN-15086",
+      "name": "Temascaltepec"
+    },
+    {
+      "id": "MUN-15087",
+      "name": "Temoaya"
+    },
+    {
+      "id": "MUN-15088",
+      "name": "Tenancingo"
+    },
+    {
+      "id": "MUN-15089",
+      "name": "Tenango del Aire"
+    },
+    {
+      "id": "MUN-15090",
+      "name": "Tenango del Valle"
+    },
+    {
+      "id": "MUN-15091",
+      "name": "Teoloyucan"
+    },
+    {
+      "id": "MUN-15092",
+      "name": "Teotihuacán"
+    },
+    {
+      "id": "MUN-15093",
+      "name": "Tepetlaoxtoc"
+    },
+    {
+      "id": "MUN-15094",
+      "name": "Tepetlixpa"
+    },
+    {
+      "id": "MUN-15095",
+      "name": "Tepotzotlán"
+    },
+    {
+      "id": "MUN-15096",
+      "name": "Tequixquiac"
+    },
+    {
+      "id": "MUN-15097",
+      "name": "Texcaltitlán"
+    },
+    {
+      "id": "MUN-15098",
+      "name": "Texcalyacac"
+    },
+    {
+      "id": "MUN-15099",
+      "name": "Texcoco"
+    },
+    {
+      "id": "MUN-15100",
+      "name": "Tezoyuca"
+    },
+    {
+      "id": "MUN-15101",
+      "name": "Tianguistenco"
+    },
+    {
+      "id": "MUN-15102",
+      "name": "Timilpan"
+    },
+    {
+      "id": "MUN-15103",
+      "name": "Tlalmanalco"
+    },
+    {
+      "id": "MUN-15104",
+      "name": "Tlalnepantla de Baz"
+    },
+    {
+      "id": "MUN-15105",
+      "name": "Tlatlaya"
+    },
+    {
+      "id": "MUN-15106",
+      "name": "Toluca"
+    },
+    {
+      "id": "MUN-15125",
+      "name": "Tonanitla"
+    },
+    {
+      "id": "MUN-15107",
+      "name": "Tonatico"
+    },
+    {
+      "id": "MUN-15108",
+      "name": "Tultepec"
+    },
+    {
+      "id": "MUN-15109",
+      "name": "Tultitlán"
+    },
+    {
+      "id": "MUN-15110",
+      "name": "Valle de Bravo"
+    },
+    {
+      "id": "MUN-15122",
+      "name": "Valle de Chalco Solidaridad"
+    },
+    {
+      "id": "MUN-15113",
+      "name": "Villa Guerrero"
+    },
+    {
+      "id": "MUN-15114",
+      "name": "Villa Victoria"
+    },
+    {
+      "id": "MUN-15111",
+      "name": "Villa de Allende"
+    },
+    {
+      "id": "MUN-15112",
+      "name": "Villa del Carbón"
+    },
+    {
+      "id": "MUN-15043",
+      "name": "Xalatlaco"
+    },
+    {
+      "id": "MUN-15115",
+      "name": "Xonacatlán"
+    },
+    {
+      "id": "MUN-15116",
+      "name": "Zacazonapan"
+    },
+    {
+      "id": "MUN-15117",
+      "name": "Zacualpan"
+    },
+    {
+      "id": "MUN-15118",
+      "name": "Zinacantepec"
+    },
+    {
+      "id": "MUN-15119",
+      "name": "Zumpahuacán"
+    },
+    {
+      "id": "MUN-15120",
+      "name": "Zumpango"
+    }
+  ],
+  "Michoacán de Ocampo": [
+    {
+      "id": "MUN-16001",
+      "name": "Acuitzio"
+    },
+    {
+      "id": "MUN-16002",
+      "name": "Aguililla"
+    },
+    {
+      "id": "MUN-16004",
+      "name": "Angamacutiro"
+    },
+    {
+      "id": "MUN-16005",
+      "name": "Angangueo"
+    },
+    {
+      "id": "MUN-16006",
+      "name": "Apatzingán"
+    },
+    {
+      "id": "MUN-16007",
+      "name": "Aporo"
+    },
+    {
+      "id": "MUN-16008",
+      "name": "Aquila"
+    },
+    {
+      "id": "MUN-16009",
+      "name": "Ario"
+    },
+    {
+      "id": "MUN-16010",
+      "name": "Arteaga"
+    },
+    {
+      "id": "MUN-16011",
+      "name": "Briseñas"
+    },
+    {
+      "id": "MUN-16012",
+      "name": "Buenavista"
+    },
+    {
+      "id": "MUN-16013",
+      "name": "Carácuaro"
+    },
+    {
+      "id": "MUN-16021",
+      "name": "Charapan"
+    },
+    {
+      "id": "MUN-16022",
+      "name": "Charo"
+    },
+    {
+      "id": "MUN-16023",
+      "name": "Chavinda"
+    },
+    {
+      "id": "MUN-16024",
+      "name": "Cherán"
+    },
+    {
+      "id": "MUN-16025",
+      "name": "Chilchota"
+    },
+    {
+      "id": "MUN-16026",
+      "name": "Chinicuila"
+    },
+    {
+      "id": "MUN-16027",
+      "name": "Chucándiro"
+    },
+    {
+      "id": "MUN-16028",
+      "name": "Churintzio"
+    },
+    {
+      "id": "MUN-16029",
+      "name": "Churumuco"
+    },
+    {
+      "id": "MUN-16014",
+      "name": "Coahuayana"
+    },
+    {
+      "id": "MUN-16015",
+      "name": "Coalcomán de Vázquez Pallares"
+    },
+    {
+      "id": "MUN-16016",
+      "name": "Coeneo"
+    },
+    {
+      "id": "MUN-16074",
+      "name": "Cojumatlán de Régules"
+    },
+    {
+      "id": "MUN-16017",
+      "name": "Contepec"
+    },
+    {
+      "id": "MUN-16018",
+      "name": "Copándaro"
+    },
+    {
+      "id": "MUN-16019",
+      "name": "Cotija"
+    },
+    {
+      "id": "MUN-16020",
+      "name": "Cuitzeo"
+    },
+    {
+      "id": "MUN-16030",
+      "name": "Ecuandureo"
+    },
+    {
+      "id": "MUN-16031",
+      "name": "Epitacio Huerta"
+    },
+    {
+      "id": "MUN-16032",
+      "name": "Erongarícuaro"
+    },
+    {
+      "id": "MUN-16033",
+      "name": "Gabriel Zamora"
+    },
+    {
+      "id": "MUN-16034",
+      "name": "Hidalgo"
+    },
+    {
+      "id": "MUN-16036",
+      "name": "Huandacareo"
+    },
+    {
+      "id": "MUN-16037",
+      "name": "Huaniqueo"
+    },
+    {
+      "id": "MUN-16038",
+      "name": "Huetamo"
+    },
+    {
+      "id": "MUN-16039",
+      "name": "Huiramba"
+    },
+    {
+      "id": "MUN-16040",
+      "name": "Indaparapeo"
+    },
+    {
+      "id": "MUN-16041",
+      "name": "Irimbo"
+    },
+    {
+      "id": "MUN-16042",
+      "name": "Ixtlán"
+    },
+    {
+      "id": "MUN-16043",
+      "name": "Jacona"
+    },
+    {
+      "id": "MUN-16044",
+      "name": "Jiménez"
+    },
+    {
+      "id": "MUN-16045",
+      "name": "Jiquilpan"
+    },
+    {
+      "id": "MUN-16113",
+      "name": "José Sixto Verduzco"
+    },
+    {
+      "id": "MUN-16047",
+      "name": "Jungapeo"
+    },
+    {
+      "id": "MUN-16046",
+      "name": "Juárez"
+    },
+    {
+      "id": "MUN-16035",
+      "name": "La Huacana"
+    },
+    {
+      "id": "MUN-16069",
+      "name": "La Piedad"
+    },
+    {
+      "id": "MUN-16048",
+      "name": "Lagunillas"
+    },
+    {
+      "id": "MUN-16075",
+      "name": "Los Reyes"
+    },
+    {
+      "id": "MUN-16052",
+      "name": "Lázaro Cárdenas"
+    },
+    {
+      "id": "MUN-16049",
+      "name": "Madero"
+    },
+    {
+      "id": "MUN-16050",
+      "name": "Maravatío"
+    },
+    {
+      "id": "MUN-16051",
+      "name": "Marcos Castellanos"
+    },
+    {
+      "id": "MUN-16053",
+      "name": "Morelia"
+    },
+    {
+      "id": "MUN-16054",
+      "name": "Morelos"
+    },
+    {
+      "id": "MUN-16055",
+      "name": "Múgica"
+    },
+    {
+      "id": "MUN-16056",
+      "name": "Nahuatzen"
+    },
+    {
+      "id": "MUN-16057",
+      "name": "Nocupétaro"
+    },
+    {
+      "id": "MUN-16058",
+      "name": "Nuevo Parangaricutiro"
+    },
+    {
+      "id": "MUN-16059",
+      "name": "Nuevo Urecho"
+    },
+    {
+      "id": "MUN-16060",
+      "name": "Numarán"
+    },
+    {
+      "id": "MUN-16061",
+      "name": "Ocampo"
+    },
+    {
+      "id": "MUN-16062",
+      "name": "Pajacuarán"
+    },
+    {
+      "id": "MUN-16063",
+      "name": "Panindícuaro"
+    },
+    {
+      "id": "MUN-16065",
+      "name": "Paracho"
+    },
+    {
+      "id": "MUN-16064",
+      "name": "Parácuaro"
+    },
+    {
+      "id": "MUN-16067",
+      "name": "Penjamillo"
+    },
+    {
+      "id": "MUN-16068",
+      "name": "Peribán"
+    },
+    {
+      "id": "MUN-16071",
+      "name": "Puruándiro"
+    },
+    {
+      "id": "MUN-16070",
+      "name": "Purépero"
+    },
+    {
+      "id": "MUN-16066",
+      "name": "Pátzcuaro"
+    },
+    {
+      "id": "MUN-16072",
+      "name": "Queréndaro"
+    },
+    {
+      "id": "MUN-16073",
+      "name": "Quiroga"
+    },
+    {
+      "id": "MUN-16076",
+      "name": "Sahuayo"
+    },
+    {
+      "id": "MUN-16079",
+      "name": "Salvador Escalante"
+    },
+    {
+      "id": "MUN-16077",
+      "name": "San Lucas"
+    },
+    {
+      "id": "MUN-16078",
+      "name": "Santa Ana Maya"
+    },
+    {
+      "id": "MUN-16080",
+      "name": "Senguio"
+    },
+    {
+      "id": "MUN-16081",
+      "name": "Susupuato"
+    },
+    {
+      "id": "MUN-16082",
+      "name": "Tacámbaro"
+    },
+    {
+      "id": "MUN-16083",
+      "name": "Tancítaro"
+    },
+    {
+      "id": "MUN-16084",
+      "name": "Tangamandapio"
+    },
+    {
+      "id": "MUN-16085",
+      "name": "Tangancícuaro"
+    },
+    {
+      "id": "MUN-16086",
+      "name": "Tanhuato"
+    },
+    {
+      "id": "MUN-16087",
+      "name": "Taretan"
+    },
+    {
+      "id": "MUN-16088",
+      "name": "Tarímbaro"
+    },
+    {
+      "id": "MUN-16089",
+      "name": "Tepalcatepec"
+    },
+    {
+      "id": "MUN-16090",
+      "name": "Tingambato"
+    },
+    {
+      "id": "MUN-16091",
+      "name": "Tingüindín"
+    },
+    {
+      "id": "MUN-16092",
+      "name": "Tiquicheo de Nicolás Romero"
+    },
+    {
+      "id": "MUN-16093",
+      "name": "Tlalpujahua"
+    },
+    {
+      "id": "MUN-16094",
+      "name": "Tlazazalca"
+    },
+    {
+      "id": "MUN-16095",
+      "name": "Tocumbo"
+    },
+    {
+      "id": "MUN-16096",
+      "name": "Tumbiscatío"
+    },
+    {
+      "id": "MUN-16097",
+      "name": "Turicato"
+    },
+    {
+      "id": "MUN-16098",
+      "name": "Tuxpan"
+    },
+    {
+      "id": "MUN-16099",
+      "name": "Tuzantla"
+    },
+    {
+      "id": "MUN-16100",
+      "name": "Tzintzuntzan"
+    },
+    {
+      "id": "MUN-16101",
+      "name": "Tzitzio"
+    },
+    {
+      "id": "MUN-16102",
+      "name": "Uruapan"
+    },
+    {
+      "id": "MUN-16103",
+      "name": "Venustiano Carranza"
+    },
+    {
+      "id": "MUN-16104",
+      "name": "Villamar"
+    },
+    {
+      "id": "MUN-16105",
+      "name": "Vista Hermosa"
+    },
+    {
+      "id": "MUN-16106",
+      "name": "Yurécuaro"
+    },
+    {
+      "id": "MUN-16107",
+      "name": "Zacapu"
+    },
+    {
+      "id": "MUN-16108",
+      "name": "Zamora"
+    },
+    {
+      "id": "MUN-16110",
+      "name": "Zinapécuaro"
+    },
+    {
+      "id": "MUN-16109",
+      "name": "Zináparo"
+    },
+    {
+      "id": "MUN-16111",
+      "name": "Ziracuaretiro"
+    },
+    {
+      "id": "MUN-16112",
+      "name": "Zitácuaro"
+    },
+    {
+      "id": "MUN-16003",
+      "name": "Álvaro Obregón"
+    }
+  ],
+  "Morelos": [
+    {
+      "id": "MUN-17001",
+      "name": "Amacuzac"
+    },
+    {
+      "id": "MUN-17002",
+      "name": "Atlatlahucan"
+    },
+    {
+      "id": "MUN-17003",
+      "name": "Axochiapan"
+    },
+    {
+      "id": "MUN-17004",
+      "name": "Ayala"
+    },
+    {
+      "id": "MUN-17034",
+      "name": "Coatetelco"
+    },
+    {
+      "id": "MUN-17005",
+      "name": "Coatlán del Río"
+    },
+    {
+      "id": "MUN-17006",
+      "name": "Cuautla"
+    },
+    {
+      "id": "MUN-17007",
+      "name": "Cuernavaca"
+    },
+    {
+      "id": "MUN-17008",
+      "name": "Emiliano Zapata"
+    },
+    {
+      "id": "MUN-17036",
+      "name": "Hueyapan"
+    },
+    {
+      "id": "MUN-17009",
+      "name": "Huitzilac"
+    },
+    {
+      "id": "MUN-17010",
+      "name": "Jantetelco"
+    },
+    {
+      "id": "MUN-17011",
+      "name": "Jiutepec"
+    },
+    {
+      "id": "MUN-17012",
+      "name": "Jojutla"
+    },
+    {
+      "id": "MUN-17013",
+      "name": "Jonacatepec de Leandro Valle"
+    },
+    {
+      "id": "MUN-17014",
+      "name": "Mazatepec"
+    },
+    {
+      "id": "MUN-17015",
+      "name": "Miacatlán"
+    },
+    {
+      "id": "MUN-17016",
+      "name": "Ocuituco"
+    },
+    {
+      "id": "MUN-17017",
+      "name": "Puente de Ixtla"
+    },
+    {
+      "id": "MUN-17018",
+      "name": "Temixco"
+    },
+    {
+      "id": "MUN-17033",
+      "name": "Temoac"
+    },
+    {
+      "id": "MUN-17019",
+      "name": "Tepalcingo"
+    },
+    {
+      "id": "MUN-17020",
+      "name": "Tepoztlán"
+    },
+    {
+      "id": "MUN-17021",
+      "name": "Tetecala"
+    },
+    {
+      "id": "MUN-17022",
+      "name": "Tetela del Volcán"
+    },
+    {
+      "id": "MUN-17023",
+      "name": "Tlalnepantla"
+    },
+    {
+      "id": "MUN-17024",
+      "name": "Tlaltizapán de Zapata"
+    },
+    {
+      "id": "MUN-17025",
+      "name": "Tlaquiltenango"
+    },
+    {
+      "id": "MUN-17026",
+      "name": "Tlayacapan"
+    },
+    {
+      "id": "MUN-17027",
+      "name": "Totolapan"
+    },
+    {
+      "id": "MUN-17028",
+      "name": "Xochitepec"
+    },
+    {
+      "id": "MUN-17035",
+      "name": "Xoxocotla"
+    },
+    {
+      "id": "MUN-17029",
+      "name": "Yautepec"
+    },
+    {
+      "id": "MUN-17030",
+      "name": "Yecapixtla"
+    },
+    {
+      "id": "MUN-17031",
+      "name": "Zacatepec"
+    },
+    {
+      "id": "MUN-17032",
+      "name": "Zacualpan de Amilpas"
+    }
+  ],
+  "Nayarit": [
+    {
+      "id": "MUN-18001",
+      "name": "Acaponeta"
+    },
+    {
+      "id": "MUN-18002",
+      "name": "Ahuacatlán"
+    },
+    {
+      "id": "MUN-18003",
+      "name": "Amatlán de Cañas"
+    },
+    {
+      "id": "MUN-18020",
+      "name": "Bahía de Banderas"
+    },
+    {
+      "id": "MUN-18004",
+      "name": "Compostela"
+    },
+    {
+      "id": "MUN-18009",
+      "name": "Del Nayar"
+    },
+    {
+      "id": "MUN-18005",
+      "name": "Huajicori"
+    },
+    {
+      "id": "MUN-18006",
+      "name": "Ixtlán del Río"
+    },
+    {
+      "id": "MUN-18007",
+      "name": "Jala"
+    },
+    {
+      "id": "MUN-18019",
+      "name": "La Yesca"
+    },
+    {
+      "id": "MUN-18010",
+      "name": "Rosamorada"
+    },
+    {
+      "id": "MUN-18011",
+      "name": "Ruíz"
+    },
+    {
+      "id": "MUN-18012",
+      "name": "San Blas"
+    },
+    {
+      "id": "MUN-18013",
+      "name": "San Pedro Lagunillas"
+    },
+    {
+      "id": "MUN-18014",
+      "name": "Santa María del Oro"
+    },
+    {
+      "id": "MUN-18015",
+      "name": "Santiago Ixcuintla"
+    },
+    {
+      "id": "MUN-18016",
+      "name": "Tecuala"
+    },
+    {
+      "id": "MUN-18017",
+      "name": "Tepic"
+    },
+    {
+      "id": "MUN-18018",
+      "name": "Tuxpan"
+    },
+    {
+      "id": "MUN-18008",
+      "name": "Xalisco"
+    }
+  ],
+  "Nuevo León": [
+    {
+      "id": "MUN-19001",
+      "name": "Abasolo"
+    },
+    {
+      "id": "MUN-19002",
+      "name": "Agualeguas"
+    },
+    {
+      "id": "MUN-19004",
+      "name": "Allende"
+    },
+    {
+      "id": "MUN-19005",
+      "name": "Anáhuac"
+    },
+    {
+      "id": "MUN-19006",
+      "name": "Apodaca"
+    },
+    {
+      "id": "MUN-19007",
+      "name": "Aramberri"
+    },
+    {
+      "id": "MUN-19008",
+      "name": "Bustamante"
+    },
+    {
+      "id": "MUN-19009",
+      "name": "Cadereyta Jiménez"
+    },
+    {
+      "id": "MUN-19011",
+      "name": "Cerralvo"
+    },
+    {
+      "id": "MUN-19013",
+      "name": "China"
+    },
+    {
+      "id": "MUN-19012",
+      "name": "Ciénega de Flores"
+    },
+    {
+      "id": "MUN-19014",
+      "name": "Doctor Arroyo"
+    },
+    {
+      "id": "MUN-19015",
+      "name": "Doctor Coss"
+    },
+    {
+      "id": "MUN-19016",
+      "name": "Doctor González"
+    },
+    {
+      "id": "MUN-19010",
+      "name": "El Carmen"
+    },
+    {
+      "id": "MUN-19017",
+      "name": "Galeana"
+    },
+    {
+      "id": "MUN-19018",
+      "name": "García"
+    },
+    {
+      "id": "MUN-19020",
+      "name": "General Bravo"
+    },
+    {
+      "id": "MUN-19021",
+      "name": "General Escobedo"
+    },
+    {
+      "id": "MUN-19022",
+      "name": "General Terán"
+    },
+    {
+      "id": "MUN-19023",
+      "name": "General Treviño"
+    },
+    {
+      "id": "MUN-19024",
+      "name": "General Zaragoza"
+    },
+    {
+      "id": "MUN-19025",
+      "name": "General Zuazua"
+    },
+    {
+      "id": "MUN-19026",
+      "name": "Guadalupe"
+    },
+    {
+      "id": "MUN-19047",
+      "name": "Hidalgo"
+    },
+    {
+      "id": "MUN-19028",
+      "name": "Higueras"
+    },
+    {
+      "id": "MUN-19029",
+      "name": "Hualahuises"
+    },
+    {
+      "id": "MUN-19030",
+      "name": "Iturbide"
+    },
+    {
+      "id": "MUN-19031",
+      "name": "Juárez"
+    },
+    {
+      "id": "MUN-19032",
+      "name": "Lampazos de Naranjo"
+    },
+    {
+      "id": "MUN-19033",
+      "name": "Linares"
+    },
+    {
+      "id": "MUN-19003",
+      "name": "Los Aldamas"
+    },
+    {
+      "id": "MUN-19027",
+      "name": "Los Herreras"
+    },
+    {
+      "id": "MUN-19042",
+      "name": "Los Ramones"
+    },
+    {
+      "id": "MUN-19034",
+      "name": "Marín"
+    },
+    {
+      "id": "MUN-19035",
+      "name": "Melchor Ocampo"
+    },
+    {
+      "id": "MUN-19036",
+      "name": "Mier y Noriega"
+    },
+    {
+      "id": "MUN-19037",
+      "name": "Mina"
+    },
+    {
+      "id": "MUN-19038",
+      "name": "Montemorelos"
+    },
+    {
+      "id": "MUN-19039",
+      "name": "Monterrey"
+    },
+    {
+      "id": "MUN-19040",
+      "name": "Parás"
+    },
+    {
+      "id": "MUN-19041",
+      "name": "Pesquería"
+    },
+    {
+      "id": "MUN-19043",
+      "name": "Rayones"
+    },
+    {
+      "id": "MUN-19044",
+      "name": "Sabinas Hidalgo"
+    },
+    {
+      "id": "MUN-19045",
+      "name": "Salinas Victoria"
+    },
+    {
+      "id": "MUN-19046",
+      "name": "San Nicolás de los Garza"
+    },
+    {
+      "id": "MUN-19019",
+      "name": "San Pedro Garza García"
+    },
+    {
+      "id": "MUN-19048",
+      "name": "Santa Catarina"
+    },
+    {
+      "id": "MUN-19049",
+      "name": "Santiago"
+    },
+    {
+      "id": "MUN-19050",
+      "name": "Vallecillo"
+    },
+    {
+      "id": "MUN-19051",
+      "name": "Villaldama"
+    }
+  ],
+  "Oaxaca": [
+    {
+      "id": "MUN-20001",
+      "name": "Abejones"
+    },
+    {
+      "id": "MUN-20002",
+      "name": "Acatlán de Pérez Figueroa"
+    },
+    {
+      "id": "MUN-20003",
+      "name": "Asunción Cacalotepec"
+    },
+    {
+      "id": "MUN-20004",
+      "name": "Asunción Cuyotepeji"
+    },
+    {
+      "id": "MUN-20005",
+      "name": "Asunción Ixtaltepec"
+    },
+    {
+      "id": "MUN-20006",
+      "name": "Asunción Nochixtlán"
+    },
+    {
+      "id": "MUN-20007",
+      "name": "Asunción Ocotlán"
+    },
+    {
+      "id": "MUN-20008",
+      "name": "Asunción Tlacolulita"
+    },
+    {
+      "id": "MUN-20398",
+      "name": "Ayoquezco de Aldama"
+    },
+    {
+      "id": "MUN-20009",
+      "name": "Ayotzintepec"
+    },
+    {
+      "id": "MUN-20011",
+      "name": "Calihualá"
+    },
+    {
+      "id": "MUN-20012",
+      "name": "Candelaria Loxicha"
+    },
+    {
+      "id": "MUN-20247",
+      "name": "Capulálpam de Méndez"
+    },
+    {
+      "id": "MUN-20025",
+      "name": "Chahuites"
+    },
+    {
+      "id": "MUN-20026",
+      "name": "Chalcatongo de Hidalgo"
+    },
+    {
+      "id": "MUN-20027",
+      "name": "Chiquihuitlán de Benito Juárez"
+    },
+    {
+      "id": "MUN-20014",
+      "name": "Ciudad Ixtepec"
+    },
+    {
+      "id": "MUN-20013",
+      "name": "Ciénega de Zimatlán"
+    },
+    {
+      "id": "MUN-20015",
+      "name": "Coatecas Altas"
+    },
+    {
+      "id": "MUN-20016",
+      "name": "Coicoyán de las Flores"
+    },
+    {
+      "id": "MUN-20018",
+      "name": "Concepción Buenavista"
+    },
+    {
+      "id": "MUN-20019",
+      "name": "Concepción Pápalo"
+    },
+    {
+      "id": "MUN-20020",
+      "name": "Constancia del Rosario"
+    },
+    {
+      "id": "MUN-20021",
+      "name": "Cosolapa"
+    },
+    {
+      "id": "MUN-20022",
+      "name": "Cosoltepec"
+    },
+    {
+      "id": "MUN-20023",
+      "name": "Cuilápam de Guerrero"
+    },
+    {
+      "id": "MUN-20024",
+      "name": "Cuyamecalco Villa de Zaragoza"
+    },
+    {
+      "id": "MUN-20010",
+      "name": "El Barrio de la Soledad"
+    },
+    {
+      "id": "MUN-20030",
+      "name": "El Espinal"
+    },
+    {
+      "id": "MUN-20029",
+      "name": "Eloxochitlán de Flores Magón"
+    },
+    {
+      "id": "MUN-20032",
+      "name": "Fresnillo de Trujano"
+    },
+    {
+      "id": "MUN-20033",
+      "name": "Guadalupe Etla"
+    },
+    {
+      "id": "MUN-20034",
+      "name": "Guadalupe de Ramírez"
+    },
+    {
+      "id": "MUN-20035",
+      "name": "Guelatao de Juárez"
+    },
+    {
+      "id": "MUN-20036",
+      "name": "Guevea de Humboldt"
+    },
+    {
+      "id": "MUN-20028",
+      "name": "Heroica Ciudad de Ejutla de Crespo"
+    },
+    {
+      "id": "MUN-20039",
+      "name": "Heroica Ciudad de Huajuapan de León"
+    },
+    {
+      "id": "MUN-20397",
+      "name": "Heroica Ciudad de Tlaxiaco"
+    },
+    {
+      "id": "MUN-20549",
+      "name": "Heroica Villa Tezoatlán de Segura y Luna, Cuna de la Independencia de Oaxaca"
+    },
+    {
+      "id": "MUN-20124",
+      "name": "Heroica Villa de San Blas Atempa"
+    },
+    {
+      "id": "MUN-20040",
+      "name": "Huautepec"
+    },
+    {
+      "id": "MUN-20041",
+      "name": "Huautla de Jiménez"
+    },
+    {
+      "id": "MUN-20065",
+      "name": "Ixpantepec Nieves"
+    },
+    {
+      "id": "MUN-20042",
+      "name": "Ixtlán de Juárez"
+    },
+    {
+      "id": "MUN-20043",
+      "name": "Juchitán de Zaragoza"
+    },
+    {
+      "id": "MUN-20017",
+      "name": "La Compañía"
+    },
+    {
+      "id": "MUN-20069",
+      "name": "La Pe"
+    },
+    {
+      "id": "MUN-20076",
+      "name": "La Reforma"
+    },
+    {
+      "id": "MUN-20556",
+      "name": "La Trinidad Vista Hermosa"
+    },
+    {
+      "id": "MUN-20044",
+      "name": "Loma Bonita"
+    },
+    {
+      "id": "MUN-20045",
+      "name": "Magdalena Apasco"
+    },
+    {
+      "id": "MUN-20046",
+      "name": "Magdalena Jaltepec"
+    },
+    {
+      "id": "MUN-20048",
+      "name": "Magdalena Mixtepec"
+    },
+    {
+      "id": "MUN-20049",
+      "name": "Magdalena Ocotlán"
+    },
+    {
+      "id": "MUN-20050",
+      "name": "Magdalena Peñasco"
+    },
+    {
+      "id": "MUN-20051",
+      "name": "Magdalena Teitipac"
+    },
+    {
+      "id": "MUN-20052",
+      "name": "Magdalena Tequisistlán"
+    },
+    {
+      "id": "MUN-20053",
+      "name": "Magdalena Tlacotepec"
+    },
+    {
+      "id": "MUN-20562",
+      "name": "Magdalena Yodocono de Porfirio Díaz"
+    },
+    {
+      "id": "MUN-20054",
+      "name": "Magdalena Zahuatlán"
+    },
+    {
+      "id": "MUN-20055",
+      "name": "Mariscala de Juárez"
+    },
+    {
+      "id": "MUN-20057",
+      "name": "Matías Romero Avendaño"
+    },
+    {
+      "id": "MUN-20058",
+      "name": "Mazatlán Villa de Flores"
+    },
+    {
+      "id": "MUN-20037",
+      "name": "Mesones Hidalgo"
+    },
+    {
+      "id": "MUN-20059",
+      "name": "Miahuatlán de Porfirio Díaz"
+    },
+    {
+      "id": "MUN-20060",
+      "name": "Mixistlán de la Reforma"
+    },
+    {
+      "id": "MUN-20061",
+      "name": "Monjas"
+    },
+    {
+      "id": "MUN-20056",
+      "name": "Mártires de Tacubaya"
+    },
+    {
+      "id": "MUN-20062",
+      "name": "Natividad"
+    },
+    {
+      "id": "MUN-20063",
+      "name": "Nazareno Etla"
+    },
+    {
+      "id": "MUN-20064",
+      "name": "Nejapa de Madero"
+    },
+    {
+      "id": "MUN-20504",
+      "name": "Nuevo Zoquiápam"
+    },
+    {
+      "id": "MUN-20067",
+      "name": "Oaxaca de Juárez"
+    },
+    {
+      "id": "MUN-20068",
+      "name": "Ocotlán de Morelos"
+    },
+    {
+      "id": "MUN-20070",
+      "name": "Pinotepa de Don Luis"
+    },
+    {
+      "id": "MUN-20071",
+      "name": "Pluma Hidalgo"
+    },
+    {
+      "id": "MUN-20073",
+      "name": "Putla Villa de Guerrero"
+    },
+    {
+      "id": "MUN-20075",
+      "name": "Reforma de Pineda"
+    },
+    {
+      "id": "MUN-20077",
+      "name": "Reyes Etla"
+    },
+    {
+      "id": "MUN-20078",
+      "name": "Rojas de Cuauhtémoc"
+    },
+    {
+      "id": "MUN-20079",
+      "name": "Salina Cruz"
+    },
+    {
+      "id": "MUN-20080",
+      "name": "San Agustín Amatengo"
+    },
+    {
+      "id": "MUN-20081",
+      "name": "San Agustín Atenango"
+    },
+    {
+      "id": "MUN-20082",
+      "name": "San Agustín Chayuco"
+    },
+    {
+      "id": "MUN-20084",
+      "name": "San Agustín Etla"
+    },
+    {
+      "id": "MUN-20085",
+      "name": "San Agustín Loxicha"
+    },
+    {
+      "id": "MUN-20086",
+      "name": "San Agustín Tlacotepec"
+    },
+    {
+      "id": "MUN-20087",
+      "name": "San Agustín Yatareni"
+    },
+    {
+      "id": "MUN-20083",
+      "name": "San Agustín de las Juntas"
+    },
+    {
+      "id": "MUN-20088",
+      "name": "San Andrés Cabecera Nueva"
+    },
+    {
+      "id": "MUN-20089",
+      "name": "San Andrés Dinicuiti"
+    },
+    {
+      "id": "MUN-20090",
+      "name": "San Andrés Huaxpaltepec"
+    },
+    {
+      "id": "MUN-20091",
+      "name": "San Andrés Huayápam"
+    },
+    {
+      "id": "MUN-20092",
+      "name": "San Andrés Ixtlahuaca"
+    },
+    {
+      "id": "MUN-20093",
+      "name": "San Andrés Lagunas"
+    },
+    {
+      "id": "MUN-20094",
+      "name": "San Andrés Nuxiño"
+    },
+    {
+      "id": "MUN-20095",
+      "name": "San Andrés Paxtlán"
+    },
+    {
+      "id": "MUN-20096",
+      "name": "San Andrés Sinaxtla"
+    },
+    {
+      "id": "MUN-20097",
+      "name": "San Andrés Solaga"
+    },
+    {
+      "id": "MUN-20098",
+      "name": "San Andrés Teotilálpam"
+    },
+    {
+      "id": "MUN-20099",
+      "name": "San Andrés Tepetlapa"
+    },
+    {
+      "id": "MUN-20100",
+      "name": "San Andrés Yaá"
+    },
+    {
+      "id": "MUN-20101",
+      "name": "San Andrés Zabache"
+    },
+    {
+      "id": "MUN-20102",
+      "name": "San Andrés Zautla"
+    },
+    {
+      "id": "MUN-20103",
+      "name": "San Antonino Castillo Velasco"
+    },
+    {
+      "id": "MUN-20105",
+      "name": "San Antonino Monte Verde"
+    },
+    {
+      "id": "MUN-20104",
+      "name": "San Antonino el Alto"
+    },
+    {
+      "id": "MUN-20106",
+      "name": "San Antonio Acutla"
+    },
+    {
+      "id": "MUN-20108",
+      "name": "San Antonio Huitepec"
+    },
+    {
+      "id": "MUN-20109",
+      "name": "San Antonio Nanahuatípam"
+    },
+    {
+      "id": "MUN-20110",
+      "name": "San Antonio Sinicahua"
+    },
+    {
+      "id": "MUN-20111",
+      "name": "San Antonio Tepetlapa"
+    },
+    {
+      "id": "MUN-20107",
+      "name": "San Antonio de la Cal"
+    },
+    {
+      "id": "MUN-20112",
+      "name": "San Baltazar Chichicápam"
+    },
+    {
+      "id": "MUN-20113",
+      "name": "San Baltazar Loxicha"
+    },
+    {
+      "id": "MUN-20114",
+      "name": "San Baltazar Yatzachi el Bajo"
+    },
+    {
+      "id": "MUN-20115",
+      "name": "San Bartolo Coyotepec"
+    },
+    {
+      "id": "MUN-20121",
+      "name": "San Bartolo Soyaltepec"
+    },
+    {
+      "id": "MUN-20122",
+      "name": "San Bartolo Yautepec"
+    },
+    {
+      "id": "MUN-20116",
+      "name": "San Bartolomé Ayautla"
+    },
+    {
+      "id": "MUN-20117",
+      "name": "San Bartolomé Loxicha"
+    },
+    {
+      "id": "MUN-20118",
+      "name": "San Bartolomé Quialana"
+    },
+    {
+      "id": "MUN-20119",
+      "name": "San Bartolomé Yucuañe"
+    },
+    {
+      "id": "MUN-20120",
+      "name": "San Bartolomé Zoogocho"
+    },
+    {
+      "id": "MUN-20123",
+      "name": "San Bernardo Mixtepec"
+    },
+    {
+      "id": "MUN-20125",
+      "name": "San Carlos Yautepec"
+    },
+    {
+      "id": "MUN-20126",
+      "name": "San Cristóbal Amatlán"
+    },
+    {
+      "id": "MUN-20127",
+      "name": "San Cristóbal Amoltepec"
+    },
+    {
+      "id": "MUN-20128",
+      "name": "San Cristóbal Lachirioag"
+    },
+    {
+      "id": "MUN-20129",
+      "name": "San Cristóbal Suchixtlahuaca"
+    },
+    {
+      "id": "MUN-20131",
+      "name": "San Dionisio Ocotepec"
+    },
+    {
+      "id": "MUN-20132",
+      "name": "San Dionisio Ocotlán"
+    },
+    {
+      "id": "MUN-20130",
+      "name": "San Dionisio del Mar"
+    },
+    {
+      "id": "MUN-20133",
+      "name": "San Esteban Atatlahuca"
+    },
+    {
+      "id": "MUN-20134",
+      "name": "San Felipe Jalapa de Díaz"
+    },
+    {
+      "id": "MUN-20135",
+      "name": "San Felipe Tejalápam"
+    },
+    {
+      "id": "MUN-20136",
+      "name": "San Felipe Usila"
+    },
+    {
+      "id": "MUN-20137",
+      "name": "San Francisco Cahuacuá"
+    },
+    {
+      "id": "MUN-20138",
+      "name": "San Francisco Cajonos"
+    },
+    {
+      "id": "MUN-20139",
+      "name": "San Francisco Chapulapa"
+    },
+    {
+      "id": "MUN-20140",
+      "name": "San Francisco Chindúa"
+    },
+    {
+      "id": "MUN-20142",
+      "name": "San Francisco Huehuetlán"
+    },
+    {
+      "id": "MUN-20143",
+      "name": "San Francisco Ixhuatán"
+    },
+    {
+      "id": "MUN-20144",
+      "name": "San Francisco Jaltepetongo"
+    },
+    {
+      "id": "MUN-20145",
+      "name": "San Francisco Lachigoló"
+    },
+    {
+      "id": "MUN-20146",
+      "name": "San Francisco Logueche"
+    },
+    {
+      "id": "MUN-20147",
+      "name": "San Francisco Nuxaño"
+    },
+    {
+      "id": "MUN-20148",
+      "name": "San Francisco Ozolotepec"
+    },
+    {
+      "id": "MUN-20149",
+      "name": "San Francisco Sola"
+    },
+    {
+      "id": "MUN-20150",
+      "name": "San Francisco Telixtlahuaca"
+    },
+    {
+      "id": "MUN-20151",
+      "name": "San Francisco Teopan"
+    },
+    {
+      "id": "MUN-20152",
+      "name": "San Francisco Tlapancingo"
+    },
+    {
+      "id": "MUN-20141",
+      "name": "San Francisco del Mar"
+    },
+    {
+      "id": "MUN-20153",
+      "name": "San Gabriel Mixtepec"
+    },
+    {
+      "id": "MUN-20154",
+      "name": "San Ildefonso Amatlán"
+    },
+    {
+      "id": "MUN-20155",
+      "name": "San Ildefonso Sola"
+    },
+    {
+      "id": "MUN-20156",
+      "name": "San Ildefonso Villa Alta"
+    },
+    {
+      "id": "MUN-20157",
+      "name": "San Jacinto Amilpas"
+    },
+    {
+      "id": "MUN-20158",
+      "name": "San Jacinto Tlacotepec"
+    },
+    {
+      "id": "MUN-20159",
+      "name": "San Jerónimo Coatlán"
+    },
+    {
+      "id": "MUN-20160",
+      "name": "San Jerónimo Silacayoapilla"
+    },
+    {
+      "id": "MUN-20161",
+      "name": "San Jerónimo Sosola"
+    },
+    {
+      "id": "MUN-20162",
+      "name": "San Jerónimo Taviche"
+    },
+    {
+      "id": "MUN-20163",
+      "name": "San Jerónimo Tecóatl"
+    },
+    {
+      "id": "MUN-20550",
+      "name": "San Jerónimo Tlacochahuaya"
+    },
+    {
+      "id": "MUN-20164",
+      "name": "San Jorge Nuchita"
+    },
+    {
+      "id": "MUN-20165",
+      "name": "San José Ayuquila"
+    },
+    {
+      "id": "MUN-20166",
+      "name": "San José Chiltepec"
+    },
+    {
+      "id": "MUN-20168",
+      "name": "San José Estancia Grande"
+    },
+    {
+      "id": "MUN-20169",
+      "name": "San José Independencia"
+    },
+    {
+      "id": "MUN-20170",
+      "name": "San José Lachiguiri"
+    },
+    {
+      "id": "MUN-20171",
+      "name": "San José Tenango"
+    },
+    {
+      "id": "MUN-20167",
+      "name": "San José del Peñasco"
+    },
+    {
+      "id": "MUN-20072",
+      "name": "San José del Progreso"
+    },
+    {
+      "id": "MUN-20172",
+      "name": "San Juan Achiutla"
+    },
+    {
+      "id": "MUN-20173",
+      "name": "San Juan Atepec"
+    },
+    {
+      "id": "MUN-20175",
+      "name": "San Juan Bautista Atatlahuca"
+    },
+    {
+      "id": "MUN-20176",
+      "name": "San Juan Bautista Coixtlahuaca"
+    },
+    {
+      "id": "MUN-20177",
+      "name": "San Juan Bautista Cuicatlán"
+    },
+    {
+      "id": "MUN-20178",
+      "name": "San Juan Bautista Guelache"
+    },
+    {
+      "id": "MUN-20179",
+      "name": "San Juan Bautista Jayacatlán"
+    },
+    {
+      "id": "MUN-20180",
+      "name": "San Juan Bautista Lo de Soto"
+    },
+    {
+      "id": "MUN-20181",
+      "name": "San Juan Bautista Suchitepec"
+    },
+    {
+      "id": "MUN-20183",
+      "name": "San Juan Bautista Tlachichilco"
+    },
+    {
+      "id": "MUN-20182",
+      "name": "San Juan Bautista Tlacoatzintepec"
+    },
+    {
+      "id": "MUN-20184",
+      "name": "San Juan Bautista Tuxtepec"
+    },
+    {
+      "id": "MUN-20559",
+      "name": "San Juan Bautista Valle Nacional"
+    },
+    {
+      "id": "MUN-20185",
+      "name": "San Juan Cacahuatepec"
+    },
+    {
+      "id": "MUN-20191",
+      "name": "San Juan Chicomezúchil"
+    },
+    {
+      "id": "MUN-20192",
+      "name": "San Juan Chilateca"
+    },
+    {
+      "id": "MUN-20186",
+      "name": "San Juan Cieneguilla"
+    },
+    {
+      "id": "MUN-20187",
+      "name": "San Juan Coatzóspam"
+    },
+    {
+      "id": "MUN-20188",
+      "name": "San Juan Colorado"
+    },
+    {
+      "id": "MUN-20189",
+      "name": "San Juan Comaltepec"
+    },
+    {
+      "id": "MUN-20190",
+      "name": "San Juan Cotzocón"
+    },
+    {
+      "id": "MUN-20195",
+      "name": "San Juan Diuxi"
+    },
+    {
+      "id": "MUN-20196",
+      "name": "San Juan Evangelista Analco"
+    },
+    {
+      "id": "MUN-20197",
+      "name": "San Juan Guelavía"
+    },
+    {
+      "id": "MUN-20198",
+      "name": "San Juan Guichicovi"
+    },
+    {
+      "id": "MUN-20199",
+      "name": "San Juan Ihualtepec"
+    },
+    {
+      "id": "MUN-20200",
+      "name": "San Juan Juquila Mixes"
+    },
+    {
+      "id": "MUN-20201",
+      "name": "San Juan Juquila Vijanos"
+    },
+    {
+      "id": "MUN-20202",
+      "name": "San Juan Lachao"
+    },
+    {
+      "id": "MUN-20203",
+      "name": "San Juan Lachigalla"
+    },
+    {
+      "id": "MUN-20204",
+      "name": "San Juan Lajarcia"
+    },
+    {
+      "id": "MUN-20205",
+      "name": "San Juan Lalana"
+    },
+    {
+      "id": "MUN-20207",
+      "name": "San Juan Mazatlán"
+    },
+    {
+      "id": "MUN-20208",
+      "name": "San Juan Mixtepec"
+    },
+    {
+      "id": "MUN-20209",
+      "name": "San Juan Mixtepec"
+    },
+    {
+      "id": "MUN-20211",
+      "name": "San Juan Ozolotepec"
+    },
+    {
+      "id": "MUN-20212",
+      "name": "San Juan Petlapa"
+    },
+    {
+      "id": "MUN-20213",
+      "name": "San Juan Quiahije"
+    },
+    {
+      "id": "MUN-20214",
+      "name": "San Juan Quiotepec"
+    },
+    {
+      "id": "MUN-20215",
+      "name": "San Juan Sayultepec"
+    },
+    {
+      "id": "MUN-20216",
+      "name": "San Juan Tabaá"
+    },
+    {
+      "id": "MUN-20217",
+      "name": "San Juan Tamazola"
+    },
+    {
+      "id": "MUN-20218",
+      "name": "San Juan Teita"
+    },
+    {
+      "id": "MUN-20219",
+      "name": "San Juan Teitipac"
+    },
+    {
+      "id": "MUN-20220",
+      "name": "San Juan Tepeuxila"
+    },
+    {
+      "id": "MUN-20221",
+      "name": "San Juan Teposcolula"
+    },
+    {
+      "id": "MUN-20222",
+      "name": "San Juan Yaeé"
+    },
+    {
+      "id": "MUN-20223",
+      "name": "San Juan Yatzona"
+    },
+    {
+      "id": "MUN-20224",
+      "name": "San Juan Yucuita"
+    },
+    {
+      "id": "MUN-20206",
+      "name": "San Juan de los Cués"
+    },
+    {
+      "id": "MUN-20193",
+      "name": "San Juan del Estado"
+    },
+    {
+      "id": "MUN-20194",
+      "name": "San Juan del Río"
+    },
+    {
+      "id": "MUN-20210",
+      "name": "San Juan Ñumí"
+    },
+    {
+      "id": "MUN-20225",
+      "name": "San Lorenzo"
+    },
+    {
+      "id": "MUN-20226",
+      "name": "San Lorenzo Albarradas"
+    },
+    {
+      "id": "MUN-20227",
+      "name": "San Lorenzo Cacaotepec"
+    },
+    {
+      "id": "MUN-20228",
+      "name": "San Lorenzo Cuaunecuiltitla"
+    },
+    {
+      "id": "MUN-20229",
+      "name": "San Lorenzo Texmelúcan"
+    },
+    {
+      "id": "MUN-20230",
+      "name": "San Lorenzo Victoria"
+    },
+    {
+      "id": "MUN-20231",
+      "name": "San Lucas Camotlán"
+    },
+    {
+      "id": "MUN-20232",
+      "name": "San Lucas Ojitlán"
+    },
+    {
+      "id": "MUN-20233",
+      "name": "San Lucas Quiaviní"
+    },
+    {
+      "id": "MUN-20234",
+      "name": "San Lucas Zoquiápam"
+    },
+    {
+      "id": "MUN-20235",
+      "name": "San Luis Amatlán"
+    },
+    {
+      "id": "MUN-20236",
+      "name": "San Marcial Ozolotepec"
+    },
+    {
+      "id": "MUN-20237",
+      "name": "San Marcos Arteaga"
+    },
+    {
+      "id": "MUN-20239",
+      "name": "San Martín Huamelúlpam"
+    },
+    {
+      "id": "MUN-20240",
+      "name": "San Martín Itunyoso"
+    },
+    {
+      "id": "MUN-20241",
+      "name": "San Martín Lachilá"
+    },
+    {
+      "id": "MUN-20242",
+      "name": "San Martín Peras"
+    },
+    {
+      "id": "MUN-20243",
+      "name": "San Martín Tilcajete"
+    },
+    {
+      "id": "MUN-20244",
+      "name": "San Martín Toxpalan"
+    },
+    {
+      "id": "MUN-20245",
+      "name": "San Martín Zacatepec"
+    },
+    {
+      "id": "MUN-20238",
+      "name": "San Martín de los Cansecos"
+    },
+    {
+      "id": "MUN-20246",
+      "name": "San Mateo Cajonos"
+    },
+    {
+      "id": "MUN-20250",
+      "name": "San Mateo Etlatongo"
+    },
+    {
+      "id": "MUN-20251",
+      "name": "San Mateo Nejápam"
+    },
+    {
+      "id": "MUN-20252",
+      "name": "San Mateo Peñasco"
+    },
+    {
+      "id": "MUN-20253",
+      "name": "San Mateo Piñas"
+    },
+    {
+      "id": "MUN-20254",
+      "name": "San Mateo Río Hondo"
+    },
+    {
+      "id": "MUN-20255",
+      "name": "San Mateo Sindihui"
+    },
+    {
+      "id": "MUN-20256",
+      "name": "San Mateo Tlapiltepec"
+    },
+    {
+      "id": "MUN-20249",
+      "name": "San Mateo Yoloxochitlán"
+    },
+    {
+      "id": "MUN-20566",
+      "name": "San Mateo Yucutindoo"
+    },
+    {
+      "id": "MUN-20248",
+      "name": "San Mateo del Mar"
+    },
+    {
+      "id": "MUN-20257",
+      "name": "San Melchor Betaza"
+    },
+    {
+      "id": "MUN-20258",
+      "name": "San Miguel Achiutla"
+    },
+    {
+      "id": "MUN-20259",
+      "name": "San Miguel Ahuehuetitlán"
+    },
+    {
+      "id": "MUN-20260",
+      "name": "San Miguel Aloápam"
+    },
+    {
+      "id": "MUN-20261",
+      "name": "San Miguel Amatitlán"
+    },
+    {
+      "id": "MUN-20262",
+      "name": "San Miguel Amatlán"
+    },
+    {
+      "id": "MUN-20264",
+      "name": "San Miguel Chicahua"
+    },
+    {
+      "id": "MUN-20265",
+      "name": "San Miguel Chimalapa"
+    },
+    {
+      "id": "MUN-20263",
+      "name": "San Miguel Coatlán"
+    },
+    {
+      "id": "MUN-20268",
+      "name": "San Miguel Ejutla"
+    },
+    {
+      "id": "MUN-20270",
+      "name": "San Miguel Huautla"
+    },
+    {
+      "id": "MUN-20271",
+      "name": "San Miguel Mixtepec"
+    },
+    {
+      "id": "MUN-20272",
+      "name": "San Miguel Panixtlahuaca"
+    },
+    {
+      "id": "MUN-20273",
+      "name": "San Miguel Peras"
+    },
+    {
+      "id": "MUN-20274",
+      "name": "San Miguel Piedras"
+    },
+    {
+      "id": "MUN-20275",
+      "name": "San Miguel Quetzaltepec"
+    },
+    {
+      "id": "MUN-20276",
+      "name": "San Miguel Santa Flor"
+    },
+    {
+      "id": "MUN-20278",
+      "name": "San Miguel Soyaltepec"
+    },
+    {
+      "id": "MUN-20279",
+      "name": "San Miguel Suchixtepec"
+    },
+    {
+      "id": "MUN-20281",
+      "name": "San Miguel Tecomatlán"
+    },
+    {
+      "id": "MUN-20282",
+      "name": "San Miguel Tenango"
+    },
+    {
+      "id": "MUN-20283",
+      "name": "San Miguel Tequixtepec"
+    },
+    {
+      "id": "MUN-20284",
+      "name": "San Miguel Tilquiápam"
+    },
+    {
+      "id": "MUN-20285",
+      "name": "San Miguel Tlacamama"
+    },
+    {
+      "id": "MUN-20286",
+      "name": "San Miguel Tlacotepec"
+    },
+    {
+      "id": "MUN-20287",
+      "name": "San Miguel Tulancingo"
+    },
+    {
+      "id": "MUN-20288",
+      "name": "San Miguel Yotao"
+    },
+    {
+      "id": "MUN-20266",
+      "name": "San Miguel del Puerto"
+    },
+    {
+      "id": "MUN-20267",
+      "name": "San Miguel del Río"
+    },
+    {
+      "id": "MUN-20269",
+      "name": "San Miguel el Grande"
+    },
+    {
+      "id": "MUN-20289",
+      "name": "San Nicolás"
+    },
+    {
+      "id": "MUN-20290",
+      "name": "San Nicolás Hidalgo"
+    },
+    {
+      "id": "MUN-20291",
+      "name": "San Pablo Coatlán"
+    },
+    {
+      "id": "MUN-20292",
+      "name": "San Pablo Cuatro Venados"
+    },
+    {
+      "id": "MUN-20293",
+      "name": "San Pablo Etla"
+    },
+    {
+      "id": "MUN-20294",
+      "name": "San Pablo Huitzo"
+    },
+    {
+      "id": "MUN-20295",
+      "name": "San Pablo Huixtepec"
+    },
+    {
+      "id": "MUN-20296",
+      "name": "San Pablo Macuiltianguis"
+    },
+    {
+      "id": "MUN-20297",
+      "name": "San Pablo Tijaltepec"
+    },
+    {
+      "id": "MUN-20298",
+      "name": "San Pablo Villa de Mitla"
+    },
+    {
+      "id": "MUN-20299",
+      "name": "San Pablo Yaganiza"
+    },
+    {
+      "id": "MUN-20300",
+      "name": "San Pedro Amuzgos"
+    },
+    {
+      "id": "MUN-20301",
+      "name": "San Pedro Apóstol"
+    },
+    {
+      "id": "MUN-20302",
+      "name": "San Pedro Atoyac"
+    },
+    {
+      "id": "MUN-20303",
+      "name": "San Pedro Cajonos"
+    },
+    {
+      "id": "MUN-20305",
+      "name": "San Pedro Comitancillo"
+    },
+    {
+      "id": "MUN-20304",
+      "name": "San Pedro Coxcaltepec Cántaros"
+    },
+    {
+      "id": "MUN-20307",
+      "name": "San Pedro Huamelula"
+    },
+    {
+      "id": "MUN-20308",
+      "name": "San Pedro Huilotepec"
+    },
+    {
+      "id": "MUN-20309",
+      "name": "San Pedro Ixcatlán"
+    },
+    {
+      "id": "MUN-20310",
+      "name": "San Pedro Ixtlahuaca"
+    },
+    {
+      "id": "MUN-20311",
+      "name": "San Pedro Jaltepetongo"
+    },
+    {
+      "id": "MUN-20312",
+      "name": "San Pedro Jicayán"
+    },
+    {
+      "id": "MUN-20313",
+      "name": "San Pedro Jocotipac"
+    },
+    {
+      "id": "MUN-20314",
+      "name": "San Pedro Juchatengo"
+    },
+    {
+      "id": "MUN-20318",
+      "name": "San Pedro Mixtepec"
+    },
+    {
+      "id": "MUN-20319",
+      "name": "San Pedro Mixtepec"
+    },
+    {
+      "id": "MUN-20320",
+      "name": "San Pedro Molinos"
+    },
+    {
+      "id": "MUN-20315",
+      "name": "San Pedro Mártir"
+    },
+    {
+      "id": "MUN-20316",
+      "name": "San Pedro Mártir Quiechapa"
+    },
+    {
+      "id": "MUN-20317",
+      "name": "San Pedro Mártir Yucuxaco"
+    },
+    {
+      "id": "MUN-20321",
+      "name": "San Pedro Nopala"
+    },
+    {
+      "id": "MUN-20322",
+      "name": "San Pedro Ocopetatillo"
+    },
+    {
+      "id": "MUN-20323",
+      "name": "San Pedro Ocotepec"
+    },
+    {
+      "id": "MUN-20324",
+      "name": "San Pedro Pochutla"
+    },
+    {
+      "id": "MUN-20325",
+      "name": "San Pedro Quiatoni"
+    },
+    {
+      "id": "MUN-20326",
+      "name": "San Pedro Sochiápam"
+    },
+    {
+      "id": "MUN-20327",
+      "name": "San Pedro Tapanatepec"
+    },
+    {
+      "id": "MUN-20328",
+      "name": "San Pedro Taviche"
+    },
+    {
+      "id": "MUN-20329",
+      "name": "San Pedro Teozacoalco"
+    },
+    {
+      "id": "MUN-20330",
+      "name": "San Pedro Teutila"
+    },
+    {
+      "id": "MUN-20331",
+      "name": "San Pedro Tidaá"
+    },
+    {
+      "id": "MUN-20332",
+      "name": "San Pedro Topiltepec"
+    },
+    {
+      "id": "MUN-20333",
+      "name": "San Pedro Totolápam"
+    },
+    {
+      "id": "MUN-20335",
+      "name": "San Pedro Yaneri"
+    },
+    {
+      "id": "MUN-20341",
+      "name": "San Pedro Yucunama"
+    },
+    {
+      "id": "MUN-20336",
+      "name": "San Pedro Yólox"
+    },
+    {
+      "id": "MUN-20306",
+      "name": "San Pedro el Alto"
+    },
+    {
+      "id": "MUN-20337",
+      "name": "San Pedro y San Pablo Ayutla"
+    },
+    {
+      "id": "MUN-20339",
+      "name": "San Pedro y San Pablo Teposcolula"
+    },
+    {
+      "id": "MUN-20340",
+      "name": "San Pedro y San Pablo Tequixtepec"
+    },
+    {
+      "id": "MUN-20342",
+      "name": "San Raymundo Jalpan"
+    },
+    {
+      "id": "MUN-20343",
+      "name": "San Sebastián Abasolo"
+    },
+    {
+      "id": "MUN-20344",
+      "name": "San Sebastián Coatlán"
+    },
+    {
+      "id": "MUN-20345",
+      "name": "San Sebastián Ixcapa"
+    },
+    {
+      "id": "MUN-20346",
+      "name": "San Sebastián Nicananduta"
+    },
+    {
+      "id": "MUN-20347",
+      "name": "San Sebastián Río Hondo"
+    },
+    {
+      "id": "MUN-20348",
+      "name": "San Sebastián Tecomaxtlahuaca"
+    },
+    {
+      "id": "MUN-20349",
+      "name": "San Sebastián Teitipac"
+    },
+    {
+      "id": "MUN-20350",
+      "name": "San Sebastián Tutla"
+    },
+    {
+      "id": "MUN-20351",
+      "name": "San Simón Almolongas"
+    },
+    {
+      "id": "MUN-20352",
+      "name": "San Simón Zahuatlán"
+    },
+    {
+      "id": "MUN-20534",
+      "name": "San Vicente Coatlán"
+    },
+    {
+      "id": "MUN-20535",
+      "name": "San Vicente Lachixío"
+    },
+    {
+      "id": "MUN-20536",
+      "name": "San Vicente Nuñú"
+    },
+    {
+      "id": "MUN-20353",
+      "name": "Santa Ana"
+    },
+    {
+      "id": "MUN-20354",
+      "name": "Santa Ana Ateixtlahuaca"
+    },
+    {
+      "id": "MUN-20355",
+      "name": "Santa Ana Cuauhtémoc"
+    },
+    {
+      "id": "MUN-20357",
+      "name": "Santa Ana Tavela"
+    },
+    {
+      "id": "MUN-20358",
+      "name": "Santa Ana Tlapacoyan"
+    },
+    {
+      "id": "MUN-20359",
+      "name": "Santa Ana Yareni"
+    },
+    {
+      "id": "MUN-20360",
+      "name": "Santa Ana Zegache"
+    },
+    {
+      "id": "MUN-20356",
+      "name": "Santa Ana del Valle"
+    },
+    {
+      "id": "MUN-20361",
+      "name": "Santa Catalina Quierí"
+    },
+    {
+      "id": "MUN-20362",
+      "name": "Santa Catarina Cuixtla"
+    },
+    {
+      "id": "MUN-20363",
+      "name": "Santa Catarina Ixtepeji"
+    },
+    {
+      "id": "MUN-20364",
+      "name": "Santa Catarina Juquila"
+    },
+    {
+      "id": "MUN-20365",
+      "name": "Santa Catarina Lachatao"
+    },
+    {
+      "id": "MUN-20366",
+      "name": "Santa Catarina Loxicha"
+    },
+    {
+      "id": "MUN-20367",
+      "name": "Santa Catarina Mechoacán"
+    },
+    {
+      "id": "MUN-20368",
+      "name": "Santa Catarina Minas"
+    },
+    {
+      "id": "MUN-20369",
+      "name": "Santa Catarina Quiané"
+    },
+    {
+      "id": "MUN-20074",
+      "name": "Santa Catarina Quioquitani"
+    },
+    {
+      "id": "MUN-20370",
+      "name": "Santa Catarina Tayata"
+    },
+    {
+      "id": "MUN-20371",
+      "name": "Santa Catarina Ticuá"
+    },
+    {
+      "id": "MUN-20372",
+      "name": "Santa Catarina Yosonotú"
+    },
+    {
+      "id": "MUN-20373",
+      "name": "Santa Catarina Zapoquila"
+    },
+    {
+      "id": "MUN-20374",
+      "name": "Santa Cruz Acatepec"
+    },
+    {
+      "id": "MUN-20375",
+      "name": "Santa Cruz Amilpas"
+    },
+    {
+      "id": "MUN-20377",
+      "name": "Santa Cruz Itundujia"
+    },
+    {
+      "id": "MUN-20378",
+      "name": "Santa Cruz Mixtepec"
+    },
+    {
+      "id": "MUN-20379",
+      "name": "Santa Cruz Nundaco"
+    },
+    {
+      "id": "MUN-20380",
+      "name": "Santa Cruz Papalutla"
+    },
+    {
+      "id": "MUN-20381",
+      "name": "Santa Cruz Tacache de Mina"
+    },
+    {
+      "id": "MUN-20382",
+      "name": "Santa Cruz Tacahua"
+    },
+    {
+      "id": "MUN-20383",
+      "name": "Santa Cruz Tayata"
+    },
+    {
+      "id": "MUN-20384",
+      "name": "Santa Cruz Xitla"
+    },
+    {
+      "id": "MUN-20385",
+      "name": "Santa Cruz Xoxocotlán"
+    },
+    {
+      "id": "MUN-20386",
+      "name": "Santa Cruz Zenzontepec"
+    },
+    {
+      "id": "MUN-20376",
+      "name": "Santa Cruz de Bravo"
+    },
+    {
+      "id": "MUN-20387",
+      "name": "Santa Gertrudis"
+    },
+    {
+      "id": "MUN-20389",
+      "name": "Santa Inés Yatzeche"
+    },
+    {
+      "id": "MUN-20569",
+      "name": "Santa Inés de Zaragoza"
+    },
+    {
+      "id": "MUN-20388",
+      "name": "Santa Inés del Monte"
+    },
+    {
+      "id": "MUN-20391",
+      "name": "Santa Lucía Miahuatlán"
+    },
+    {
+      "id": "MUN-20392",
+      "name": "Santa Lucía Monteverde"
+    },
+    {
+      "id": "MUN-20393",
+      "name": "Santa Lucía Ocotlán"
+    },
+    {
+      "id": "MUN-20390",
+      "name": "Santa Lucía del Camino"
+    },
+    {
+      "id": "MUN-20047",
+      "name": "Santa Magdalena Jicotlán"
+    },
+    {
+      "id": "MUN-20394",
+      "name": "Santa María Alotepec"
+    },
+    {
+      "id": "MUN-20395",
+      "name": "Santa María Apazco"
+    },
+    {
+      "id": "MUN-20399",
+      "name": "Santa María Atzompa"
+    },
+    {
+      "id": "MUN-20400",
+      "name": "Santa María Camotlán"
+    },
+    {
+      "id": "MUN-20404",
+      "name": "Santa María Chachoápam"
+    },
+    {
+      "id": "MUN-20406",
+      "name": "Santa María Chilchotla"
+    },
+    {
+      "id": "MUN-20407",
+      "name": "Santa María Chimalapa"
+    },
+    {
+      "id": "MUN-20401",
+      "name": "Santa María Colotepec"
+    },
+    {
+      "id": "MUN-20402",
+      "name": "Santa María Cortijo"
+    },
+    {
+      "id": "MUN-20403",
+      "name": "Santa María Coyotepec"
+    },
+    {
+      "id": "MUN-20410",
+      "name": "Santa María Ecatepec"
+    },
+    {
+      "id": "MUN-20411",
+      "name": "Santa María Guelacé"
+    },
+    {
+      "id": "MUN-20412",
+      "name": "Santa María Guienagati"
+    },
+    {
+      "id": "MUN-20413",
+      "name": "Santa María Huatulco"
+    },
+    {
+      "id": "MUN-20414",
+      "name": "Santa María Huazolotitlán"
+    },
+    {
+      "id": "MUN-20415",
+      "name": "Santa María Ipalapa"
+    },
+    {
+      "id": "MUN-20416",
+      "name": "Santa María Ixcatlán"
+    },
+    {
+      "id": "MUN-20417",
+      "name": "Santa María Jacatepec"
+    },
+    {
+      "id": "MUN-20418",
+      "name": "Santa María Jalapa del Marqués"
+    },
+    {
+      "id": "MUN-20419",
+      "name": "Santa María Jaltianguis"
+    },
+    {
+      "id": "MUN-20420",
+      "name": "Santa María Lachixío"
+    },
+    {
+      "id": "MUN-20421",
+      "name": "Santa María Mixtequilla"
+    },
+    {
+      "id": "MUN-20422",
+      "name": "Santa María Nativitas"
+    },
+    {
+      "id": "MUN-20423",
+      "name": "Santa María Nduayaco"
+    },
+    {
+      "id": "MUN-20424",
+      "name": "Santa María Ozolotepec"
+    },
+    {
+      "id": "MUN-20427",
+      "name": "Santa María Petapa"
+    },
+    {
+      "id": "MUN-20426",
+      "name": "Santa María Peñoles"
+    },
+    {
+      "id": "MUN-20425",
+      "name": "Santa María Pápalo"
+    },
+    {
+      "id": "MUN-20428",
+      "name": "Santa María Quiegolani"
+    },
+    {
+      "id": "MUN-20429",
+      "name": "Santa María Sola"
+    },
+    {
+      "id": "MUN-20430",
+      "name": "Santa María Tataltepec"
+    },
+    {
+      "id": "MUN-20431",
+      "name": "Santa María Tecomavaca"
+    },
+    {
+      "id": "MUN-20432",
+      "name": "Santa María Temaxcalapa"
+    },
+    {
+      "id": "MUN-20433",
+      "name": "Santa María Temaxcaltepec"
+    },
+    {
+      "id": "MUN-20434",
+      "name": "Santa María Teopoxco"
+    },
+    {
+      "id": "MUN-20435",
+      "name": "Santa María Tepantlali"
+    },
+    {
+      "id": "MUN-20436",
+      "name": "Santa María Texcatitlán"
+    },
+    {
+      "id": "MUN-20437",
+      "name": "Santa María Tlahuitoltepec"
+    },
+    {
+      "id": "MUN-20438",
+      "name": "Santa María Tlalixtac"
+    },
+    {
+      "id": "MUN-20439",
+      "name": "Santa María Tonameca"
+    },
+    {
+      "id": "MUN-20440",
+      "name": "Santa María Totolapilla"
+    },
+    {
+      "id": "MUN-20441",
+      "name": "Santa María Xadani"
+    },
+    {
+      "id": "MUN-20442",
+      "name": "Santa María Yalina"
+    },
+    {
+      "id": "MUN-20443",
+      "name": "Santa María Yavesía"
+    },
+    {
+      "id": "MUN-20444",
+      "name": "Santa María Yolotepec"
+    },
+    {
+      "id": "MUN-20445",
+      "name": "Santa María Yosoyúa"
+    },
+    {
+      "id": "MUN-20446",
+      "name": "Santa María Yucuhiti"
+    },
+    {
+      "id": "MUN-20447",
+      "name": "Santa María Zacatepec"
+    },
+    {
+      "id": "MUN-20448",
+      "name": "Santa María Zaniza"
+    },
+    {
+      "id": "MUN-20449",
+      "name": "Santa María Zoquitlán"
+    },
+    {
+      "id": "MUN-20408",
+      "name": "Santa María del Rosario"
+    },
+    {
+      "id": "MUN-20409",
+      "name": "Santa María del Tule"
+    },
+    {
+      "id": "MUN-20396",
+      "name": "Santa María la Asunción"
+    },
+    {
+      "id": "MUN-20450",
+      "name": "Santiago Amoltepec"
+    },
+    {
+      "id": "MUN-20451",
+      "name": "Santiago Apoala"
+    },
+    {
+      "id": "MUN-20452",
+      "name": "Santiago Apóstol"
+    },
+    {
+      "id": "MUN-20453",
+      "name": "Santiago Astata"
+    },
+    {
+      "id": "MUN-20454",
+      "name": "Santiago Atitlán"
+    },
+    {
+      "id": "MUN-20455",
+      "name": "Santiago Ayuquililla"
+    },
+    {
+      "id": "MUN-20456",
+      "name": "Santiago Cacaloxtepec"
+    },
+    {
+      "id": "MUN-20457",
+      "name": "Santiago Camotlán"
+    },
+    {
+      "id": "MUN-20460",
+      "name": "Santiago Choápam"
+    },
+    {
+      "id": "MUN-20458",
+      "name": "Santiago Comaltepec"
+    },
+    {
+      "id": "MUN-20462",
+      "name": "Santiago Huajolotitlán"
+    },
+    {
+      "id": "MUN-20463",
+      "name": "Santiago Huauclilla"
+    },
+    {
+      "id": "MUN-20464",
+      "name": "Santiago Ihuitlán Plumas"
+    },
+    {
+      "id": "MUN-20465",
+      "name": "Santiago Ixcuintepec"
+    },
+    {
+      "id": "MUN-20466",
+      "name": "Santiago Ixtayutla"
+    },
+    {
+      "id": "MUN-20467",
+      "name": "Santiago Jamiltepec"
+    },
+    {
+      "id": "MUN-20468",
+      "name": "Santiago Jocotepec"
+    },
+    {
+      "id": "MUN-20469",
+      "name": "Santiago Juxtlahuaca"
+    },
+    {
+      "id": "MUN-20470",
+      "name": "Santiago Lachiguiri"
+    },
+    {
+      "id": "MUN-20471",
+      "name": "Santiago Lalopa"
+    },
+    {
+      "id": "MUN-20472",
+      "name": "Santiago Laollaga"
+    },
+    {
+      "id": "MUN-20473",
+      "name": "Santiago Laxopa"
+    },
+    {
+      "id": "MUN-20474",
+      "name": "Santiago Llano Grande"
+    },
+    {
+      "id": "MUN-20475",
+      "name": "Santiago Matatlán"
+    },
+    {
+      "id": "MUN-20476",
+      "name": "Santiago Miltepec"
+    },
+    {
+      "id": "MUN-20477",
+      "name": "Santiago Minas"
+    },
+    {
+      "id": "MUN-20478",
+      "name": "Santiago Nacaltepec"
+    },
+    {
+      "id": "MUN-20479",
+      "name": "Santiago Nejapilla"
+    },
+    {
+      "id": "MUN-20066",
+      "name": "Santiago Niltepec"
+    },
+    {
+      "id": "MUN-20480",
+      "name": "Santiago Nundiche"
+    },
+    {
+      "id": "MUN-20481",
+      "name": "Santiago Nuyoó"
+    },
+    {
+      "id": "MUN-20482",
+      "name": "Santiago Pinotepa Nacional"
+    },
+    {
+      "id": "MUN-20483",
+      "name": "Santiago Suchilquitongo"
+    },
+    {
+      "id": "MUN-20484",
+      "name": "Santiago Tamazola"
+    },
+    {
+      "id": "MUN-20485",
+      "name": "Santiago Tapextla"
+    },
+    {
+      "id": "MUN-20487",
+      "name": "Santiago Tenango"
+    },
+    {
+      "id": "MUN-20488",
+      "name": "Santiago Tepetlapa"
+    },
+    {
+      "id": "MUN-20489",
+      "name": "Santiago Tetepec"
+    },
+    {
+      "id": "MUN-20490",
+      "name": "Santiago Texcalcingo"
+    },
+    {
+      "id": "MUN-20491",
+      "name": "Santiago Textitlán"
+    },
+    {
+      "id": "MUN-20492",
+      "name": "Santiago Tilantongo"
+    },
+    {
+      "id": "MUN-20493",
+      "name": "Santiago Tillo"
+    },
+    {
+      "id": "MUN-20494",
+      "name": "Santiago Tlazoyaltepec"
+    },
+    {
+      "id": "MUN-20495",
+      "name": "Santiago Xanica"
+    },
+    {
+      "id": "MUN-20496",
+      "name": "Santiago Xiacuí"
+    },
+    {
+      "id": "MUN-20497",
+      "name": "Santiago Yaitepec"
+    },
+    {
+      "id": "MUN-20498",
+      "name": "Santiago Yaveo"
+    },
+    {
+      "id": "MUN-20499",
+      "name": "Santiago Yolomécatl"
+    },
+    {
+      "id": "MUN-20500",
+      "name": "Santiago Yosondúa"
+    },
+    {
+      "id": "MUN-20501",
+      "name": "Santiago Yucuyachi"
+    },
+    {
+      "id": "MUN-20502",
+      "name": "Santiago Zacatepec"
+    },
+    {
+      "id": "MUN-20503",
+      "name": "Santiago Zoochila"
+    },
+    {
+      "id": "MUN-20461",
+      "name": "Santiago del Río"
+    },
+    {
+      "id": "MUN-20506",
+      "name": "Santo Domingo Albarradas"
+    },
+    {
+      "id": "MUN-20507",
+      "name": "Santo Domingo Armenta"
+    },
+    {
+      "id": "MUN-20508",
+      "name": "Santo Domingo Chihuitán"
+    },
+    {
+      "id": "MUN-20505",
+      "name": "Santo Domingo Ingenio"
+    },
+    {
+      "id": "MUN-20510",
+      "name": "Santo Domingo Ixcatlán"
+    },
+    {
+      "id": "MUN-20511",
+      "name": "Santo Domingo Nuxaá"
+    },
+    {
+      "id": "MUN-20512",
+      "name": "Santo Domingo Ozolotepec"
+    },
+    {
+      "id": "MUN-20513",
+      "name": "Santo Domingo Petapa"
+    },
+    {
+      "id": "MUN-20514",
+      "name": "Santo Domingo Roayaga"
+    },
+    {
+      "id": "MUN-20515",
+      "name": "Santo Domingo Tehuantepec"
+    },
+    {
+      "id": "MUN-20516",
+      "name": "Santo Domingo Teojomulco"
+    },
+    {
+      "id": "MUN-20517",
+      "name": "Santo Domingo Tepuxtepec"
+    },
+    {
+      "id": "MUN-20518",
+      "name": "Santo Domingo Tlatayápam"
+    },
+    {
+      "id": "MUN-20519",
+      "name": "Santo Domingo Tomaltepec"
+    },
+    {
+      "id": "MUN-20521",
+      "name": "Santo Domingo Tonaltepec"
+    },
+    {
+      "id": "MUN-20520",
+      "name": "Santo Domingo Tonalá"
+    },
+    {
+      "id": "MUN-20522",
+      "name": "Santo Domingo Xagacía"
+    },
+    {
+      "id": "MUN-20523",
+      "name": "Santo Domingo Yanhuitlán"
+    },
+    {
+      "id": "MUN-20524",
+      "name": "Santo Domingo Yodohino"
+    },
+    {
+      "id": "MUN-20525",
+      "name": "Santo Domingo Zanatepec"
+    },
+    {
+      "id": "MUN-20509",
+      "name": "Santo Domingo de Morelos"
+    },
+    {
+      "id": "MUN-20530",
+      "name": "Santo Tomás Jalieza"
+    },
+    {
+      "id": "MUN-20531",
+      "name": "Santo Tomás Mazaltepec"
+    },
+    {
+      "id": "MUN-20532",
+      "name": "Santo Tomás Ocotepec"
+    },
+    {
+      "id": "MUN-20533",
+      "name": "Santo Tomás Tamazulapan"
+    },
+    {
+      "id": "MUN-20526",
+      "name": "Santos Reyes Nopala"
+    },
+    {
+      "id": "MUN-20527",
+      "name": "Santos Reyes Pápalo"
+    },
+    {
+      "id": "MUN-20528",
+      "name": "Santos Reyes Tepejillo"
+    },
+    {
+      "id": "MUN-20529",
+      "name": "Santos Reyes Yucuná"
+    },
+    {
+      "id": "MUN-20537",
+      "name": "Silacayoápam"
+    },
+    {
+      "id": "MUN-20538",
+      "name": "Sitio de Xitlapehua"
+    },
+    {
+      "id": "MUN-20539",
+      "name": "Soledad Etla"
+    },
+    {
+      "id": "MUN-20031",
+      "name": "Tamazulápam del Espíritu Santo"
+    },
+    {
+      "id": "MUN-20541",
+      "name": "Tanetze de Zaragoza"
+    },
+    {
+      "id": "MUN-20542",
+      "name": "Taniche"
+    },
+    {
+      "id": "MUN-20543",
+      "name": "Tataltepec de Valdés"
+    },
+    {
+      "id": "MUN-20544",
+      "name": "Teococuilco de Marcos Pérez"
+    },
+    {
+      "id": "MUN-20545",
+      "name": "Teotitlán de Flores Magón"
+    },
+    {
+      "id": "MUN-20546",
+      "name": "Teotitlán del Valle"
+    },
+    {
+      "id": "MUN-20547",
+      "name": "Teotongo"
+    },
+    {
+      "id": "MUN-20548",
+      "name": "Tepelmeme Villa de Morelos"
+    },
+    {
+      "id": "MUN-20551",
+      "name": "Tlacolula de Matamoros"
+    },
+    {
+      "id": "MUN-20552",
+      "name": "Tlacotepec Plumas"
+    },
+    {
+      "id": "MUN-20553",
+      "name": "Tlalixtac de Cabrera"
+    },
+    {
+      "id": "MUN-20554",
+      "name": "Totontepec Villa de Morelos"
+    },
+    {
+      "id": "MUN-20555",
+      "name": "Trinidad Zaachila"
+    },
+    {
+      "id": "MUN-20557",
+      "name": "Unión Hidalgo"
+    },
+    {
+      "id": "MUN-20558",
+      "name": "Valerio Trujano"
+    },
+    {
+      "id": "MUN-20560",
+      "name": "Villa Díaz Ordaz"
+    },
+    {
+      "id": "MUN-20038",
+      "name": "Villa Hidalgo Yalálag"
+    },
+    {
+      "id": "MUN-20277",
+      "name": "Villa Sola de Vega"
+    },
+    {
+      "id": "MUN-20280",
+      "name": "Villa Talea de Castro"
+    },
+    {
+      "id": "MUN-20486",
+      "name": "Villa Tejúpam de la Unión"
+    },
+    {
+      "id": "MUN-20405",
+      "name": "Villa de Chilapa de Díaz"
+    },
+    {
+      "id": "MUN-20338",
+      "name": "Villa de Etla"
+    },
+    {
+      "id": "MUN-20459",
+      "name": "Villa de Santiago Chazumba"
+    },
+    {
+      "id": "MUN-20540",
+      "name": "Villa de Tamazulápam del Progreso"
+    },
+    {
+      "id": "MUN-20334",
+      "name": "Villa de Tututepec"
+    },
+    {
+      "id": "MUN-20565",
+      "name": "Villa de Zaachila"
+    },
+    {
+      "id": "MUN-20561",
+      "name": "Yaxe"
+    },
+    {
+      "id": "MUN-20563",
+      "name": "Yogana"
+    },
+    {
+      "id": "MUN-20564",
+      "name": "Yutanduchi de Guerrero"
+    },
+    {
+      "id": "MUN-20567",
+      "name": "Zapotitlán Lagunas"
+    },
+    {
+      "id": "MUN-20568",
+      "name": "Zapotitlán Palmas"
+    },
+    {
+      "id": "MUN-20570",
+      "name": "Zimatlán de Álvarez"
+    },
+    {
+      "id": "MUN-20174",
+      "name": "Ánimas Trujano"
+    }
+  ],
+  "Puebla": [
+    {
+      "id": "MUN-21001",
+      "name": "Acajete"
+    },
+    {
+      "id": "MUN-21002",
+      "name": "Acateno"
+    },
+    {
+      "id": "MUN-21003",
+      "name": "Acatlán"
+    },
+    {
+      "id": "MUN-21004",
+      "name": "Acatzingo"
+    },
+    {
+      "id": "MUN-21005",
+      "name": "Acteopan"
+    },
+    {
+      "id": "MUN-21006",
+      "name": "Ahuacatlán"
+    },
+    {
+      "id": "MUN-21007",
+      "name": "Ahuatlán"
+    },
+    {
+      "id": "MUN-21008",
+      "name": "Ahuazotepec"
+    },
+    {
+      "id": "MUN-21009",
+      "name": "Ahuehuetitla"
+    },
+    {
+      "id": "MUN-21010",
+      "name": "Ajalpan"
+    },
+    {
+      "id": "MUN-21011",
+      "name": "Albino Zertuche"
+    },
+    {
+      "id": "MUN-21012",
+      "name": "Aljojuca"
+    },
+    {
+      "id": "MUN-21013",
+      "name": "Altepexi"
+    },
+    {
+      "id": "MUN-21014",
+      "name": "Amixtlán"
+    },
+    {
+      "id": "MUN-21015",
+      "name": "Amozoc"
+    },
+    {
+      "id": "MUN-21016",
+      "name": "Aquixtla"
+    },
+    {
+      "id": "MUN-21017",
+      "name": "Atempan"
+    },
+    {
+      "id": "MUN-21018",
+      "name": "Atexcal"
+    },
+    {
+      "id": "MUN-21080",
+      "name": "Atlequizayan"
+    },
+    {
+      "id": "MUN-21019",
+      "name": "Atlixco"
+    },
+    {
+      "id": "MUN-21020",
+      "name": "Atoyatempan"
+    },
+    {
+      "id": "MUN-21021",
+      "name": "Atzala"
+    },
+    {
+      "id": "MUN-21022",
+      "name": "Atzitzihuacán"
+    },
+    {
+      "id": "MUN-21023",
+      "name": "Atzitzintla"
+    },
+    {
+      "id": "MUN-21024",
+      "name": "Axutla"
+    },
+    {
+      "id": "MUN-21025",
+      "name": "Ayotoxco de Guerrero"
+    },
+    {
+      "id": "MUN-21026",
+      "name": "Calpan"
+    },
+    {
+      "id": "MUN-21027",
+      "name": "Caltepec"
+    },
+    {
+      "id": "MUN-21028",
+      "name": "Camocuautla"
+    },
+    {
+      "id": "MUN-21029",
+      "name": "Caxhuacan"
+    },
+    {
+      "id": "MUN-21099",
+      "name": "Cañada Morelos"
+    },
+    {
+      "id": "MUN-21045",
+      "name": "Chalchicomula de Sesma"
+    },
+    {
+      "id": "MUN-21046",
+      "name": "Chapulco"
+    },
+    {
+      "id": "MUN-21047",
+      "name": "Chiautla"
+    },
+    {
+      "id": "MUN-21048",
+      "name": "Chiautzingo"
+    },
+    {
+      "id": "MUN-21050",
+      "name": "Chichiquila"
+    },
+    {
+      "id": "MUN-21049",
+      "name": "Chiconcuautla"
+    },
+    {
+      "id": "MUN-21051",
+      "name": "Chietla"
+    },
+    {
+      "id": "MUN-21052",
+      "name": "Chigmecatitlán"
+    },
+    {
+      "id": "MUN-21053",
+      "name": "Chignahuapan"
+    },
+    {
+      "id": "MUN-21054",
+      "name": "Chignautla"
+    },
+    {
+      "id": "MUN-21055",
+      "name": "Chila"
+    },
+    {
+      "id": "MUN-21056",
+      "name": "Chila de la Sal"
+    },
+    {
+      "id": "MUN-21058",
+      "name": "Chilchotla"
+    },
+    {
+      "id": "MUN-21059",
+      "name": "Chinantla"
+    },
+    {
+      "id": "MUN-21030",
+      "name": "Coatepec"
+    },
+    {
+      "id": "MUN-21031",
+      "name": "Coatzingo"
+    },
+    {
+      "id": "MUN-21032",
+      "name": "Cohetzala"
+    },
+    {
+      "id": "MUN-21033",
+      "name": "Cohuecan"
+    },
+    {
+      "id": "MUN-21034",
+      "name": "Coronango"
+    },
+    {
+      "id": "MUN-21035",
+      "name": "Coxcatlán"
+    },
+    {
+      "id": "MUN-21036",
+      "name": "Coyomeapan"
+    },
+    {
+      "id": "MUN-21037",
+      "name": "Coyotepec"
+    },
+    {
+      "id": "MUN-21038",
+      "name": "Cuapiaxtla de Madero"
+    },
+    {
+      "id": "MUN-21039",
+      "name": "Cuautempan"
+    },
+    {
+      "id": "MUN-21040",
+      "name": "Cuautinchán"
+    },
+    {
+      "id": "MUN-21041",
+      "name": "Cuautlancingo"
+    },
+    {
+      "id": "MUN-21042",
+      "name": "Cuayuca de Andrade"
+    },
+    {
+      "id": "MUN-21043",
+      "name": "Cuetzalan del Progreso"
+    },
+    {
+      "id": "MUN-21044",
+      "name": "Cuyoaco"
+    },
+    {
+      "id": "MUN-21060",
+      "name": "Domingo Arenas"
+    },
+    {
+      "id": "MUN-21061",
+      "name": "Eloxochitlán"
+    },
+    {
+      "id": "MUN-21062",
+      "name": "Epatlán"
+    },
+    {
+      "id": "MUN-21063",
+      "name": "Esperanza"
+    },
+    {
+      "id": "MUN-21064",
+      "name": "Francisco Z. Mena"
+    },
+    {
+      "id": "MUN-21065",
+      "name": "General Felipe Ángeles"
+    },
+    {
+      "id": "MUN-21066",
+      "name": "Guadalupe"
+    },
+    {
+      "id": "MUN-21067",
+      "name": "Guadalupe Victoria"
+    },
+    {
+      "id": "MUN-21068",
+      "name": "Hermenegildo Galeana"
+    },
+    {
+      "id": "MUN-21057",
+      "name": "Honey"
+    },
+    {
+      "id": "MUN-21069",
+      "name": "Huaquechula"
+    },
+    {
+      "id": "MUN-21070",
+      "name": "Huatlatlauca"
+    },
+    {
+      "id": "MUN-21071",
+      "name": "Huauchinango"
+    },
+    {
+      "id": "MUN-21072",
+      "name": "Huehuetla"
+    },
+    {
+      "id": "MUN-21073",
+      "name": "Huehuetlán el Chico"
+    },
+    {
+      "id": "MUN-21150",
+      "name": "Huehuetlán el Grande"
+    },
+    {
+      "id": "MUN-21074",
+      "name": "Huejotzingo"
+    },
+    {
+      "id": "MUN-21075",
+      "name": "Hueyapan"
+    },
+    {
+      "id": "MUN-21076",
+      "name": "Hueytamalco"
+    },
+    {
+      "id": "MUN-21077",
+      "name": "Hueytlalpan"
+    },
+    {
+      "id": "MUN-21078",
+      "name": "Huitzilan de Serdán"
+    },
+    {
+      "id": "MUN-21079",
+      "name": "Huitziltepec"
+    },
+    {
+      "id": "MUN-21081",
+      "name": "Ixcamilpa de Guerrero"
+    },
+    {
+      "id": "MUN-21082",
+      "name": "Ixcaquixtla"
+    },
+    {
+      "id": "MUN-21083",
+      "name": "Ixtacamaxtitlán"
+    },
+    {
+      "id": "MUN-21084",
+      "name": "Ixtepec"
+    },
+    {
+      "id": "MUN-21085",
+      "name": "Izúcar de Matamoros"
+    },
+    {
+      "id": "MUN-21086",
+      "name": "Jalpan"
+    },
+    {
+      "id": "MUN-21087",
+      "name": "Jolalpan"
+    },
+    {
+      "id": "MUN-21088",
+      "name": "Jonotla"
+    },
+    {
+      "id": "MUN-21089",
+      "name": "Jopala"
+    },
+    {
+      "id": "MUN-21090",
+      "name": "Juan C. Bonilla"
+    },
+    {
+      "id": "MUN-21091",
+      "name": "Juan Galindo"
+    },
+    {
+      "id": "MUN-21092",
+      "name": "Juan N. Méndez"
+    },
+    {
+      "id": "MUN-21095",
+      "name": "La Magdalena Tlatlauquitepec"
+    },
+    {
+      "id": "MUN-21093",
+      "name": "Lafragua"
+    },
+    {
+      "id": "MUN-21094",
+      "name": "Libres"
+    },
+    {
+      "id": "MUN-21118",
+      "name": "Los Reyes de Juárez"
+    },
+    {
+      "id": "MUN-21096",
+      "name": "Mazapiltepec de Juárez"
+    },
+    {
+      "id": "MUN-21097",
+      "name": "Mixtla"
+    },
+    {
+      "id": "MUN-21098",
+      "name": "Molcaxac"
+    },
+    {
+      "id": "MUN-21100",
+      "name": "Naupan"
+    },
+    {
+      "id": "MUN-21101",
+      "name": "Nauzontla"
+    },
+    {
+      "id": "MUN-21102",
+      "name": "Nealtican"
+    },
+    {
+      "id": "MUN-21103",
+      "name": "Nicolás Bravo"
+    },
+    {
+      "id": "MUN-21104",
+      "name": "Nopalucan"
+    },
+    {
+      "id": "MUN-21105",
+      "name": "Ocotepec"
+    },
+    {
+      "id": "MUN-21106",
+      "name": "Ocoyucan"
+    },
+    {
+      "id": "MUN-21107",
+      "name": "Olintla"
+    },
+    {
+      "id": "MUN-21108",
+      "name": "Oriental"
+    },
+    {
+      "id": "MUN-21109",
+      "name": "Pahuatlán"
+    },
+    {
+      "id": "MUN-21110",
+      "name": "Palmar de Bravo"
+    },
+    {
+      "id": "MUN-21111",
+      "name": "Pantepec"
+    },
+    {
+      "id": "MUN-21112",
+      "name": "Petlalcingo"
+    },
+    {
+      "id": "MUN-21113",
+      "name": "Piaxtla"
+    },
+    {
+      "id": "MUN-21114",
+      "name": "Puebla"
+    },
+    {
+      "id": "MUN-21115",
+      "name": "Quecholac"
+    },
+    {
+      "id": "MUN-21116",
+      "name": "Quimixtlán"
+    },
+    {
+      "id": "MUN-21117",
+      "name": "Rafael Lara Grajales"
+    },
+    {
+      "id": "MUN-21119",
+      "name": "San Andrés Cholula"
+    },
+    {
+      "id": "MUN-21120",
+      "name": "San Antonio Cañada"
+    },
+    {
+      "id": "MUN-21121",
+      "name": "San Diego la Mesa Tochimiltzingo"
+    },
+    {
+      "id": "MUN-21122",
+      "name": "San Felipe Teotlalcingo"
+    },
+    {
+      "id": "MUN-21123",
+      "name": "San Felipe Tepatlán"
+    },
+    {
+      "id": "MUN-21124",
+      "name": "San Gabriel Chilac"
+    },
+    {
+      "id": "MUN-21125",
+      "name": "San Gregorio Atzompa"
+    },
+    {
+      "id": "MUN-21126",
+      "name": "San Jerónimo Tecuanipan"
+    },
+    {
+      "id": "MUN-21127",
+      "name": "San Jerónimo Xayacatlán"
+    },
+    {
+      "id": "MUN-21128",
+      "name": "San José Chiapa"
+    },
+    {
+      "id": "MUN-21129",
+      "name": "San José Miahuatlán"
+    },
+    {
+      "id": "MUN-21130",
+      "name": "San Juan Atenco"
+    },
+    {
+      "id": "MUN-21131",
+      "name": "San Juan Atzompa"
+    },
+    {
+      "id": "MUN-21132",
+      "name": "San Martín Texmelucan"
+    },
+    {
+      "id": "MUN-21133",
+      "name": "San Martín Totoltepec"
+    },
+    {
+      "id": "MUN-21134",
+      "name": "San Matías Tlalancaleca"
+    },
+    {
+      "id": "MUN-21135",
+      "name": "San Miguel Ixitlán"
+    },
+    {
+      "id": "MUN-21136",
+      "name": "San Miguel Xoxtla"
+    },
+    {
+      "id": "MUN-21137",
+      "name": "San Nicolás Buenos Aires"
+    },
+    {
+      "id": "MUN-21138",
+      "name": "San Nicolás de los Ranchos"
+    },
+    {
+      "id": "MUN-21139",
+      "name": "San Pablo Anicano"
+    },
+    {
+      "id": "MUN-21140",
+      "name": "San Pedro Cholula"
+    },
+    {
+      "id": "MUN-21141",
+      "name": "San Pedro Yeloixtlahuaca"
+    },
+    {
+      "id": "MUN-21144",
+      "name": "San Salvador Huixcolotla"
+    },
+    {
+      "id": "MUN-21142",
+      "name": "San Salvador el Seco"
+    },
+    {
+      "id": "MUN-21143",
+      "name": "San Salvador el Verde"
+    },
+    {
+      "id": "MUN-21145",
+      "name": "San Sebastián Tlacotepec"
+    },
+    {
+      "id": "MUN-21146",
+      "name": "Santa Catarina Tlaltempan"
+    },
+    {
+      "id": "MUN-21147",
+      "name": "Santa Inés Ahuatempan"
+    },
+    {
+      "id": "MUN-21148",
+      "name": "Santa Isabel Cholula"
+    },
+    {
+      "id": "MUN-21149",
+      "name": "Santiago Miahuatlán"
+    },
+    {
+      "id": "MUN-21151",
+      "name": "Santo Tomás Hueyotlipan"
+    },
+    {
+      "id": "MUN-21152",
+      "name": "Soltepec"
+    },
+    {
+      "id": "MUN-21153",
+      "name": "Tecali de Herrera"
+    },
+    {
+      "id": "MUN-21154",
+      "name": "Tecamachalco"
+    },
+    {
+      "id": "MUN-21155",
+      "name": "Tecomatlán"
+    },
+    {
+      "id": "MUN-21156",
+      "name": "Tehuacán"
+    },
+    {
+      "id": "MUN-21157",
+      "name": "Tehuitzingo"
+    },
+    {
+      "id": "MUN-21158",
+      "name": "Tenampulco"
+    },
+    {
+      "id": "MUN-21159",
+      "name": "Teopantlán"
+    },
+    {
+      "id": "MUN-21160",
+      "name": "Teotlalco"
+    },
+    {
+      "id": "MUN-21161",
+      "name": "Tepanco de López"
+    },
+    {
+      "id": "MUN-21162",
+      "name": "Tepango de Rodríguez"
+    },
+    {
+      "id": "MUN-21163",
+      "name": "Tepatlaxco de Hidalgo"
+    },
+    {
+      "id": "MUN-21164",
+      "name": "Tepeaca"
+    },
+    {
+      "id": "MUN-21165",
+      "name": "Tepemaxalco"
+    },
+    {
+      "id": "MUN-21166",
+      "name": "Tepeojuma"
+    },
+    {
+      "id": "MUN-21167",
+      "name": "Tepetzintla"
+    },
+    {
+      "id": "MUN-21168",
+      "name": "Tepexco"
+    },
+    {
+      "id": "MUN-21169",
+      "name": "Tepexi de Rodríguez"
+    },
+    {
+      "id": "MUN-21170",
+      "name": "Tepeyahualco"
+    },
+    {
+      "id": "MUN-21171",
+      "name": "Tepeyahualco de Cuauhtémoc"
+    },
+    {
+      "id": "MUN-21172",
+      "name": "Tetela de Ocampo"
+    },
+    {
+      "id": "MUN-21173",
+      "name": "Teteles de Ávila Castillo"
+    },
+    {
+      "id": "MUN-21174",
+      "name": "Teziutlán"
+    },
+    {
+      "id": "MUN-21175",
+      "name": "Tianguismanalco"
+    },
+    {
+      "id": "MUN-21176",
+      "name": "Tilapa"
+    },
+    {
+      "id": "MUN-21179",
+      "name": "Tlachichuca"
+    },
+    {
+      "id": "MUN-21177",
+      "name": "Tlacotepec de Benito Juárez"
+    },
+    {
+      "id": "MUN-21178",
+      "name": "Tlacuilotepec"
+    },
+    {
+      "id": "MUN-21180",
+      "name": "Tlahuapan"
+    },
+    {
+      "id": "MUN-21181",
+      "name": "Tlaltenango"
+    },
+    {
+      "id": "MUN-21182",
+      "name": "Tlanepantla"
+    },
+    {
+      "id": "MUN-21183",
+      "name": "Tlaola"
+    },
+    {
+      "id": "MUN-21184",
+      "name": "Tlapacoya"
+    },
+    {
+      "id": "MUN-21185",
+      "name": "Tlapanalá"
+    },
+    {
+      "id": "MUN-21186",
+      "name": "Tlatlauquitepec"
+    },
+    {
+      "id": "MUN-21187",
+      "name": "Tlaxco"
+    },
+    {
+      "id": "MUN-21188",
+      "name": "Tochimilco"
+    },
+    {
+      "id": "MUN-21189",
+      "name": "Tochtepec"
+    },
+    {
+      "id": "MUN-21190",
+      "name": "Totoltepec de Guerrero"
+    },
+    {
+      "id": "MUN-21191",
+      "name": "Tulcingo"
+    },
+    {
+      "id": "MUN-21192",
+      "name": "Tuzamapan de Galeana"
+    },
+    {
+      "id": "MUN-21193",
+      "name": "Tzicatlacoyan"
+    },
+    {
+      "id": "MUN-21194",
+      "name": "Venustiano Carranza"
+    },
+    {
+      "id": "MUN-21195",
+      "name": "Vicente Guerrero"
+    },
+    {
+      "id": "MUN-21196",
+      "name": "Xayacatlán de Bravo"
+    },
+    {
+      "id": "MUN-21197",
+      "name": "Xicotepec"
+    },
+    {
+      "id": "MUN-21198",
+      "name": "Xicotlán"
+    },
+    {
+      "id": "MUN-21199",
+      "name": "Xiutetelco"
+    },
+    {
+      "id": "MUN-21200",
+      "name": "Xochiapulco"
+    },
+    {
+      "id": "MUN-21201",
+      "name": "Xochiltepec"
+    },
+    {
+      "id": "MUN-21203",
+      "name": "Xochitlán Todos Santos"
+    },
+    {
+      "id": "MUN-21202",
+      "name": "Xochitlán de Vicente Suárez"
+    },
+    {
+      "id": "MUN-21204",
+      "name": "Yaonáhuac"
+    },
+    {
+      "id": "MUN-21205",
+      "name": "Yehualtepec"
+    },
+    {
+      "id": "MUN-21206",
+      "name": "Zacapala"
+    },
+    {
+      "id": "MUN-21207",
+      "name": "Zacapoaxtla"
+    },
+    {
+      "id": "MUN-21208",
+      "name": "Zacatlán"
+    },
+    {
+      "id": "MUN-21209",
+      "name": "Zapotitlán"
+    },
+    {
+      "id": "MUN-21210",
+      "name": "Zapotitlán de Méndez"
+    },
+    {
+      "id": "MUN-21211",
+      "name": "Zaragoza"
+    },
+    {
+      "id": "MUN-21212",
+      "name": "Zautla"
+    },
+    {
+      "id": "MUN-21213",
+      "name": "Zihuateutla"
+    },
+    {
+      "id": "MUN-21214",
+      "name": "Zinacatepec"
+    },
+    {
+      "id": "MUN-21215",
+      "name": "Zongozotla"
+    },
+    {
+      "id": "MUN-21216",
+      "name": "Zoquiapan"
+    },
+    {
+      "id": "MUN-21217",
+      "name": "Zoquitlán"
+    }
+  ],
+  "Querétaro": [
+    {
+      "id": "MUN-22001",
+      "name": "Amealco de Bonfil"
+    },
+    {
+      "id": "MUN-22003",
+      "name": "Arroyo Seco"
+    },
+    {
+      "id": "MUN-22004",
+      "name": "Cadereyta de Montes"
+    },
+    {
+      "id": "MUN-22005",
+      "name": "Colón"
+    },
+    {
+      "id": "MUN-22006",
+      "name": "Corregidora"
+    },
+    {
+      "id": "MUN-22011",
+      "name": "El Marqués"
+    },
+    {
+      "id": "MUN-22007",
+      "name": "Ezequiel Montes"
+    },
+    {
+      "id": "MUN-22008",
+      "name": "Huimilpan"
+    },
+    {
+      "id": "MUN-22009",
+      "name": "Jalpan de Serra"
+    },
+    {
+      "id": "MUN-22010",
+      "name": "Landa de Matamoros"
+    },
+    {
+      "id": "MUN-22012",
+      "name": "Pedro Escobedo"
+    },
+    {
+      "id": "MUN-22013",
+      "name": "Peñamiller"
+    },
+    {
+      "id": "MUN-22002",
+      "name": "Pinal de Amoles"
+    },
+    {
+      "id": "MUN-22014",
+      "name": "Querétaro"
+    },
+    {
+      "id": "MUN-22015",
+      "name": "San Joaquín"
+    },
+    {
+      "id": "MUN-22016",
+      "name": "San Juan del Río"
+    },
+    {
+      "id": "MUN-22017",
+      "name": "Tequisquiapan"
+    },
+    {
+      "id": "MUN-22018",
+      "name": "Tolimán"
+    }
+  ],
+  "Quintana Roo": [
+    {
+      "id": "MUN-23010",
+      "name": "Bacalar"
+    },
+    {
+      "id": "MUN-23005",
+      "name": "Benito Juárez"
+    },
+    {
+      "id": "MUN-23001",
+      "name": "Cozumel"
+    },
+    {
+      "id": "MUN-23002",
+      "name": "Felipe Carrillo Puerto"
+    },
+    {
+      "id": "MUN-23003",
+      "name": "Isla Mujeres"
+    },
+    {
+      "id": "MUN-23006",
+      "name": "José María Morelos"
+    },
+    {
+      "id": "MUN-23007",
+      "name": "Lázaro Cárdenas"
+    },
+    {
+      "id": "MUN-23004",
+      "name": "Othón P. Blanco"
+    },
+    {
+      "id": "MUN-23011",
+      "name": "Puerto Morelos"
+    },
+    {
+      "id": "MUN-23008",
+      "name": "Solidaridad"
+    },
+    {
+      "id": "MUN-23009",
+      "name": "Tulum"
+    }
+  ],
+  "San Luis Potosí": [
+    {
+      "id": "MUN-24001",
+      "name": "Ahualulco del Sonido 13"
+    },
+    {
+      "id": "MUN-24002",
+      "name": "Alaquines"
+    },
+    {
+      "id": "MUN-24003",
+      "name": "Aquismón"
+    },
+    {
+      "id": "MUN-24004",
+      "name": "Armadillo de los Infante"
+    },
+    {
+      "id": "MUN-24053",
+      "name": "Axtla de Terrazas"
+    },
+    {
+      "id": "MUN-24006",
+      "name": "Catorce"
+    },
+    {
+      "id": "MUN-24007",
+      "name": "Cedral"
+    },
+    {
+      "id": "MUN-24008",
+      "name": "Cerritos"
+    },
+    {
+      "id": "MUN-24009",
+      "name": "Cerro de San Pedro"
+    },
+    {
+      "id": "MUN-24015",
+      "name": "Charcas"
+    },
+    {
+      "id": "MUN-24011",
+      "name": "Ciudad Fernández"
+    },
+    {
+      "id": "MUN-24013",
+      "name": "Ciudad Valles"
+    },
+    {
+      "id": "MUN-24010",
+      "name": "Ciudad del Maíz"
+    },
+    {
+      "id": "MUN-24014",
+      "name": "Coxcatlán"
+    },
+    {
+      "id": "MUN-24005",
+      "name": "Cárdenas"
+    },
+    {
+      "id": "MUN-24016",
+      "name": "Ebano"
+    },
+    {
+      "id": "MUN-24058",
+      "name": "El Naranjo"
+    },
+    {
+      "id": "MUN-24017",
+      "name": "Guadalcázar"
+    },
+    {
+      "id": "MUN-24018",
+      "name": "Huehuetlán"
+    },
+    {
+      "id": "MUN-24019",
+      "name": "Lagunillas"
+    },
+    {
+      "id": "MUN-24020",
+      "name": "Matehuala"
+    },
+    {
+      "id": "MUN-24057",
+      "name": "Matlapa"
+    },
+    {
+      "id": "MUN-24021",
+      "name": "Mexquitic de Carmona"
+    },
+    {
+      "id": "MUN-24022",
+      "name": "Moctezuma"
+    },
+    {
+      "id": "MUN-24023",
+      "name": "Rayón"
+    },
+    {
+      "id": "MUN-24024",
+      "name": "Rioverde"
+    },
+    {
+      "id": "MUN-24025",
+      "name": "Salinas"
+    },
+    {
+      "id": "MUN-24026",
+      "name": "San Antonio"
+    },
+    {
+      "id": "MUN-24027",
+      "name": "San Ciro de Acosta"
+    },
+    {
+      "id": "MUN-24028",
+      "name": "San Luis Potosí"
+    },
+    {
+      "id": "MUN-24029",
+      "name": "San Martín Chalchicuautla"
+    },
+    {
+      "id": "MUN-24030",
+      "name": "San Nicolás Tolentino"
+    },
+    {
+      "id": "MUN-24034",
+      "name": "San Vicente Tancuayalab"
+    },
+    {
+      "id": "MUN-24031",
+      "name": "Santa Catarina"
+    },
+    {
+      "id": "MUN-24032",
+      "name": "Santa María del Río"
+    },
+    {
+      "id": "MUN-24033",
+      "name": "Santo Domingo"
+    },
+    {
+      "id": "MUN-24035",
+      "name": "Soledad de Graciano Sánchez"
+    },
+    {
+      "id": "MUN-24036",
+      "name": "Tamasopo"
+    },
+    {
+      "id": "MUN-24037",
+      "name": "Tamazunchale"
+    },
+    {
+      "id": "MUN-24038",
+      "name": "Tampacán"
+    },
+    {
+      "id": "MUN-24039",
+      "name": "Tampamolón Corona"
+    },
+    {
+      "id": "MUN-24040",
+      "name": "Tamuín"
+    },
+    {
+      "id": "MUN-24012",
+      "name": "Tancanhuitz"
+    },
+    {
+      "id": "MUN-24041",
+      "name": "Tanlajás"
+    },
+    {
+      "id": "MUN-24042",
+      "name": "Tanquián de Escobedo"
+    },
+    {
+      "id": "MUN-24043",
+      "name": "Tierra Nueva"
+    },
+    {
+      "id": "MUN-24044",
+      "name": "Vanegas"
+    },
+    {
+      "id": "MUN-24045",
+      "name": "Venado"
+    },
+    {
+      "id": "MUN-24051",
+      "name": "Villa Hidalgo"
+    },
+    {
+      "id": "MUN-24052",
+      "name": "Villa Juárez"
+    },
+    {
+      "id": "MUN-24056",
+      "name": "Villa de Arista"
+    },
+    {
+      "id": "MUN-24046",
+      "name": "Villa de Arriaga"
+    },
+    {
+      "id": "MUN-24047",
+      "name": "Villa de Guadalupe"
+    },
+    {
+      "id": "MUN-24049",
+      "name": "Villa de Ramos"
+    },
+    {
+      "id": "MUN-24050",
+      "name": "Villa de Reyes"
+    },
+    {
+      "id": "MUN-24048",
+      "name": "Villa de la Paz"
+    },
+    {
+      "id": "MUN-24054",
+      "name": "Xilitla"
+    },
+    {
+      "id": "MUN-24055",
+      "name": "Zaragoza"
+    }
+  ],
+  "Sinaloa": [
+    {
+      "id": "MUN-25001",
+      "name": "Ahome"
+    },
+    {
+      "id": "MUN-25002",
+      "name": "Angostura"
+    },
+    {
+      "id": "MUN-25003",
+      "name": "Badiraguato"
+    },
+    {
+      "id": "MUN-25007",
+      "name": "Choix"
+    },
+    {
+      "id": "MUN-25004",
+      "name": "Concordia"
+    },
+    {
+      "id": "MUN-25005",
+      "name": "Cosalá"
+    },
+    {
+      "id": "MUN-25006",
+      "name": "Culiacán"
+    },
+    {
+      "id": "MUN-25010",
+      "name": "El Fuerte"
+    },
+    {
+      "id": "MUN-25008",
+      "name": "Elota"
+    },
+    {
+      "id": "MUN-25009",
+      "name": "Escuinapa"
+    },
+    {
+      "id": "MUN-25011",
+      "name": "Guasave"
+    },
+    {
+      "id": "MUN-25012",
+      "name": "Mazatlán"
+    },
+    {
+      "id": "MUN-25013",
+      "name": "Mocorito"
+    },
+    {
+      "id": "MUN-25018",
+      "name": "Navolato"
+    },
+    {
+      "id": "MUN-25014",
+      "name": "Rosario"
+    },
+    {
+      "id": "MUN-25015",
+      "name": "Salvador Alvarado"
+    },
+    {
+      "id": "MUN-25016",
+      "name": "San Ignacio"
+    },
+    {
+      "id": "MUN-25017",
+      "name": "Sinaloa"
+    }
+  ],
+  "Sonora": [
+    {
+      "id": "MUN-26001",
+      "name": "Aconchi"
+    },
+    {
+      "id": "MUN-26002",
+      "name": "Agua Prieta"
+    },
+    {
+      "id": "MUN-26004",
+      "name": "Altar"
+    },
+    {
+      "id": "MUN-26005",
+      "name": "Arivechi"
+    },
+    {
+      "id": "MUN-26006",
+      "name": "Arizpe"
+    },
+    {
+      "id": "MUN-26007",
+      "name": "Atil"
+    },
+    {
+      "id": "MUN-26008",
+      "name": "Bacadéhuachi"
+    },
+    {
+      "id": "MUN-26009",
+      "name": "Bacanora"
+    },
+    {
+      "id": "MUN-26010",
+      "name": "Bacerac"
+    },
+    {
+      "id": "MUN-26011",
+      "name": "Bacoachi"
+    },
+    {
+      "id": "MUN-26013",
+      "name": "Banámichi"
+    },
+    {
+      "id": "MUN-26015",
+      "name": "Bavispe"
+    },
+    {
+      "id": "MUN-26014",
+      "name": "Baviácora"
+    },
+    {
+      "id": "MUN-26071",
+      "name": "Benito Juárez"
+    },
+    {
+      "id": "MUN-26016",
+      "name": "Benjamín Hill"
+    },
+    {
+      "id": "MUN-26012",
+      "name": "Bácum"
+    },
+    {
+      "id": "MUN-26017",
+      "name": "Caborca"
+    },
+    {
+      "id": "MUN-26018",
+      "name": "Cajeme"
+    },
+    {
+      "id": "MUN-26019",
+      "name": "Cananea"
+    },
+    {
+      "id": "MUN-26020",
+      "name": "Carbó"
+    },
+    {
+      "id": "MUN-26022",
+      "name": "Cucurpe"
+    },
+    {
+      "id": "MUN-26023",
+      "name": "Cumpas"
+    },
+    {
+      "id": "MUN-26024",
+      "name": "Divisaderos"
+    },
+    {
+      "id": "MUN-26025",
+      "name": "Empalme"
+    },
+    {
+      "id": "MUN-26026",
+      "name": "Etchojoa"
+    },
+    {
+      "id": "MUN-26027",
+      "name": "Fronteras"
+    },
+    {
+      "id": "MUN-26070",
+      "name": "General Plutarco Elías Calles"
+    },
+    {
+      "id": "MUN-26028",
+      "name": "Granados"
+    },
+    {
+      "id": "MUN-26029",
+      "name": "Guaymas"
+    },
+    {
+      "id": "MUN-26030",
+      "name": "Hermosillo"
+    },
+    {
+      "id": "MUN-26031",
+      "name": "Huachinera"
+    },
+    {
+      "id": "MUN-26033",
+      "name": "Huatabampo"
+    },
+    {
+      "id": "MUN-26032",
+      "name": "Huásabas"
+    },
+    {
+      "id": "MUN-26034",
+      "name": "Huépac"
+    },
+    {
+      "id": "MUN-26035",
+      "name": "Imuris"
+    },
+    {
+      "id": "MUN-26021",
+      "name": "La Colorada"
+    },
+    {
+      "id": "MUN-26036",
+      "name": "Magdalena"
+    },
+    {
+      "id": "MUN-26037",
+      "name": "Mazatán"
+    },
+    {
+      "id": "MUN-26038",
+      "name": "Moctezuma"
+    },
+    {
+      "id": "MUN-26039",
+      "name": "Naco"
+    },
+    {
+      "id": "MUN-26041",
+      "name": "Nacozari de García"
+    },
+    {
+      "id": "MUN-26042",
+      "name": "Navojoa"
+    },
+    {
+      "id": "MUN-26043",
+      "name": "Nogales"
+    },
+    {
+      "id": "MUN-26040",
+      "name": "Nácori Chico"
+    },
+    {
+      "id": "MUN-26045",
+      "name": "Opodepe"
+    },
+    {
+      "id": "MUN-26046",
+      "name": "Oquitoa"
+    },
+    {
+      "id": "MUN-26047",
+      "name": "Pitiquito"
+    },
+    {
+      "id": "MUN-26048",
+      "name": "Puerto Peñasco"
+    },
+    {
+      "id": "MUN-26049",
+      "name": "Quiriego"
+    },
+    {
+      "id": "MUN-26050",
+      "name": "Rayón"
+    },
+    {
+      "id": "MUN-26051",
+      "name": "Rosario"
+    },
+    {
+      "id": "MUN-26052",
+      "name": "Sahuaripa"
+    },
+    {
+      "id": "MUN-26053",
+      "name": "San Felipe de Jesús"
+    },
+    {
+      "id": "MUN-26072",
+      "name": "San Ignacio Río Muerto"
+    },
+    {
+      "id": "MUN-26054",
+      "name": "San Javier"
+    },
+    {
+      "id": "MUN-26055",
+      "name": "San Luis Río Colorado"
+    },
+    {
+      "id": "MUN-26056",
+      "name": "San Miguel de Horcasitas"
+    },
+    {
+      "id": "MUN-26057",
+      "name": "San Pedro de la Cueva"
+    },
+    {
+      "id": "MUN-26058",
+      "name": "Santa Ana"
+    },
+    {
+      "id": "MUN-26059",
+      "name": "Santa Cruz"
+    },
+    {
+      "id": "MUN-26061",
+      "name": "Soyopa"
+    },
+    {
+      "id": "MUN-26062",
+      "name": "Suaqui Grande"
+    },
+    {
+      "id": "MUN-26060",
+      "name": "Sáric"
+    },
+    {
+      "id": "MUN-26063",
+      "name": "Tepache"
+    },
+    {
+      "id": "MUN-26064",
+      "name": "Trincheras"
+    },
+    {
+      "id": "MUN-26065",
+      "name": "Tubutama"
+    },
+    {
+      "id": "MUN-26066",
+      "name": "Ures"
+    },
+    {
+      "id": "MUN-26067",
+      "name": "Villa Hidalgo"
+    },
+    {
+      "id": "MUN-26068",
+      "name": "Villa Pesqueira"
+    },
+    {
+      "id": "MUN-26069",
+      "name": "Yécora"
+    },
+    {
+      "id": "MUN-26003",
+      "name": "Álamos"
+    },
+    {
+      "id": "MUN-26044",
+      "name": "Ónavas"
+    }
+  ],
+  "Tabasco": [
+    {
+      "id": "MUN-27001",
+      "name": "Balancán"
+    },
+    {
+      "id": "MUN-27003",
+      "name": "Centla"
+    },
+    {
+      "id": "MUN-27004",
+      "name": "Centro"
+    },
+    {
+      "id": "MUN-27005",
+      "name": "Comalcalco"
+    },
+    {
+      "id": "MUN-27006",
+      "name": "Cunduacán"
+    },
+    {
+      "id": "MUN-27002",
+      "name": "Cárdenas"
+    },
+    {
+      "id": "MUN-27007",
+      "name": "Emiliano Zapata"
+    },
+    {
+      "id": "MUN-27008",
+      "name": "Huimanguillo"
+    },
+    {
+      "id": "MUN-27009",
+      "name": "Jalapa"
+    },
+    {
+      "id": "MUN-27010",
+      "name": "Jalpa de Méndez"
+    },
+    {
+      "id": "MUN-27011",
+      "name": "Jonuta"
+    },
+    {
+      "id": "MUN-27012",
+      "name": "Macuspana"
+    },
+    {
+      "id": "MUN-27013",
+      "name": "Nacajuca"
+    },
+    {
+      "id": "MUN-27014",
+      "name": "Paraíso"
+    },
+    {
+      "id": "MUN-27015",
+      "name": "Tacotalpa"
+    },
+    {
+      "id": "MUN-27016",
+      "name": "Teapa"
+    },
+    {
+      "id": "MUN-27017",
+      "name": "Tenosique"
+    }
+  ],
+  "Tamaulipas": [
+    {
+      "id": "MUN-28001",
+      "name": "Abasolo"
+    },
+    {
+      "id": "MUN-28002",
+      "name": "Aldama"
+    },
+    {
+      "id": "MUN-28003",
+      "name": "Altamira"
+    },
+    {
+      "id": "MUN-28004",
+      "name": "Antiguo Morelos"
+    },
+    {
+      "id": "MUN-28005",
+      "name": "Burgos"
+    },
+    {
+      "id": "MUN-28006",
+      "name": "Bustamante"
+    },
+    {
+      "id": "MUN-28007",
+      "name": "Camargo"
+    },
+    {
+      "id": "MUN-28008",
+      "name": "Casas"
+    },
+    {
+      "id": "MUN-28009",
+      "name": "Ciudad Madero"
+    },
+    {
+      "id": "MUN-28010",
+      "name": "Cruillas"
+    },
+    {
+      "id": "MUN-28021",
+      "name": "El Mante"
+    },
+    {
+      "id": "MUN-28012",
+      "name": "González"
+    },
+    {
+      "id": "MUN-28014",
+      "name": "Guerrero"
+    },
+    {
+      "id": "MUN-28015",
+      "name": "Gustavo Díaz Ordaz"
+    },
+    {
+      "id": "MUN-28011",
+      "name": "Gómez Farías"
+    },
+    {
+      "id": "MUN-28013",
+      "name": "Güémez"
+    },
+    {
+      "id": "MUN-28016",
+      "name": "Hidalgo"
+    },
+    {
+      "id": "MUN-28017",
+      "name": "Jaumave"
+    },
+    {
+      "id": "MUN-28018",
+      "name": "Jiménez"
+    },
+    {
+      "id": "MUN-28019",
+      "name": "Llera"
+    },
+    {
+      "id": "MUN-28020",
+      "name": "Mainero"
+    },
+    {
+      "id": "MUN-28022",
+      "name": "Matamoros"
+    },
+    {
+      "id": "MUN-28024",
+      "name": "Mier"
+    },
+    {
+      "id": "MUN-28025",
+      "name": "Miguel Alemán"
+    },
+    {
+      "id": "MUN-28026",
+      "name": "Miquihuana"
+    },
+    {
+      "id": "MUN-28023",
+      "name": "Méndez"
+    },
+    {
+      "id": "MUN-28027",
+      "name": "Nuevo Laredo"
+    },
+    {
+      "id": "MUN-28028",
+      "name": "Nuevo Morelos"
+    },
+    {
+      "id": "MUN-28029",
+      "name": "Ocampo"
+    },
+    {
+      "id": "MUN-28030",
+      "name": "Padilla"
+    },
+    {
+      "id": "MUN-28031",
+      "name": "Palmillas"
+    },
+    {
+      "id": "MUN-28032",
+      "name": "Reynosa"
+    },
+    {
+      "id": "MUN-28033",
+      "name": "Río Bravo"
+    },
+    {
+      "id": "MUN-28034",
+      "name": "San Carlos"
+    },
+    {
+      "id": "MUN-28035",
+      "name": "San Fernando"
+    },
+    {
+      "id": "MUN-28036",
+      "name": "San Nicolás"
+    },
+    {
+      "id": "MUN-28037",
+      "name": "Soto la Marina"
+    },
+    {
+      "id": "MUN-28038",
+      "name": "Tampico"
+    },
+    {
+      "id": "MUN-28039",
+      "name": "Tula"
+    },
+    {
+      "id": "MUN-28040",
+      "name": "Valle Hermoso"
+    },
+    {
+      "id": "MUN-28041",
+      "name": "Victoria"
+    },
+    {
+      "id": "MUN-28042",
+      "name": "Villagrán"
+    },
+    {
+      "id": "MUN-28043",
+      "name": "Xicoténcatl"
+    }
+  ],
+  "Tlaxcala": [
+    {
+      "id": "MUN-29022",
+      "name": "Acuamanala de Miguel Hidalgo"
+    },
+    {
+      "id": "MUN-29001",
+      "name": "Amaxac de Guerrero"
+    },
+    {
+      "id": "MUN-29002",
+      "name": "Apetatitlán de Antonio Carvajal"
+    },
+    {
+      "id": "MUN-29005",
+      "name": "Apizaco"
+    },
+    {
+      "id": "MUN-29003",
+      "name": "Atlangatepec"
+    },
+    {
+      "id": "MUN-29004",
+      "name": "Atltzayanca"
+    },
+    {
+      "id": "MUN-29045",
+      "name": "Benito Juárez"
+    },
+    {
+      "id": "MUN-29006",
+      "name": "Calpulalpan"
+    },
+    {
+      "id": "MUN-29010",
+      "name": "Chiautempan"
+    },
+    {
+      "id": "MUN-29018",
+      "name": "Contla de Juan Cuamatzi"
+    },
+    {
+      "id": "MUN-29008",
+      "name": "Cuapiaxtla"
+    },
+    {
+      "id": "MUN-29009",
+      "name": "Cuaxomulco"
+    },
+    {
+      "id": "MUN-29007",
+      "name": "El Carmen Tequexquitla"
+    },
+    {
+      "id": "MUN-29046",
+      "name": "Emiliano Zapata"
+    },
+    {
+      "id": "MUN-29012",
+      "name": "Españita"
+    },
+    {
+      "id": "MUN-29013",
+      "name": "Huamantla"
+    },
+    {
+      "id": "MUN-29014",
+      "name": "Hueyotlipan"
+    },
+    {
+      "id": "MUN-29015",
+      "name": "Ixtacuixtla de Mariano Matamoros"
+    },
+    {
+      "id": "MUN-29016",
+      "name": "Ixtenco"
+    },
+    {
+      "id": "MUN-29048",
+      "name": "La Magdalena Tlaltelulco"
+    },
+    {
+      "id": "MUN-29047",
+      "name": "Lázaro Cárdenas"
+    },
+    {
+      "id": "MUN-29017",
+      "name": "Mazatecochco de José María Morelos"
+    },
+    {
+      "id": "MUN-29011",
+      "name": "Muñoz de Domingo Arenas"
+    },
+    {
+      "id": "MUN-29021",
+      "name": "Nanacamilpa de Mariano Arista"
+    },
+    {
+      "id": "MUN-29023",
+      "name": "Natívitas"
+    },
+    {
+      "id": "MUN-29024",
+      "name": "Panotla"
+    },
+    {
+      "id": "MUN-29041",
+      "name": "Papalotla de Xicohténcatl"
+    },
+    {
+      "id": "MUN-29049",
+      "name": "San Damián Texóloc"
+    },
+    {
+      "id": "MUN-29050",
+      "name": "San Francisco Tetlanohcan"
+    },
+    {
+      "id": "MUN-29051",
+      "name": "San Jerónimo Zacualpan"
+    },
+    {
+      "id": "MUN-29052",
+      "name": "San José Teacalco"
+    },
+    {
+      "id": "MUN-29053",
+      "name": "San Juan Huactzinco"
+    },
+    {
+      "id": "MUN-29054",
+      "name": "San Lorenzo Axocomanitla"
+    },
+    {
+      "id": "MUN-29055",
+      "name": "San Lucas Tecopilco"
+    },
+    {
+      "id": "MUN-29025",
+      "name": "San Pablo del Monte"
+    },
+    {
+      "id": "MUN-29020",
+      "name": "Sanctórum de Lázaro Cárdenas"
+    },
+    {
+      "id": "MUN-29056",
+      "name": "Santa Ana Nopalucan"
+    },
+    {
+      "id": "MUN-29057",
+      "name": "Santa Apolonia Teacalco"
+    },
+    {
+      "id": "MUN-29058",
+      "name": "Santa Catarina Ayometla"
+    },
+    {
+      "id": "MUN-29059",
+      "name": "Santa Cruz Quilehtla"
+    },
+    {
+      "id": "MUN-29026",
+      "name": "Santa Cruz Tlaxcala"
+    },
+    {
+      "id": "MUN-29060",
+      "name": "Santa Isabel Xiloxoxtla"
+    },
+    {
+      "id": "MUN-29027",
+      "name": "Tenancingo"
+    },
+    {
+      "id": "MUN-29028",
+      "name": "Teolocholco"
+    },
+    {
+      "id": "MUN-29019",
+      "name": "Tepetitla de Lardizábal"
+    },
+    {
+      "id": "MUN-29029",
+      "name": "Tepeyanco"
+    },
+    {
+      "id": "MUN-29030",
+      "name": "Terrenate"
+    },
+    {
+      "id": "MUN-29031",
+      "name": "Tetla de la Solidaridad"
+    },
+    {
+      "id": "MUN-29032",
+      "name": "Tetlatlahuca"
+    },
+    {
+      "id": "MUN-29033",
+      "name": "Tlaxcala"
+    },
+    {
+      "id": "MUN-29034",
+      "name": "Tlaxco"
+    },
+    {
+      "id": "MUN-29035",
+      "name": "Tocatlán"
+    },
+    {
+      "id": "MUN-29036",
+      "name": "Totolac"
+    },
+    {
+      "id": "MUN-29038",
+      "name": "Tzompantepec"
+    },
+    {
+      "id": "MUN-29039",
+      "name": "Xaloztoc"
+    },
+    {
+      "id": "MUN-29040",
+      "name": "Xaltocan"
+    },
+    {
+      "id": "MUN-29042",
+      "name": "Xicohtzinco"
+    },
+    {
+      "id": "MUN-29043",
+      "name": "Yauhquemehcan"
+    },
+    {
+      "id": "MUN-29044",
+      "name": "Zacatelco"
+    },
+    {
+      "id": "MUN-29037",
+      "name": "Ziltlaltépec de Trinidad Sánchez Santos"
+    }
+  ],
+  "Veracruz de Ignacio de la Llave": [
+    {
+      "id": "MUN-30001",
+      "name": "Acajete"
+    },
+    {
+      "id": "MUN-30002",
+      "name": "Acatlán"
+    },
+    {
+      "id": "MUN-30003",
+      "name": "Acayucan"
+    },
+    {
+      "id": "MUN-30004",
+      "name": "Actopan"
+    },
+    {
+      "id": "MUN-30005",
+      "name": "Acula"
+    },
+    {
+      "id": "MUN-30006",
+      "name": "Acultzingo"
+    },
+    {
+      "id": "MUN-30204",
+      "name": "Agua Dulce"
+    },
+    {
+      "id": "MUN-30008",
+      "name": "Alpatláhuac"
+    },
+    {
+      "id": "MUN-30009",
+      "name": "Alto Lucero de Gutiérrez Barrios"
+    },
+    {
+      "id": "MUN-30010",
+      "name": "Altotonga"
+    },
+    {
+      "id": "MUN-30011",
+      "name": "Alvarado"
+    },
+    {
+      "id": "MUN-30012",
+      "name": "Amatitlán"
+    },
+    {
+      "id": "MUN-30014",
+      "name": "Amatlán de los Reyes"
+    },
+    {
+      "id": "MUN-30015",
+      "name": "Angel R. Cabada"
+    },
+    {
+      "id": "MUN-30017",
+      "name": "Apazapan"
+    },
+    {
+      "id": "MUN-30018",
+      "name": "Aquila"
+    },
+    {
+      "id": "MUN-30019",
+      "name": "Astacinga"
+    },
+    {
+      "id": "MUN-30020",
+      "name": "Atlahuilco"
+    },
+    {
+      "id": "MUN-30021",
+      "name": "Atoyac"
+    },
+    {
+      "id": "MUN-30022",
+      "name": "Atzacan"
+    },
+    {
+      "id": "MUN-30023",
+      "name": "Atzalan"
+    },
+    {
+      "id": "MUN-30025",
+      "name": "Ayahualulco"
+    },
+    {
+      "id": "MUN-30026",
+      "name": "Banderilla"
+    },
+    {
+      "id": "MUN-30027",
+      "name": "Benito Juárez"
+    },
+    {
+      "id": "MUN-30028",
+      "name": "Boca del Río"
+    },
+    {
+      "id": "MUN-30029",
+      "name": "Calcahualco"
+    },
+    {
+      "id": "MUN-30007",
+      "name": "Camarón de Tejeda"
+    },
+    {
+      "id": "MUN-30030",
+      "name": "Camerino Z. Mendoza"
+    },
+    {
+      "id": "MUN-30208",
+      "name": "Carlos A. Carrillo"
+    },
+    {
+      "id": "MUN-30031",
+      "name": "Carrillo Puerto"
+    },
+    {
+      "id": "MUN-30157",
+      "name": "Castillo de Teayo"
+    },
+    {
+      "id": "MUN-30032",
+      "name": "Catemaco"
+    },
+    {
+      "id": "MUN-30033",
+      "name": "Cazones de Herrera"
+    },
+    {
+      "id": "MUN-30034",
+      "name": "Cerro Azul"
+    },
+    {
+      "id": "MUN-30054",
+      "name": "Chacaltianguis"
+    },
+    {
+      "id": "MUN-30055",
+      "name": "Chalma"
+    },
+    {
+      "id": "MUN-30056",
+      "name": "Chiconamel"
+    },
+    {
+      "id": "MUN-30057",
+      "name": "Chiconquiaco"
+    },
+    {
+      "id": "MUN-30058",
+      "name": "Chicontepec"
+    },
+    {
+      "id": "MUN-30059",
+      "name": "Chinameca"
+    },
+    {
+      "id": "MUN-30060",
+      "name": "Chinampa de Gorostiza"
+    },
+    {
+      "id": "MUN-30062",
+      "name": "Chocamán"
+    },
+    {
+      "id": "MUN-30063",
+      "name": "Chontla"
+    },
+    {
+      "id": "MUN-30064",
+      "name": "Chumatlán"
+    },
+    {
+      "id": "MUN-30035",
+      "name": "Citlaltépetl"
+    },
+    {
+      "id": "MUN-30036",
+      "name": "Coacoatzintla"
+    },
+    {
+      "id": "MUN-30037",
+      "name": "Coahuitlán"
+    },
+    {
+      "id": "MUN-30038",
+      "name": "Coatepec"
+    },
+    {
+      "id": "MUN-30039",
+      "name": "Coatzacoalcos"
+    },
+    {
+      "id": "MUN-30040",
+      "name": "Coatzintla"
+    },
+    {
+      "id": "MUN-30041",
+      "name": "Coetzala"
+    },
+    {
+      "id": "MUN-30042",
+      "name": "Colipa"
+    },
+    {
+      "id": "MUN-30043",
+      "name": "Comapa"
+    },
+    {
+      "id": "MUN-30045",
+      "name": "Cosamaloapan de Carpio"
+    },
+    {
+      "id": "MUN-30046",
+      "name": "Cosautlán de Carvajal"
+    },
+    {
+      "id": "MUN-30047",
+      "name": "Coscomatepec"
+    },
+    {
+      "id": "MUN-30048",
+      "name": "Cosoleacaque"
+    },
+    {
+      "id": "MUN-30049",
+      "name": "Cotaxtla"
+    },
+    {
+      "id": "MUN-30050",
+      "name": "Coxquihui"
+    },
+    {
+      "id": "MUN-30051",
+      "name": "Coyutla"
+    },
+    {
+      "id": "MUN-30052",
+      "name": "Cuichapa"
+    },
+    {
+      "id": "MUN-30053",
+      "name": "Cuitláhuac"
+    },
+    {
+      "id": "MUN-30044",
+      "name": "Córdoba"
+    },
+    {
+      "id": "MUN-30205",
+      "name": "El Higo"
+    },
+    {
+      "id": "MUN-30065",
+      "name": "Emiliano Zapata"
+    },
+    {
+      "id": "MUN-30066",
+      "name": "Espinal"
+    },
+    {
+      "id": "MUN-30067",
+      "name": "Filomeno Mata"
+    },
+    {
+      "id": "MUN-30068",
+      "name": "Fortín"
+    },
+    {
+      "id": "MUN-30069",
+      "name": "Gutiérrez Zamora"
+    },
+    {
+      "id": "MUN-30070",
+      "name": "Hidalgotitlán"
+    },
+    {
+      "id": "MUN-30071",
+      "name": "Huatusco"
+    },
+    {
+      "id": "MUN-30072",
+      "name": "Huayacocotla"
+    },
+    {
+      "id": "MUN-30073",
+      "name": "Hueyapan de Ocampo"
+    },
+    {
+      "id": "MUN-30074",
+      "name": "Huiloapan de Cuauhtémoc"
+    },
+    {
+      "id": "MUN-30075",
+      "name": "Ignacio de la Llave"
+    },
+    {
+      "id": "MUN-30076",
+      "name": "Ilamatlán"
+    },
+    {
+      "id": "MUN-30077",
+      "name": "Isla"
+    },
+    {
+      "id": "MUN-30078",
+      "name": "Ixcatepec"
+    },
+    {
+      "id": "MUN-30079",
+      "name": "Ixhuacán de los Reyes"
+    },
+    {
+      "id": "MUN-30081",
+      "name": "Ixhuatlancillo"
+    },
+    {
+      "id": "MUN-30083",
+      "name": "Ixhuatlán de Madero"
+    },
+    {
+      "id": "MUN-30080",
+      "name": "Ixhuatlán del Café"
+    },
+    {
+      "id": "MUN-30082",
+      "name": "Ixhuatlán del Sureste"
+    },
+    {
+      "id": "MUN-30084",
+      "name": "Ixmatlahuacan"
+    },
+    {
+      "id": "MUN-30085",
+      "name": "Ixtaczoquitlán"
+    },
+    {
+      "id": "MUN-30086",
+      "name": "Jalacingo"
+    },
+    {
+      "id": "MUN-30088",
+      "name": "Jalcomulco"
+    },
+    {
+      "id": "MUN-30090",
+      "name": "Jamapa"
+    },
+    {
+      "id": "MUN-30091",
+      "name": "Jesús Carranza"
+    },
+    {
+      "id": "MUN-30093",
+      "name": "Jilotepec"
+    },
+    {
+      "id": "MUN-30169",
+      "name": "José Azueta"
+    },
+    {
+      "id": "MUN-30094",
+      "name": "Juan Rodríguez Clara"
+    },
+    {
+      "id": "MUN-30095",
+      "name": "Juchique de Ferrer"
+    },
+    {
+      "id": "MUN-30089",
+      "name": "Jáltipan"
+    },
+    {
+      "id": "MUN-30016",
+      "name": "La Antigua"
+    },
+    {
+      "id": "MUN-30127",
+      "name": "La Perla"
+    },
+    {
+      "id": "MUN-30096",
+      "name": "Landero y Coss"
+    },
+    {
+      "id": "MUN-30061",
+      "name": "Las Choapas"
+    },
+    {
+      "id": "MUN-30107",
+      "name": "Las Minas"
+    },
+    {
+      "id": "MUN-30132",
+      "name": "Las Vigas de Ramírez"
+    },
+    {
+      "id": "MUN-30097",
+      "name": "Lerdo de Tejada"
+    },
+    {
+      "id": "MUN-30137",
+      "name": "Los Reyes"
+    },
+    {
+      "id": "MUN-30098",
+      "name": "Magdalena"
+    },
+    {
+      "id": "MUN-30099",
+      "name": "Maltrata"
+    },
+    {
+      "id": "MUN-30100",
+      "name": "Manlio Fabio Altamirano"
+    },
+    {
+      "id": "MUN-30101",
+      "name": "Mariano Escobedo"
+    },
+    {
+      "id": "MUN-30102",
+      "name": "Martínez de la Torre"
+    },
+    {
+      "id": "MUN-30103",
+      "name": "Mecatlán"
+    },
+    {
+      "id": "MUN-30104",
+      "name": "Mecayapan"
+    },
+    {
+      "id": "MUN-30105",
+      "name": "Medellín de Bravo"
+    },
+    {
+      "id": "MUN-30106",
+      "name": "Miahuatlán"
+    },
+    {
+      "id": "MUN-30108",
+      "name": "Minatitlán"
+    },
+    {
+      "id": "MUN-30109",
+      "name": "Misantla"
+    },
+    {
+      "id": "MUN-30110",
+      "name": "Mixtla de Altamirano"
+    },
+    {
+      "id": "MUN-30111",
+      "name": "Moloacán"
+    },
+    {
+      "id": "MUN-30206",
+      "name": "Nanchital de Lázaro Cárdenas del Río"
+    },
+    {
+      "id": "MUN-30112",
+      "name": "Naolinco"
+    },
+    {
+      "id": "MUN-30113",
+      "name": "Naranjal"
+    },
+    {
+      "id": "MUN-30013",
+      "name": "Naranjos Amatlán"
+    },
+    {
+      "id": "MUN-30114",
+      "name": "Nautla"
+    },
+    {
+      "id": "MUN-30115",
+      "name": "Nogales"
+    },
+    {
+      "id": "MUN-30116",
+      "name": "Oluta"
+    },
+    {
+      "id": "MUN-30117",
+      "name": "Omealca"
+    },
+    {
+      "id": "MUN-30118",
+      "name": "Orizaba"
+    },
+    {
+      "id": "MUN-30119",
+      "name": "Otatitlán"
+    },
+    {
+      "id": "MUN-30120",
+      "name": "Oteapan"
+    },
+    {
+      "id": "MUN-30121",
+      "name": "Ozuluama de Mascareñas"
+    },
+    {
+      "id": "MUN-30122",
+      "name": "Pajapan"
+    },
+    {
+      "id": "MUN-30124",
+      "name": "Papantla"
+    },
+    {
+      "id": "MUN-30126",
+      "name": "Paso de Ovejas"
+    },
+    {
+      "id": "MUN-30125",
+      "name": "Paso del Macho"
+    },
+    {
+      "id": "MUN-30128",
+      "name": "Perote"
+    },
+    {
+      "id": "MUN-30129",
+      "name": "Platón Sánchez"
+    },
+    {
+      "id": "MUN-30130",
+      "name": "Playa Vicente"
+    },
+    {
+      "id": "MUN-30131",
+      "name": "Poza Rica de Hidalgo"
+    },
+    {
+      "id": "MUN-30133",
+      "name": "Pueblo Viejo"
+    },
+    {
+      "id": "MUN-30134",
+      "name": "Puente Nacional"
+    },
+    {
+      "id": "MUN-30123",
+      "name": "Pánuco"
+    },
+    {
+      "id": "MUN-30135",
+      "name": "Rafael Delgado"
+    },
+    {
+      "id": "MUN-30136",
+      "name": "Rafael Lucio"
+    },
+    {
+      "id": "MUN-30138",
+      "name": "Río Blanco"
+    },
+    {
+      "id": "MUN-30139",
+      "name": "Saltabarranca"
+    },
+    {
+      "id": "MUN-30140",
+      "name": "San Andrés Tenejapan"
+    },
+    {
+      "id": "MUN-30141",
+      "name": "San Andrés Tuxtla"
+    },
+    {
+      "id": "MUN-30142",
+      "name": "San Juan Evangelista"
+    },
+    {
+      "id": "MUN-30211",
+      "name": "San Rafael"
+    },
+    {
+      "id": "MUN-30212",
+      "name": "Santiago Sochiapan"
+    },
+    {
+      "id": "MUN-30143",
+      "name": "Santiago Tuxtla"
+    },
+    {
+      "id": "MUN-30144",
+      "name": "Sayula de Alemán"
+    },
+    {
+      "id": "MUN-30146",
+      "name": "Sochiapa"
+    },
+    {
+      "id": "MUN-30145",
+      "name": "Soconusco"
+    },
+    {
+      "id": "MUN-30147",
+      "name": "Soledad Atzompa"
+    },
+    {
+      "id": "MUN-30148",
+      "name": "Soledad de Doblado"
+    },
+    {
+      "id": "MUN-30149",
+      "name": "Soteapan"
+    },
+    {
+      "id": "MUN-30150",
+      "name": "Tamalín"
+    },
+    {
+      "id": "MUN-30151",
+      "name": "Tamiahua"
+    },
+    {
+      "id": "MUN-30152",
+      "name": "Tampico Alto"
+    },
+    {
+      "id": "MUN-30153",
+      "name": "Tancoco"
+    },
+    {
+      "id": "MUN-30154",
+      "name": "Tantima"
+    },
+    {
+      "id": "MUN-30155",
+      "name": "Tantoyuca"
+    },
+    {
+      "id": "MUN-30209",
+      "name": "Tatahuicapan de Juárez"
+    },
+    {
+      "id": "MUN-30156",
+      "name": "Tatatila"
+    },
+    {
+      "id": "MUN-30158",
+      "name": "Tecolutla"
+    },
+    {
+      "id": "MUN-30159",
+      "name": "Tehuipango"
+    },
+    {
+      "id": "MUN-30161",
+      "name": "Tempoal"
+    },
+    {
+      "id": "MUN-30162",
+      "name": "Tenampa"
+    },
+    {
+      "id": "MUN-30163",
+      "name": "Tenochtitlán"
+    },
+    {
+      "id": "MUN-30164",
+      "name": "Teocelo"
+    },
+    {
+      "id": "MUN-30165",
+      "name": "Tepatlaxco"
+    },
+    {
+      "id": "MUN-30166",
+      "name": "Tepetlán"
+    },
+    {
+      "id": "MUN-30167",
+      "name": "Tepetzintla"
+    },
+    {
+      "id": "MUN-30168",
+      "name": "Tequila"
+    },
+    {
+      "id": "MUN-30170",
+      "name": "Texcatepec"
+    },
+    {
+      "id": "MUN-30171",
+      "name": "Texhuacán"
+    },
+    {
+      "id": "MUN-30172",
+      "name": "Texistepec"
+    },
+    {
+      "id": "MUN-30173",
+      "name": "Tezonapa"
+    },
+    {
+      "id": "MUN-30174",
+      "name": "Tierra Blanca"
+    },
+    {
+      "id": "MUN-30175",
+      "name": "Tihuatlán"
+    },
+    {
+      "id": "MUN-30180",
+      "name": "Tlachichilco"
+    },
+    {
+      "id": "MUN-30176",
+      "name": "Tlacojalpan"
+    },
+    {
+      "id": "MUN-30177",
+      "name": "Tlacolulan"
+    },
+    {
+      "id": "MUN-30178",
+      "name": "Tlacotalpan"
+    },
+    {
+      "id": "MUN-30179",
+      "name": "Tlacotepec de Mejía"
+    },
+    {
+      "id": "MUN-30181",
+      "name": "Tlalixcoyan"
+    },
+    {
+      "id": "MUN-30182",
+      "name": "Tlalnelhuayocan"
+    },
+    {
+      "id": "MUN-30024",
+      "name": "Tlaltetela"
+    },
+    {
+      "id": "MUN-30183",
+      "name": "Tlapacoyan"
+    },
+    {
+      "id": "MUN-30184",
+      "name": "Tlaquilpa"
+    },
+    {
+      "id": "MUN-30185",
+      "name": "Tlilapan"
+    },
+    {
+      "id": "MUN-30186",
+      "name": "Tomatlán"
+    },
+    {
+      "id": "MUN-30187",
+      "name": "Tonayán"
+    },
+    {
+      "id": "MUN-30188",
+      "name": "Totutla"
+    },
+    {
+      "id": "MUN-30207",
+      "name": "Tres Valles"
+    },
+    {
+      "id": "MUN-30189",
+      "name": "Tuxpan"
+    },
+    {
+      "id": "MUN-30190",
+      "name": "Tuxtilla"
+    },
+    {
+      "id": "MUN-30191",
+      "name": "Ursulo Galván"
+    },
+    {
+      "id": "MUN-30210",
+      "name": "Uxpanapa"
+    },
+    {
+      "id": "MUN-30192",
+      "name": "Vega de Alatorre"
+    },
+    {
+      "id": "MUN-30193",
+      "name": "Veracruz"
+    },
+    {
+      "id": "MUN-30194",
+      "name": "Villa Aldama"
+    },
+    {
+      "id": "MUN-30087",
+      "name": "Xalapa"
+    },
+    {
+      "id": "MUN-30092",
+      "name": "Xico"
+    },
+    {
+      "id": "MUN-30195",
+      "name": "Xoxocotla"
+    },
+    {
+      "id": "MUN-30196",
+      "name": "Yanga"
+    },
+    {
+      "id": "MUN-30197",
+      "name": "Yecuatla"
+    },
+    {
+      "id": "MUN-30198",
+      "name": "Zacualpan"
+    },
+    {
+      "id": "MUN-30199",
+      "name": "Zaragoza"
+    },
+    {
+      "id": "MUN-30200",
+      "name": "Zentla"
+    },
+    {
+      "id": "MUN-30201",
+      "name": "Zongolica"
+    },
+    {
+      "id": "MUN-30202",
+      "name": "Zontecomatlán de López y Fuentes"
+    },
+    {
+      "id": "MUN-30203",
+      "name": "Zozocolco de Hidalgo"
+    },
+    {
+      "id": "MUN-30160",
+      "name": "Álamo Temapache"
+    }
+  ],
+  "Yucatán": [
+    {
+      "id": "MUN-31001",
+      "name": "Abalá"
+    },
+    {
+      "id": "MUN-31002",
+      "name": "Acanceh"
+    },
+    {
+      "id": "MUN-31003",
+      "name": "Akil"
+    },
+    {
+      "id": "MUN-31004",
+      "name": "Baca"
+    },
+    {
+      "id": "MUN-31005",
+      "name": "Bokobá"
+    },
+    {
+      "id": "MUN-31006",
+      "name": "Buctzotz"
+    },
+    {
+      "id": "MUN-31007",
+      "name": "Cacalchén"
+    },
+    {
+      "id": "MUN-31008",
+      "name": "Calotmul"
+    },
+    {
+      "id": "MUN-31009",
+      "name": "Cansahcab"
+    },
+    {
+      "id": "MUN-31010",
+      "name": "Cantamayec"
+    },
+    {
+      "id": "MUN-31011",
+      "name": "Celestún"
+    },
+    {
+      "id": "MUN-31012",
+      "name": "Cenotillo"
+    },
+    {
+      "id": "MUN-31016",
+      "name": "Chacsinkín"
+    },
+    {
+      "id": "MUN-31017",
+      "name": "Chankom"
+    },
+    {
+      "id": "MUN-31018",
+      "name": "Chapab"
+    },
+    {
+      "id": "MUN-31019",
+      "name": "Chemax"
+    },
+    {
+      "id": "MUN-31021",
+      "name": "Chichimilá"
+    },
+    {
+      "id": "MUN-31020",
+      "name": "Chicxulub Pueblo"
+    },
+    {
+      "id": "MUN-31022",
+      "name": "Chikindzonot"
+    },
+    {
+      "id": "MUN-31023",
+      "name": "Chocholá"
+    },
+    {
+      "id": "MUN-31024",
+      "name": "Chumayel"
+    },
+    {
+      "id": "MUN-31013",
+      "name": "Conkal"
+    },
+    {
+      "id": "MUN-31014",
+      "name": "Cuncunul"
+    },
+    {
+      "id": "MUN-31015",
+      "name": "Cuzamá"
+    },
+    {
+      "id": "MUN-31025",
+      "name": "Dzan"
+    },
+    {
+      "id": "MUN-31026",
+      "name": "Dzemul"
+    },
+    {
+      "id": "MUN-31027",
+      "name": "Dzidzantún"
+    },
+    {
+      "id": "MUN-31029",
+      "name": "Dzilam González"
+    },
+    {
+      "id": "MUN-31028",
+      "name": "Dzilam de Bravo"
+    },
+    {
+      "id": "MUN-31030",
+      "name": "Dzitás"
+    },
+    {
+      "id": "MUN-31031",
+      "name": "Dzoncauich"
+    },
+    {
+      "id": "MUN-31032",
+      "name": "Espita"
+    },
+    {
+      "id": "MUN-31033",
+      "name": "Halachó"
+    },
+    {
+      "id": "MUN-31034",
+      "name": "Hocabá"
+    },
+    {
+      "id": "MUN-31035",
+      "name": "Hoctún"
+    },
+    {
+      "id": "MUN-31036",
+      "name": "Homún"
+    },
+    {
+      "id": "MUN-31037",
+      "name": "Huhí"
+    },
+    {
+      "id": "MUN-31038",
+      "name": "Hunucmá"
+    },
+    {
+      "id": "MUN-31039",
+      "name": "Ixil"
+    },
+    {
+      "id": "MUN-31040",
+      "name": "Izamal"
+    },
+    {
+      "id": "MUN-31041",
+      "name": "Kanasín"
+    },
+    {
+      "id": "MUN-31042",
+      "name": "Kantunil"
+    },
+    {
+      "id": "MUN-31043",
+      "name": "Kaua"
+    },
+    {
+      "id": "MUN-31044",
+      "name": "Kinchil"
+    },
+    {
+      "id": "MUN-31045",
+      "name": "Kopomá"
+    },
+    {
+      "id": "MUN-31046",
+      "name": "Mama"
+    },
+    {
+      "id": "MUN-31047",
+      "name": "Maní"
+    },
+    {
+      "id": "MUN-31048",
+      "name": "Maxcanú"
+    },
+    {
+      "id": "MUN-31049",
+      "name": "Mayapán"
+    },
+    {
+      "id": "MUN-31051",
+      "name": "Mocochá"
+    },
+    {
+      "id": "MUN-31052",
+      "name": "Motul"
+    },
+    {
+      "id": "MUN-31053",
+      "name": "Muna"
+    },
+    {
+      "id": "MUN-31054",
+      "name": "Muxupip"
+    },
+    {
+      "id": "MUN-31050",
+      "name": "Mérida"
+    },
+    {
+      "id": "MUN-31055",
+      "name": "Opichén"
+    },
+    {
+      "id": "MUN-31056",
+      "name": "Oxkutzcab"
+    },
+    {
+      "id": "MUN-31057",
+      "name": "Panabá"
+    },
+    {
+      "id": "MUN-31058",
+      "name": "Peto"
+    },
+    {
+      "id": "MUN-31059",
+      "name": "Progreso"
+    },
+    {
+      "id": "MUN-31060",
+      "name": "Quintana Roo"
+    },
+    {
+      "id": "MUN-31061",
+      "name": "Río Lagartos"
+    },
+    {
+      "id": "MUN-31062",
+      "name": "Sacalum"
+    },
+    {
+      "id": "MUN-31063",
+      "name": "Samahil"
+    },
+    {
+      "id": "MUN-31065",
+      "name": "San Felipe"
+    },
+    {
+      "id": "MUN-31064",
+      "name": "Sanahcat"
+    },
+    {
+      "id": "MUN-31066",
+      "name": "Santa Elena"
+    },
+    {
+      "id": "MUN-31067",
+      "name": "Seyé"
+    },
+    {
+      "id": "MUN-31068",
+      "name": "Sinanché"
+    },
+    {
+      "id": "MUN-31069",
+      "name": "Sotuta"
+    },
+    {
+      "id": "MUN-31070",
+      "name": "Sucilá"
+    },
+    {
+      "id": "MUN-31071",
+      "name": "Sudzal"
+    },
+    {
+      "id": "MUN-31072",
+      "name": "Suma"
+    },
+    {
+      "id": "MUN-31073",
+      "name": "Tahdziú"
+    },
+    {
+      "id": "MUN-31074",
+      "name": "Tahmek"
+    },
+    {
+      "id": "MUN-31075",
+      "name": "Teabo"
+    },
+    {
+      "id": "MUN-31076",
+      "name": "Tecoh"
+    },
+    {
+      "id": "MUN-31077",
+      "name": "Tekal de Venegas"
+    },
+    {
+      "id": "MUN-31078",
+      "name": "Tekantó"
+    },
+    {
+      "id": "MUN-31079",
+      "name": "Tekax"
+    },
+    {
+      "id": "MUN-31080",
+      "name": "Tekit"
+    },
+    {
+      "id": "MUN-31081",
+      "name": "Tekom"
+    },
+    {
+      "id": "MUN-31082",
+      "name": "Telchac Pueblo"
+    },
+    {
+      "id": "MUN-31083",
+      "name": "Telchac Puerto"
+    },
+    {
+      "id": "MUN-31084",
+      "name": "Temax"
+    },
+    {
+      "id": "MUN-31085",
+      "name": "Temozón"
+    },
+    {
+      "id": "MUN-31086",
+      "name": "Tepakán"
+    },
+    {
+      "id": "MUN-31087",
+      "name": "Tetiz"
+    },
+    {
+      "id": "MUN-31088",
+      "name": "Teya"
+    },
+    {
+      "id": "MUN-31089",
+      "name": "Ticul"
+    },
+    {
+      "id": "MUN-31090",
+      "name": "Timucuy"
+    },
+    {
+      "id": "MUN-31091",
+      "name": "Tinum"
+    },
+    {
+      "id": "MUN-31092",
+      "name": "Tixcacalcupul"
+    },
+    {
+      "id": "MUN-31093",
+      "name": "Tixkokob"
+    },
+    {
+      "id": "MUN-31094",
+      "name": "Tixméhuac"
+    },
+    {
+      "id": "MUN-31095",
+      "name": "Tixpéhual"
+    },
+    {
+      "id": "MUN-31096",
+      "name": "Tizimín"
+    },
+    {
+      "id": "MUN-31097",
+      "name": "Tunkás"
+    },
+    {
+      "id": "MUN-31098",
+      "name": "Tzucacab"
+    },
+    {
+      "id": "MUN-31099",
+      "name": "Uayma"
+    },
+    {
+      "id": "MUN-31100",
+      "name": "Ucú"
+    },
+    {
+      "id": "MUN-31101",
+      "name": "Umán"
+    },
+    {
+      "id": "MUN-31102",
+      "name": "Valladolid"
+    },
+    {
+      "id": "MUN-31103",
+      "name": "Xocchel"
+    },
+    {
+      "id": "MUN-31104",
+      "name": "Yaxcabá"
+    },
+    {
+      "id": "MUN-31105",
+      "name": "Yaxkukul"
+    },
+    {
+      "id": "MUN-31106",
+      "name": "Yobaín"
+    }
+  ],
+  "Zacatecas": [
+    {
+      "id": "MUN-32001",
+      "name": "Apozol"
+    },
+    {
+      "id": "MUN-32002",
+      "name": "Apulco"
+    },
+    {
+      "id": "MUN-32003",
+      "name": "Atolinga"
+    },
+    {
+      "id": "MUN-32004",
+      "name": "Benito Juárez"
+    },
+    {
+      "id": "MUN-32005",
+      "name": "Calera"
+    },
+    {
+      "id": "MUN-32006",
+      "name": "Cañitas de Felipe Pescador"
+    },
+    {
+      "id": "MUN-32009",
+      "name": "Chalchihuites"
+    },
+    {
+      "id": "MUN-32007",
+      "name": "Concepción del Oro"
+    },
+    {
+      "id": "MUN-32008",
+      "name": "Cuauhtémoc"
+    },
+    {
+      "id": "MUN-32015",
+      "name": "El Plateado de Joaquín Amaro"
+    },
+    {
+      "id": "MUN-32041",
+      "name": "El Salvador"
+    },
+    {
+      "id": "MUN-32010",
+      "name": "Fresnillo"
+    },
+    {
+      "id": "MUN-32012",
+      "name": "Genaro Codina"
+    },
+    {
+      "id": "MUN-32013",
+      "name": "General Enrique Estrada"
+    },
+    {
+      "id": "MUN-32014",
+      "name": "General Francisco R. Murguía"
+    },
+    {
+      "id": "MUN-32016",
+      "name": "General Pánfilo Natera"
+    },
+    {
+      "id": "MUN-32017",
+      "name": "Guadalupe"
+    },
+    {
+      "id": "MUN-32018",
+      "name": "Huanusco"
+    },
+    {
+      "id": "MUN-32019",
+      "name": "Jalpa"
+    },
+    {
+      "id": "MUN-32020",
+      "name": "Jerez"
+    },
+    {
+      "id": "MUN-32021",
+      "name": "Jiménez del Teul"
+    },
+    {
+      "id": "MUN-32022",
+      "name": "Juan Aldama"
+    },
+    {
+      "id": "MUN-32023",
+      "name": "Juchipila"
+    },
+    {
+      "id": "MUN-32024",
+      "name": "Loreto"
+    },
+    {
+      "id": "MUN-32025",
+      "name": "Luis Moya"
+    },
+    {
+      "id": "MUN-32026",
+      "name": "Mazapil"
+    },
+    {
+      "id": "MUN-32027",
+      "name": "Melchor Ocampo"
+    },
+    {
+      "id": "MUN-32028",
+      "name": "Mezquital del Oro"
+    },
+    {
+      "id": "MUN-32029",
+      "name": "Miguel Auza"
+    },
+    {
+      "id": "MUN-32030",
+      "name": "Momax"
+    },
+    {
+      "id": "MUN-32031",
+      "name": "Monte Escobedo"
+    },
+    {
+      "id": "MUN-32032",
+      "name": "Morelos"
+    },
+    {
+      "id": "MUN-32033",
+      "name": "Moyahua de Estrada"
+    },
+    {
+      "id": "MUN-32034",
+      "name": "Nochistlán de Mejía"
+    },
+    {
+      "id": "MUN-32035",
+      "name": "Noria de Ángeles"
+    },
+    {
+      "id": "MUN-32036",
+      "name": "Ojocaliente"
+    },
+    {
+      "id": "MUN-32038",
+      "name": "Pinos"
+    },
+    {
+      "id": "MUN-32037",
+      "name": "Pánuco"
+    },
+    {
+      "id": "MUN-32039",
+      "name": "Río Grande"
+    },
+    {
+      "id": "MUN-32040",
+      "name": "Sain Alto"
+    },
+    {
+      "id": "MUN-32058",
+      "name": "Santa María de la Paz"
+    },
+    {
+      "id": "MUN-32042",
+      "name": "Sombrerete"
+    },
+    {
+      "id": "MUN-32043",
+      "name": "Susticacán"
+    },
+    {
+      "id": "MUN-32044",
+      "name": "Tabasco"
+    },
+    {
+      "id": "MUN-32045",
+      "name": "Tepechitlán"
+    },
+    {
+      "id": "MUN-32046",
+      "name": "Tepetongo"
+    },
+    {
+      "id": "MUN-32047",
+      "name": "Teúl de González Ortega"
+    },
+    {
+      "id": "MUN-32048",
+      "name": "Tlaltenango de Sánchez Román"
+    },
+    {
+      "id": "MUN-32057",
+      "name": "Trancoso"
+    },
+    {
+      "id": "MUN-32011",
+      "name": "Trinidad García de la Cadena"
+    },
+    {
+      "id": "MUN-32049",
+      "name": "Valparaíso"
+    },
+    {
+      "id": "MUN-32050",
+      "name": "Vetagrande"
+    },
+    {
+      "id": "MUN-32052",
+      "name": "Villa García"
+    },
+    {
+      "id": "MUN-32053",
+      "name": "Villa González Ortega"
+    },
+    {
+      "id": "MUN-32054",
+      "name": "Villa Hidalgo"
+    },
+    {
+      "id": "MUN-32051",
+      "name": "Villa de Cos"
+    },
+    {
+      "id": "MUN-32055",
+      "name": "Villanueva"
+    },
+    {
+      "id": "MUN-32056",
+      "name": "Zacatecas"
+    }
+  ]
+}

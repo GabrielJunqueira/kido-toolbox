@@ -1,0 +1,1414 @@
+{
+  "Región del Libertador Bernardo O'Higgins": [
+    {
+      "id": "MUN-53",
+      "name": "Chimbarongo"
+    },
+    {
+      "id": "MUN-52",
+      "name": "Chépica"
+    },
+    {
+      "id": "MUN-29",
+      "name": "Codegua"
+    },
+    {
+      "id": "MUN-30",
+      "name": "Coinco"
+    },
+    {
+      "id": "MUN-31",
+      "name": "Coltauco"
+    },
+    {
+      "id": "MUN-32",
+      "name": "Doñihue"
+    },
+    {
+      "id": "MUN-34",
+      "name": "Graneros"
+    },
+    {
+      "id": "MUN-46",
+      "name": "La Estrella"
+    },
+    {
+      "id": "MUN-35",
+      "name": "Las Cabras"
+    },
+    {
+      "id": "MUN-47",
+      "name": "Litueche"
+    },
+    {
+      "id": "MUN-54",
+      "name": "Lolol"
+    },
+    {
+      "id": "MUN-36",
+      "name": "Machalí"
+    },
+    {
+      "id": "MUN-37",
+      "name": "Malloa"
+    },
+    {
+      "id": "MUN-48",
+      "name": "Marchigüe"
+    },
+    {
+      "id": "MUN-44",
+      "name": "Mostazal"
+    },
+    {
+      "id": "MUN-55",
+      "name": "Nancagua"
+    },
+    {
+      "id": "MUN-49",
+      "name": "Navidad"
+    },
+    {
+      "id": "MUN-33",
+      "name": "Olivar"
+    },
+    {
+      "id": "MUN-56",
+      "name": "Palmilla"
+    },
+    {
+      "id": "MUN-50",
+      "name": "Paredones"
+    },
+    {
+      "id": "MUN-57",
+      "name": "Peralillo"
+    },
+    {
+      "id": "MUN-38",
+      "name": "Peumo"
+    },
+    {
+      "id": "MUN-39",
+      "name": "Pichidegua"
+    },
+    {
+      "id": "MUN-51",
+      "name": "Pichilemu"
+    },
+    {
+      "id": "MUN-58",
+      "name": "Placilla"
+    },
+    {
+      "id": "MUN-59",
+      "name": "Pumanque"
+    },
+    {
+      "id": "MUN-40",
+      "name": "Quinta de Tilcoco"
+    },
+    {
+      "id": "MUN-41",
+      "name": "Rancagua"
+    },
+    {
+      "id": "MUN-42",
+      "name": "Rengo"
+    },
+    {
+      "id": "MUN-43",
+      "name": "Requínoa"
+    },
+    {
+      "id": "MUN-60",
+      "name": "San Fernando"
+    },
+    {
+      "id": "MUN-45",
+      "name": "San Vicente"
+    },
+    {
+      "id": "MUN-61",
+      "name": "Santa Cruz"
+    }
+  ],
+  "Región de La Araucanía": [
+    {
+      "id": "MUN-98",
+      "name": "Angol"
+    },
+    {
+      "id": "MUN-77",
+      "name": "Carahue"
+    },
+    {
+      "id": "MUN-78",
+      "name": "Cholchol"
+    },
+    {
+      "id": "MUN-99",
+      "name": "Collipulli"
+    },
+    {
+      "id": "MUN-79",
+      "name": "Cunco"
+    },
+    {
+      "id": "MUN-100",
+      "name": "Curacautín"
+    },
+    {
+      "id": "MUN-80",
+      "name": "Curarrehue"
+    },
+    {
+      "id": "MUN-101",
+      "name": "Ercilla"
+    },
+    {
+      "id": "MUN-81",
+      "name": "Freire"
+    },
+    {
+      "id": "MUN-82",
+      "name": "Galvarino"
+    },
+    {
+      "id": "MUN-83",
+      "name": "Gorbea"
+    },
+    {
+      "id": "MUN-84",
+      "name": "Lautaro"
+    },
+    {
+      "id": "MUN-85",
+      "name": "Loncoche"
+    },
+    {
+      "id": "MUN-102",
+      "name": "Lonquimay"
+    },
+    {
+      "id": "MUN-103",
+      "name": "Los Sauces"
+    },
+    {
+      "id": "MUN-104",
+      "name": "Lumaco"
+    },
+    {
+      "id": "MUN-86",
+      "name": "Melipeuco"
+    },
+    {
+      "id": "MUN-87",
+      "name": "Nueva Imperial"
+    },
+    {
+      "id": "MUN-88",
+      "name": "Padre Las Casas"
+    },
+    {
+      "id": "MUN-89",
+      "name": "Perquenco"
+    },
+    {
+      "id": "MUN-90",
+      "name": "Pitrufquén"
+    },
+    {
+      "id": "MUN-91",
+      "name": "Pucón"
+    },
+    {
+      "id": "MUN-105",
+      "name": "Purén"
+    },
+    {
+      "id": "MUN-106",
+      "name": "Renaico"
+    },
+    {
+      "id": "MUN-92",
+      "name": "Saavedra"
+    },
+    {
+      "id": "MUN-93",
+      "name": "Temuco"
+    },
+    {
+      "id": "MUN-94",
+      "name": "Teodoro Schmidt"
+    },
+    {
+      "id": "MUN-95",
+      "name": "Toltén"
+    },
+    {
+      "id": "MUN-107",
+      "name": "Traiguén"
+    },
+    {
+      "id": "MUN-108",
+      "name": "Victoria"
+    },
+    {
+      "id": "MUN-96",
+      "name": "Vilcún"
+    },
+    {
+      "id": "MUN-97",
+      "name": "Villarrica"
+    }
+  ],
+  "Región Metropolitana de Santiago": [
+    {
+      "id": "MUN-298",
+      "name": "Alhué"
+    },
+    {
+      "id": "MUN-294",
+      "name": "Buin"
+    },
+    {
+      "id": "MUN-295",
+      "name": "Calera de Tango"
+    },
+    {
+      "id": "MUN-303",
+      "name": "Cerrillos"
+    },
+    {
+      "id": "MUN-304",
+      "name": "Cerro Navia"
+    },
+    {
+      "id": "MUN-288",
+      "name": "Colina"
+    },
+    {
+      "id": "MUN-305",
+      "name": "Conchalí"
+    },
+    {
+      "id": "MUN-299",
+      "name": "Curacaví"
+    },
+    {
+      "id": "MUN-306",
+      "name": "El Bosque"
+    },
+    {
+      "id": "MUN-335",
+      "name": "El Monte"
+    },
+    {
+      "id": "MUN-18258",
+      "name": "Estación Central"
+    },
+    {
+      "id": "MUN-308",
+      "name": "Huechuraba"
+    },
+    {
+      "id": "MUN-309",
+      "name": "Independencia"
+    },
+    {
+      "id": "MUN-336",
+      "name": "Isla de Maipo"
+    },
+    {
+      "id": "MUN-310",
+      "name": "La Cisterna"
+    },
+    {
+      "id": "MUN-311",
+      "name": "La Florida"
+    },
+    {
+      "id": "MUN-312",
+      "name": "La Granja"
+    },
+    {
+      "id": "MUN-313",
+      "name": "La Pintana"
+    },
+    {
+      "id": "MUN-314",
+      "name": "La Reina"
+    },
+    {
+      "id": "MUN-289",
+      "name": "Lampa"
+    },
+    {
+      "id": "MUN-315",
+      "name": "Las Condes"
+    },
+    {
+      "id": "MUN-316",
+      "name": "Lo Barnechea"
+    },
+    {
+      "id": "MUN-317",
+      "name": "Lo Espejo"
+    },
+    {
+      "id": "MUN-318",
+      "name": "Lo Prado"
+    },
+    {
+      "id": "MUN-319",
+      "name": "Macul"
+    },
+    {
+      "id": "MUN-320",
+      "name": "Maipú"
+    },
+    {
+      "id": "MUN-300",
+      "name": "María Pinto"
+    },
+    {
+      "id": "MUN-301",
+      "name": "Melipilla"
+    },
+    {
+      "id": "MUN-337",
+      "name": "Padre Hurtado"
+    },
+    {
+      "id": "MUN-296",
+      "name": "Paine"
+    },
+    {
+      "id": "MUN-322",
+      "name": "Pedro Aguirre Cerda"
+    },
+    {
+      "id": "MUN-338",
+      "name": "Peñaflor"
+    },
+    {
+      "id": "MUN-323",
+      "name": "Peñalolén"
+    },
+    {
+      "id": "MUN-291",
+      "name": "Pirque"
+    },
+    {
+      "id": "MUN-324",
+      "name": "Providencia"
+    },
+    {
+      "id": "MUN-325",
+      "name": "Pudahuel"
+    },
+    {
+      "id": "MUN-292",
+      "name": "Puente Alto"
+    },
+    {
+      "id": "MUN-326",
+      "name": "Quilicura"
+    },
+    {
+      "id": "MUN-327",
+      "name": "Quinta Normal"
+    },
+    {
+      "id": "MUN-328",
+      "name": "Recoleta"
+    },
+    {
+      "id": "MUN-329",
+      "name": "Renca"
+    },
+    {
+      "id": "MUN-297",
+      "name": "San Bernardo"
+    },
+    {
+      "id": "MUN-330",
+      "name": "San Joaquín"
+    },
+    {
+      "id": "MUN-293",
+      "name": "San José de Maipo"
+    },
+    {
+      "id": "MUN-331",
+      "name": "San Miguel"
+    },
+    {
+      "id": "MUN-302",
+      "name": "San Pedro"
+    },
+    {
+      "id": "MUN-332",
+      "name": "San Ramón"
+    },
+    {
+      "id": "MUN-333",
+      "name": "Santiago"
+    },
+    {
+      "id": "MUN-339",
+      "name": "Talagante"
+    },
+    {
+      "id": "MUN-290",
+      "name": "Tiltil"
+    },
+    {
+      "id": "MUN-334",
+      "name": "Vitacura"
+    },
+    {
+      "id": "MUN-321",
+      "name": "Ñuñoa"
+    }
+  ],
+  "Región de Los Lagos": [
+    {
+      "id": "MUN-342",
+      "name": "Ancud"
+    },
+    {
+      "id": "MUN-118",
+      "name": "Calbuco"
+    },
+    {
+      "id": "MUN-109",
+      "name": "Castro"
+    },
+    {
+      "id": "MUN-134",
+      "name": "Chaitén"
+    },
+    {
+      "id": "MUN-110",
+      "name": "Chonchi"
+    },
+    {
+      "id": "MUN-119",
+      "name": "Cochamó"
+    },
+    {
+      "id": "MUN-111",
+      "name": "Curaco de Vélez"
+    },
+    {
+      "id": "MUN-112",
+      "name": "Dalcahue"
+    },
+    {
+      "id": "MUN-120",
+      "name": "Fresia"
+    },
+    {
+      "id": "MUN-121",
+      "name": "Frutillar"
+    },
+    {
+      "id": "MUN-135",
+      "name": "Futaleufú"
+    },
+    {
+      "id": "MUN-136",
+      "name": "Hualaihué"
+    },
+    {
+      "id": "MUN-122",
+      "name": "Llanquihue"
+    },
+    {
+      "id": "MUN-123",
+      "name": "Los Muermos"
+    },
+    {
+      "id": "MUN-124",
+      "name": "Maullín"
+    },
+    {
+      "id": "MUN-127",
+      "name": "Osorno"
+    },
+    {
+      "id": "MUN-137",
+      "name": "Palena"
+    },
+    {
+      "id": "MUN-125",
+      "name": "Puerto Montt"
+    },
+    {
+      "id": "MUN-128",
+      "name": "Puerto Octay"
+    },
+    {
+      "id": "MUN-126",
+      "name": "Puerto Varas"
+    },
+    {
+      "id": "MUN-113",
+      "name": "Puqueldón"
+    },
+    {
+      "id": "MUN-129",
+      "name": "Purranque"
+    },
+    {
+      "id": "MUN-130",
+      "name": "Puyehue"
+    },
+    {
+      "id": "MUN-114",
+      "name": "Queilén"
+    },
+    {
+      "id": "MUN-115",
+      "name": "Quellón"
+    },
+    {
+      "id": "MUN-116",
+      "name": "Quemchi"
+    },
+    {
+      "id": "MUN-117",
+      "name": "Quinchao"
+    },
+    {
+      "id": "MUN-131",
+      "name": "Río Negro"
+    },
+    {
+      "id": "MUN-132",
+      "name": "San Juan de la Costa"
+    },
+    {
+      "id": "MUN-133",
+      "name": "San Pablo"
+    }
+  ],
+  "Región de Los Ríos": [
+    {
+      "id": "MUN-138",
+      "name": "Corral"
+    },
+    {
+      "id": "MUN-139",
+      "name": "Futrono"
+    },
+    {
+      "id": "MUN-140",
+      "name": "La Unión"
+    },
+    {
+      "id": "MUN-141",
+      "name": "Lago Ranco"
+    },
+    {
+      "id": "MUN-142",
+      "name": "Lanco"
+    },
+    {
+      "id": "MUN-143",
+      "name": "Los Lagos"
+    },
+    {
+      "id": "MUN-145",
+      "name": "Mariquina"
+    },
+    {
+      "id": "MUN-144",
+      "name": "Máfil"
+    },
+    {
+      "id": "MUN-146",
+      "name": "Paillaco"
+    },
+    {
+      "id": "MUN-147",
+      "name": "Panguipulli"
+    },
+    {
+      "id": "MUN-148",
+      "name": "Río Bueno"
+    },
+    {
+      "id": "MUN-149",
+      "name": "Valdivia"
+    }
+  ],
+  "Región del Maule": [
+    {
+      "id": "MUN-258",
+      "name": "Cauquenes"
+    },
+    {
+      "id": "MUN-259",
+      "name": "Chanco"
+    },
+    {
+      "id": "MUN-270",
+      "name": "Colbún"
+    },
+    {
+      "id": "MUN-278",
+      "name": "Constitución"
+    },
+    {
+      "id": "MUN-279",
+      "name": "Curepto"
+    },
+    {
+      "id": "MUN-261",
+      "name": "Curicó"
+    },
+    {
+      "id": "MUN-280",
+      "name": "Empedrado"
+    },
+    {
+      "id": "MUN-262",
+      "name": "Hualañé"
+    },
+    {
+      "id": "MUN-263",
+      "name": "Licantén"
+    },
+    {
+      "id": "MUN-271",
+      "name": "Linares"
+    },
+    {
+      "id": "MUN-272",
+      "name": "Longaví"
+    },
+    {
+      "id": "MUN-281",
+      "name": "Maule"
+    },
+    {
+      "id": "MUN-264",
+      "name": "Molina"
+    },
+    {
+      "id": "MUN-273",
+      "name": "Parral"
+    },
+    {
+      "id": "MUN-282",
+      "name": "Pelarco"
+    },
+    {
+      "id": "MUN-260",
+      "name": "Pelluhue"
+    },
+    {
+      "id": "MUN-283",
+      "name": "Pencahue"
+    },
+    {
+      "id": "MUN-265",
+      "name": "Rauco"
+    },
+    {
+      "id": "MUN-274",
+      "name": "Retiro"
+    },
+    {
+      "id": "MUN-266",
+      "name": "Romeral"
+    },
+    {
+      "id": "MUN-284",
+      "name": "Río Claro"
+    },
+    {
+      "id": "MUN-267",
+      "name": "Sagrada Familia"
+    },
+    {
+      "id": "MUN-285",
+      "name": "San Clemente"
+    },
+    {
+      "id": "MUN-275",
+      "name": "San Javier"
+    },
+    {
+      "id": "MUN-286",
+      "name": "San Rafael"
+    },
+    {
+      "id": "MUN-287",
+      "name": "Talca"
+    },
+    {
+      "id": "MUN-268",
+      "name": "Teno"
+    },
+    {
+      "id": "MUN-269",
+      "name": "Vichuquén"
+    },
+    {
+      "id": "MUN-276",
+      "name": "Villa Alegre"
+    },
+    {
+      "id": "MUN-277",
+      "name": "Yerbas Buenas"
+    }
+  ],
+  "Región de Coquimbo": [
+    {
+      "id": "MUN-66",
+      "name": "Andacollo"
+    },
+    {
+      "id": "MUN-62",
+      "name": "Canela"
+    },
+    {
+      "id": "MUN-72",
+      "name": "Combarbalá"
+    },
+    {
+      "id": "MUN-67",
+      "name": "Coquimbo"
+    },
+    {
+      "id": "MUN-63",
+      "name": "Illapel"
+    },
+    {
+      "id": "MUN-68",
+      "name": "La Higuera"
+    },
+    {
+      "id": "MUN-69",
+      "name": "La Serena"
+    },
+    {
+      "id": "MUN-64",
+      "name": "Los Vilos"
+    },
+    {
+      "id": "MUN-73",
+      "name": "Monte Patria"
+    },
+    {
+      "id": "MUN-74",
+      "name": "Ovalle"
+    },
+    {
+      "id": "MUN-70",
+      "name": "Paihuano"
+    },
+    {
+      "id": "MUN-75",
+      "name": "Punitaqui"
+    },
+    {
+      "id": "MUN-76",
+      "name": "Río Hurtado"
+    },
+    {
+      "id": "MUN-65",
+      "name": "Salamanca"
+    },
+    {
+      "id": "MUN-71",
+      "name": "Vicuña"
+    }
+  ],
+  "Región de Magallanes y Antártica Chilena": [
+    {
+      "id": "MUN-5468",
+      "name": "Cabo de Hornos"
+    },
+    {
+      "id": "MUN-150",
+      "name": "Laguna Blanca"
+    },
+    {
+      "id": "MUN-22513",
+      "name": "Natales"
+    },
+    {
+      "id": "MUN-345",
+      "name": "Porvenir"
+    },
+    {
+      "id": "MUN-4572",
+      "name": "Primavera"
+    },
+    {
+      "id": "MUN-17170",
+      "name": "Punta Arenas"
+    },
+    {
+      "id": "MUN-10800",
+      "name": "Río Verde"
+    },
+    {
+      "id": "MUN-153",
+      "name": "San Gregorio"
+    },
+    {
+      "id": "MUN-343",
+      "name": "Timaukel"
+    },
+    {
+      "id": "MUN-10982",
+      "name": "Torres del Paine"
+    }
+  ],
+  "Región de Valparaíso": [
+    {
+      "id": "MUN-183",
+      "name": "Algarrobo"
+    },
+    {
+      "id": "MUN-171",
+      "name": "Cabildo"
+    },
+    {
+      "id": "MUN-176",
+      "name": "Calera"
+    },
+    {
+      "id": "MUN-18293",
+      "name": "Calle Larga"
+    },
+    {
+      "id": "MUN-184",
+      "name": "Cartagena"
+    },
+    {
+      "id": "MUN-195",
+      "name": "Casablanca"
+    },
+    {
+      "id": "MUN-189",
+      "name": "Catemu"
+    },
+    {
+      "id": "MUN-196",
+      "name": "Concón"
+    },
+    {
+      "id": "MUN-185",
+      "name": "El Quisco"
+    },
+    {
+      "id": "MUN-186",
+      "name": "El Tabo"
+    },
+    {
+      "id": "MUN-177",
+      "name": "Hijuelas"
+    },
+    {
+      "id": "MUN-18434",
+      "name": "Isla de Pascua"
+    },
+    {
+      "id": "MUN-18680",
+      "name": "Juan Fernández"
+    },
+    {
+      "id": "MUN-178",
+      "name": "La Cruz"
+    },
+    {
+      "id": "MUN-172",
+      "name": "La Ligua"
+    },
+    {
+      "id": "MUN-179",
+      "name": "Limache"
+    },
+    {
+      "id": "MUN-190",
+      "name": "Llaillay"
+    },
+    {
+      "id": "MUN-168",
+      "name": "Los Andes"
+    },
+    {
+      "id": "MUN-180",
+      "name": "Nogales"
+    },
+    {
+      "id": "MUN-181",
+      "name": "Olmué"
+    },
+    {
+      "id": "MUN-191",
+      "name": "Panquehue"
+    },
+    {
+      "id": "MUN-173",
+      "name": "Papudo"
+    },
+    {
+      "id": "MUN-174",
+      "name": "Petorca"
+    },
+    {
+      "id": "MUN-23471",
+      "name": "Puchuncaví"
+    },
+    {
+      "id": "MUN-192",
+      "name": "Putaendo"
+    },
+    {
+      "id": "MUN-182",
+      "name": "Quillota"
+    },
+    {
+      "id": "MUN-199",
+      "name": "Quilpué"
+    },
+    {
+      "id": "MUN-200",
+      "name": "Quintero"
+    },
+    {
+      "id": "MUN-169",
+      "name": "Rinconada"
+    },
+    {
+      "id": "MUN-187",
+      "name": "San Antonio"
+    },
+    {
+      "id": "MUN-170",
+      "name": "San Esteban"
+    },
+    {
+      "id": "MUN-193",
+      "name": "San Felipe"
+    },
+    {
+      "id": "MUN-194",
+      "name": "Santa María"
+    },
+    {
+      "id": "MUN-188",
+      "name": "Santo Domingo"
+    },
+    {
+      "id": "MUN-201",
+      "name": "Valparaíso"
+    },
+    {
+      "id": "MUN-202",
+      "name": "Villa Alemana"
+    },
+    {
+      "id": "MUN-203",
+      "name": "Viña del Mar"
+    },
+    {
+      "id": "MUN-175",
+      "name": "Zapallar"
+    }
+  ],
+  "Región del Bío-Bío": [
+    {
+      "id": "MUN-211",
+      "name": "Alto Biobío"
+    },
+    {
+      "id": "MUN-212",
+      "name": "Antuco"
+    },
+    {
+      "id": "MUN-204",
+      "name": "Arauco"
+    },
+    {
+      "id": "MUN-213",
+      "name": "Cabrero"
+    },
+    {
+      "id": "MUN-205",
+      "name": "Cañete"
+    },
+    {
+      "id": "MUN-225",
+      "name": "Chiguayante"
+    },
+    {
+      "id": "MUN-226",
+      "name": "Concepción"
+    },
+    {
+      "id": "MUN-206",
+      "name": "Contulmo"
+    },
+    {
+      "id": "MUN-227",
+      "name": "Coronel"
+    },
+    {
+      "id": "MUN-207",
+      "name": "Curanilahue"
+    },
+    {
+      "id": "MUN-228",
+      "name": "Florida"
+    },
+    {
+      "id": "MUN-229",
+      "name": "Hualpén"
+    },
+    {
+      "id": "MUN-230",
+      "name": "Hualqui"
+    },
+    {
+      "id": "MUN-214",
+      "name": "Laja"
+    },
+    {
+      "id": "MUN-208",
+      "name": "Lebu"
+    },
+    {
+      "id": "MUN-209",
+      "name": "Los Alamos"
+    },
+    {
+      "id": "MUN-215",
+      "name": "Los Angeles"
+    },
+    {
+      "id": "MUN-231",
+      "name": "Lota"
+    },
+    {
+      "id": "MUN-216",
+      "name": "Mulchén"
+    },
+    {
+      "id": "MUN-217",
+      "name": "Nacimiento"
+    },
+    {
+      "id": "MUN-218",
+      "name": "Negrete"
+    },
+    {
+      "id": "MUN-232",
+      "name": "Penco"
+    },
+    {
+      "id": "MUN-219",
+      "name": "Quilaco"
+    },
+    {
+      "id": "MUN-220",
+      "name": "Quilleco"
+    },
+    {
+      "id": "MUN-233",
+      "name": "San Pedro de la Paz"
+    },
+    {
+      "id": "MUN-221",
+      "name": "San Rosendo"
+    },
+    {
+      "id": "MUN-222",
+      "name": "Santa Bárbara"
+    },
+    {
+      "id": "MUN-234",
+      "name": "Santa Juana"
+    },
+    {
+      "id": "MUN-235",
+      "name": "Talcahuano"
+    },
+    {
+      "id": "MUN-210",
+      "name": "Tirúa"
+    },
+    {
+      "id": "MUN-236",
+      "name": "Tomé"
+    },
+    {
+      "id": "MUN-223",
+      "name": "Tucapel"
+    },
+    {
+      "id": "MUN-224",
+      "name": "Yumbel"
+    }
+  ],
+  "Región de Aysén del Gral.Ibañez del Campo": [
+    {
+      "id": "MUN-11007",
+      "name": "Aysén"
+    },
+    {
+      "id": "MUN-393",
+      "name": "Chile Chico"
+    },
+    {
+      "id": "MUN-12157",
+      "name": "Cisnes"
+    },
+    {
+      "id": "MUN-3515",
+      "name": "Cochrane"
+    },
+    {
+      "id": "MUN-10993",
+      "name": "Coyhaique"
+    },
+    {
+      "id": "MUN-6751",
+      "name": "Guaitecas"
+    },
+    {
+      "id": "MUN-457",
+      "name": "Lago Verde"
+    },
+    {
+      "id": "MUN-5",
+      "name": "O'Higgins"
+    },
+    {
+      "id": "MUN-10",
+      "name": "Río Ibáñez"
+    },
+    {
+      "id": "MUN-2047",
+      "name": "Tortel"
+    }
+  ],
+  "Región de Tarapacá": [
+    {
+      "id": "MUN-340",
+      "name": "Alto Hospicio"
+    },
+    {
+      "id": "MUN-159",
+      "name": "Camiña"
+    },
+    {
+      "id": "MUN-160",
+      "name": "Colchane"
+    },
+    {
+      "id": "MUN-161",
+      "name": "Huara"
+    },
+    {
+      "id": "MUN-163",
+      "name": "Iquique"
+    },
+    {
+      "id": "MUN-162",
+      "name": "Pica"
+    },
+    {
+      "id": "MUN-22536",
+      "name": "Pozo Almonte"
+    }
+  ],
+  "Región de Arica y Parinacota": [
+    {
+      "id": "MUN-157",
+      "name": "Arica"
+    },
+    {
+      "id": "MUN-22534",
+      "name": "Camarones"
+    },
+    {
+      "id": "MUN-164",
+      "name": "General Lagos"
+    },
+    {
+      "id": "MUN-165",
+      "name": "Putre"
+    }
+  ],
+  "Región de Antofagasta": [
+    {
+      "id": "MUN-11",
+      "name": "Antofagasta"
+    },
+    {
+      "id": "MUN-15",
+      "name": "Calama"
+    },
+    {
+      "id": "MUN-18",
+      "name": "María Elena"
+    },
+    {
+      "id": "MUN-12",
+      "name": "Mejillones"
+    },
+    {
+      "id": "MUN-16",
+      "name": "Ollagüe"
+    },
+    {
+      "id": "MUN-23339",
+      "name": "San Pedro de Atacama"
+    },
+    {
+      "id": "MUN-13",
+      "name": "Sierra Gorda"
+    },
+    {
+      "id": "MUN-23528",
+      "name": "Taltal"
+    },
+    {
+      "id": "MUN-19",
+      "name": "Tocopilla"
+    }
+  ],
+  "Región de Ñuble": [
+    {
+      "id": "MUN-237",
+      "name": "Bulnes"
+    },
+    {
+      "id": "MUN-238",
+      "name": "Chillán"
+    },
+    {
+      "id": "MUN-239",
+      "name": "Chillán Viejo"
+    },
+    {
+      "id": "MUN-240",
+      "name": "Cobquecura"
+    },
+    {
+      "id": "MUN-241",
+      "name": "Coelemu"
+    },
+    {
+      "id": "MUN-242",
+      "name": "Coihueco"
+    },
+    {
+      "id": "MUN-243",
+      "name": "El Carmen"
+    },
+    {
+      "id": "MUN-23697",
+      "name": "Ninhue"
+    },
+    {
+      "id": "MUN-246",
+      "name": "Pemuco"
+    },
+    {
+      "id": "MUN-247",
+      "name": "Pinto"
+    },
+    {
+      "id": "MUN-248",
+      "name": "Portezuelo"
+    },
+    {
+      "id": "MUN-249",
+      "name": "Quillón"
+    },
+    {
+      "id": "MUN-250",
+      "name": "Quirihue"
+    },
+    {
+      "id": "MUN-251",
+      "name": "Ranquil"
+    },
+    {
+      "id": "MUN-252",
+      "name": "San Carlos"
+    },
+    {
+      "id": "MUN-253",
+      "name": "San Fabián"
+    },
+    {
+      "id": "MUN-254",
+      "name": "San Ignacio"
+    },
+    {
+      "id": "MUN-255",
+      "name": "San Nicolás"
+    },
+    {
+      "id": "MUN-256",
+      "name": "Treguaco"
+    },
+    {
+      "id": "MUN-257",
+      "name": "Yungay"
+    },
+    {
+      "id": "MUN-245",
+      "name": "Ñiquén"
+    }
+  ],
+  "Región de Atacama": [
+    {
+      "id": "MUN-25",
+      "name": "Alto del Carmen"
+    },
+    {
+      "id": "MUN-22526",
+      "name": "Caldera"
+    },
+    {
+      "id": "MUN-22525",
+      "name": "Chañaral"
+    },
+    {
+      "id": "MUN-23",
+      "name": "Copiapó"
+    },
+    {
+      "id": "MUN-21",
+      "name": "Diego de Almagro"
+    },
+    {
+      "id": "MUN-22528",
+      "name": "Freirina"
+    },
+    {
+      "id": "MUN-22531",
+      "name": "Huasco"
+    },
+    {
+      "id": "MUN-24",
+      "name": "Tierra Amarilla"
+    },
+    {
+      "id": "MUN-28",
+      "name": "Vallenar"
+    }
+  ]
+}

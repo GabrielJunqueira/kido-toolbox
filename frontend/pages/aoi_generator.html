@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Project Generator via API - Beta Version">
+    <title>Project Generator via API | Kido Toolbox</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+
+    <style>
+        #map {
+            height: 550px;
+            width: 100%;
+            border-radius: var(--radius-md);
+            z-index: 1;
+        }
+
+        .map-wrapper {
+            position: relative;
+        }
+
+        .map-wrapper.is-fullscreen {
+            position: fixed !important;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 9999;
+            border-radius: 0;
+        }
+
+        .map-wrapper.is-fullscreen #map {
+            height: 100vh !important;
+            border-radius: 0;
+        }
+
+        .fullscreen-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 1000;
+            width: 36px;
+            height: 36px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-md);
+        }
+
+        .fullscreen-btn:hover {
+            background: var(--bg-tertiary);
+            transform: scale(1.05);
+        }
+
+        .fullscreen-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .legend-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+            border: 2px solid;
+        }
+
+        .legend-dot.provinces {
+            background: rgba(148, 163, 184, 0.15);
+            border-color: #94a3b8;
+        }
+
+        .legend-dot.municipalities {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: #3b82f6;
+        }
+
+        .legend-dot.core {
+            background: rgba(16, 185, 129, 0.25);
+            border-color: #10b981;
+        }
+
+        /* Stats grid */
+        .stats-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 0.75rem;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--glass-border);
+        }
+
+        .stat-box .num {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .stat-box .lbl {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Property editor panel */
+        .prop-panel {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .prop-panel h4 {
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .prop-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .prop-row label {
+            width: 70px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+
+        .prop-row input,
+        .prop-row select {
+            flex: 1;
+            padding: 0.4rem 0.6rem;
+            font-size: 0.85rem;
+            font-family: inherit;
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            outline: none;
+        }
+
+        .prop-row input:focus,
+        .prop-row select:focus {
+            border-color: var(--accent-primary);
+        }
+
+        /* Progress spinner */
+        .gen-progress {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .gen-progress .spinner-lg {
+            width: 48px;
+            height: 48px;
+            border: 4px solid var(--glass-border);
+            border-top-color: var(--accent-primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Review layout */
+        .review-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 900px) {
+            .review-layout {
+                grid-template-columns: 280px 1fr;
+            }
+        }
+
+        /* Wide card for review step */
+        .card-wide {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="/" class="navbar-brand">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                </svg>
+                Kido Toolbox
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/aoi-generator" class="nav-link active">API Generator</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+
+        <!-- Page Header -->
+        <div class="text-center mb-xl">
+            <h1 style="font-size: 2rem; margin-bottom: 0.5rem;">
+                <span style="margin-right: 0.5rem;">🌐</span>
+                Project Generator via API
+                <span class="tag tag-warning" style="font-size: 0.7rem; vertical-align: middle;">Beta</span>
+            </h1>
+            <p class="text-secondary">
+                Generate AOI projects dynamically using OpenStreetMap data
+            </p>
+        </div>
+
+        <!-- Stepper -->
+        <div class="stepper" id="stepper">
+            <div class="stepper-step active" data-step="1">
+                <div class="stepper-number">1</div>
+                <span class="stepper-label">Location</span>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="2">
+                <div class="stepper-number">2</div>
+                <span class="stepper-label">Generate</span>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="3">
+                <div class="stepper-number">3</div>
+                <span class="stepper-label">Review</span>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="4">
+                <div class="stepper-number">4</div>
+                <span class="stepper-label">Finish</span>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════
+             STEP 1: Location Selection
+             ═══════════════════════════════════════════ -->
+        <div class="card step-content active" id="step-1" style="max-width: 700px; margin: 0 auto;">
+            <div class="step-header">
+                <h2 class="step-title">Select Location</h2>
+                <p class="step-description">Choose the country, state/province, and city for your AOI project.</p>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required" for="sel-country">Country</label>
+                <select id="sel-country" class="form-select">
+                    <option value="">Loading countries...</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required" for="sel-state">State / Province / District</label>
+                <select id="sel-state" class="form-select" disabled>
+                    <option value="">Select a country first...</option>
+                </select>
+                <p class="form-hint" id="state-hint"></p>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required" for="sel-city">Municipality / City</label>
+                <select id="sel-city" class="form-select" disabled>
+                    <option value="">Select a state first...</option>
+                </select>
+                <p class="form-hint" id="city-hint"></p>
+            </div>
+
+            <div id="location-error" class="alert alert-error hidden">
+                <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" /><path d="M15 9l-6 6M9 9l6 6" />
+                </svg>
+                <div class="alert-content"><div class="alert-message" id="location-error-msg"></div></div>
+            </div>
+
+            <div class="step-footer">
+                <a href="/" class="btn btn-ghost">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Home
+                </a>
+                <button type="button" class="btn btn-primary" id="btn-next-1" disabled>
+                    Continue
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════
+             STEP 2: Generate
+             ═══════════════════════════════════════════ -->
+        <div class="card step-content" id="step-2" style="max-width: 700px; margin: 0 auto;">
+            <div class="step-header">
+                <h2 class="step-title">Generating Project</h2>
+                <p class="step-description">
+                    Fetching geographic data from OpenStreetMap...
+                </p>
+            </div>
+
+            <div class="alert alert-info mb-lg">
+                <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" />
+                </svg>
+                <div class="alert-content">
+                    <div class="alert-title">Project Summary</div>
+                    <div class="alert-message">
+                        <div id="gen-summary-country"></div>
+                        <div id="gen-summary-state"></div>
+                        <div id="gen-summary-city"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gen-progress" id="gen-progress">
+                <div class="spinner-lg"></div>
+                <p class="text-secondary" id="gen-status">Querying Overpass API...</p>
+                <p class="text-muted text-sm">This may take 15–60 seconds depending on the country size.</p>
+            </div>
+
+            <div id="gen-error" class="alert alert-error hidden">
+                <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" /><path d="M15 9l-6 6M9 9l6 6" />
+                </svg>
+                <div class="alert-content"><div class="alert-message" id="gen-error-msg"></div></div>
+            </div>
+
+            <div class="step-footer">
+                <button type="button" class="btn btn-secondary" id="btn-back-1">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back
+                </button>
+                <div></div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════
+             STEP 3: Review (Map + Editor)
+             ═══════════════════════════════════════════ -->
+        <div class="card card-wide step-content" id="step-3">
+            <div class="step-header" style="text-align: left;">
+                <h2 class="step-title">Review & Edit</h2>
+                <p class="step-description" style="margin: 0;">
+                    Navigate the map, click a polygon to edit its properties.
+                </p>
+            </div>
+
+            <div class="review-layout">
+                <!-- Sidebar -->
+                <div>
+                    <!-- Stats -->
+                    <div class="stats-row">
+                        <div class="stat-box">
+                            <div class="num" id="stat-prov" style="color: #94a3b8;">0</div>
+                            <div class="lbl">Provinces</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="num" id="stat-mun" style="color: #3b82f6;">0</div>
+                            <div class="lbl">Cities</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="num" id="stat-core" style="color: #10b981;">0</div>
+                            <div class="lbl">Core</div>
+                        </div>
+                    </div>
+
+                    <!-- Legend -->
+                    <div class="legend">
+                        <div class="legend-item"><div class="legend-dot provinces"></div>Provinces</div>
+                        <div class="legend-item"><div class="legend-dot municipalities"></div>Cities</div>
+                        <div class="legend-item"><div class="legend-dot core"></div>Core</div>
+                    </div>
+
+                    <!-- Property Editor -->
+                    <div class="prop-panel" id="prop-panel" style="display: none;">
+                        <h4>📝 Polygon Properties</h4>
+                        <div class="prop-row">
+                            <label>Name</label>
+                            <input type="text" id="prop-name" placeholder="Polygon name">
+                        </div>
+                        <div class="prop-row">
+                            <label>ID</label>
+                            <input type="text" id="prop-id" placeholder="PRO-xxx / MUN-xxx / AOI-xxx">
+                        </div>
+                        <div class="prop-row">
+                            <label>Type</label>
+                            <select id="prop-type">
+                                <option value="periphery">periphery</option>
+                                <option value="core">core</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-sm btn-primary w-full" id="btn-apply-prop" style="margin-top: 0.75rem;">
+                            Apply Changes
+                        </button>
+                    </div>
+
+                    <p class="text-muted text-sm" id="click-hint" style="margin-top: 0.75rem;">
+                        👆 Click a polygon on the map to edit its properties
+                    </p>
+                </div>
+
+                <!-- Map -->
+                <div>
+                    <div class="card h-full p-0 overflow-hidden relative map-wrapper" id="mapWrapper">
+                        <button class="fullscreen-btn" id="fullscreenBtn" title="Toggle fullscreen">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                            </svg>
+                        </button>
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-footer">
+                <button type="button" class="btn btn-secondary" id="btn-back-2">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Location
+                </button>
+                <button type="button" class="btn btn-primary" id="btn-next-3">
+                    Continue to Finish
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════
+             STEP 4: Finish (Download / Create)
+             ═══════════════════════════════════════════ -->
+        <div class="card step-content" id="step-4" style="max-width: 700px; margin: 0 auto;">
+            <div class="step-header">
+                <h2 class="step-title">Finish</h2>
+                <p class="step-description">Download your project or create it in the Kido platform.</p>
+            </div>
+
+            <div class="alert alert-success mb-xl">
+                <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                <div class="alert-content">
+                    <div class="alert-title">Project Ready!</div>
+                    <div class="alert-message" id="final-summary"></div>
+                </div>
+            </div>
+
+            <!-- Download -->
+            <div class="flex gap-md mb-xl">
+                <button type="button" class="btn btn-success flex-1" id="btn-download">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Download GeoJSON
+                </button>
+            </div>
+
+            <!-- Separator -->
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <span class="text-muted text-sm">— or create directly in the platform —</span>
+            </div>
+
+            <!-- Login (shown only when user wants to create in platform) -->
+            <div id="platform-section">
+                <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">🔐 Login to Kido Platform</h3>
+
+                <div class="form-group">
+                    <label class="form-label required" for="username">Email</label>
+                    <input type="email" id="username" class="form-input" placeholder="your.email@company.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required" for="password">Password</label>
+                    <input type="password" id="password" class="form-input" placeholder="••••••••" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required" for="api-country">API Country</label>
+                    <select id="api-country" class="form-select" required>
+                        <option value="">Select API endpoint...</option>
+                        <option value="br">🇧🇷 Brazil (br)</option>
+                        <option value="pt">🇵🇹 Portugal (pt)</option>
+                        <option value="es">🇪🇸 Spain (es)</option>
+                        <option value="mx">🇲🇽 Mexico (mx)</option>
+                        <option value="ch">🇨🇭 Switzerland (ch)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required" for="project-name">Project Name</label>
+                    <input type="text" id="project-name" class="form-input" placeholder="e.g. Tourism - City Name">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="project-desc">Description (optional)</label>
+                    <textarea id="project-desc" class="form-input" rows="2" placeholder="Optional description..."></textarea>
+                </div>
+
+                <div id="create-progress" class="flex items-center gap-md mb-lg hidden">
+                    <div class="spinner"></div>
+                    <span class="text-secondary" id="create-status">Validating and creating...</span>
+                </div>
+
+                <div id="create-success" class="alert alert-success hidden mb-lg">
+                    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    <div class="alert-content">
+                        <div class="alert-title">Project Created!</div>
+                        <div class="alert-message" id="create-success-msg"></div>
+                    </div>
+                </div>
+
+                <div id="create-error" class="alert alert-error hidden mb-lg">
+                    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" /><path d="M15 9l-6 6M9 9l6 6" />
+                    </svg>
+                    <div class="alert-content"><div class="alert-message" id="create-error-msg"></div></div>
+                </div>
+
+                <button type="button" class="btn btn-primary w-full" id="btn-create-cloud">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                    </svg>
+                    Login & Create in Platform
+                </button>
+            </div>
+
+            <div class="step-footer" style="margin-top: 2rem;">
+                <button type="button" class="btn btn-secondary" id="btn-back-3">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Back to Review
+                </button>
+                <button type="button" class="btn btn-ghost" id="btn-new-project">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12h14" />
+                    </svg>
+                    Create Another Project
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="/js/aoi_generator.js"></script>
+</body>
+
+</html>
