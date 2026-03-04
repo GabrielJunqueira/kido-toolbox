@@ -1,0 +1,2064 @@
+{
+  "Buenos Aires": [
+    {
+      "id": "MUN-1001",
+      "name": "Adolfo Alsina"
+    },
+    {
+      "id": "MUN-1002",
+      "name": "Adolfo Gonzales Chaves"
+    },
+    {
+      "id": "MUN-1003",
+      "name": "Alberti"
+    },
+    {
+      "id": "MUN-1004",
+      "name": "Almirante Brown"
+    },
+    {
+      "id": "MUN-1005",
+      "name": "Ameghino"
+    },
+    {
+      "id": "MUN-1006",
+      "name": "Arrecifes"
+    },
+    {
+      "id": "MUN-1007",
+      "name": "Avellaneda"
+    },
+    {
+      "id": "MUN-1008",
+      "name": "Ayacucho"
+    },
+    {
+      "id": "MUN-1010",
+      "name": "Azul"
+    },
+    {
+      "id": "MUN-1011",
+      "name": "Bahía Blanca"
+    },
+    {
+      "id": "MUN-1012",
+      "name": "Balcarce"
+    },
+    {
+      "id": "MUN-1013",
+      "name": "Baradero"
+    },
+    {
+      "id": "MUN-1014",
+      "name": "Benito Juárez"
+    },
+    {
+      "id": "MUN-1016",
+      "name": "Berazategui"
+    },
+    {
+      "id": "MUN-1022",
+      "name": "Berisso"
+    },
+    {
+      "id": "MUN-1023",
+      "name": "Bolívar"
+    },
+    {
+      "id": "MUN-1024",
+      "name": "Bragado"
+    },
+    {
+      "id": "MUN-1025",
+      "name": "Brandsen"
+    },
+    {
+      "id": "MUN-1027",
+      "name": "Campana"
+    },
+    {
+      "id": "MUN-1028",
+      "name": "Capitán Sarmiento"
+    },
+    {
+      "id": "MUN-1009",
+      "name": "Carlos Casares"
+    },
+    {
+      "id": "MUN-1015",
+      "name": "Carlos Tejedor"
+    },
+    {
+      "id": "MUN-1017",
+      "name": "Carmen de Areco"
+    },
+    {
+      "id": "MUN-1018",
+      "name": "Castelli"
+    },
+    {
+      "id": "MUN-1026",
+      "name": "Cañuelas"
+    },
+    {
+      "id": "MUN-1019",
+      "name": "Chacabuco"
+    },
+    {
+      "id": "MUN-1029",
+      "name": "Chascomús"
+    },
+    {
+      "id": "MUN-1030",
+      "name": "Chivilcoy"
+    },
+    {
+      "id": "MUN-1214",
+      "name": "Ciudad de Buenos Aires"
+    },
+    {
+      "id": "MUN-1031",
+      "name": "Colón"
+    },
+    {
+      "id": "MUN-1033",
+      "name": "Coronel Dorrego"
+    },
+    {
+      "id": "MUN-1034",
+      "name": "Coronel Pringles"
+    },
+    {
+      "id": "MUN-1035",
+      "name": "Coronel Suárez"
+    },
+    {
+      "id": "MUN-1032",
+      "name": "Coronel de Marina Leonardo Rosales"
+    },
+    {
+      "id": "MUN-1036",
+      "name": "Daireaux"
+    },
+    {
+      "id": "MUN-1037",
+      "name": "Dolores"
+    },
+    {
+      "id": "MUN-1038",
+      "name": "Ensenada"
+    },
+    {
+      "id": "MUN-1039",
+      "name": "Escobar"
+    },
+    {
+      "id": "MUN-1040",
+      "name": "Esteban Echeverría"
+    },
+    {
+      "id": "MUN-1041",
+      "name": "Exaltación de la Cruz"
+    },
+    {
+      "id": "MUN-1042",
+      "name": "Florencio Varela"
+    },
+    {
+      "id": "MUN-1043",
+      "name": "General Alvarado"
+    },
+    {
+      "id": "MUN-1044",
+      "name": "General Alvear"
+    },
+    {
+      "id": "MUN-1045",
+      "name": "General Arenales"
+    },
+    {
+      "id": "MUN-1046",
+      "name": "General Belgrano"
+    },
+    {
+      "id": "MUN-1047",
+      "name": "General Guido"
+    },
+    {
+      "id": "MUN-1048",
+      "name": "General Juan Madariaga"
+    },
+    {
+      "id": "MUN-1020",
+      "name": "General La Madrid"
+    },
+    {
+      "id": "MUN-1021",
+      "name": "General Las Heras"
+    },
+    {
+      "id": "MUN-1049",
+      "name": "General Lavalle"
+    },
+    {
+      "id": "MUN-1050",
+      "name": "General Paz"
+    },
+    {
+      "id": "MUN-1051",
+      "name": "General Pinto"
+    },
+    {
+      "id": "MUN-1052",
+      "name": "General Pueyrredón"
+    },
+    {
+      "id": "MUN-1053",
+      "name": "General Rodríguez"
+    },
+    {
+      "id": "MUN-1054",
+      "name": "General San Martín"
+    },
+    {
+      "id": "MUN-1055",
+      "name": "General Sarmiento"
+    },
+    {
+      "id": "MUN-1056",
+      "name": "General Viamonte"
+    },
+    {
+      "id": "MUN-1057",
+      "name": "General Villegas"
+    },
+    {
+      "id": "MUN-1058",
+      "name": "Guaminí"
+    },
+    {
+      "id": "MUN-1059",
+      "name": "Hipólito Yrigoyen"
+    },
+    {
+      "id": "MUN-1060",
+      "name": "Junín"
+    },
+    {
+      "id": "MUN-1061",
+      "name": "La Costa"
+    },
+    {
+      "id": "MUN-1062",
+      "name": "La Matanza"
+    },
+    {
+      "id": "MUN-1063",
+      "name": "La Plata"
+    },
+    {
+      "id": "MUN-1064",
+      "name": "Lanús"
+    },
+    {
+      "id": "MUN-1065",
+      "name": "Laprida"
+    },
+    {
+      "id": "MUN-1066",
+      "name": "Las Flores"
+    },
+    {
+      "id": "MUN-1067",
+      "name": "Leandro N. Alem"
+    },
+    {
+      "id": "MUN-1068",
+      "name": "Lincoln"
+    },
+    {
+      "id": "MUN-1069",
+      "name": "Lobería"
+    },
+    {
+      "id": "MUN-1070",
+      "name": "Lobos"
+    },
+    {
+      "id": "MUN-1071",
+      "name": "Lomas de Zamora"
+    },
+    {
+      "id": "MUN-1072",
+      "name": "Luján"
+    },
+    {
+      "id": "MUN-1073",
+      "name": "Magdalena"
+    },
+    {
+      "id": "MUN-1074",
+      "name": "Maipú"
+    },
+    {
+      "id": "MUN-1075",
+      "name": "Mar Chiquita"
+    },
+    {
+      "id": "MUN-1076",
+      "name": "Marcos Paz"
+    },
+    {
+      "id": "MUN-1077",
+      "name": "Mercedes"
+    },
+    {
+      "id": "MUN-1078",
+      "name": "Merlo"
+    },
+    {
+      "id": "MUN-1080",
+      "name": "Monte"
+    },
+    {
+      "id": "MUN-1079",
+      "name": "Monte Hermoso"
+    },
+    {
+      "id": "MUN-1082",
+      "name": "Moreno"
+    },
+    {
+      "id": "MUN-1081",
+      "name": "Morón"
+    },
+    {
+      "id": "MUN-1083",
+      "name": "Navarro"
+    },
+    {
+      "id": "MUN-1084",
+      "name": "Necochea"
+    },
+    {
+      "id": "MUN-1085",
+      "name": "Nueve de Julio"
+    },
+    {
+      "id": "MUN-1086",
+      "name": "Olavarría"
+    },
+    {
+      "id": "MUN-1087",
+      "name": "Patagones"
+    },
+    {
+      "id": "MUN-1088",
+      "name": "Pehuajó"
+    },
+    {
+      "id": "MUN-1089",
+      "name": "Pellegrini"
+    },
+    {
+      "id": "MUN-1090",
+      "name": "Pergamino"
+    },
+    {
+      "id": "MUN-1091",
+      "name": "Pila"
+    },
+    {
+      "id": "MUN-1092",
+      "name": "Pilar"
+    },
+    {
+      "id": "MUN-1093",
+      "name": "Pinamar"
+    },
+    {
+      "id": "MUN-1094",
+      "name": "Puán"
+    },
+    {
+      "id": "MUN-1095",
+      "name": "Quilmes"
+    },
+    {
+      "id": "MUN-1096",
+      "name": "Ramallo"
+    },
+    {
+      "id": "MUN-1097",
+      "name": "Rauch"
+    },
+    {
+      "id": "MUN-1098",
+      "name": "Rivadavia"
+    },
+    {
+      "id": "MUN-1099",
+      "name": "Rojas"
+    },
+    {
+      "id": "MUN-1100",
+      "name": "Roque Pérez"
+    },
+    {
+      "id": "MUN-1101",
+      "name": "Saavedra"
+    },
+    {
+      "id": "MUN-1102",
+      "name": "Saladillo"
+    },
+    {
+      "id": "MUN-1103",
+      "name": "Salliqueló"
+    },
+    {
+      "id": "MUN-1104",
+      "name": "Salto"
+    },
+    {
+      "id": "MUN-1105",
+      "name": "San Andrés de Giles"
+    },
+    {
+      "id": "MUN-1106",
+      "name": "San Antonio de Areco"
+    },
+    {
+      "id": "MUN-1107",
+      "name": "San Cayetano"
+    },
+    {
+      "id": "MUN-1108",
+      "name": "San Fernando (1)"
+    },
+    {
+      "id": "MUN-1109",
+      "name": "San Fernando (2)"
+    },
+    {
+      "id": "MUN-1110",
+      "name": "San Isidro"
+    },
+    {
+      "id": "MUN-1111",
+      "name": "San Nicolás"
+    },
+    {
+      "id": "MUN-1112",
+      "name": "San Pedro"
+    },
+    {
+      "id": "MUN-1113",
+      "name": "San Vicente"
+    },
+    {
+      "id": "MUN-1114",
+      "name": "Suipacha"
+    },
+    {
+      "id": "MUN-1115",
+      "name": "Tandil"
+    },
+    {
+      "id": "MUN-1116",
+      "name": "Tapalqué"
+    },
+    {
+      "id": "MUN-1117",
+      "name": "Tigre"
+    },
+    {
+      "id": "MUN-1119",
+      "name": "Tordillo"
+    },
+    {
+      "id": "MUN-1120",
+      "name": "Tornquist"
+    },
+    {
+      "id": "MUN-1121",
+      "name": "Trenque Lauquen"
+    },
+    {
+      "id": "MUN-1122",
+      "name": "Tres Arroyos"
+    },
+    {
+      "id": "MUN-1124",
+      "name": "Tres Lomas"
+    },
+    {
+      "id": "MUN-1123",
+      "name": "Tres de Febrero"
+    },
+    {
+      "id": "MUN-1125",
+      "name": "Veinticinco de Mayo"
+    },
+    {
+      "id": "MUN-1126",
+      "name": "Vicente López"
+    },
+    {
+      "id": "MUN-1127",
+      "name": "Villa Gesell"
+    },
+    {
+      "id": "MUN-1128",
+      "name": "Villarino"
+    },
+    {
+      "id": "MUN-1129",
+      "name": "Zárate"
+    }
+  ],
+  "San Luis": [
+    {
+      "id": "MUN-1427",
+      "name": "Ayacucho"
+    },
+    {
+      "id": "MUN-1118",
+      "name": "Belgrano"
+    },
+    {
+      "id": "MUN-1149",
+      "name": "Chacabuco"
+    },
+    {
+      "id": "MUN-1218",
+      "name": "Coronel Pringles"
+    },
+    {
+      "id": "MUN-1231",
+      "name": "General Pedernera"
+    },
+    {
+      "id": "MUN-1428",
+      "name": "Gobernador Dupuy"
+    },
+    {
+      "id": "MUN-1429",
+      "name": "Junín"
+    },
+    {
+      "id": "MUN-1430",
+      "name": "La Capital"
+    },
+    {
+      "id": "MUN-1431",
+      "name": "Libertador General San Martín"
+    }
+  ],
+  "Córdoba": [
+    {
+      "id": "MUN-1130",
+      "name": "Calamuchita"
+    },
+    {
+      "id": "MUN-1131",
+      "name": "Capital"
+    },
+    {
+      "id": "MUN-1132",
+      "name": "Colón"
+    },
+    {
+      "id": "MUN-1133",
+      "name": "Cruz del Eje"
+    },
+    {
+      "id": "MUN-1134",
+      "name": "General Roca"
+    },
+    {
+      "id": "MUN-1135",
+      "name": "General San Martín"
+    },
+    {
+      "id": "MUN-1136",
+      "name": "Ischilín"
+    },
+    {
+      "id": "MUN-1137",
+      "name": "Juárez Celman"
+    },
+    {
+      "id": "MUN-1138",
+      "name": "Marcos Juárez"
+    },
+    {
+      "id": "MUN-1139",
+      "name": "Minas"
+    },
+    {
+      "id": "MUN-1140",
+      "name": "Pocho"
+    },
+    {
+      "id": "MUN-1141",
+      "name": "Presidente Roque Sáenz Peña"
+    },
+    {
+      "id": "MUN-1142",
+      "name": "Punilla"
+    },
+    {
+      "id": "MUN-1143",
+      "name": "Rió Cuarto"
+    },
+    {
+      "id": "MUN-1144",
+      "name": "Rió Primero"
+    },
+    {
+      "id": "MUN-1145",
+      "name": "Rió Seco"
+    },
+    {
+      "id": "MUN-1146",
+      "name": "Rió Segundo"
+    },
+    {
+      "id": "MUN-1147",
+      "name": "San Alberto"
+    },
+    {
+      "id": "MUN-1148",
+      "name": "San Javier"
+    },
+    {
+      "id": "MUN-1150",
+      "name": "San Justo"
+    },
+    {
+      "id": "MUN-1151",
+      "name": "Santa María"
+    },
+    {
+      "id": "MUN-1152",
+      "name": "Sobremonte"
+    },
+    {
+      "id": "MUN-1153",
+      "name": "Tercero Arriba"
+    },
+    {
+      "id": "MUN-1154",
+      "name": "Totoral"
+    },
+    {
+      "id": "MUN-1155",
+      "name": "Tulumba"
+    },
+    {
+      "id": "MUN-1156",
+      "name": "Unión"
+    }
+  ],
+  "Catamarca": [
+    {
+      "id": "MUN-1157",
+      "name": "Ambato"
+    },
+    {
+      "id": "MUN-1158",
+      "name": "Ancasti"
+    },
+    {
+      "id": "MUN-1159",
+      "name": "Andalgalá"
+    },
+    {
+      "id": "MUN-1160",
+      "name": "Antofagasta de la Sierra"
+    },
+    {
+      "id": "MUN-1161",
+      "name": "Belén"
+    },
+    {
+      "id": "MUN-1162",
+      "name": "Capayán"
+    },
+    {
+      "id": "MUN-1163",
+      "name": "Capital"
+    },
+    {
+      "id": "MUN-1164",
+      "name": "El Alto"
+    },
+    {
+      "id": "MUN-1165",
+      "name": "Fray Mamerto Esquiú"
+    },
+    {
+      "id": "MUN-1166",
+      "name": "La Paz"
+    },
+    {
+      "id": "MUN-1167",
+      "name": "Paclín"
+    },
+    {
+      "id": "MUN-1168",
+      "name": "Pomán"
+    },
+    {
+      "id": "MUN-1169",
+      "name": "Santa María"
+    },
+    {
+      "id": "MUN-1170",
+      "name": "Santa Rosa"
+    },
+    {
+      "id": "MUN-1171",
+      "name": "Tinogasta"
+    },
+    {
+      "id": "MUN-1172",
+      "name": "Valle Viejo"
+    }
+  ],
+  "Chaco": [
+    {
+      "id": "MUN-1173",
+      "name": "Almirante Brown"
+    },
+    {
+      "id": "MUN-1174",
+      "name": "Bermejo"
+    },
+    {
+      "id": "MUN-1175",
+      "name": "Chacabuco"
+    },
+    {
+      "id": "MUN-1176",
+      "name": "Comandante Fernández"
+    },
+    {
+      "id": "MUN-1177",
+      "name": "Doce de Octubre"
+    },
+    {
+      "id": "MUN-1178",
+      "name": "Fray Justo Santa María de Oro"
+    },
+    {
+      "id": "MUN-1179",
+      "name": "General Belgrano"
+    },
+    {
+      "id": "MUN-1180",
+      "name": "General Donovan"
+    },
+    {
+      "id": "MUN-1182",
+      "name": "General Güemes"
+    },
+    {
+      "id": "MUN-1183",
+      "name": "Independencia"
+    },
+    {
+      "id": "MUN-1184",
+      "name": "Libertad"
+    },
+    {
+      "id": "MUN-1185",
+      "name": "Libertador General San Martín"
+    },
+    {
+      "id": "MUN-1186",
+      "name": "Maipú"
+    },
+    {
+      "id": "MUN-1187",
+      "name": "Mayor Luis J. Fontana"
+    },
+    {
+      "id": "MUN-1188",
+      "name": "Nueve de Julio"
+    },
+    {
+      "id": "MUN-1189",
+      "name": "O'Higgins"
+    },
+    {
+      "id": "MUN-1190",
+      "name": "Presidencia de la Plaza"
+    },
+    {
+      "id": "MUN-1191",
+      "name": "Primero de Mayo"
+    },
+    {
+      "id": "MUN-1192",
+      "name": "Quitilipi"
+    },
+    {
+      "id": "MUN-1193",
+      "name": "San Fernando"
+    },
+    {
+      "id": "MUN-1194",
+      "name": "San Lorenzo"
+    },
+    {
+      "id": "MUN-1195",
+      "name": "Sargento Cabral"
+    },
+    {
+      "id": "MUN-1196",
+      "name": "Tapenagá"
+    },
+    {
+      "id": "MUN-1197",
+      "name": "Veinticinco de Mayo"
+    }
+  ],
+  "Misiones": [
+    {
+      "id": "MUN-1342",
+      "name": "Apóstoles"
+    },
+    {
+      "id": "MUN-1343",
+      "name": "Cainguás"
+    },
+    {
+      "id": "MUN-1344",
+      "name": "Candelaria"
+    },
+    {
+      "id": "MUN-1345",
+      "name": "Capital"
+    },
+    {
+      "id": "MUN-1346",
+      "name": "Concepción"
+    },
+    {
+      "id": "MUN-1347",
+      "name": "Eldorado"
+    },
+    {
+      "id": "MUN-1348",
+      "name": "General Manuel Belgrano"
+    },
+    {
+      "id": "MUN-1349",
+      "name": "Guaraní"
+    },
+    {
+      "id": "MUN-1350",
+      "name": "Iguazú"
+    },
+    {
+      "id": "MUN-1351",
+      "name": "Leandro N. Alem"
+    },
+    {
+      "id": "MUN-1352",
+      "name": "Libertador General San Martín"
+    },
+    {
+      "id": "MUN-1353",
+      "name": "Montecarlo"
+    },
+    {
+      "id": "MUN-1354",
+      "name": "Oberá"
+    },
+    {
+      "id": "MUN-1181",
+      "name": "San Ignacio"
+    },
+    {
+      "id": "MUN-1199",
+      "name": "San Javier"
+    },
+    {
+      "id": "MUN-1355",
+      "name": "San Pedro"
+    },
+    {
+      "id": "MUN-1356",
+      "name": "Veinticinco de Mayo"
+    }
+  ],
+  "Chubut": [
+    {
+      "id": "MUN-1198",
+      "name": "Biedma"
+    },
+    {
+      "id": "MUN-1200",
+      "name": "Cushamen"
+    },
+    {
+      "id": "MUN-1201",
+      "name": "Escalante"
+    },
+    {
+      "id": "MUN-1202",
+      "name": "Florentino Ameghino"
+    },
+    {
+      "id": "MUN-1203",
+      "name": "Futaleufú"
+    },
+    {
+      "id": "MUN-1204",
+      "name": "Gaiman"
+    },
+    {
+      "id": "MUN-1205",
+      "name": "Gastre"
+    },
+    {
+      "id": "MUN-1206",
+      "name": "Languiñeo"
+    },
+    {
+      "id": "MUN-1207",
+      "name": "Mártires"
+    },
+    {
+      "id": "MUN-1208",
+      "name": "Paso de Indios"
+    },
+    {
+      "id": "MUN-1209",
+      "name": "Rawson"
+    },
+    {
+      "id": "MUN-1210",
+      "name": "Rió Senguer"
+    },
+    {
+      "id": "MUN-1211",
+      "name": "Sarmiento"
+    },
+    {
+      "id": "MUN-1212",
+      "name": "Tehuelches"
+    },
+    {
+      "id": "MUN-1213",
+      "name": "Telsen"
+    }
+  ],
+  "Corrientes": [
+    {
+      "id": "MUN-1215",
+      "name": "Bella Vista"
+    },
+    {
+      "id": "MUN-1216",
+      "name": "Berón de Astrada"
+    },
+    {
+      "id": "MUN-1217",
+      "name": "Capital"
+    },
+    {
+      "id": "MUN-1219",
+      "name": "Concepción"
+    },
+    {
+      "id": "MUN-1220",
+      "name": "Curuzú Cuatiá"
+    },
+    {
+      "id": "MUN-1221",
+      "name": "Empedrado"
+    },
+    {
+      "id": "MUN-1222",
+      "name": "Esquina"
+    },
+    {
+      "id": "MUN-1223",
+      "name": "General Alvear"
+    },
+    {
+      "id": "MUN-1224",
+      "name": "General Paz"
+    },
+    {
+      "id": "MUN-1225",
+      "name": "Goya"
+    },
+    {
+      "id": "MUN-1226",
+      "name": "Itatí"
+    },
+    {
+      "id": "MUN-1227",
+      "name": "Ituzaingó"
+    },
+    {
+      "id": "MUN-1228",
+      "name": "Lavalle"
+    },
+    {
+      "id": "MUN-1229",
+      "name": "Mburucuyá"
+    },
+    {
+      "id": "MUN-1230",
+      "name": "Mercedes"
+    },
+    {
+      "id": "MUN-1232",
+      "name": "Monte Caseros"
+    },
+    {
+      "id": "MUN-1233",
+      "name": "Paso de los Libres"
+    },
+    {
+      "id": "MUN-1234",
+      "name": "Saladas"
+    },
+    {
+      "id": "MUN-1235",
+      "name": "San Cosme"
+    },
+    {
+      "id": "MUN-1236",
+      "name": "San Luis del Palmar"
+    },
+    {
+      "id": "MUN-1237",
+      "name": "San Martín"
+    },
+    {
+      "id": "MUN-1238",
+      "name": "San Miguel"
+    },
+    {
+      "id": "MUN-1239",
+      "name": "San Roque"
+    },
+    {
+      "id": "MUN-1240",
+      "name": "Santo Tomé"
+    },
+    {
+      "id": "MUN-1241",
+      "name": "Sauce"
+    }
+  ],
+  "Entre Ríos": [
+    {
+      "id": "MUN-1242",
+      "name": "Colón"
+    },
+    {
+      "id": "MUN-1243",
+      "name": "Concordia"
+    },
+    {
+      "id": "MUN-1244",
+      "name": "Diamante"
+    },
+    {
+      "id": "MUN-1245",
+      "name": "Federación"
+    },
+    {
+      "id": "MUN-1246",
+      "name": "Federal"
+    },
+    {
+      "id": "MUN-1247",
+      "name": "Feliciano"
+    },
+    {
+      "id": "MUN-1249",
+      "name": "Gualeguay"
+    },
+    {
+      "id": "MUN-1248",
+      "name": "Gualeguaychú"
+    },
+    {
+      "id": "MUN-1250",
+      "name": "Isla"
+    },
+    {
+      "id": "MUN-1251",
+      "name": "Islas del Ibicuy"
+    },
+    {
+      "id": "MUN-1252",
+      "name": "La Paz"
+    },
+    {
+      "id": "MUN-1253",
+      "name": "Nogoyá"
+    },
+    {
+      "id": "MUN-1254",
+      "name": "Paraná"
+    },
+    {
+      "id": "MUN-1255",
+      "name": "Tala"
+    },
+    {
+      "id": "MUN-1256",
+      "name": "Uruguay"
+    },
+    {
+      "id": "MUN-1257",
+      "name": "Victoria"
+    },
+    {
+      "id": "MUN-1258",
+      "name": "Villaguay"
+    }
+  ],
+  "Formosa": [
+    {
+      "id": "MUN-1259",
+      "name": "Bermejo"
+    },
+    {
+      "id": "MUN-1260",
+      "name": "Formosa"
+    },
+    {
+      "id": "MUN-1261",
+      "name": "Laishi"
+    },
+    {
+      "id": "MUN-1262",
+      "name": "Matacos"
+    },
+    {
+      "id": "MUN-1263",
+      "name": "Patiño"
+    },
+    {
+      "id": "MUN-1264",
+      "name": "Pilagás"
+    },
+    {
+      "id": "MUN-1265",
+      "name": "Pilcomayo"
+    },
+    {
+      "id": "MUN-1266",
+      "name": "Pirané"
+    },
+    {
+      "id": "MUN-1267",
+      "name": "Ramón Lista"
+    }
+  ],
+  "Jujuy": [
+    {
+      "id": "MUN-1268",
+      "name": "Capital"
+    },
+    {
+      "id": "MUN-1269",
+      "name": "Cochinoca"
+    },
+    {
+      "id": "MUN-1270",
+      "name": "El Carmen"
+    },
+    {
+      "id": "MUN-1271",
+      "name": "Humahuaca"
+    },
+    {
+      "id": "MUN-1272",
+      "name": "Ledesma"
+    },
+    {
+      "id": "MUN-1273",
+      "name": "Palpalá"
+    },
+    {
+      "id": "MUN-1274",
+      "name": "Rinconada"
+    },
+    {
+      "id": "MUN-1275",
+      "name": "San Antonio"
+    },
+    {
+      "id": "MUN-1276",
+      "name": "San Pedro"
+    },
+    {
+      "id": "MUN-1277",
+      "name": "Santa Bárbara"
+    },
+    {
+      "id": "MUN-1278",
+      "name": "Santa Catalina"
+    },
+    {
+      "id": "MUN-1279",
+      "name": "Susques"
+    },
+    {
+      "id": "MUN-1280",
+      "name": "Tilcara"
+    },
+    {
+      "id": "MUN-1281",
+      "name": "Tumbaya"
+    },
+    {
+      "id": "MUN-1282",
+      "name": "Valle Grande"
+    },
+    {
+      "id": "MUN-1283",
+      "name": "Yavi"
+    }
+  ],
+  "La Pampa": [
+    {
+      "id": "MUN-1284",
+      "name": "Atreucó"
+    },
+    {
+      "id": "MUN-1285",
+      "name": "Caleu Caleu"
+    },
+    {
+      "id": "MUN-1286",
+      "name": "Capital"
+    },
+    {
+      "id": "MUN-1287",
+      "name": "Catriló"
+    },
+    {
+      "id": "MUN-1288",
+      "name": "Chalileo"
+    },
+    {
+      "id": "MUN-1289",
+      "name": "Chapaleufú"
+    },
+    {
+      "id": "MUN-1290",
+      "name": "Chical Có"
+    },
+    {
+      "id": "MUN-1291",
+      "name": "Conhelo"
+    },
+    {
+      "id": "MUN-1292",
+      "name": "Curacó"
+    },
+    {
+      "id": "MUN-1293",
+      "name": "Guatraché"
+    },
+    {
+      "id": "MUN-1294",
+      "name": "Hucal"
+    },
+    {
+      "id": "MUN-1295",
+      "name": "Lihuel Calel"
+    },
+    {
+      "id": "MUN-1296",
+      "name": "Limay Mahuida"
+    },
+    {
+      "id": "MUN-1297",
+      "name": "Loventué"
+    },
+    {
+      "id": "MUN-1298",
+      "name": "Maracó"
+    },
+    {
+      "id": "MUN-1299",
+      "name": "Puelén"
+    },
+    {
+      "id": "MUN-1300",
+      "name": "Quemú Quemú"
+    },
+    {
+      "id": "MUN-1301",
+      "name": "Rancul"
+    },
+    {
+      "id": "MUN-1302",
+      "name": "Realicó"
+    },
+    {
+      "id": "MUN-1303",
+      "name": "Toay"
+    },
+    {
+      "id": "MUN-1304",
+      "name": "Trenel"
+    },
+    {
+      "id": "MUN-1305",
+      "name": "Utracán"
+    }
+  ],
+  "La Rioja": [
+    {
+      "id": "MUN-1306",
+      "name": "Arauco"
+    },
+    {
+      "id": "MUN-1307",
+      "name": "Capital"
+    },
+    {
+      "id": "MUN-1308",
+      "name": "Castro Barros"
+    },
+    {
+      "id": "MUN-1309",
+      "name": "Chamical"
+    },
+    {
+      "id": "MUN-1310",
+      "name": "Chilecito"
+    },
+    {
+      "id": "MUN-1311",
+      "name": "Coronel Felipe Varela"
+    },
+    {
+      "id": "MUN-1312",
+      "name": "Famatina"
+    },
+    {
+      "id": "MUN-1313",
+      "name": "General Angel Vicente Peñaloza"
+    },
+    {
+      "id": "MUN-1314",
+      "name": "General Belgrano"
+    },
+    {
+      "id": "MUN-1315",
+      "name": "General Juan Facundo Quiroga"
+    },
+    {
+      "id": "MUN-1316",
+      "name": "General Lamadrid"
+    },
+    {
+      "id": "MUN-1317",
+      "name": "General Ocampo"
+    },
+    {
+      "id": "MUN-1318",
+      "name": "General San Martín"
+    },
+    {
+      "id": "MUN-1319",
+      "name": "Independencia"
+    },
+    {
+      "id": "MUN-1320",
+      "name": "Rosario Vera Peñaloza"
+    },
+    {
+      "id": "MUN-1321",
+      "name": "San Blas de los Sauces"
+    },
+    {
+      "id": "MUN-1322",
+      "name": "Sanagasta"
+    },
+    {
+      "id": "MUN-1323",
+      "name": "Vinchina"
+    }
+  ],
+  "Mendoza": [
+    {
+      "id": "MUN-1324",
+      "name": "Capital"
+    },
+    {
+      "id": "MUN-1325",
+      "name": "General Alvear"
+    },
+    {
+      "id": "MUN-1326",
+      "name": "Godoy Cruz"
+    },
+    {
+      "id": "MUN-1327",
+      "name": "Guaymallén"
+    },
+    {
+      "id": "MUN-1328",
+      "name": "Junín"
+    },
+    {
+      "id": "MUN-1329",
+      "name": "La Paz"
+    },
+    {
+      "id": "MUN-1330",
+      "name": "Las Heras"
+    },
+    {
+      "id": "MUN-1331",
+      "name": "Lavalle"
+    },
+    {
+      "id": "MUN-1332",
+      "name": "Luján de Cuyo"
+    },
+    {
+      "id": "MUN-1333",
+      "name": "Maipú"
+    },
+    {
+      "id": "MUN-1334",
+      "name": "Malargüe"
+    },
+    {
+      "id": "MUN-1335",
+      "name": "Rivadavia"
+    },
+    {
+      "id": "MUN-1336",
+      "name": "San Carlos"
+    },
+    {
+      "id": "MUN-1337",
+      "name": "San Martín"
+    },
+    {
+      "id": "MUN-1338",
+      "name": "San Rafael"
+    },
+    {
+      "id": "MUN-1339",
+      "name": "Santa Rosa"
+    },
+    {
+      "id": "MUN-1340",
+      "name": "Tunuyán"
+    },
+    {
+      "id": "MUN-1341",
+      "name": "Tupungato"
+    }
+  ],
+  "Neuquén": [
+    {
+      "id": "MUN-1359",
+      "name": "Aluminé"
+    },
+    {
+      "id": "MUN-1358",
+      "name": "Añelo"
+    },
+    {
+      "id": "MUN-1360",
+      "name": "Catán Lil"
+    },
+    {
+      "id": "MUN-1361",
+      "name": "Chos Malal"
+    },
+    {
+      "id": "MUN-1362",
+      "name": "Collón Curá"
+    },
+    {
+      "id": "MUN-1363",
+      "name": "Confluencia"
+    },
+    {
+      "id": "MUN-1364",
+      "name": "Huiliches"
+    },
+    {
+      "id": "MUN-1365",
+      "name": "Lacar"
+    },
+    {
+      "id": "MUN-1366",
+      "name": "Loncopué"
+    },
+    {
+      "id": "MUN-1367",
+      "name": "Los Lagos"
+    },
+    {
+      "id": "MUN-1368",
+      "name": "Minas"
+    },
+    {
+      "id": "MUN-1369",
+      "name": "Pehuenches"
+    },
+    {
+      "id": "MUN-1371",
+      "name": "Picunches"
+    },
+    {
+      "id": "MUN-1370",
+      "name": "Picún Leufú"
+    },
+    {
+      "id": "MUN-1372",
+      "name": "Zapala"
+    },
+    {
+      "id": "MUN-1357",
+      "name": "Ã‘orquÃ­n"
+    }
+  ],
+  "Río Negro": [
+    {
+      "id": "MUN-1374",
+      "name": "Adolfo Alsina"
+    },
+    {
+      "id": "MUN-1375",
+      "name": "Avellaneda"
+    },
+    {
+      "id": "MUN-1376",
+      "name": "Bariloche"
+    },
+    {
+      "id": "MUN-1377",
+      "name": "Conesa"
+    },
+    {
+      "id": "MUN-1378",
+      "name": "El Cuy"
+    },
+    {
+      "id": "MUN-1379",
+      "name": "General Roca"
+    },
+    {
+      "id": "MUN-1380",
+      "name": "Nueve de Julio"
+    },
+    {
+      "id": "MUN-1381",
+      "name": "Pichi Mahuida"
+    },
+    {
+      "id": "MUN-1382",
+      "name": "Pilcaniyeu"
+    },
+    {
+      "id": "MUN-1383",
+      "name": "San Antonio"
+    },
+    {
+      "id": "MUN-1384",
+      "name": "Valcheta"
+    },
+    {
+      "id": "MUN-1385",
+      "name": "Veinticinco de Mayo"
+    },
+    {
+      "id": "MUN-1373",
+      "name": "Ã‘orquinco"
+    }
+  ],
+  "Salta": [
+    {
+      "id": "MUN-1386",
+      "name": "Anta"
+    },
+    {
+      "id": "MUN-1387",
+      "name": "Cachi"
+    },
+    {
+      "id": "MUN-1388",
+      "name": "Cafayate"
+    },
+    {
+      "id": "MUN-1389",
+      "name": "Capital"
+    },
+    {
+      "id": "MUN-1390",
+      "name": "Cerrillos"
+    },
+    {
+      "id": "MUN-1391",
+      "name": "Chicoana"
+    },
+    {
+      "id": "MUN-1392",
+      "name": "General Güemes"
+    },
+    {
+      "id": "MUN-1393",
+      "name": "General José de San Martín"
+    },
+    {
+      "id": "MUN-1394",
+      "name": "Guachipas"
+    },
+    {
+      "id": "MUN-1395",
+      "name": "Iruya"
+    },
+    {
+      "id": "MUN-1396",
+      "name": "La Caldera"
+    },
+    {
+      "id": "MUN-1397",
+      "name": "La Candelaria"
+    },
+    {
+      "id": "MUN-1398",
+      "name": "La Poma"
+    },
+    {
+      "id": "MUN-1399",
+      "name": "La Viña"
+    },
+    {
+      "id": "MUN-1400",
+      "name": "Los Andes"
+    },
+    {
+      "id": "MUN-1401",
+      "name": "Metán"
+    },
+    {
+      "id": "MUN-1402",
+      "name": "Molinos"
+    },
+    {
+      "id": "MUN-1403",
+      "name": "Orán"
+    },
+    {
+      "id": "MUN-1404",
+      "name": "Rivadavia"
+    },
+    {
+      "id": "MUN-1406",
+      "name": "Rosario de Lerma"
+    },
+    {
+      "id": "MUN-1405",
+      "name": "Rosario de la Frontera"
+    },
+    {
+      "id": "MUN-1407",
+      "name": "San Carlos"
+    },
+    {
+      "id": "MUN-1408",
+      "name": "Santa Victoria"
+    }
+  ],
+  "San Juan": [
+    {
+      "id": "MUN-1409",
+      "name": "Albardón"
+    },
+    {
+      "id": "MUN-1410",
+      "name": "Angaco"
+    },
+    {
+      "id": "MUN-1411",
+      "name": "Calingasta"
+    },
+    {
+      "id": "MUN-1412",
+      "name": "Capital"
+    },
+    {
+      "id": "MUN-1413",
+      "name": "Caucete"
+    },
+    {
+      "id": "MUN-1414",
+      "name": "Chimbas"
+    },
+    {
+      "id": "MUN-1415",
+      "name": "Iglesia"
+    },
+    {
+      "id": "MUN-1416",
+      "name": "Jáchal"
+    },
+    {
+      "id": "MUN-1417",
+      "name": "Pocito"
+    },
+    {
+      "id": "MUN-1418",
+      "name": "Rawson"
+    },
+    {
+      "id": "MUN-1419",
+      "name": "Rivadavia"
+    },
+    {
+      "id": "MUN-1420",
+      "name": "San Martín"
+    },
+    {
+      "id": "MUN-1421",
+      "name": "Santa Lucía"
+    },
+    {
+      "id": "MUN-1422",
+      "name": "Sarmiento"
+    },
+    {
+      "id": "MUN-1423",
+      "name": "Ullum"
+    },
+    {
+      "id": "MUN-1424",
+      "name": "Valle Fértil"
+    },
+    {
+      "id": "MUN-1425",
+      "name": "Veinticinco de Mayo"
+    },
+    {
+      "id": "MUN-1426",
+      "name": "Zonda"
+    }
+  ],
+  "Santa Cruz": [
+    {
+      "id": "MUN-1432",
+      "name": "Corpen Aike"
+    },
+    {
+      "id": "MUN-1433",
+      "name": "Deseado"
+    },
+    {
+      "id": "MUN-1434",
+      "name": "Güer Aike"
+    },
+    {
+      "id": "MUN-1435",
+      "name": "Lago Argentino"
+    },
+    {
+      "id": "MUN-1436",
+      "name": "Lago Buenos Aires"
+    },
+    {
+      "id": "MUN-1437",
+      "name": "Magallanes"
+    },
+    {
+      "id": "MUN-1438",
+      "name": "Rió Chico"
+    }
+  ],
+  "Santa Fe": [
+    {
+      "id": "MUN-1439",
+      "name": "Belgrano"
+    },
+    {
+      "id": "MUN-1440",
+      "name": "Caseros"
+    },
+    {
+      "id": "MUN-1441",
+      "name": "Castellanos"
+    },
+    {
+      "id": "MUN-1442",
+      "name": "Constitución"
+    },
+    {
+      "id": "MUN-1443",
+      "name": "Garay"
+    },
+    {
+      "id": "MUN-1444",
+      "name": "General López"
+    },
+    {
+      "id": "MUN-1445",
+      "name": "General Obligado"
+    },
+    {
+      "id": "MUN-1446",
+      "name": "Iriondo"
+    },
+    {
+      "id": "MUN-1447",
+      "name": "La Capital"
+    },
+    {
+      "id": "MUN-1448",
+      "name": "Las Colonias"
+    },
+    {
+      "id": "MUN-1449",
+      "name": "Nueve de Julio"
+    },
+    {
+      "id": "MUN-1450",
+      "name": "Rosario"
+    },
+    {
+      "id": "MUN-1451",
+      "name": "San Cristóbal"
+    },
+    {
+      "id": "MUN-1452",
+      "name": "San Javier"
+    },
+    {
+      "id": "MUN-1453",
+      "name": "San Jerónimo"
+    },
+    {
+      "id": "MUN-1454",
+      "name": "San Justo"
+    },
+    {
+      "id": "MUN-1455",
+      "name": "San Lorenzo"
+    },
+    {
+      "id": "MUN-1456",
+      "name": "San Martín"
+    },
+    {
+      "id": "MUN-1457",
+      "name": "Vera"
+    }
+  ],
+  "Santiago del Estero": [
+    {
+      "id": "MUN-1458",
+      "name": "Aguirre"
+    },
+    {
+      "id": "MUN-1459",
+      "name": "Alberdi"
+    },
+    {
+      "id": "MUN-1460",
+      "name": "Atamisqui"
+    },
+    {
+      "id": "MUN-1461",
+      "name": "Avellaneda"
+    },
+    {
+      "id": "MUN-1462",
+      "name": "Banda"
+    },
+    {
+      "id": "MUN-1463",
+      "name": "Belgrano"
+    },
+    {
+      "id": "MUN-1464",
+      "name": "Capital"
+    },
+    {
+      "id": "MUN-1465",
+      "name": "Choya"
+    },
+    {
+      "id": "MUN-1466",
+      "name": "Copo"
+    },
+    {
+      "id": "MUN-1467",
+      "name": "Figueroa"
+    },
+    {
+      "id": "MUN-1468",
+      "name": "General Taboada"
+    },
+    {
+      "id": "MUN-1469",
+      "name": "Guasayán"
+    },
+    {
+      "id": "MUN-1470",
+      "name": "Jiménez"
+    },
+    {
+      "id": "MUN-1471",
+      "name": "Juan Felipe Ibarra"
+    },
+    {
+      "id": "MUN-1472",
+      "name": "Loreto"
+    },
+    {
+      "id": "MUN-1473",
+      "name": "Mitre"
+    },
+    {
+      "id": "MUN-1474",
+      "name": "Moreno"
+    },
+    {
+      "id": "MUN-1475",
+      "name": "Ojo de Agua"
+    },
+    {
+      "id": "MUN-1476",
+      "name": "Pellegrini"
+    },
+    {
+      "id": "MUN-1477",
+      "name": "Quebrachos"
+    },
+    {
+      "id": "MUN-1479",
+      "name": "Rivadavia"
+    },
+    {
+      "id": "MUN-1478",
+      "name": "Rió Hondo"
+    },
+    {
+      "id": "MUN-1480",
+      "name": "Robles"
+    },
+    {
+      "id": "MUN-1481",
+      "name": "Salavina"
+    },
+    {
+      "id": "MUN-1482",
+      "name": "San Martín"
+    },
+    {
+      "id": "MUN-1483",
+      "name": "Sarmiento"
+    },
+    {
+      "id": "MUN-1484",
+      "name": "Silípica"
+    }
+  ],
+  "Tucumán": [
+    {
+      "id": "MUN-1487",
+      "name": "Burruyacú"
+    },
+    {
+      "id": "MUN-1488",
+      "name": "Capital"
+    },
+    {
+      "id": "MUN-1489",
+      "name": "Chicligasta"
+    },
+    {
+      "id": "MUN-1490",
+      "name": "Cruz Alta"
+    },
+    {
+      "id": "MUN-1491",
+      "name": "Famaillá"
+    },
+    {
+      "id": "MUN-1492",
+      "name": "Graneros"
+    },
+    {
+      "id": "MUN-1493",
+      "name": "Juan B. Alberdi"
+    },
+    {
+      "id": "MUN-1494",
+      "name": "La Cocha"
+    },
+    {
+      "id": "MUN-1495",
+      "name": "Leales"
+    },
+    {
+      "id": "MUN-1496",
+      "name": "Lules"
+    },
+    {
+      "id": "MUN-1497",
+      "name": "Monteros"
+    },
+    {
+      "id": "MUN-1498",
+      "name": "Rió Chico"
+    },
+    {
+      "id": "MUN-1499",
+      "name": "Simoca"
+    },
+    {
+      "id": "MUN-1501",
+      "name": "Tafí Viejo"
+    },
+    {
+      "id": "MUN-1500",
+      "name": "Tafí del Valle"
+    },
+    {
+      "id": "MUN-1502",
+      "name": "Trancas"
+    },
+    {
+      "id": "MUN-1503",
+      "name": "Yerba Buena"
+    }
+  ],
+  "Tierra del Fuego": [
+    {
+      "id": "MUN-TDF-RG",
+      "name": "Río Grande"
+    },
+    {
+      "id": "MUN-TDF-USH",
+      "name": "Ushuaia"
+    },
+    {
+      "id": "MUN-TDF-TOL",
+      "name": "Tolhuin"
+    }
+  ]
+}

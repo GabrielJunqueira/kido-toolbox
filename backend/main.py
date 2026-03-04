@@ -8,7 +8,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
-from routers import aoi, anonymizer, editor, scaling_factor, li_project, report, tourism_report
+from routers import aoi, aoi_generator, anonymizer, editor, scaling_factor, li_project, report, tourism_report
 from services.auth import login_kido
 
 # Initialize FastAPI app
@@ -29,6 +29,7 @@ app.add_middleware(
 
 # Mount API routers
 app.include_router(aoi.router)
+app.include_router(aoi_generator.router)
 app.include_router(anonymizer.router)
 app.include_router(editor.router)
 app.include_router(scaling_factor.router)
@@ -173,6 +174,15 @@ async def create_project(request: CreateProjectRequest):
 async def aoi_page():
     """Serve the AOI project generator page."""
     page_path = os.path.join(FRONTEND_DIR, "pages", "aoi.html")
+    if os.path.exists(page_path):
+        return FileResponse(page_path)
+    return {"error": "Page not found"}
+
+
+@app.get("/aoi-generator")
+async def aoi_generator_page():
+    """Serve the Project Generator via API (Beta) page."""
+    page_path = os.path.join(FRONTEND_DIR, "pages", "aoi_generator.html")
     if os.path.exists(page_path):
         return FileResponse(page_path)
     return {"error": "Page not found"}

@@ -88,6 +88,34 @@
             text-align: center;
         }
 
+        .range-input {
+            width: 48px;
+            padding: 2px 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: inherit;
+            color: var(--accent-primary-hover);
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: var(--radius-full);
+            text-align: center;
+            outline: none;
+            transition: all var(--transition-fast);
+            -moz-appearance: textfield;
+        }
+
+        .range-input::-webkit-outer-spin-button,
+        .range-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .range-input:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+            background: rgba(99, 102, 241, 0.25);
+        }
+
         .range-sep {
             font-size: 0.7rem;
             color: var(--text-muted);
@@ -413,9 +441,9 @@
                         <div class="dual-range-header">
                             <span class="dual-range-label">Nodes per Zone</span>
                             <div class="dual-range-values">
-                                <span class="range-badge" id="nodeMinVal">0</span>
+                                <input type="number" class="range-input" id="nodeMinVal" value="0" min="0">
                                 <span class="range-sep">–</span>
-                                <span class="range-badge" id="nodeMaxVal">0</span>
+                                <input type="number" class="range-input" id="nodeMaxVal" value="0" min="0">
                             </div>
                         </div>
                         <div class="dual-range-track" id="nodeRangeTrack">
@@ -431,9 +459,9 @@
                         <div class="dual-range-header">
                             <span class="dual-range-label">Antennas per Zone</span>
                             <div class="dual-range-values">
-                                <span class="range-badge" id="antMinVal">0</span>
+                                <input type="number" class="range-input" id="antMinVal" value="0" min="0">
                                 <span class="range-sep">–</span>
-                                <span class="range-badge" id="antMaxVal">0</span>
+                                <input type="number" class="range-input" id="antMaxVal" value="0" min="0">
                             </div>
                         </div>
                         <div class="dual-range-track" id="antRangeTrack">

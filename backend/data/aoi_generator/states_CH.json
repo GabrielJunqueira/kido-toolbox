@@ -1,0 +1,106 @@
+[
+  {
+    "id": 1686359,
+    "name": "Aargau"
+  },
+  {
+    "id": 1686649,
+    "name": "Appenzell Ausserrhoden"
+  },
+  {
+    "id": 1686666,
+    "name": "Appenzell Innerrhoden"
+  },
+  {
+    "id": 1686366,
+    "name": "Basel-Landschaft"
+  },
+  {
+    "id": 1699639,
+    "name": "Basel-Stadt"
+  },
+  {
+    "id": 1686344,
+    "name": "Bern/Berne"
+  },
+  {
+    "id": 1698314,
+    "name": "Fribourg/Freiburg"
+  },
+  {
+    "id": 1702419,
+    "name": "Genève"
+  },
+  {
+    "id": 1685673,
+    "name": "Glarus"
+  },
+  {
+    "id": 1686631,
+    "name": "Graubünden/Grischun/Grigioni"
+  },
+  {
+    "id": 1697347,
+    "name": "Jura"
+  },
+  {
+    "id": 1685677,
+    "name": "Luzern"
+  },
+  {
+    "id": 1702420,
+    "name": "Neuchâtel"
+  },
+  {
+    "id": 1686449,
+    "name": "Nidwalden"
+  },
+  {
+    "id": 1686448,
+    "name": "Obwalden"
+  },
+  {
+    "id": 1696112,
+    "name": "Schaffhausen"
+  },
+  {
+    "id": 1688583,
+    "name": "Schwyz"
+  },
+  {
+    "id": 1701133,
+    "name": "Solothurn"
+  },
+  {
+    "id": 1687006,
+    "name": "St. Gallen"
+  },
+  {
+    "id": 1693811,
+    "name": "Thurgau"
+  },
+  {
+    "id": 1687730,
+    "name": "Ticino"
+  },
+  {
+    "id": 1693971,
+    "name": "Uri"
+  },
+  {
+    "id": 1686699,
+    "name": "Valais/Wallis"
+  },
+  {
+    "id": 1702421,
+    "name": "Vaud"
+  },
+  {
+    "id": 1686447,
+    "name": "Zug"
+  },
+  {
+    "id": 1690227,
+    "name": "Zürich"
+  }
+]
