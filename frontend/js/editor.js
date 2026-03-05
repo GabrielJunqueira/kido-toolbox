@@ -239,20 +239,12 @@ function configureDualSliders(data) {
     antMinInput.value = 0; antMinInput.max = maxAntennas;
     antMaxInput.value = maxAntennas; antMaxInput.max = maxAntennas;
 
-    // Update fills
-    updateFill('nodeMin', 'nodeMax', 'nodeFill');
-    updateFill('antMin', 'antMax', 'antFill');
-}
-
-function updateFill(minId, maxId, fillId) {
-    const minInput = document.getElementById(minId);
-    const maxInput = document.getElementById(maxId);
-    const fillEl = document.getElementById(fillId);
-    const rangeMax = parseInt(minInput.max) || 1;
-    const leftPercent = (parseInt(minInput.value) / rangeMax) * 100;
-    const rightPercent = (parseInt(maxInput.value) / rangeMax) * 100;
-    fillEl.style.left = leftPercent + '%';
-    fillEl.style.width = (rightPercent - leftPercent) + '%';
+    // Trigger sync — dispatch input events so the setupDualRange closures
+    // pick up the new values and update number inputs + fill bars
+    nodeMinSlider.dispatchEvent(new Event('input'));
+    nodeMaxSlider.dispatchEvent(new Event('input'));
+    antMinSlider.dispatchEvent(new Event('input'));
+    antMaxSlider.dispatchEvent(new Event('input'));
 }
 
 // ─── Apply Filters & Re-render ─────────────────────────────────
