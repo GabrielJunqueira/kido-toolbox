@@ -464,7 +464,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     throw new Error(data.detail || 'Failed to load adjustments');
                 }
 
-                const adjustments = data.adjustments || [];
+                const adjustments = (data.adjustments || []).sort((a, b) => new Date(b.committed_at) - new Date(a.committed_at));
 
                 if (adjustments.length === 0) {
                     currentAdjustmentsBody.innerHTML = `
