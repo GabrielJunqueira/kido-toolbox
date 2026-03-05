@@ -151,51 +151,56 @@ function setupEventListeners() {
 
 // ─── Dual Range Slider Setup ───────────────────────────────────
 function setupDualRange(minId, maxId, minValId, maxValId, fillId) {
-    const minInput = document.getElementById(minId);
-    const maxInput = document.getElementById(maxId);
-    const minValEl = document.getElementById(minValId);
-    const maxValEl = document.getElementById(maxValId);
+    const minSlider = document.getElementById(minId);
+    const maxSlider = document.getElementById(maxId);
+    const minValInput = document.getElementById(minValId);
+    const maxValInput = document.getElementById(maxValId);
     const fillEl = document.getElementById(fillId);
 
-    function update() {
-        let minVal = parseInt(minInput.value);
-        let maxVal = parseInt(maxInput.value);
-
-        // Prevent crossover
-        if (minVal > maxVal) {
-            // Determine which one was moved and clamp it
-            minInput.value = maxVal;
-            minVal = maxVal;
-        }
-
-        // Update display badges
-        minValEl.textContent = minVal;
-        maxValEl.textContent = maxVal;
-
-        // Update fill bar position
-        const rangeMax = parseInt(minInput.max) || 1;
+    function updateFillBar() {
+        const rangeMax = parseInt(minSlider.max) || 1;
+        const minVal = parseInt(minSlider.value);
+        const maxVal = parseInt(maxSlider.value);
         const leftPercent = (minVal / rangeMax) * 100;
         const rightPercent = (maxVal / rangeMax) * 100;
         fillEl.style.left = leftPercent + '%';
         fillEl.style.width = (rightPercent - leftPercent) + '%';
     }
 
-    minInput.addEventListener('input', () => {
-        if (parseInt(minInput.value) > parseInt(maxInput.value)) {
-            minInput.value = maxInput.value;
-        }
-        update();
-    });
+    function syncFromSliders() {
+        let minVal = parseInt(minSlider.value);
+        let maxVal = parseInt(maxSlider.value);
+        if (minVal > maxVal) { minSlider.value = maxVal; minVal = maxVal; }
+        minValInput.value = minVal;
+        maxValInput.value = maxVal;
+        updateFillBar();
+    }
 
-    maxInput.addEventListener('input', () => {
-        if (parseInt(maxInput.value) < parseInt(minInput.value)) {
-            maxInput.value = minInput.value;
-        }
-        update();
-    });
+    function syncFromInputs() {
+        let minVal = parseInt(minValInput.value) || 0;
+        let maxVal = parseInt(maxValInput.value) || 0;
+        const rangeMax = parseInt(minSlider.max) || 0;
+        // Clamp to valid range
+        minVal = Math.max(0, Math.min(minVal, rangeMax));
+        maxVal = Math.max(0, Math.min(maxVal, rangeMax));
+        if (minVal > maxVal) minVal = maxVal;
+        minSlider.value = minVal;
+        maxSlider.value = maxVal;
+        minValInput.value = minVal;
+        maxValInput.value = maxVal;
+        updateFillBar();
+    }
+
+    // Slider events
+    minSlider.addEventListener('input', syncFromSliders);
+    maxSlider.addEventListener('input', syncFromSliders);
+
+    // Number input events
+    minValInput.addEventListener('change', syncFromInputs);
+    maxValInput.addEventListener('change', syncFromInputs);
 
     // Initial paint
-    update();
+    syncFromSliders();
 }
 
 // ─── Configure Dual Sliders ────────────────────────────────────
@@ -212,21 +217,27 @@ function configureDualSliders(data) {
         });
     }
 
-    // Nodes range
-    const nodeMin = document.getElementById('nodeMin');
-    const nodeMax = document.getElementById('nodeMax');
-    nodeMin.min = 0; nodeMin.max = maxNodes; nodeMin.value = 0;
-    nodeMax.min = 0; nodeMax.max = maxNodes; nodeMax.value = maxNodes;
-    document.getElementById('nodeMinVal').textContent = '0';
-    document.getElementById('nodeMaxVal').textContent = maxNodes;
+    // Nodes range — sliders
+    const nodeMinSlider = document.getElementById('nodeMin');
+    const nodeMaxSlider = document.getElementById('nodeMax');
+    nodeMinSlider.min = 0; nodeMinSlider.max = maxNodes; nodeMinSlider.value = 0;
+    nodeMaxSlider.min = 0; nodeMaxSlider.max = maxNodes; nodeMaxSlider.value = maxNodes;
+    // Nodes range — number inputs
+    const nodeMinInput = document.getElementById('nodeMinVal');
+    const nodeMaxInput = document.getElementById('nodeMaxVal');
+    nodeMinInput.value = 0; nodeMinInput.max = maxNodes;
+    nodeMaxInput.value = maxNodes; nodeMaxInput.max = maxNodes;
 
-    // Antennas range
-    const antMin = document.getElementById('antMin');
-    const antMax = document.getElementById('antMax');
-    antMin.min = 0; antMin.max = maxAntennas; antMin.value = 0;
-    antMax.min = 0; antMax.max = maxAntennas; antMax.value = maxAntennas;
-    document.getElementById('antMinVal').textContent = '0';
-    document.getElementById('antMaxVal').textContent = maxAntennas;
+    // Antennas range — sliders
+    const antMinSlider = document.getElementById('antMin');
+    const antMaxSlider = document.getElementById('antMax');
+    antMinSlider.min = 0; antMinSlider.max = maxAntennas; antMinSlider.value = 0;
+    antMaxSlider.min = 0; antMaxSlider.max = maxAntennas; antMaxSlider.value = maxAntennas;
+    // Antennas range — number inputs
+    const antMinInput = document.getElementById('antMinVal');
+    const antMaxInput = document.getElementById('antMaxVal');
+    antMinInput.value = 0; antMinInput.max = maxAntennas;
+    antMaxInput.value = maxAntennas; antMaxInput.max = maxAntennas;
 
     // Update fills
     updateFill('nodeMin', 'nodeMax', 'nodeFill');
