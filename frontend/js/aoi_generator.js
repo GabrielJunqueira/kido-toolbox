@@ -214,7 +214,56 @@ function initMap() {
         maxZoom: 19,
     }).addTo(map);
 
+    // Initial render
     renderGeoJSON();
+
+    // Setup fullscreen button
+    setupFullscreen();
+
+    // Setup layer toggles
+    setupLayerToggles();
+}
+
+function setupFullscreen() {
+    const btn = $('fullscreenBtn');
+    const wrapper = $('mapWrapper');
+    if (!btn || !wrapper) return;
+
+    // Remove old listener if exists
+    const newBtn = btn.cloneNode(true);
+    btn.parentNode.replaceChild(newBtn, btn);
+
+    newBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        wrapper.classList.toggle('is-fullscreen');
+
+        // Update icon based on state
+        if (wrapper.classList.contains('is-fullscreen')) {
+            newBtn.innerHTML = `
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
+                </svg>`;
+        } else {
+            newBtn.innerHTML = `
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                </svg>`;
+        }
+
+        // Trigger map resize
+        setTimeout(() => map.invalidateSize(), 100);
+    });
+}
+
+function setupLayerToggles() {
+    ['toggle-prov', 'toggle-mun', 'toggle-core'].forEach(id => {
+        const el = $(id);
+        if (el) {
+            el.addEventListener('change', () => {
+                renderGeoJSON();
+            });
+        }
+    });
 }
 
 function renderGeoJSON() {
@@ -227,7 +276,31 @@ function renderGeoJSON() {
     $('prop-panel').style.display = 'none';
     $('click-hint').style.display = 'block';
 
-    geoLayer = L.geoJSON(projectGeoJSON, {
+    // Get filter states (default to true if elements don't exist yet)
+    const showProv = $('toggle-prov') ? $('toggle-prov').checked : true;
+    const showMun = $('toggle-mun') ? $('toggle-mun').checked : true;
+    const showCore = $('toggle-core') ? $('toggle-core').checked : true;
+
+    // Filter features before rendering
+    const filteredFeatures = projectGeoJSON.features.filter(feature => {
+        const id = feature.properties.id || '';
+        const isCore = id.startsWith('AOI-') || feature.properties.poly_type === 'core';
+        const isMun = id.startsWith('MUN-');
+        const isProv = !isCore && !isMun;
+
+        if (isCore && !showCore) return false;
+        if (isProv && !showProv) return false;
+        if (isMun && !showMun) return false;
+
+        return true;
+    });
+
+    const filteredGeoJSON = {
+        type: "FeatureCollection",
+        features: filteredFeatures
+    };
+
+    geoLayer = L.geoJSON(filteredGeoJSON, {
         style: feature => getFeatureStyle(feature),
         onEachFeature: (feature, layer) => {
             const cat = getFeatureCategory(feature);
@@ -235,13 +308,22 @@ function renderGeoJSON() {
             layer.bindTooltip(`<b>${name}</b><br>${cat}`, { sticky: true });
 
             layer.on('click', () => {
+                // Find actual index in original GeoJSON for editing
                 const idx = projectGeoJSON.features.indexOf(feature);
                 selectFeature(idx, layer);
             });
         },
     }).addTo(map);
 
-    map.fitBounds(geoLayer.getBounds(), { padding: [20, 20] });
+    // Only fit bounds if we have features shown and we are rendering for the first time
+    // or if the map center hasn't moved much. To be safe, let's fit bounds on first render only
+    if (!window._mapHasFittedBounds) {
+        if (filteredFeatures.length > 0) {
+            map.fitBounds(geoLayer.getBounds(), { padding: [20, 20] });
+            window._mapHasFittedBounds = true;
+        }
+    }
+
     updateStats();
 }
 
@@ -263,17 +345,23 @@ function selectFeature(idx, layer) {
     $('click-hint').style.display = 'none';
 }
 
-$('btn-apply-prop').addEventListener('click', () => {
-    if (selectedFeatureIndex === null) return;
+function applyFeatureProperties() {
+    if (selectedFeatureIndex === null || !projectGeoJSON) return;
 
-    const feat = projectGeoJSON.features[selectedFeatureIndex];
-    feat.properties.name = $('prop-name').value;
-    feat.properties.id = $('prop-id').value;
-    feat.properties.poly_type = $('prop-type').value;
+    projectGeoJSON.features[selectedFeatureIndex].properties.name = $('prop-name').value;
+    projectGeoJSON.features[selectedFeatureIndex].properties.id = $('prop-id').value;
+    projectGeoJSON.features[selectedFeatureIndex].properties.poly_type = $('prop-type').value;
 
-    // Re-render
+    // Save current map view before re-render
+    const center = map.getCenter();
+    const zoom = map.getZoom();
+
     renderGeoJSON();
-});
+
+    // Restore view
+    map.setView(center, zoom);
+}
+$('btn-apply-prop').addEventListener('click', applyFeatureProperties);
 
 function updateStats() {
     let prov = 0, mun = 0, core = 0;

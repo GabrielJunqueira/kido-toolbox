@@ -431,17 +431,23 @@
                         </div>
                     </div>
 
-                    <!-- Legend -->
-                    <div class="legend">
-                        <div class="legend-item">
+                    <!-- Legend & Layer Control -->
+                    <div class="legend" style="flex-direction: column; gap: 0.5rem;">
+                        <label class="legend-item" style="cursor: pointer;">
+                            <input type="checkbox" id="toggle-prov" checked
+                                style="accent-color: #94a3b8; width: 16px; height: 16px;">
                             <div class="legend-dot provinces"></div>Provinces
-                        </div>
-                        <div class="legend-item">
+                        </label>
+                        <label class="legend-item" style="cursor: pointer;">
+                            <input type="checkbox" id="toggle-mun" checked
+                                style="accent-color: #3b82f6; width: 16px; height: 16px;">
                             <div class="legend-dot municipalities"></div>Cities
-                        </div>
-                        <div class="legend-item">
+                        </label>
+                        <label class="legend-item" style="cursor: pointer;">
+                            <input type="checkbox" id="toggle-core" checked
+                                style="accent-color: #10b981; width: 16px; height: 16px;">
                             <div class="legend-dot core"></div>Core
-                        </div>
+                        </label>
                     </div>
 
                     <!-- Property Editor -->
