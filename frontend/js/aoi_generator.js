@@ -147,9 +147,9 @@ $('btn-next-1').addEventListener('click', async () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 country_name: selectedCountry.name,
-                state_id: selectedState.id,
+                state_id: String(selectedState.id),
                 state_name: selectedState.name,
-                city_id: selectedCity.id,
+                city_id: String(selectedCity.id),
                 city_name: selectedCity.name,
             }),
         });

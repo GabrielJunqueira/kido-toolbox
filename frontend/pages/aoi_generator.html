@@ -37,7 +37,10 @@
 
         .map-wrapper.is-fullscreen {
             position: fixed !important;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             z-index: 9999;
             border-radius: 0;
         }
@@ -205,7 +208,9 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* Review layout */
@@ -235,7 +240,8 @@
         <div class="container navbar-content">
             <a href="/" class="navbar-brand">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                    <path
+                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
                 </svg>
                 Kido Toolbox
             </a>
@@ -318,9 +324,12 @@
 
             <div id="location-error" class="alert alert-error hidden">
                 <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" /><path d="M15 9l-6 6M9 9l6 6" />
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M15 9l-6 6M9 9l6 6" />
                 </svg>
-                <div class="alert-content"><div class="alert-message" id="location-error-msg"></div></div>
+                <div class="alert-content">
+                    <div class="alert-message" id="location-error-msg"></div>
+                </div>
             </div>
 
             <div class="step-footer">
@@ -352,7 +361,8 @@
 
             <div class="alert alert-info mb-lg">
                 <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" />
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 16v-4M12 8h.01" />
                 </svg>
                 <div class="alert-content">
                     <div class="alert-title">Project Summary</div>
@@ -372,9 +382,12 @@
 
             <div id="gen-error" class="alert alert-error hidden">
                 <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10" /><path d="M15 9l-6 6M9 9l6 6" />
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M15 9l-6 6M9 9l6 6" />
                 </svg>
-                <div class="alert-content"><div class="alert-message" id="gen-error-msg"></div></div>
+                <div class="alert-content">
+                    <div class="alert-message" id="gen-error-msg"></div>
+                </div>
             </div>
 
             <div class="step-footer">
@@ -420,9 +433,15 @@
 
                     <!-- Legend -->
                     <div class="legend">
-                        <div class="legend-item"><div class="legend-dot provinces"></div>Provinces</div>
-                        <div class="legend-item"><div class="legend-dot municipalities"></div>Cities</div>
-                        <div class="legend-item"><div class="legend-dot core"></div>Core</div>
+                        <div class="legend-item">
+                            <div class="legend-dot provinces"></div>Provinces
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot municipalities"></div>Cities
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot core"></div>Core
+                        </div>
                     </div>
 
                     <!-- Property Editor -->
@@ -458,7 +477,8 @@
                     <div class="card h-full p-0 overflow-hidden relative map-wrapper" id="mapWrapper">
                         <button class="fullscreen-btn" id="fullscreenBtn" title="Toggle fullscreen">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                                <path
+                                    d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
                             </svg>
                         </button>
                         <div id="map"></div>
@@ -552,7 +572,8 @@
 
                 <div class="form-group">
                     <label class="form-label" for="project-desc">Description (optional)</label>
-                    <textarea id="project-desc" class="form-input" rows="2" placeholder="Optional description..."></textarea>
+                    <textarea id="project-desc" class="form-input" rows="2"
+                        placeholder="Optional description..."></textarea>
                 </div>
 
                 <div id="create-progress" class="flex items-center gap-md mb-lg hidden">
@@ -573,9 +594,12 @@
 
                 <div id="create-error" class="alert alert-error hidden mb-lg">
                     <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10" /><path d="M15 9l-6 6M9 9l6 6" />
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M15 9l-6 6M9 9l6 6" />
                     </svg>
-                    <div class="alert-content"><div class="alert-message" id="create-error-msg"></div></div>
+                    <div class="alert-content">
+                        <div class="alert-message" id="create-error-msg"></div>
+                    </div>
                 </div>
 
                 <button type="button" class="btn btn-primary w-full" id="btn-create-cloud">
@@ -607,7 +631,7 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <script src="/js/aoi_generator.js"></script>
+    <script src="/js/aoi_generator.js?v=2"></script>
 </body>
 
 </html>
