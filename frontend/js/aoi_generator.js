@@ -16,6 +16,7 @@ let projectGeoJSON = null;
 let projectFilename = '';
 let map = null;
 let geoLayer = null;
+let drawnItems = null; // Leaflet feature group for drawn items
 let selectedFeatureIndex = null;
 let selectedLayer = null;
 
@@ -214,6 +215,58 @@ function initMap() {
         maxZoom: 19,
     }).addTo(map);
 
+    // Add drawn items layer
+    drawnItems = new L.FeatureGroup();
+    map.addLayer(drawnItems);
+
+    // Setup draw control
+    const drawControl = new L.Control.Draw({
+        edit: {
+            featureGroup: drawnItems,
+            remove: true
+        },
+        draw: {
+            polygon: {
+                allowIntersection: false,
+                showArea: true,
+                shapeOptions: { color: '#f59e0b', weight: 3 }
+            },
+            polyline: false,
+            rectangle: false,
+            circle: false,
+            marker: false,
+            circlemarker: false
+        }
+    });
+    map.addControl(drawControl);
+
+    // Handle created polygons
+    map.on(L.Draw.Event.CREATED, (e) => {
+        const layer = e.layer;
+        drawnItems.addLayer(layer);
+
+        // Convert to GeoJSON Feature
+        const geojson = layer.toGeoJSON();
+        geojson.properties = {
+            id: `AOI-CUSTOM-${Date.now()}`,
+            name: 'New Custom Area',
+            poly_type: 'core'
+        };
+
+        // Add to our project data
+        projectGeoJSON.features.push(geojson);
+
+        // Re-render everything so it's fully integrated
+        renderGeoJSON();
+    });
+
+    // Handle edited polygons
+    map.on(L.Draw.Event.EDITED, (e) => {
+        // We could sync vertices here, but the user is mostly editing properties via the panel.
+        // If they edit the geometry of a custom drawn polygon, it's complex to sync back.
+        // For now, we will just rely on renderGeoJSON if needed.
+    });
+
     // Initial render
     renderGeoJSON();
 
@@ -269,6 +322,11 @@ function setupLayerToggles() {
 function renderGeoJSON() {
     if (geoLayer) {
         map.removeLayer(geoLayer);
+    }
+
+    // Clear drawn items as we will render them via geoLayer now
+    if (drawnItems) {
+        drawnItems.clearLayers();
     }
 
     selectedFeatureIndex = null;
@@ -330,19 +388,21 @@ function renderGeoJSON() {
 function selectFeature(idx, layer) {
     // Reset previous selection
     if (selectedLayer) {
-        selectedLayer.setStyle(getFeatureStyle(projectGeoJSON.features[selectedFeatureIndex]));
+        geoLayer.resetStyle(selectedLayer);
     }
 
     selectedFeatureIndex = idx;
     selectedLayer = layer;
     layer.setStyle(STYLE.selected);
+    layer.bringToFront();
 
     const feat = projectGeoJSON.features[idx];
     $('prop-name').value = feat.properties.name || '';
     $('prop-id').value = feat.properties.id || '';
     $('prop-type').value = feat.properties.poly_type || 'periphery';
-    $('prop-panel').style.display = 'block';
+
     $('click-hint').style.display = 'none';
+    $('prop-panel').style.display = 'block';
 }
 
 function applyFeatureProperties() {
