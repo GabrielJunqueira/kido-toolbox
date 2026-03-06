@@ -158,25 +158,30 @@ def _osm_elements_to_geojson(elements: list) -> dict:
             if not geom:
                 continue
             coords = [[pt["lon"], pt["lat"]] for pt in geom]
-            if len(coords) < 4:
+            if len(coords) < 2:
                 continue
-            if coords[0] != coords[-1]:
-                coords.append(coords[0])
             role = m.get("role", "outer")
             (inners if role == "inner" else outers).append(coords)
 
         if not outers:
             continue
 
-        merged = _merge_rings(outers)
-        if not merged:
+        merged_outers = _merge_rings(outers)
+        merged_inners = _merge_rings(inners) if inners else []
+
+        if not merged_outers:
             continue
 
-        if len(merged) == 1 and not inners:
-            geometry = {"type": "Polygon", "coordinates": [merged[0]] + inners}
+        if len(merged_outers) == 1 and not merged_inners:
+            geometry = {"type": "Polygon", "coordinates": [merged_outers[0]]}
+        elif len(merged_outers) == 1:
+            geometry = {"type": "Polygon", "coordinates": [merged_outers[0]] + merged_inners}
         else:
-            polys = [[ring] + inners for ring in merged]
-            geometry = {"type": "MultiPolygon", "coordinates": [p for p in polys]}
+            polys = [[ring] for ring in merged_outers]
+            # Attach inners to the first polygon (simplified)
+            if merged_inners:
+                polys[0].extend(merged_inners)
+            geometry = {"type": "MultiPolygon", "coordinates": polys}
 
         features.append({
             "type": "Feature",
@@ -187,33 +192,67 @@ def _osm_elements_to_geojson(elements: list) -> dict:
     return {"type": "FeatureCollection", "features": features}
 
 
-def _merge_rings(rings: list) -> list:
-    """Merge connected open rings into closed polygons."""
+def _merge_rings(segments: list) -> list:
+    """Merge way segments into closed rings.
+
+    OSM relations contain multiple ways that share endpoints.
+    We connect them end-to-end to form closed polygon rings.
+    """
+    EPS = 1e-7  # ~1cm tolerance for endpoint matching
+
+    def pts_equal(a, b):
+        return abs(a[0] - b[0]) < EPS and abs(a[1] - b[1]) < EPS
+
     def is_closed(ring):
-        return len(ring) >= 4 and ring[0] == ring[-1]
+        return len(ring) >= 4 and pts_equal(ring[0], ring[-1])
 
-    closed, open_r = [], []
-    for r in rings:
-        (closed if is_closed(r) else open_r).append(r)
+    # Separate already-closed rings from open segments
+    closed, open_segs = [], []
+    for seg in segments:
+        if is_closed(seg):
+            closed.append(seg)
+        else:
+            open_segs.append(list(seg))
 
-    while open_r:
-        current = list(open_r.pop(0))
-        changed = True
-        while changed and not is_closed(current):
-            changed = False
-            for i, r in enumerate(open_r):
-                if current[-1] == r[0]:
-                    current.extend(r[1:])
-                    open_r.pop(i)
-                    changed = True
+    # Merge open segments into closed rings
+    while open_segs:
+        current = open_segs.pop(0)
+        progress = True
+        while progress and not is_closed(current):
+            progress = False
+            for i, seg in enumerate(open_segs):
+                # Try all 4 join orientations
+                if pts_equal(current[-1], seg[0]):
+                    # tail → head: append
+                    current.extend(seg[1:])
+                    open_segs.pop(i)
+                    progress = True
                     break
-                elif current[-1] == r[-1]:
-                    current.extend(list(reversed(r))[1:])
-                    open_r.pop(i)
-                    changed = True
+                elif pts_equal(current[-1], seg[-1]):
+                    # tail → tail: append reversed
+                    current.extend(reversed(seg[:-1]))
+                    open_segs.pop(i)
+                    progress = True
                     break
-        if is_closed(current):
-            closed.append(current)
+                elif pts_equal(current[0], seg[-1]):
+                    # head ← tail: prepend
+                    current = seg[:-1] + current
+                    open_segs.pop(i)
+                    progress = True
+                    break
+                elif pts_equal(current[0], seg[0]):
+                    # head ← head: prepend reversed
+                    current = list(reversed(seg[1:])) + current
+                    open_segs.pop(i)
+                    progress = True
+                    break
+
+        # Ensure ring is closed
+        if len(current) >= 3:
+            if not pts_equal(current[0], current[-1]):
+                current.append(current[0])
+            if len(current) >= 4:
+                closed.append(current)
 
     return closed
 
