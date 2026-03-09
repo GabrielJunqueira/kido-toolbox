@@ -37,7 +37,7 @@ def read_csv_robust(filepath_or_buffer, numeric_columns=None):
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_PATH = os.path.join(BASE_DIR, "data", "dashboard_template.html")
 
-async def generate_project_report_stream(token: str, root_url: str, project_id: str, months: list):
+async def generate_retail_report_stream(token: str, root_url: str, project_id: str, months: list):
     """Generates the HTML report, yielding SSE progress."""
     def emit(progress, message, level="info"):
         data = json.dumps({"status": "processing", "progress": progress, "message": message, "level": level})
@@ -57,10 +57,9 @@ async def generate_project_report_stream(token: str, root_url: str, project_id: 
         return f"data: {data}\n\n"
 
     try:
-        base_url = root_url.replace('/v2/', '/v1/').replace('/v2', '/v1')
+        base_url = root_url
         if not base_url.endswith('/'): base_url += '/'
-        v2_url = root_url
-        if not v2_url.endswith('/'): v2_url += '/'
+        v2_url = base_url.replace('/v1/', '/v2/')
 
         headers = {
             'accept': 'application/json',

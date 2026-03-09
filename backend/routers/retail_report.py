@@ -3,22 +3,20 @@ import json
 from typing import List, Optional
 from fastapi import APIRouter, HTTPException, Depends
 from fastapi.responses import StreamingResponse
-from pydantic import BaseModel
+from services.retail_report import generate_retail_report_stream
 
-from services.project_report import generate_project_report_stream
-
-router = APIRouter(prefix="/api/project-report", tags=["project-report"])
+router = APIRouter(prefix="/api/retail-report", tags=["retail-report"])
 
 logger = logging.getLogger(__name__)
 
-class GenerateProjectReportRequest(BaseModel):
+class GenerateRetailReportRequest(BaseModel):
     token: str
     root_url: str
     project_id: str
     months: List[str]
 
 @router.post("/generate")
-async def generate_project_report(request: GenerateProjectReportRequest):
+async def generate_retail_report(request: GenerateRetailReportRequest):
     """
     Generate an HTML interactive dashboard for all polygons in a project.
     Returns a stream of Server-Sent Events (SSE) indicating progress,
@@ -34,7 +32,7 @@ async def generate_project_report(request: GenerateProjectReportRequest):
         raise HTTPException(status_code=400, detail="No months selected")
 
     return StreamingResponse(
-        generate_project_report_stream(
+        generate_retail_report_stream(
             token=request.token,
             root_url=request.root_url,
             project_id=request.project_id,

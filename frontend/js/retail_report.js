@@ -1,5 +1,5 @@
 /**
- * Project Report Generator - Frontend JavaScript
+ * Retail Report Generator - Frontend JavaScript
  * Handles wizard navigation, API calls, and HTML dashboard download
  */
 
@@ -360,7 +360,7 @@ async function generateReport() {
         };
 
         // We use streams for long processes to keep UI responsive and prevent timeouts
-        const data = await fetchWithSSE('/api/project-report/generate', payload);
+        const data = await fetchWithSSE('/api/retail-report/generate', payload);
 
         setProgress(95, 'Preparing download...');
         log('✅ HTML Dashboard generated successfully!', 'success');
