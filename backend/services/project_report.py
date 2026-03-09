@@ -11,7 +11,6 @@ import calendar
 
 # Import data cleaning utilities used in KidoToolbox
 try:
-    from services.auth import login_kido
     from .calibration_storage import SKLEARN_AVAILABLE
 except ImportError:
     SKLEARN_AVAILABLE = False
@@ -24,19 +23,16 @@ except ImportError:
     SKLEARN_AVAILABLE = False
 
 # Fallback for data_utils
-try:
-    from Projetos.OXXO.data_utils import read_csv_robust
-except ImportError:
-    def read_csv_robust(filepath_or_buffer, numeric_columns=None):
-        try:
-            df = pd.read_csv(filepath_or_buffer)
-            if numeric_columns:
-                for col in numeric_columns:
-                    if col in df.columns:
-                        df[col] = pd.to_numeric(df[col].astype(str).str.replace(',', ''), errors='coerce')
-            return df
-        except Exception:
-            return None
+def read_csv_robust(filepath_or_buffer, numeric_columns=None):
+    try:
+        df = pd.read_csv(filepath_or_buffer)
+        if numeric_columns:
+            for col in numeric_columns:
+                if col in df.columns:
+                    df[col] = pd.to_numeric(df[col].astype(str).str.replace(',', ''), errors='coerce')
+        return df
+    except Exception:
+        return None
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_PATH = os.path.join(BASE_DIR, "data", "dashboard_template.html")
