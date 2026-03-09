@@ -37,6 +37,7 @@
                 <li><a href="/scaling-factor" class="nav-link">Scaling Factor</a></li>
                 <li><a href="/li-project" class="nav-link">LI Creator</a></li>
                 <li><a href="/report" class="nav-link">AOI Report</a></li>
+                <li><a href="/project-report" class="nav-link">Project Report</a></li>
             </ul>
         </div>
     </nav>
@@ -289,6 +290,37 @@
                     </div>
                     <div class="flex items-center gap-sm text-secondary text-sm">
                         <span>Login • Select AOI • 12 Charts</span>
+                        <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- Project Report Generator -->
+                <a href="/project-report" class="card tool-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <path d="M8 13h2" />
+                            <path d="M8 17h2" />
+                            <path d="M14 13h2" />
+                            <path d="M14 17h2" />
+                        </svg>
+                    </div>
+                    <div class="card-header">
+                        <h3 class="card-title flex items-center gap-sm">
+                            Project Report
+                            <span class="tag tag-warning">Beta</span>
+                        </h3>
+                        <p class="card-description">
+                            Generate interactive HTML dashboards analyzing all polygons in an AOI project
+                            with automated metrics and machine learning clusters.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-sm text-secondary text-sm">
+                        <span>Project ID • ML Clusters • HTML Export</span>
                         <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7" />
