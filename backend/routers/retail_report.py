@@ -3,6 +3,7 @@ import json
 from typing import List, Optional
 from fastapi import APIRouter, HTTPException, Depends
 from fastapi.responses import StreamingResponse
+from pydantic import BaseModel
 from services.retail_report import generate_retail_report_stream
 
 router = APIRouter(prefix="/api/retail-report", tags=["retail-report"])
