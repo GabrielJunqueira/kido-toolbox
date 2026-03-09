@@ -78,13 +78,16 @@ async def generate_retail_report_stream(token: str, root_url: str, project_id: s
         attr_data = response.json()
         polygons = []
         if 'movement' in attr_data:
+            # Look for 'aoi' dimension (Area of Interest) which represents the retail stores
             for item in attr_data['movement']:
-                if item.get('name') == 'origin' and 'values' in item:
+                if item.get('name') == 'aoi' and 'values' in item:
                     polygons = item['values']
                     break
                     
         if not polygons:
-            yield emit_error("No polygons found in project attributes.")
+            # Debug: what dimensions are actually present?
+            dims = [item.get('name') for item in attr_data.get('movement', [])]
+            yield emit_error(f"No AOI polygons found in project attributes. Found dimensions: {dims}")
             return
 
         store_mapping = {p['name']: p['display_name'] for p in polygons}
