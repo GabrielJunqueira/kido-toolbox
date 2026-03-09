@@ -122,10 +122,18 @@ async def generate_retail_report_stream(token: str, root_url: str, project_id: s
         with zipfile.ZipFile(zip_bytes) as z:
             file_names = z.namelist()
             
-            def load_df(filename):
-                if filename in file_names:
-                    with z.open(filename) as f:
+            def load_df(metric_keyword, aoi_code):
+                # Try exact first
+                exact = f'{metric_keyword}__AOI-{aoi_code}.csv'
+                if exact in file_names:
+                    with z.open(exact) as f:
                         return read_csv_robust(f, numeric_columns=['visitors', 'visits'])
+                        
+                # Fuzzy fallback matching
+                for fn in file_names:
+                    if metric_keyword in fn and aoi_code in fn and fn.endswith('.csv'):
+                        with z.open(fn) as f:
+                            return read_csv_robust(f, numeric_columns=['visitors', 'visits'])
                 return None
                 
             all_features = []
@@ -144,15 +152,15 @@ async def generate_retail_report_stream(token: str, root_url: str, project_id: s
                     await asyncio.sleep(0)
                     
                 data = {
-                    'daily_visitors_weekday': load_df(f'daily_visitors_by_weekday__AOI-{code}.csv'),
-                    'presence_hour': load_df(f'presence_at_hour__AOI-{code}.csv'),
-                    'unique_visitors': load_df(f'unique_visitors__AOI-{code}.csv'),
-                    'unique_visits': load_df(f'unique_visits__AOI-{code}.csv'),
-                    'age_gender': load_df(f'visitors_by_age_gender__AOI-{code}.csv'),
-                    'date_level': load_df(f'visitors_by_date_level__AOI-{code}.csv'),
-                    'residence': load_df(f'visitors_by_residence_level__AOI-{code}.csv'),
-                    'social_class': load_df(f'visitors_by_social_class__AOI-{code}.csv'),
-                    'arrival_hour': load_df(f'visits_by_arrival_hour__AOI-{code}.csv'),
+                    'daily_visitors_weekday': load_df('daily_visitors_by_weekday', code),
+                    'presence_hour': load_df('presence_at_hour', code),
+                    'unique_visitors': load_df('unique_visitors', code),
+                    'unique_visits': load_df('unique_visits', code),
+                    'age_gender': load_df('visitors_by_age_gender', code),
+                    'date_level': load_df('visitors_by_date_level', code),
+                    'residence': load_df('visitors_by_residence_level', code),
+                    'social_class': load_df('visitors_by_social_class', code),
+                    'arrival_hour': load_df('visits_by_arrival_hour', code),
                 }
                 
                 # Check if all critical files are present
@@ -206,7 +214,8 @@ async def generate_retail_report_stream(token: str, root_url: str, project_id: s
                     failed_stores += 1
 
         if not all_features:
-            yield emit_error("Failed to process data for any polygons.")
+            sample_files = ", ".join(file_names[:8]) if file_names else "Empty zip"
+            yield emit_error(f"Failed to process data for any polygons. Could not match mapping logic. Zip contents sample: {sample_files}")
             return
 
         yield emit(85, "Clustering results...")
