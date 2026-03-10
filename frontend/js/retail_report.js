@@ -289,6 +289,9 @@ async function fetchWithSSE(url, payload) {
 
         let lastLineIndex = 0;
 
+        let htmlBase64Collector = "";
+        let finalData = {};
+
         xhr.onprogress = () => {
             const currentResponse = xhr.responseText;
             const newLines = currentResponse.slice(lastLineIndex).split('\n');
@@ -306,8 +309,14 @@ async function fetchWithSSE(url, payload) {
                             if (data.message && data.log !== false) {
                                 log(data.message, data.level || 'info');
                             }
-                        } else if (data.status === 'success') {
-                            resolve(data);
+                        } else if (data.status === 'success_start') {
+                            finalData.filename = data.filename;
+                            finalData.summary = data.summary;
+                        } else if (data.status === 'success_chunk') {
+                            htmlBase64Collector += data.chunk;
+                        } else if (data.status === 'success_end') {
+                            finalData.html_base64 = htmlBase64Collector;
+                            resolve(finalData);
                         } else if (data.status === 'error') {
                             reject(new Error(data.message));
                         }

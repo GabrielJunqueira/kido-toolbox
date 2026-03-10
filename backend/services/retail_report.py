@@ -50,14 +50,20 @@ async def generate_retail_report_stream(token: str, root_url: str, project_id: s
         data = json.dumps({"status": "error", "message": message})
         return f"data: {data}\n\n"
 
-    def emit_success(html_base64, filename, summary):
+    def emit_success_start(filename, summary):
         data = json.dumps({
-            "status": "success",
-            "html_base64": html_base64,
+            "status": "success_start",
             "filename": filename,
             "summary": summary
         })
         return f"data: {data}\n\n"
+        
+    def emit_success_chunk(chunk):
+        # We dont json dump the chunk to save escape overhead, just wrap it
+        return f"data: {{\"status\": \"success_chunk\", \"chunk\": \"{chunk}\"}}\n\n"
+        
+    def emit_success_end():
+        return f"data: {{\"status\": \"success_end\"}}\n\n"
 
     try:
         base_url = root_url
@@ -305,11 +311,24 @@ async def generate_retail_report_stream(token: str, root_url: str, project_id: s
         html_base64 = base64.b64encode(html_content.encode('utf-8')).decode('utf-8')
         filename = f"Dashboard_{project_id[:8]}_{start_month}_to_{end_month}.html"
         
-        yield emit_success(html_base64, filename, {
+        # Stream the large base64 file in chunks to prevent SSE network truncation
+        yield emit(98, "Transferring dashboard to browser...")
+        
+        yield emit_success_start(filename, {
             "polygons": successful_stores,
             "failed": failed_stores
         })
         
+        # 64KB chunks
+        chunk_size = 65536
+        for i in range(0, len(html_base64), chunk_size):
+            yield emit_success_chunk(html_base64[i:i+chunk_size])
+            await asyncio.sleep(0.01) # let buffer flush
+            
+        yield emit_success_end()
+        
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         logger.exception("Error during project report generation")
         yield emit_error(f"Internal server error: {str(e)}")
