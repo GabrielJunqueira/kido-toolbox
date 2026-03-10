@@ -8,6 +8,9 @@ import zipfile
 import pandas as pd
 from datetime import datetime
 import calendar
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Import data cleaning utilities used in KidoToolbox
 try:
