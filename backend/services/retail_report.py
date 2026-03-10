@@ -25,10 +25,13 @@ except ImportError:
 # Fallback for data_utils
 def read_csv_robust(filepath_or_buffer, numeric_columns=None):
     try:
-        df = pd.read_csv(filepath_or_buffer)
+        # Use python engine to automatically detect the delimiter (comma, semicolon, etc)
+        df = pd.read_csv(filepath_or_buffer, sep=None, engine='python')
         if numeric_columns:
             for col in numeric_columns:
                 if col in df.columns:
+                    # Clean <10 values from Kido Privacy policies
+                    df[col] = df[col].astype(str).str.replace('<10', '5')
                     df[col] = pd.to_numeric(df[col].astype(str).str.replace(',', ''), errors='coerce')
         return df
     except Exception:

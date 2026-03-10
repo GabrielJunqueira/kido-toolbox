@@ -9,3 +9,4 @@ numpy
 geopandas
 shapely
 pyproj
+scikit-learn
