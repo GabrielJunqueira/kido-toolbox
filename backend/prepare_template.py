@@ -48,12 +48,15 @@ def prepare_template():
         }
     """
 
-    # Replace loadData
+    # We need to replace the entire `async function loadData()` block cleanly.
+    # To avoid catastrophic backtracking or matching from the start of the file, we look specifically inside the <script> block.
+    # Since we know `function cleanNumeric` follows it, we replace everything from async function loadData() up to that point.
+    
     html = re.sub(
-        r'async function loadData\(\).*?(?=function cleanNumeric)',
-        new_load_fn + '\n\n        ',
+        r'async function loadData\(\)\s*\{[\s\S]*?\}(?=\s*function cleanNumeric|function init)',
+        new_load_fn,
         html,
-        flags=re.DOTALL
+        flags=re.MULTILINE
     )
 
     embedded_js = """
