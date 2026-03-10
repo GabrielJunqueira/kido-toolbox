@@ -88,6 +88,7 @@ async def generate_retail_report_stream(token: str, root_url: str, project_id: s
             return
             
         attr_data = response.json()
+        polygons = []
         if 'movement' in attr_data:
             # Flat list of all available values across any dimension for display_name fallback
             for item in attr_data['movement']:
