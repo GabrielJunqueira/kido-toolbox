@@ -10,6 +10,7 @@ import pandas as pd
 from datetime import datetime
 import calendar
 import logging
+from typing import Dict, Optional, Set
 
 logger = logging.getLogger(__name__)
 
@@ -47,10 +48,10 @@ TEMP_DIR = os.path.join(BASE_DIR, "data", "temp_reports")
 os.makedirs(TEMP_DIR, exist_ok=True)
 
 # In-memory registry of generated files (file_id -> filepath)
-_generated_files: dict[str, str] = {}
+_generated_files: Dict[str, str] = {}
 
 
-def get_generated_file(file_id: str) -> str | None:
+def get_generated_file(file_id: str) -> Optional[str]:
     """Return the filepath for a generated report, or None."""
     return _generated_files.get(file_id)
 
@@ -78,7 +79,7 @@ def emit_success(filename: str, file_id: str, summary: dict) -> str:
 
 
 # ─── Feature extraction (mirrors OXXO analyze_12_stores logic) ───────
-def _extract_features(data: dict, code: str, name: str) -> dict | None:
+def _extract_features(data: dict, code: str, name: str) -> Optional[dict]:
     """Extract summary features from a set of CSV DataFrames for one polygon."""
     try:
         total_unique_visitors = float(data['unique_visitors']['visitors'].values[0])
@@ -150,7 +151,7 @@ async def generate_retail_report_stream(token: str, root_url: str, project_id: s
         attr_data = response.json()
 
         # Build a lookup: code -> display_name from all attribute dimensions
-        display_name_lookup: dict[str, str] = {}
+        display_name_lookup: Dict[str, str] = {}
         if 'movement' in attr_data:
             for dim in attr_data['movement']:
                 for val in dim.get('values', []):
@@ -191,7 +192,7 @@ async def generate_retail_report_stream(token: str, root_url: str, project_id: s
             file_names = z.namelist()
 
             # Discover polygon codes from filenames like: some_table__AOI-1090473.csv
-            discovered_codes: set[str] = set()
+            discovered_codes: Set[str] = set()
             for fn in file_names:
                 m = re.search(r'__AOI-([^\.]+)\.csv$', fn)
                 if m:
