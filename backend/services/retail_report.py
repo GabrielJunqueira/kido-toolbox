@@ -79,22 +79,20 @@ async def generate_retail_report_stream(token: str, root_url: str, project_id: s
             return
             
         attr_data = response.json()
-        polygons = []
         if 'movement' in attr_data:
-            # Look for 'aoi' dimension (Area of Interest) which represents the retail stores
+            # Flat list of all available values across any dimension for display_name fallback
             for item in attr_data['movement']:
-                if item.get('name') == 'aoi' and 'values' in item:
-                    polygons = item['values']
-                    break
+                if 'values' in item:
+                    polygons.extend(item['values'])
                     
-        if not polygons:
-            # Debug: what dimensions are actually present?
-            dims = [item.get('name') for item in attr_data.get('movement', [])]
-            yield emit_error(f"No AOI polygons found in project attributes. Found dimensions: {dims}")
-            return
-
-        store_mapping = {p['name']: p['display_name'] for p in polygons}
-        yield emit(20, f"Found {len(polygons)} polygons to analyze.")
+        # Create a robust lookup dictionary for display names (by generic code, removing prefixes)
+        display_name_lookup = {}
+        for p in polygons:
+            # Keys like MUN-3521002 or AOI-1234
+            raw_name = p['name']
+            clean_code = raw_name.replace('MUN-', '').replace('AOI-', '')
+            display_name_lookup[clean_code] = p['display_name']
+            display_name_lookup[raw_name] = p['display_name']
         
         # 2. Determine date range from selected months
         months.sort()
@@ -128,6 +126,23 @@ async def generate_retail_report_stream(token: str, root_url: str, project_id: s
         with zipfile.ZipFile(zip_bytes) as z:
             file_names = z.namelist()
             
+            # Dynamically discover all Location IDs from the zip file names
+            # Files look like: visitors_by_age_gender__AOI-1090473.csv or presence_at_hour__AOI-MUN-3521002.csv
+            import re
+            discovered_codes = set()
+            for fn in file_names:
+                # Look for the pattern '__AOI-' followed by the code, ending in .csv
+                match = re.search(r'__AOI-([^\.]+)\.csv$', fn)
+                if match:
+                    discovered_codes.add(match.group(1))
+                    
+            if not discovered_codes:
+                sample_files = ", ".join(file_names[:8]) if file_names else "Empty zip"
+                yield emit_error(f"No valid data tables found in the ZIP file. Sample files: {sample_files}")
+                return
+                
+            yield emit(40, f"Discovered {len(discovered_codes)} valid locations in the zip file data.")
+            
             def load_df(metric_keyword, aoi_code):
                 # Try exact first
                 exact = f'{metric_keyword}__AOI-{aoi_code}.csv'
@@ -147,11 +162,15 @@ async def generate_retail_report_stream(token: str, root_url: str, project_id: s
             successful_stores = 0
             failed_stores = 0
             
-            total_polys = len(store_mapping)
+            total_polys = len(discovered_codes)
             count = 0
             
-            for code, name in store_mapping.items():
+            for code in discovered_codes:
                 count += 1
+                
+                # Try to map the code to a human readable name
+                clean_code = code.replace('MUN-', '').replace('AOI-', '')
+                name = display_name_lookup.get(code, display_name_lookup.get(clean_code, f"Location {code}"))
                 if count % 10 == 0:
                     yield emit(50 + int((count/total_polys)*30), f"Processing polygon {count}/{total_polys}...")
                     # Allow async context to breathe
