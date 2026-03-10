@@ -13,7 +13,7 @@ const state = {
     brand: null,
     projectId: '',
     selectedMonths: [],
-    htmlBlobUrl: null,
+    downloadUrl: null,
     htmlFilename: null
 };
 
@@ -235,8 +235,8 @@ $('#btn-back-error')?.addEventListener('click', () => {
 
 $('#btn-new-report')?.addEventListener('click', () => {
     // Clean up
-    if (state.htmlBlobUrl) URL.revokeObjectURL(state.htmlBlobUrl);
-    state.htmlBlobUrl = null;
+    state.downloadUrl = null;
+    state.htmlFilename = null;
     state.selectedMonths = [];
     state.projectId = '';
     $('#project-id').value = '';
@@ -245,9 +245,9 @@ $('#btn-new-report')?.addEventListener('click', () => {
 });
 
 $('#btn-download-html')?.addEventListener('click', () => {
-    if (state.htmlBlobUrl) {
+    if (state.downloadUrl) {
         const a = document.createElement('a');
-        a.href = state.htmlBlobUrl;
+        a.href = state.downloadUrl;
         a.download = state.htmlFilename || 'dashboard.html';
         document.body.appendChild(a);
         a.click();
@@ -264,7 +264,7 @@ $('#btn-print-pdf')?.addEventListener('click', () => {
 });
 
 // ══════════════════════════════════════════
-// REPORT GENERATION
+// REPORT GENERATION (SSE for progress, then direct download)
 // ══════════════════════════════════════════
 function log(msg, type = '') {
     const logArea = $('#log-area');
@@ -287,58 +287,55 @@ async function fetchWithSSE(url, payload) {
         xhr.open('POST', url, true);
         xhr.setRequestHeader('Content-Type', 'application/json');
 
-        let lastLineIndex = 0;
-
-        let htmlBase64Collector = "";
-        let finalData = {};
+        let lastIndex = 0;
 
         xhr.onprogress = () => {
-            const currentResponse = xhr.responseText;
-            const newLines = currentResponse.slice(lastLineIndex).split('\n');
-            lastLineIndex = currentResponse.length;
+            const text = xhr.responseText;
+            const newText = text.slice(lastIndex);
+            lastIndex = text.length;
 
-            newLines.forEach(line => {
-                if (line.trim().startsWith('data: ')) {
-                    try {
-                        const data = JSON.parse(line.substring(6).trim());
+            // Split into SSE lines
+            const lines = newText.split('\n');
+            for (const line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed.startsWith('data: ')) continue;
 
-                        if (data.status === 'processing') {
-                            if (data.progress) {
-                                setProgress(data.progress, data.message);
-                            }
-                            if (data.message && data.log !== false) {
-                                log(data.message, data.level || 'info');
-                            }
-                        } else if (data.status === 'success_start') {
-                            finalData.filename = data.filename;
-                            finalData.summary = data.summary;
-                        } else if (data.status === 'success_chunk') {
-                            htmlBase64Collector += data.chunk;
-                        } else if (data.status === 'success_end') {
-                            finalData.html_base64 = htmlBase64Collector;
-                            resolve(finalData);
-                        } else if (data.status === 'error') {
-                            reject(new Error(data.message));
-                        }
-                    } catch (e) {
-                        // ignore unparseable fragments
-                    }
-                }
-            });
-        };
-
-        xhr.onerror = () => reject(new Error("Network request failed"));
-        xhr.onload = () => {
-            if (xhr.status >= 400) {
-                // Try to parse the error message if the stream didn't resolve normally
                 try {
-                    const errorResponse = JSON.parse(xhr.responseText);
-                    reject(new Error(errorResponse.detail || "Request failed with status " + xhr.status));
-                } catch (e) {
-                    reject(new Error("Request failed with status " + xhr.status));
+                    const data = JSON.parse(trimmed.substring(6));
+
+                    if (data.status === 'processing') {
+                        if (data.progress) setProgress(data.progress, data.message);
+                        if (data.message) log(data.message, data.level || 'info');
+
+                    } else if (data.status === 'success') {
+                        // Server saved the file; we get a file_id to download
+                        resolve({
+                            filename: data.filename,
+                            file_id: data.file_id,
+                            summary: data.summary,
+                        });
+
+                    } else if (data.status === 'error') {
+                        reject(new Error(data.message));
+                    }
+                } catch (_) {
+                    // Ignore partial / unparseable lines
                 }
             }
-        }
+        };
+
+        xhr.onerror = () => reject(new Error('Network request failed'));
+        xhr.onload = () => {
+            if (xhr.status >= 400) {
+                try {
+                    const err = JSON.parse(xhr.responseText);
+                    reject(new Error(err.detail || 'Request failed: ' + xhr.status));
+                } catch (_) {
+                    reject(new Error('Request failed: ' + xhr.status));
+                }
+            }
+        };
+
         xhr.send(JSON.stringify(payload));
     });
 }
@@ -358,40 +355,27 @@ async function generateReport() {
 
         log(`📋 Project: ${state.projectId}`, 'info');
         log(`📅 Months: ${state.selectedMonths.join(', ')}`, 'info');
-
         log('📡 Initiating generation process, this may take a while...', 'info');
 
         const payload = {
             token: state.token,
             root_url: state.rootUrl,
             project_id: state.projectId,
-            months: state.selectedMonths
+            months: state.selectedMonths,
         };
 
-        // We use streams for long processes to keep UI responsive and prevent timeouts
+        // SSE stream for progress, returns file_id on success
         const data = await fetchWithSSE('/api/retail-report/generate', payload);
 
-        setProgress(95, 'Preparing download...');
-        log('✅ HTML Dashboard generated successfully!', 'success');
-
-        // Decode base64 HTML
-        const decodedString = window.atob(data.html_base64);
-        const bytes = new Uint8Array(decodedString.length);
-        for (let i = 0; i < decodedString.length; i++) {
-            bytes[i] = decodedString.charCodeAt(i);
-        }
-        const blob = new Blob([bytes], { type: 'text/html;charset=utf-8' });
-
         setProgress(100, 'Done!');
+        log('✅ Dashboard generated successfully!', 'success');
 
-        // Create blob URL
-        if (state.htmlBlobUrl) URL.revokeObjectURL(state.htmlBlobUrl);
-        state.htmlBlobUrl = URL.createObjectURL(blob);
+        // Build download URL from the file_id
+        state.downloadUrl = `/api/retail-report/download/${data.file_id}`;
         state.htmlFilename = data.filename;
 
-        // Show results
         setTimeout(() => {
-            showResults(blob.size, data.filename, data.summary);
+            showResults(data.filename, data.summary);
         }, 500);
 
     } catch (e) {
@@ -404,21 +388,20 @@ async function generateReport() {
     }
 }
 
-function showResults(fileSize, filename, summary) {
+function showResults(filename, summary) {
     hide('#generating');
     show('#results');
 
-    const sizeKB = (fileSize / 1024).toFixed(1);
     $('#result-info').innerHTML = `
-        Dashboard <strong>${filename}</strong> (${sizeKB} KB) generated successfully.<br>
+        Dashboard <strong>${filename}</strong> generated successfully.<br>
         Polygons processed: ${summary ? summary.polygons : 'N/A'}<br>
         Polygons failed: ${summary ? summary.failed : 'N/A'}
     `;
 
-    // Show preview
+    // Show preview in iframe via download URL
     const preview = $('#html-preview');
-    if (state.htmlBlobUrl) {
-        preview.src = state.htmlBlobUrl;
+    if (state.downloadUrl) {
+        preview.src = state.downloadUrl;
         show('#html-preview-container');
     }
 }
