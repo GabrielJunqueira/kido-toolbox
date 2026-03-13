@@ -51,6 +51,17 @@ async def process_map_data(
         
         polygons_gdf["polygon_id"] = polygons_gdf["polygon_id"].astype(str)
 
+        # Filter out checkpoint polygons
+        # Check standard columns like 'poly_types' or 'type'
+        if "poly_types" in polygons_gdf.columns:
+            polygons_gdf = polygons_gdf[polygons_gdf["poly_types"].str.lower() != "checkpoint"]
+        elif "type" in polygons_gdf.columns:
+            polygons_gdf = polygons_gdf[polygons_gdf["type"].str.lower() != "checkpoint"]
+        
+        # Reset index after filtering
+        polygons_gdf = polygons_gdf.reset_index(drop=True)
+
+
         # 2. Process Nodes (if provided)
         nodes_data = [] # List of [lat, lon]
         if nodes:

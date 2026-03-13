@@ -101,6 +101,7 @@
             text-align: center;
             outline: none;
             transition: all var(--transition-fast);
+            appearance: textfield;
             -moz-appearance: textfield;
         }
 
@@ -220,6 +221,38 @@
             height: 18px;
         }
 
+        /* ── Theme Toggle Map Button ────────────────────── */
+        .theme-toggle {
+            position: absolute;
+            top: 12px;
+            right: 60px; /* Next to fullscreen btn */
+            z-index: 1000;
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-md);
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-tertiary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .theme-toggle .switch {
+            margin: 0;
+        }
+
         /* Fullscreen mode */
         .map-wrapper.is-fullscreen {
             position: fixed !important;
@@ -241,6 +274,11 @@
         .map-wrapper.is-fullscreen .fullscreen-btn {
             top: 16px;
             right: 16px;
+        }
+
+        .map-wrapper.is-fullscreen .theme-toggle {
+            top: 16px;
+            right: 64px;
         }
 
         /* ── Layer toggle badges ──────────────────── */
@@ -336,18 +374,20 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="container navbar-content">
-            <a href="/" class="navbar-brand">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path
-                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                </svg>
-                Kido Toolbox
-            </a>
-            <ul class="navbar-nav">
-                <li><a href="/" class="nav-link">Home</a></li>
-                <li><a href="/editor" class="nav-link active">Map Viewer</a></li>
-            </ul>
+        <div class="container navbar-content" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div style="display: flex; align-items: center;">
+                <a href="/" class="navbar-brand">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                    </svg>
+                    Kido Toolbox
+                </a>
+                <ul class="navbar-nav ml-md">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/editor" class="nav-link active">Map Viewer</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -508,8 +548,12 @@
 
                     <hr class="section-divider">
 
-                    <button class="btn btn-success w-full" id="exportBtn">
+                    <button class="btn btn-success w-full mb-sm" id="exportBtn">
                         Export GeoJSON
+                    </button>
+                    <button class="btn w-full" style="background: var(--bg-secondary); border: 1px solid var(--glass-border); color: var(--text-primary)" id="exportCsvBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;margin-right:4px;vertical-align:-3px;display:inline-block"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><path d="M10 9H8"/></svg>
+                        Download Stats (CSV)
                     </button>
                 </div>
             </div>
@@ -524,6 +568,14 @@
                                 d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
                         </svg>
                     </button>
+                    <!-- Theme Toggle (Floating Map Control) -->
+                    <div class="theme-toggle" title="Toggle night mode">
+                        <span class="text-xs font-medium" style="margin-right:4px;">Night Mode</span>
+                        <label class="switch mb-0" style="margin-bottom:0;">
+                            <input type="checkbox" id="nightModeToggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
 
                     <div id="map"></div>
 

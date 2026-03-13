@@ -17,16 +17,24 @@ document.addEventListener('DOMContentLoaded', () => {
     setupEventListeners();
 });
 
+// Base layers
+const lightCarto = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?v=2', {
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+    subdomains: 'abcd',
+    maxZoom: 20
+});
+
+const darkCarto = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?v=2', {
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+    subdomains: 'abcd',
+    maxZoom: 20
+});
+
 // ─── Map Initialization ────────────────────────────────────────
 function initMap() {
-    map = L.map('map').setView([-22.9, -43.2], 10);
-
-    // CartoDB Positron
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?v=2', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 20
-    }).addTo(map);
+    map = L.map('map', {
+        layers: [lightCarto]
+    }).setView([-22.9, -43.2], 10);
 
     document.getElementById('map').style.backgroundColor = 'white';
 
@@ -140,6 +148,24 @@ function setupEventListeners() {
         else map.removeLayer(radiusLayerGroup);
     });
 
+    // ── Night Mode Toggle ──
+    document.getElementById('nightModeToggle').addEventListener('change', (e) => {
+        const isNight = e.target.checked;
+        if (isNight) {
+            map.removeLayer(lightCarto);
+            map.addLayer(darkCarto);
+            document.getElementById('map').style.backgroundColor = '#1a1a1a';
+        } else {
+            map.removeLayer(darkCarto);
+            map.addLayer(lightCarto);
+            document.getElementById('map').style.backgroundColor = 'white';
+        }
+        // Re-render data to apply new styles
+        if (currentData) {
+            applyFilters();
+        }
+    });
+
     // ── Fullscreen ──
     fullscreenBtn.addEventListener('click', toggleFullscreen);
     document.addEventListener('fullscreenchange', onFullscreenChange);
@@ -147,6 +173,7 @@ function setupEventListeners() {
 
     // ── Export ──
     exportBtn.addEventListener('click', exportGeoJSON);
+    document.getElementById('exportCsvBtn').addEventListener('click', exportCSV);
 }
 
 // ─── Dual Range Slider Setup ───────────────────────────────────
@@ -225,8 +252,8 @@ function configureDualSliders(data) {
     // Nodes range — number inputs
     const nodeMinInput = document.getElementById('nodeMinVal');
     const nodeMaxInput = document.getElementById('nodeMaxVal');
-    nodeMinInput.value = 0; nodeMinInput.max = maxNodes;
-    nodeMaxInput.value = maxNodes; nodeMaxInput.max = maxNodes;
+    nodeMinInput.min = 0; nodeMinInput.max = maxNodes; nodeMinInput.value = 0;
+    nodeMaxInput.min = 0; nodeMaxInput.max = maxNodes; nodeMaxInput.value = maxNodes;
 
     // Antennas range — sliders
     const antMinSlider = document.getElementById('antMin');
@@ -236,8 +263,8 @@ function configureDualSliders(data) {
     // Antennas range — number inputs
     const antMinInput = document.getElementById('antMinVal');
     const antMaxInput = document.getElementById('antMaxVal');
-    antMinInput.value = 0; antMinInput.max = maxAntennas;
-    antMaxInput.value = maxAntennas; antMaxInput.max = maxAntennas;
+    antMinInput.min = 0; antMinInput.max = maxAntennas; antMinInput.value = 0;
+    antMaxInput.min = 0; antMaxInput.max = maxAntennas; antMaxInput.value = maxAntennas;
 
     // Trigger sync — dispatch input events so the setupDualRange closures
     // pick up the new values and update number inputs + fill bars
@@ -310,17 +337,31 @@ function renderData(polygonsGeoJSON, nodesData, antennasData, visibility) {
 
     // 2. Polygons
     if (visibility.showPolygons && polygonsGeoJSON.features.length > 0) {
+        const isNight = document.getElementById('nightModeToggle').checked;
+        
         L.geoJSON(polygonsGeoJSON, {
             style: (feature) => {
                 const hasId = feature.properties.polygon_id !== undefined;
-                return {
-                    fillColor: '#3b82f6',
-                    weight: hasId ? 2 : 1,
-                    opacity: 1,
-                    color: hasId ? '#1d4ed8' : '#60a5fa',
-                    dashArray: hasId ? '' : '3',
-                    fillOpacity: 0.2
-                };
+                
+                if (isNight) {
+                    return {
+                        fillColor: '#ffffff',
+                        weight: hasId ? 2 : 1,
+                        opacity: 1,
+                        color: hasId ? '#ffffff' : '#aaaaaa',
+                        dashArray: hasId ? '' : '3',
+                        fillOpacity: 0.1
+                    };
+                } else {
+                    return {
+                        fillColor: '#3b82f6',
+                        weight: hasId ? 2 : 1,
+                        opacity: 1,
+                        color: hasId ? '#1d4ed8' : '#60a5fa',
+                        dashArray: hasId ? '' : '3',
+                        fillOpacity: 0.2
+                    };
+                }
             },
             onEachFeature: (feature, layer) => {
                 const p = feature.properties;
@@ -345,18 +386,22 @@ function renderData(polygonsGeoJSON, nodesData, antennasData, visibility) {
 
     // 3. Nodes (WebGL via Glify)
     if (visibility.showNodes && nodesData && nodesData.length > 0) {
+        const isNight = document.getElementById('nightModeToggle').checked;
+        const nodeColor = isNight ? { r: 1, g: 0.8, b: 0 } : { r: 0.29, g: 0.29, b: 0.29 }; // Yellow in night mode, Gray in day mode
+        const radiusColor = isNight ? '#facc15' : '#3b82f6';
+        
         nodeGlifyInstance = L.glify.points({
             map: map,
             data: nodesData,
             size: 3,
-            color: { r: 0.29, g: 0.29, b: 0.29 },
+            color: nodeColor,
             opacity: 0.8,
             click: (e, point, xy) => {
                 const latlng = L.latLng(point[0], point[1]);
                 const circle = L.circle(latlng, {
                     radius: 500,
-                    color: '#3b82f6',
-                    fillColor: '#3b82f6',
+                    color: radiusColor,
+                    fillColor: radiusColor,
                     fillOpacity: 0.08,
                     weight: 1,
                     dashArray: '4 4'
@@ -385,6 +430,9 @@ function renderData(polygonsGeoJSON, nodesData, antennasData, visibility) {
 
 // ─── Default 500m Radius Circles ───────────────────────────────
 function addDefaultRadiusCircles(nodesData) {
+    const isNight = document.getElementById('nightModeToggle').checked;
+    const radiusColor = isNight ? '#facc15' : '#3b82f6';
+    
     const maxCircles = Math.min(50, nodesData.length);
     const step = Math.max(1, Math.floor(nodesData.length / maxCircles));
 
@@ -392,8 +440,8 @@ function addDefaultRadiusCircles(nodesData) {
         const point = nodesData[i];
         L.circle([point[0], point[1]], {
             radius: 500,
-            color: '#3b82f6',
-            fillColor: '#3b82f6',
+            color: radiusColor,
+            fillColor: radiusColor,
             fillOpacity: 0.05,
             weight: 1,
             dashArray: '4 4',
@@ -417,18 +465,22 @@ function destroyGlifyLayers() {
 function toggleNodeLayer(show) {
     if (show && currentData && currentData.nodes && currentData.nodes.length > 0) {
         if (!nodeGlifyInstance) {
+            const isNight = document.getElementById('nightModeToggle').checked;
+            const nodeColor = isNight ? { r: 1, g: 0.8, b: 0 } : { r: 0.29, g: 0.29, b: 0.29 };
+            const radiusColor = isNight ? '#facc15' : '#3b82f6';
+
             nodeGlifyInstance = L.glify.points({
                 map: map,
                 data: currentData.nodes,
                 size: 3,
-                color: { r: 0.29, g: 0.29, b: 0.29 },
+                color: nodeColor,
                 opacity: 0.8,
                 click: (e, point, xy) => {
                     const latlng = L.latLng(point[0], point[1]);
                     L.circle(latlng, {
                         radius: 500,
-                        color: '#3b82f6',
-                        fillColor: '#3b82f6',
+                        color: radiusColor,
+                        fillColor: radiusColor,
                         fillOpacity: 0.08,
                         weight: 1,
                         dashArray: '4 4'
@@ -512,4 +564,46 @@ function exportGeoJSON() {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+}
+
+// ─── Export CSV ────────────────────────────────────────────────
+function exportCSV() {
+    if (!currentData || !currentData.polygons || !currentData.polygons.features) {
+        alert("No data to export.");
+        return;
+    }
+
+    // Use currently active drawn features (this respects the slider filters)
+    const activeFeatures = drawnItems.toGeoJSON().features;
+    if (activeFeatures.length === 0) {
+        alert("No filtered data to export.");
+        return;
+    }
+
+    let csvContent = "polygon_id,node_count,antenna_count,total_count\n";
+    
+    activeFeatures.forEach(f => {
+        const p = f.properties;
+        const id = p.polygon_id !== undefined ? p.polygon_id : '';
+        const nc = p.node_count || 0;
+        const ac = p.antenna_count || 0;
+        const tc = p.total_count || 0;
+        
+        csvContent += `"${id}",${nc},${ac},${tc}\n`;
+    });
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'zone_stats.csv';
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    
+    setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }, 100);
 }
