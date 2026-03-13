@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Oxxo - Análise de Dados</title>
+    <title>Dashboard {{{PROJECT_NAME}}} - Análise de Dados</title>
 
     <!-- Google Fonts -->
     <link
@@ -384,8 +384,8 @@
         <div id="dashboard" style="display: none;">
             <!-- Header -->
             <header>
-                <h1>📊 Análise Geodata - Oxxo</h1>
-                <div class="subtitle">12 Áreas de Interesse (AOIs) | Período: Novembro 2025</div>
+                <h1>📊 Análise Geodata - {{{PROJECT_NAME}}}</h1>
+                <div class="subtitle">{{{NUM_AOIS}}} Áreas de Interesse | Período: {{{PERIOD}}}</div>
             </header>
 
             <!-- KPI Cards -->
@@ -393,8 +393,8 @@
                 <div class="kpi-card">
                     <div class="kpi-label tooltip">
                         Total de Visitantes
-                        <span class="tooltiptext">Número total de pessoas únicas que visitaram as 12 áreas durante
-                            novembro/2025</span>
+                        <span class="tooltiptext">Número total de pessoas únicas que visitaram as {{{NUM_AOIS}}} áreas durante
+                            {{{PERIOD}}}</span>
                     </div>
                     <div class="kpi-value" id="kpi-visitors">-</div>
                 </div>

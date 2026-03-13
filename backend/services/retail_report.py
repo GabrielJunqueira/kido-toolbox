@@ -148,7 +148,14 @@ async def generate_retail_report_stream(
             'Authorization': f'Bearer {token}',
         }
 
-        # ── 1. Fetch project attributes for display-name mapping ─────
+        # ── 1. Fetch project details and attributes ──────────────────
+        yield emit(5, "Fetching project details...")
+        project_url = f"{base_url}projects/{project_id}"
+        proj_response = requests.get(project_url, headers=headers, timeout=30)
+        project_name = project_id # Fallback
+        if proj_response.status_code == 200:
+            project_name = proj_response.json().get('name', project_id)
+
         yield emit(10, "Fetching project attributes...")
         attr_url = f"{base_url}projects/{project_id}/attributes?alt_engine=false"
         response = requests.get(attr_url, headers=headers, timeout=30)
@@ -329,13 +336,38 @@ async def generate_retail_report_stream(
         with open(TEMPLATE_PATH, 'r', encoding='utf-8') as f:
             html_content = f.read()
 
-        # Replace the placeholder
-        placeholder = '{{{EMBEDDED_JSON}}}'
-        if placeholder not in html_content:
-            yield emit_error("Dashboard template is missing the data placeholder. Please re-run prepare_template.py.")
-            return
+        # Format period string for the header
+        if start_date and end_date:
+            # Format: DD/MM/YYYY a DD/MM/YYYY
+            try:
+                d1 = datetime.strptime(final_start, '%Y-%m-%d').strftime('%d/%m/%Y')
+                d2 = datetime.strptime(final_end, '%Y-%m-%d').strftime('%d/%m/%Y')
+                period_display = f"{d1} a {d2}"
+            except:
+                period_display = period_label
+        else:
+            # Format: Mês Ano ou Mês1 - Mês2 Ano
+            months_pt = {
+                '01': 'Janeiro', '02': 'Fevereiro', '03': 'Março', '04': 'Abril',
+                '05': 'Maio', '06': 'Junho', '07': 'Julho', '08': 'Agosto',
+                '09': 'Setembro', '10': 'Outubro', '11': 'Novembro', '12': 'Dezembro'
+            }
+            if len(months) == 1:
+                y, m = months[0].split('-')
+                period_display = f"{months_pt.get(m, m)} {y}"
+            else:
+                y1, m1 = months[0].split('-')
+                y2, m2 = months[-1].split('-')
+                if y1 == y2:
+                    period_display = f"{months_pt.get(m1, m1)} a {months_pt.get(m2, m2)} {y1}"
+                else:
+                    period_display = f"{months_pt.get(m1, m1)} {y1} a {months_pt.get(m2, m2)} {y2}"
 
-        html_content = html_content.replace(placeholder, embedded_json)
+        # Replace the placeholders
+        html_content = html_content.replace('{{{EMBEDDED_JSON}}}', embedded_json)
+        html_content = html_content.replace('{{{PROJECT_NAME}}}', project_name)
+        html_content = html_content.replace('{{{NUM_AOIS}}}', str(successful))
+        html_content = html_content.replace('{{{PERIOD}}}', period_display)
 
         # Sanity check: the result must still start with <!DOCTYPE
         if not html_content.strip().startswith('<!DOCTYPE'):
