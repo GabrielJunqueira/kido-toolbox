@@ -12,7 +12,10 @@ const state = {
     rootUrl: null,
     brand: null,
     projectId: '',
+    dateMode: 'months',      // 'months' or 'range'
     selectedMonths: [],
+    startDate: '',            // YYYY-MM-DD
+    endDate: '',              // YYYY-MM-DD
     downloadUrl: null,
     htmlFilename: null
 };
@@ -139,7 +142,7 @@ function renderMonthTags() {
         });
     }
 
-    $('#btn-next-3').disabled = state.selectedMonths.length === 0;
+    validateStep3();
 }
 
 function formatMonth(monthStr) {
@@ -203,6 +206,69 @@ $$('.preset-btn').forEach(btn => {
     });
 });
 
+// Date mode toggle
+$$('.date-mode-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const mode = btn.dataset.mode;
+        state.dateMode = mode;
+
+        // Toggle button styles
+        $$('.date-mode-btn').forEach(b => {
+            b.classList.remove('btn-primary', 'active');
+            b.classList.add('btn-secondary');
+        });
+        btn.classList.remove('btn-secondary');
+        btn.classList.add('btn-primary', 'active');
+
+        // Toggle panels
+        if (mode === 'months') {
+            show('#date-mode-months');
+            hide('#date-mode-range');
+        } else {
+            hide('#date-mode-months');
+            show('#date-mode-range');
+        }
+        validateStep3();
+    });
+});
+
+// Date range inputs
+$('#date-start')?.addEventListener('change', () => {
+    state.startDate = $('#date-start').value;
+    validateStep3();
+});
+$('#date-end')?.addEventListener('change', () => {
+    state.endDate = $('#date-end').value;
+    validateStep3();
+});
+
+// Date range presets
+$$('.date-preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const days = parseInt(btn.dataset.days);
+        const end = new Date();
+        end.setDate(end.getDate() - 1); // yesterday
+        const start = new Date(end);
+        start.setDate(start.getDate() - days + 1);
+
+        const fmt = d => d.toISOString().split('T')[0];
+        $('#date-start').value = fmt(start);
+        $('#date-end').value = fmt(end);
+        state.startDate = fmt(start);
+        state.endDate = fmt(end);
+        validateStep3();
+    });
+});
+
+function validateStep3() {
+    if (state.dateMode === 'months') {
+        $('#btn-next-3').disabled = state.selectedMonths.length === 0;
+    } else {
+        const valid = state.startDate && state.endDate && state.startDate <= state.endDate;
+        $('#btn-next-3').disabled = !valid;
+    }
+}
+
 $('#btn-next-3')?.addEventListener('click', () => goToStep(4));
 $('#btn-back-2')?.addEventListener('click', () => goToStep(2));
 
@@ -212,9 +278,18 @@ $('#btn-back-2')?.addEventListener('click', () => goToStep(2));
 function prepareStep4() {
     // Set summary info
     $('#summary-project').textContent = state.projectId;
-    const sorted = [...state.selectedMonths].sort();
-    $('#summary-period').textContent = `${formatMonth(sorted[0])} → ${formatMonth(sorted[sorted.length - 1])}`;
-    $('#summary-months-count').textContent = `${sorted.length} month(s)`;
+    if (state.dateMode === 'months') {
+        const sorted = [...state.selectedMonths].sort();
+        $('#summary-period').textContent = `${formatMonth(sorted[0])} → ${formatMonth(sorted[sorted.length - 1])}`;
+        $('#summary-months-count').textContent = `${sorted.length} month(s)`;
+    } else {
+        $('#summary-period').textContent = `${state.startDate} → ${state.endDate}`;
+        // Calculate day count
+        const d1 = new Date(state.startDate);
+        const d2 = new Date(state.endDate);
+        const days = Math.round((d2 - d1) / (86400000)) + 1;
+        $('#summary-months-count').textContent = `${days} day(s)`;
+    }
 
     // Reset views
     show('#pre-generate');
@@ -354,15 +429,25 @@ async function generateReport() {
         setProgress(5, 'Authenticating...');
 
         log(`📋 Project: ${state.projectId}`, 'info');
-        log(`📅 Months: ${state.selectedMonths.join(', ')}`, 'info');
+        if (state.dateMode === 'months') {
+            log(`📅 Months: ${state.selectedMonths.join(', ')}`, 'info');
+        } else {
+            log(`📅 Date range: ${state.startDate} → ${state.endDate}`, 'info');
+        }
         log('📡 Initiating generation process, this may take a while...', 'info');
 
         const payload = {
             token: state.token,
             root_url: state.rootUrl,
             project_id: state.projectId,
-            months: state.selectedMonths,
         };
+
+        if (state.dateMode === 'months') {
+            payload.months = state.selectedMonths;
+        } else {
+            payload.start_date = state.startDate;
+            payload.end_date = state.endDate;
+        }
 
         // SSE stream for progress, returns file_id on success
         const data = await fetchWithSSE('/api/retail-report/generate', payload);

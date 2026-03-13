@@ -357,46 +357,95 @@
                 <div class="step-header">
                     <h2 class="step-title">Select Analysis Period</h2>
                     <p class="step-description">
-                        Choose the months you want to include in the report.
+                        Choose months or a custom date range for the report.
                     </p>
                 </div>
 
+                <!-- Mode Toggle -->
                 <div class="form-group">
-                    <label class="form-label">Add Month</label>
-                    <div class="flex gap-md">
-                        <div class="flex-1">
-                            <input type="month" id="month-input" class="form-input">
-                        </div>
-                        <button type="button" class="btn btn-primary" id="btn-add-month">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M12 5v14M5 12h14" />
-                            </svg>
-                            Add
+                    <label class="form-label">Selection Mode</label>
+                    <div class="btn-group" style="gap: 0;">
+                        <button type="button" class="btn btn-primary btn-sm date-mode-btn active" data-mode="months"
+                            id="mode-months-btn">
+                            📅 By Months
+                        </button>
+                        <button type="button" class="btn btn-secondary btn-sm date-mode-btn" data-mode="range"
+                            id="mode-range-btn">
+                            📆 Custom Date Range
                         </button>
                     </div>
-                    <p class="form-hint">Select a month and click Add. Click on a tag to remove it.</p>
                 </div>
 
-                <!-- Quick range presets -->
-                <div class="mb-lg">
-                    <label class="form-label">Quick Presets</label>
-                    <div class="btn-group flex-wrap" style="gap: 6px;">
-                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-months="3">Last 3
-                            months</button>
-                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-months="6">Last 6
-                            months</button>
-                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-months="12">Last 12
-                            months</button>
-                        <button type="button" class="btn btn-secondary btn-sm preset-btn" data-year="2025">📅 All
-                            2025</button>
+                <!-- Mode: Months -->
+                <div id="date-mode-months">
+                    <div class="form-group">
+                        <label class="form-label">Add Month</label>
+                        <div class="flex gap-md">
+                            <div class="flex-1">
+                                <input type="month" id="month-input" class="form-input">
+                            </div>
+                            <button type="button" class="btn btn-primary" id="btn-add-month">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                                Add
+                            </button>
+                        </div>
+                        <p class="form-hint">Select a month and click Add. Click on a tag to remove it.</p>
+                    </div>
+
+                    <!-- Quick range presets -->
+                    <div class="mb-lg">
+                        <label class="form-label">Quick Presets</label>
+                        <div class="btn-group flex-wrap" style="gap: 6px;">
+                            <button type="button" class="btn btn-secondary btn-sm preset-btn" data-months="3">Last 3
+                                months</button>
+                            <button type="button" class="btn btn-secondary btn-sm preset-btn" data-months="6">Last 6
+                                months</button>
+                            <button type="button" class="btn btn-secondary btn-sm preset-btn" data-months="12">Last 12
+                                months</button>
+                            <button type="button" class="btn btn-secondary btn-sm preset-btn" data-year="2025">📅 All
+                                2025</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Selected Months</label>
+                        <div class="month-tags" id="month-tags">
+                            <span class="text-muted text-sm" id="no-months-msg">No months selected yet</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label">Selected Months</label>
-                    <div class="month-tags" id="month-tags">
-                        <span class="text-muted text-sm" id="no-months-msg">No months selected yet</span>
+                <!-- Mode: Custom Date Range -->
+                <div id="date-mode-range" class="hidden">
+                    <div class="form-group">
+                        <label class="form-label required" for="date-start">Start Date</label>
+                        <input type="date" id="date-start" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label required" for="date-end">End Date</label>
+                        <input type="date" id="date-end" class="form-input">
+                    </div>
+                    <p class="form-hint">
+                        Use this for sub-month ranges (e.g. a specific week or custom period).
+                        Both dates are inclusive.
+                    </p>
+
+                    <!-- Quick range presets for date mode -->
+                    <div class="mb-lg">
+                        <label class="form-label">Quick Presets</label>
+                        <div class="btn-group flex-wrap" style="gap: 6px;">
+                            <button type="button" class="btn btn-secondary btn-sm date-preset-btn" data-days="7">Last 7
+                                days</button>
+                            <button type="button" class="btn btn-secondary btn-sm date-preset-btn" data-days="14">Last
+                                14 days</button>
+                            <button type="button" class="btn btn-secondary btn-sm date-preset-btn" data-days="30">Last
+                                30 days</button>
+                            <button type="button" class="btn btn-secondary btn-sm date-preset-btn" data-days="90">Last
+                                90 days</button>
+                        </div>
                     </div>
                 </div>
 

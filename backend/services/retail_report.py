@@ -128,8 +128,16 @@ def _extract_detailed(data: dict) -> dict:
 
 
 # ─── Main generator ──────────────────────────────────────────────────
-async def generate_retail_report_stream(token: str, root_url: str, project_id: str, months: list):
+async def generate_retail_report_stream(
+    token: str,
+    root_url: str,
+    project_id: str,
+    months: Optional[list] = None,
+    start_date: Optional[str] = None,
+    end_date: Optional[str] = None,
+):
     """Generates the HTML report, yielding SSE progress events.
+    Accepts either a list of months OR explicit start_date/end_date.
     On success, writes the HTML to a temp file and emits a download link.
     """
     try:
@@ -163,16 +171,26 @@ async def generate_retail_report_stream(token: str, root_url: str, project_id: s
                             display_name_lookup[raw[len(prefix):]] = val['display_name']
 
         # ── 2. Date range ────────────────────────────────────────────
-        months.sort()
-        sm_year, sm_month = map(int, months[0].split('-'))
-        em_year, em_month = map(int, months[-1].split('-'))
-        start_date = f"{sm_year}-{sm_month:02d}-01"
-        _, last_day = calendar.monthrange(em_year, em_month)
-        end_date = f"{em_year}-{em_month:02d}-{last_day}"
+        if start_date and end_date:
+            # Custom date range mode
+            final_start = start_date
+            final_end = end_date
+            period_label = f"{start_date}_to_{end_date}"
+        elif months:
+            months.sort()
+            sm_year, sm_month = map(int, months[0].split('-'))
+            em_year, em_month = map(int, months[-1].split('-'))
+            final_start = f"{sm_year}-{sm_month:02d}-01"
+            _, last_day = calendar.monthrange(em_year, em_month)
+            final_end = f"{em_year}-{em_month:02d}-{last_day}"
+            period_label = f"{months[0]}_to_{months[-1]}"
+        else:
+            yield emit_error("No date range or months provided.")
+            return
 
         # ── 3. Download ZIP ──────────────────────────────────────────
-        yield emit(20, f"Downloading project data for {start_date} to {end_date} (this may take a while)...")
-        zip_url = f"{v2_url}areas_of_interest/{project_id}/dashboard/visitors/all/{start_date}/{end_date}/zip?alt_engine=false"
+        yield emit(20, f"Downloading project data for {final_start} to {final_end} (this may take a while)...")
+        zip_url = f"{v2_url}areas_of_interest/{project_id}/dashboard/visitors/all/{final_start}/{final_end}/zip?alt_engine=false"
 
         zip_response = requests.get(zip_url, headers=headers, stream=True, timeout=300)
         if zip_response.status_code != 200:
@@ -326,7 +344,7 @@ async def generate_retail_report_stream(token: str, root_url: str, project_id: s
 
         # Write to a temp file
         file_id = str(uuid.uuid4())
-        filename = f"Dashboard_{project_id[:8]}_{months[0]}_to_{months[-1]}.html"
+        filename = f"Dashboard_{project_id[:8]}_{period_label}.html"
         filepath = os.path.join(TEMP_DIR, f"{file_id}.html")
 
         with open(filepath, 'w', encoding='utf-8') as f:
