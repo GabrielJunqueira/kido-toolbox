@@ -189,6 +189,24 @@ async def aoi_generator_page():
     return {"error": "Page not found"}
 
 
+@app.get("/project-creators")
+async def project_creators_page():
+    """Serve the Project Creators hub page."""
+    page_path = os.path.join(FRONTEND_DIR, "pages", "project_creators.html")
+    if os.path.exists(page_path):
+        return FileResponse(page_path)
+    return {"error": "Page not found"}
+
+
+@app.get("/report-creator")
+async def report_creator_page():
+    """Serve the Report Creator hub page."""
+    page_path = os.path.join(FRONTEND_DIR, "pages", "report_creator.html")
+    if os.path.exists(page_path):
+        return FileResponse(page_path)
+    return {"error": "Page not found"}
+
+
 @app.get("/anonymizer")
 async def anonymizer_page():
     """Serve the dashboard anonymizer tool page."""

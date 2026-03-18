@@ -33,11 +33,9 @@
             </a>
             <ul class="navbar-nav">
                 <li><a href="/" class="nav-link active">Home</a></li>
-                <li><a href="/aoi" class="nav-link">AOI Generator</a></li>
+                <li><a href="/project-creators" class="nav-link">Project Creators</a></li>
+                <li><a href="/report-creator" class="nav-link">Report Creator</a></li>
                 <li><a href="/scaling-factor" class="nav-link">Scaling Factor</a></li>
-                <li><a href="/li-project" class="nav-link">LI Creator</a></li>
-                <li><a href="/report" class="nav-link">AOI Report</a></li>
-                <li><a href="/retail-report" class="nav-link">Retail Report</a></li>
             </ul>
         </div>
     </nav>
@@ -67,8 +65,8 @@
             <h2 class="mb-lg">Available Tools</h2>
 
             <div class="tool-grid">
-                <!-- AOI Project Generator -->
-                <a href="/aoi" class="card tool-card">
+                <!-- Project Creators Hub -->
+                <a href="/project-creators" class="card tool-card">
                     <div class="card-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polygon points="12 2 2 7 12 12 22 7 12 2" />
@@ -78,45 +76,16 @@
                     </div>
                     <div class="card-header">
                         <h3 class="card-title flex items-center gap-sm">
-                            AOI Generator
-                            <span class="tag tag-success">Active</span>
+                            Project Creators
+                            <span class="tag tag-success">3 Tools</span>
                         </h3>
                         <p class="card-description">
-                            Create Tourism (AOI) projects by selecting country, region, and municipality.
-                            Automatically generates the GeoJSON with all required polygons.
+                            Create AOI, API-based, or Location Intelligence projects.
+                            Choose your workflow and generate the right project for your data source.
                         </p>
                     </div>
                     <div class="flex items-center gap-sm text-secondary text-sm">
-                        <span>BR • PT • ES • MX • CL</span>
-                        <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </div>
-                </a>
-
-                <!-- Project Generator via API (Beta) -->
-                <a href="/aoi-generator" class="card tool-card">
-                    <div class="card-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10" />
-                            <line x1="2" y1="12" x2="22" y2="12" />
-                            <path
-                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                        </svg>
-                    </div>
-                    <div class="card-header">
-                        <h3 class="card-title flex items-center gap-sm">
-                            API Generator
-                            <span class="tag tag-warning">Beta</span>
-                        </h3>
-                        <p class="card-description">
-                            Generate AOI projects dynamically from OpenStreetMap.
-                            Interactive map editor with polygon property editing.
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-sm text-secondary text-sm">
-                        <span>BR • MX • AR • CL • CO • PE • PT • ES • CH</span>
+                        <span>AOI Generator • API Generator • LI Creator</span>
                         <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7" />
@@ -211,35 +180,8 @@
                     </div>
                 </a>
 
-                <!-- LI Project Creator -->
-                <a href="/li-project" class="card tool-card">
-                    <div class="card-icon" style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                            <circle cx="12" cy="10" r="3" />
-                        </svg>
-                    </div>
-                    <div class="card-header">
-                        <h3 class="card-title flex items-center gap-sm">
-                            LI Project Creator
-                            <span class="tag tag-success">Active</span>
-                        </h3>
-                        <p class="card-description">
-                            Create Location Intelligence projects for establishments.
-                            Upload nodes, search venues, edit polygons, and deploy.
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-sm text-secondary text-sm">
-                        <span>Nodes • Establishments • AOI Export</span>
-                        <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </div>
-                </a>
-
-                <!-- AOI Report Generator -->
-                <a href="/report" class="card tool-card">
+                <!-- Report Creator Hub -->
+                <a href="/report-creator" class="card tool-card">
                     <div class="card-icon" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -251,76 +193,16 @@
                     </div>
                     <div class="card-header">
                         <h3 class="card-title flex items-center gap-sm">
-                            AOI Report
-                            <span class="tag tag-success">Active</span>
+                            Report Creator
+                            <span class="tag tag-success">3 Tools</span>
                         </h3>
                         <p class="card-description">
-                            Generate PDF visitor analysis reports from AOI projects with daily charts,
-                            monthly breakdowns, and statistics.
+                            Generate AOI, Tourism, or Retail analysis reports.
+                            Pick the report type that matches your project and export it.
                         </p>
                     </div>
                     <div class="flex items-center gap-sm text-secondary text-sm">
-                        <span>Login • Select AOI • Export PDF</span>
-                        <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </div>
-                </a>
-
-                <!-- AOI Tourism Report -->
-                <a href="/tourism-report" class="card tool-card">
-                    <div class="card-icon" style="background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                            <circle cx="9" cy="7" r="4" />
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                        </svg>
-                    </div>
-                    <div class="card-header">
-                        <h3 class="card-title flex items-center gap-sm">
-                            AOI Tourism Report
-                            <span class="tag tag-success">Active</span>
-                        </h3>
-                        <p class="card-description">
-                            Generate tourism analysis reports with Visitors, Tourists &amp; Hikers (Excursionistas)
-                            breakdowns by origin level.
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-sm text-secondary text-sm">
-                        <span>Login • Select AOI • 12 Charts</span>
-                        <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </div>
-                </a>
-
-                <!-- Retail Report Generator -->
-                <a href="/retail-report" class="card tool-card">
-                    <div class="card-icon" style="background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                            <polyline points="14 2 14 8 20 8" />
-                            <path d="M8 13h2" />
-                            <path d="M8 17h2" />
-                            <path d="M14 13h2" />
-                            <path d="M14 17h2" />
-                        </svg>
-                    </div>
-                    <div class="card-header">
-                        <h3 class="card-title flex items-center gap-sm">
-                            Retail Report
-                            <span class="tag tag-warning">Beta</span>
-                        </h3>
-                        <p class="card-description">
-                            Generate a report of Retail enterprises for projects with different locations to compare
-                            them using AOI Visits.
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-sm text-secondary text-sm">
-                        <span>Project ID • ML Clusters • HTML Export</span>
+                        <span>AOI Report • Tourism Report • Retail Report</span>
                         <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7" />

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Project Creators - Choose the type of project you want to create">
+    <title>Project Creators — Kido Toolbox</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="/" class="navbar-brand">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                </svg>
+                Kido Toolbox
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/project-creators" class="nav-link active">Project Creators</a></li>
+                <li><a href="/report-creator" class="nav-link">Report Creator</a></li>
+                <li><a href="/scaling-factor" class="nav-link">Scaling Factor</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div style="margin-bottom: var(--space-md);">
+                    <a href="/" style="display: inline-flex; align-items: center; gap: var(--space-sm); color: var(--text-muted); font-size: 0.875rem; text-decoration: none; transition: color var(--transition-fast);"
+                        onmouseover="this.style.color='var(--text-secondary)'" onmouseout="this.style.color='var(--text-muted)'">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                        Back to Toolbox
+                    </a>
+                </div>
+                <div class="hero-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                        <path d="M2 17l10 5 10-5" />
+                        <path d="M2 12l10 5 10-5" />
+                    </svg>
+                    Project Creators
+                </div>
+                <h1 class="hero-title">Create a Project</h1>
+                <p class="hero-subtitle">
+                    Choose the type of project you want to create. Each tool is tailored
+                    to a different data source and workflow.
+                </p>
+            </div>
+        </section>
+
+        <!-- Tools Grid -->
+        <section class="container">
+            <h2 class="mb-lg">Choose Your Tool</h2>
+
+            <div class="tool-grid">
+                <!-- AOI Generator -->
+                <a href="/aoi" class="card tool-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                            <polyline points="2 17 12 22 22 17" />
+                            <polyline points="2 12 12 17 22 12" />
+                        </svg>
+                    </div>
+                    <div class="card-header">
+                        <h3 class="card-title flex items-center gap-sm">
+                            AOI Generator
+                            <span class="tag tag-success">Active</span>
+                        </h3>
+                        <p class="card-description">
+                            Create Tourism (AOI) projects by selecting country, region, and municipality.
+                            Automatically generates the GeoJSON with all required polygons.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-sm text-secondary text-sm">
+                        <span>BR • PT • ES • MX • CL</span>
+                        <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- API Generator -->
+                <a href="/aoi-generator" class="card tool-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" y1="12" x2="22" y2="12" />
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                        </svg>
+                    </div>
+                    <div class="card-header">
+                        <h3 class="card-title flex items-center gap-sm">
+                            API Generator
+                            <span class="tag tag-warning">Beta</span>
+                        </h3>
+                        <p class="card-description">
+                            Generate AOI projects dynamically from OpenStreetMap.
+                            Interactive map editor with polygon property editing.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-sm text-secondary text-sm">
+                        <span>BR • MX • AR • CL • CO • PE • PT • ES • CH</span>
+                        <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- LI Project Creator -->
+                <a href="/li-project" class="card tool-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                    </div>
+                    <div class="card-header">
+                        <h3 class="card-title flex items-center gap-sm">
+                            LI Project Creator
+                            <span class="tag tag-success">Active</span>
+                        </h3>
+                        <p class="card-description">
+                            Create Location Intelligence projects for establishments.
+                            Upload nodes, search venues, edit polygons, and deploy.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-sm text-secondary text-sm">
+                        <span>Nodes • Establishments • AOI Export</span>
+                        <svg class="card-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Spacer -->
+        <div style="height: 4rem;"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="padding: 2rem 0; border-top: 1px solid var(--glass-border);">
+        <div class="container text-center text-muted text-sm">
+            <p>Kido Support Toolbox &copy; 2026 • Built for the Kido Dynamics Support Team</p>
+        </div>
+    </footer>
+</body>
+
+</html>
