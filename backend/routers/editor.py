@@ -189,15 +189,20 @@ async def process_map_data(
         # 4. Final Cleanup
         # Calculate total
         polygons_gdf["total_count"] = polygons_gdf["node_count"] + polygons_gdf["antenna_count"]
-        
+
+        # Collect polygon property columns (all non-geometry columns, excluding computed stats)
+        exclude_cols = {"node_count", "antenna_count", "total_count", "geometry"}
+        polygon_columns = [c for c in polygons_gdf.columns if c not in exclude_cols]
+
         # Convert to GeoJSON
         geojson_str = polygons_gdf.to_json()
         
         return JSONResponse(content={
             "success": True,
             "polygons": json.loads(geojson_str),
-            "nodes": nodes_data,      # List of [lat, lon]
-            "antennas": antennas_data # List of [lat, lon]
+            "nodes": nodes_data,           # List of [lat, lon]
+            "antennas": antennas_data,     # List of [lat, lon]
+            "polygon_columns": polygon_columns  # Available identifier columns
         })
 
     except Exception as e:

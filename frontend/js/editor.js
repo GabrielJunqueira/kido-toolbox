@@ -104,6 +104,9 @@ function setupEventListeners() {
             // Configure dual-range sliders from the data
             configureDualSliders(data);
 
+            // Populate identifier column picker
+            populateColumnPicker(data.polygon_columns || ['polygon_id']);
+
             // Initial render
             applyFilters();
 
@@ -566,6 +569,23 @@ function exportGeoJSON() {
     document.body.removeChild(a);
 }
 
+// ─── Column Picker ─────────────────────────────────────────────
+function populateColumnPicker(columns) {
+    const select = document.getElementById('polygonIdCol');
+    select.innerHTML = '';
+
+    columns.forEach(col => {
+        const opt = document.createElement('option');
+        opt.value = col;
+        opt.textContent = col;
+        // Default to polygon_id if present
+        if (col === 'polygon_id') opt.selected = true;
+        select.appendChild(opt);
+    });
+
+    document.getElementById('csvExportSection').style.display = 'block';
+}
+
 // ─── Export CSV ────────────────────────────────────────────────
 function exportCSV() {
     if (!currentData || !currentData.polygons || !currentData.polygons.features) {
@@ -580,28 +600,31 @@ function exportCSV() {
         return;
     }
 
-    let csvContent = "polygon_id,node_count,antenna_count,total_count\n";
-    
+    // Get the user-selected identifier column
+    const idCol = document.getElementById('polygonIdCol').value || 'polygon_id';
+
+    let csvContent = `${idCol},node_count,antenna_count,total_count\n`;
+
     activeFeatures.forEach(f => {
         const p = f.properties;
-        const id = p.polygon_id !== undefined ? p.polygon_id : '';
+        const id = p[idCol] !== undefined && p[idCol] !== null ? p[idCol] : '';
         const nc = p.node_count || 0;
         const ac = p.antenna_count || 0;
         const tc = p.total_count || 0;
-        
+
         csvContent += `"${id}",${nc},${ac},${tc}\n`;
     });
 
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
-    
+
     const a = document.createElement('a');
     a.href = url;
     a.download = 'zone_stats.csv';
     a.style.display = 'none';
     document.body.appendChild(a);
     a.click();
-    
+
     setTimeout(() => {
         document.body.removeChild(a);
         URL.revokeObjectURL(url);

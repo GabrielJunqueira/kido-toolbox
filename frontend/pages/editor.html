@@ -551,10 +551,20 @@
                     <button class="btn btn-success w-full mb-sm" id="exportBtn">
                         Export GeoJSON
                     </button>
-                    <button class="btn w-full" style="background: var(--bg-secondary); border: 1px solid var(--glass-border); color: var(--text-primary)" id="exportCsvBtn">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;margin-right:4px;vertical-align:-3px;display:inline-block"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><path d="M10 9H8"/></svg>
-                        Download Stats (CSV)
-                    </button>
+
+                    <div id="csvExportSection" style="display:none;">
+                        <div class="form-group mb-sm">
+                            <label class="form-label" for="polygonIdCol" style="font-size:0.75rem;">
+                                Identifier column for CSV
+                            </label>
+                            <select id="polygonIdCol" class="form-select" style="font-size:0.8rem; padding: 0.4rem 0.6rem;">
+                            </select>
+                        </div>
+                        <button class="btn w-full" style="background: var(--bg-secondary); border: 1px solid var(--glass-border); color: var(--text-primary)" id="exportCsvBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;margin-right:4px;vertical-align:-3px;display:inline-block"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><path d="M10 9H8"/></svg>
+                            Download Stats (CSV)
+                        </button>
+                    </div>
                 </div>
             </div>
 
