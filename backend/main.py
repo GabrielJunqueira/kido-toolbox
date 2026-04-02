@@ -8,7 +8,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
-from routers import aoi, aoi_generator, anonymizer, editor, scaling_factor, li_project, report, tourism_report, retail_report
+from routers import aoi, aoi_generator, anonymizer, editor, scaling_factor, li_project, report, tourism_report, retail_report, geojson_validator
 from services.auth import login_kido
 
 # Initialize FastAPI app
@@ -37,6 +37,7 @@ app.include_router(li_project.router)
 app.include_router(report.router)
 app.include_router(tourism_report.router)
 app.include_router(retail_report.router)
+app.include_router(geojson_validator.router)
 
 # Get paths for static files
 BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -265,6 +266,15 @@ async def tourism_report_page():
 async def retail_report_page():
     """Serve the Retail Report Generator page."""
     page_path = os.path.join(FRONTEND_DIR, "pages", "retail_report.html")
+    if os.path.exists(page_path):
+        return FileResponse(page_path)
+    return {"error": "Page not found"}
+
+
+@app.get("/geojson-validator")
+async def geojson_validator_page():
+    """Serve the GeoJSON Validator tool page."""
+    page_path = os.path.join(FRONTEND_DIR, "pages", "geojson_validator.html")
     if os.path.exists(page_path):
         return FileResponse(page_path)
     return {"error": "Page not found"}
