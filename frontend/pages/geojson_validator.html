@@ -92,12 +92,12 @@
                     <div style="width:32px;height:32px;background:var(--gradient-primary);border-radius:8px;display:flex;align-items:center;justify-content:center;padding:6px;box-shadow:var(--shadow-glow);">
                         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                     </div>
-                    <h2 class="text-xl font-bold">Kido Validador</h2>
+                    <h2 class="text-xl font-bold">Kido Validator</h2>
                 </div>
                 
                 <div class="hub-card">
                     <div class="progress-label">
-                        <span id="scoreText">Análise Pendente</span>
+                        <span id="scoreText">Pending Analysis</span>
                         <span id="pctText">0%</span>
                     </div>
                     <div class="progress-bar">
@@ -106,20 +106,20 @@
                 </div>
                 
                 <div class="flex justify-between items-center px-xs">
-                    <span class="text-xs text-muted" id="fileLabel">Nenhum arquivo</span>
+                    <span class="text-xs text-muted" id="fileLabel">No file</span>
                     <button class="btn btn-ghost btn-sm" onclick="location.reload()">Reset</button>
                 </div>
             </div>
 
             <div class="sidebar-scroll" id="issueContainer">
                 <div class="text-center p-xl opacity-30">
-                    <p class="text-sm">Arraste um GeoJSON para começar...</p>
+                    <p class="text-sm">Drag a GeoJSON to start...</p>
                 </div>
             </div>
             
             <div style="padding: 15px; border-top: 1px solid var(--glass-border);">
                 <button id="downloadBtn" class="btn btn-primary w-full hidden">
-                    Baixar GeoJSON Corrigido
+                    Download Fixed GeoJSON
                 </button>
             </div>
         </div>
@@ -130,11 +130,11 @@
             
             <div class="map-tools">
                 <div id="revalBadge" class="floating-badge hidden" style="background: var(--success); color: white;">
-                    ✨ Validado em Tempo Real
+                    ✨ Validated in Real-Time
                 </div>
                 <button id="recheckBtn" class="tool-btn hidden">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-                    Re-Validar Geometria
+                    Re-Validate Geometry
                 </button>
             </div>
 
@@ -145,9 +145,9 @@
                     <div style="width:64px;height:64px;background:rgba(99,102,241,0.1);border-radius:16px;display:flex;align-items:center;justify-content:center;margin: 0 auto 20px;">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                     </div>
-                    <h2 class="text-2xl font-bold mb-md">Solte seu Projeto Aqui</h2>
-                    <p class="text-secondary mb-xl">Validamos intersecções, tipos e áreas instantaneamente.</p>
-                    <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">Explorar Arquivos</button>
+                    <h2 class="text-2xl font-bold mb-md">Drop your Project Here</h2>
+                    <p class="text-secondary mb-xl">We validate intersections, types, and areas instantly.</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">Browse Files</button>
                 </div>
             </div>
         </div>
@@ -213,7 +213,7 @@
                 el('uploadOverlay').classList.add('hidden');
                 el('recheckBtn').classList.remove('hidden');
                 runValidation();
-            } catch(e) { alert("Arquivo JSON inválido."); }
+            } catch(e) { alert("Invalid JSON file."); }
         }
 
         // ── RENDERING ──────────────────────────────────────────────
@@ -258,7 +258,7 @@
             if (isWorking || !currentGeojson) return;
             isWorking = true;
             
-            el('scoreText').textContent = "Processando...";
+            el('scoreText').textContent = "Processing...";
             el('recheckBtn').disabled = true;
 
             // Extract fresh GeoJSON from the map
@@ -292,11 +292,11 @@
             
             el('progressFill').style.width = score + "%";
             el('pctText').textContent = score + "%";
-            el('scoreText').textContent = score === 100 ? "Pronto para Upload" : "Precisa de Ajustes";
+            el('scoreText').textContent = score === 100 ? "Ready for Upload" : "Needs Adjustments";
             el('progressFill').style.background = score === 100 ? 'var(--success)' : (score < 60 ? 'var(--error)' : 'var(--warning)');
 
             if (issues.length === 0) {
-                container.innerHTML = `<div class="text-center p-xl"><h3 class="text-success font-bold">✨ Zero Problemas</h3><p class="text-xs text-muted">A geometria está impecável.</p></div>`;
+                container.innerHTML = `<div class="text-center p-xl"><h3 class="text-success font-bold">✨ Zero Issues</h3><p class="text-xs text-muted">The geometry is flawless.</p></div>`;
                 el('downloadBtn').classList.remove('hidden');
                 return;
             }
@@ -340,7 +340,9 @@
             a.href = url;
             a.download = (el('fileLabel').textContent || 'project').replace('.geojson', '_fixed.geojson');
             if (a.download === '_fixed.geojson') a.download = 'project_fixed.geojson';
+            document.body.appendChild(a);
             a.click();
+            document.body.removeChild(a);
             URL.revokeObjectURL(url);
         }
 

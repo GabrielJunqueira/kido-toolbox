@@ -34,4 +34,4 @@ async def validate(request: ValidateRequest):
             "summary": result.summary,
         }
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Erro na validação: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Validation error: {str(e)}")
