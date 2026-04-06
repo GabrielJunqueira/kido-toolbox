@@ -64,66 +64,67 @@ async def process_map_data(
 
         # 2. Process Nodes (if provided)
         nodes_data = [] # List of [lat, lon]
-        if nodes:
+        if nodes and nodes.size > 0:
             tmp_nodes = save_upload_file_tmp(nodes)
-            try:
-                # Read CSV
-                # Check separator (default , or ;)
+            
+            if os.path.getsize(tmp_nodes) == 0:
+                polygons_gdf["node_count"] = 0
+            else:
                 try:
-                    df_nodes = pd.read_csv(tmp_nodes)
-                except:
-                    df_nodes = pd.read_csv(tmp_nodes, sep=';')
-                
-                # Standarize columns
-                df_nodes.columns = [c.lower() for c in df_nodes.columns]
-                
-                if 'latitude' in df_nodes.columns and 'longitude' in df_nodes.columns:
-                    lat_col, lon_col = 'latitude', 'longitude'
-                elif 'lat' in df_nodes.columns and 'lon' in df_nodes.columns:
-                    lat_col, lon_col = 'lat', 'lon'
-                else:
-                    raise ValueError("Nodes CSV must have latitude/longitude columns")
-
-                # Create GeoDataFrame for sjoin
-                nodes_gdf = gpd.GeoDataFrame(
-                    df_nodes,
-                    geometry=gpd.points_from_xy(df_nodes[lon_col], df_nodes[lat_col]),
-                    crs="EPSG:4326"
-                )
-
-                # Spatial Join
-                # Optimizing: Only join with polygon_id and geometry
-                nodes_joined = gpd.sjoin(
-                    nodes_gdf,
-                    polygons_gdf[["polygon_id", "geometry"]],
-                    how="inner",
-                    predicate="within"
-                )
-
-                # Count
-                node_counts = nodes_joined.groupby("polygon_id").size().reset_index(name="node_count")
-                
-                # Check if suffix issue might happen if column exists
-                if "node_count" in polygons_gdf.columns:
-                    polygons_gdf = polygons_gdf.drop(columns=["node_count"])
+                    # Read CSV
+                    # Check separator (default , or ;)
+                    try:
+                        df_nodes = pd.read_csv(tmp_nodes)
+                    except:
+                        df_nodes = pd.read_csv(tmp_nodes, sep=';')
                     
-                polygons_gdf = polygons_gdf.merge(node_counts, on="polygon_id", how="left")
-                polygons_gdf["node_count"] = polygons_gdf["node_count"].fillna(0).astype(int)
+                    if df_nodes.empty:
+                        polygons_gdf["node_count"] = 0
+                    else:
+                        # Standarize columns
+                        df_nodes.columns = [c.lower() for c in df_nodes.columns]
+                        
+                        if 'latitude' in df_nodes.columns and 'longitude' in df_nodes.columns:
+                            lat_col, lon_col = 'latitude', 'longitude'
+                        elif 'lat' in df_nodes.columns and 'lon' in df_nodes.columns:
+                            lat_col, lon_col = 'lat', 'lon'
+                        else:
+                            raise ValueError("Nodes CSV must have latitude/longitude columns")
 
-                # Extract coordinates for frontend (only [lat, lon] to save bandwidth)
-                # We return ALL nodes, or only those inside polygons?
-                # User notebook shows all loaded nodes.
-                # Filter: Only return nodes that are INSIDE the polygons
-                # The spatial join 'nodes_joined' contains only the matching nodes
-                # We need to extract their original lat/lon. 
-                # Since sjoin retains the index or we can pull geometry again.
-                nodes_filtered = nodes_joined.copy()
-                nodes_data = list(zip(nodes_filtered.geometry.y, nodes_filtered.geometry.x))
+                        nodes_gdf = gpd.GeoDataFrame(
+                            df_nodes,
+                            geometry=gpd.points_from_xy(df_nodes[lon_col], df_nodes[lat_col]),
+                            crs="EPSG:4326"
+                        )
 
-            except Exception as e:
-                print(f"Nodes processing error: {e}")
-                # Continue without nodes if error? No, warn user
-                raise HTTPException(status_code=400, detail=f"Error processing Nodes: {str(e)}")
+                        # Spatial Join
+                        # Optimizing: Only join with polygon_id and geometry
+                        nodes_joined = gpd.sjoin(
+                            nodes_gdf,
+                            polygons_gdf[["polygon_id", "geometry"]],
+                            how="inner",
+                            predicate="within"
+                        )
+
+                        # Count
+                        node_counts = nodes_joined.groupby("polygon_id").size().reset_index(name="node_count")
+                        
+                        # Check if suffix issue might happen if column exists
+                        if "node_count" in polygons_gdf.columns:
+                            polygons_gdf = polygons_gdf.drop(columns=["node_count"])
+                            
+                        polygons_gdf = polygons_gdf.merge(node_counts, on="polygon_id", how="left")
+                        polygons_gdf["node_count"] = polygons_gdf["node_count"].fillna(0).astype(int)
+
+                        # Extract coordinates for frontend (only [lat, lon] to save bandwidth)
+                        # Filter: Only return nodes that are INSIDE the polygons
+                        nodes_filtered = nodes_joined.copy()
+                        nodes_data = list(zip(nodes_filtered.geometry.y, nodes_filtered.geometry.x))
+
+                except Exception as e:
+                    print(f"Nodes processing error: {e}")
+                    # Continue without nodes if error? No, warn user
+                    raise HTTPException(status_code=400, detail=f"Error processing Nodes: {str(e)}")
         else:
             polygons_gdf["node_count"] = 0
 

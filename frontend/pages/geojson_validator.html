@@ -190,6 +190,7 @@
             
             setupUpload();
             el('recheckBtn').addEventListener('click', runValidation);
+            el('downloadBtn').addEventListener('click', exportGeoJSON);
         }
 
         function setupUpload() {
@@ -328,6 +329,19 @@
                     }).addTo(markerLayer).bindPopup(issue.message);
                 }
             });
+        }
+
+        function exportGeoJSON() {
+            if (!currentGeojson && masterLayer.getLayers().length === 0) return;
+            const dataToExport = masterLayer.toGeoJSON();
+            const blob = new Blob([JSON.stringify(dataToExport, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = (el('fileLabel').textContent || 'project').replace('.geojson', '_fixed.geojson');
+            if (a.download === '_fixed.geojson') a.download = 'project_fixed.geojson';
+            a.click();
+            URL.revokeObjectURL(url);
         }
 
         init();
