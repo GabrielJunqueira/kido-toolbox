@@ -260,87 +260,84 @@ def check_geometry_validity(features: List[Dict]) -> Tuple[List[ValidationIssue]
     return issues, invalid_map
 
 
-def apply_make_valid(features: List[Dict], invalid_map: Dict[str, str]) -> Tuple[List[Dict], List[ValidationIssue]]:
+def clean_and_repair_geometries(features: List[Dict], invalid_map: Dict[str, str]) -> Tuple[List[Dict], List[ValidationIssue]]:
+    """
+    Applies make_valid to invalid geometries and cleans all geometries
+    (removes non-polygonal noise and 1000x smaller slivers from MultiPolygons).
+    """
     issues, updated = [], []
 
     for feat in features:
         fid = _fid(feat)
-        if fid in invalid_map and feat.get("geometry") is not None:
-            try:
-                geom = shape(feat["geometry"])
-                fixed_raw = make_valid(geom)
-                fixed = clean_make_valid_result(fixed_raw)
-                
-                if not fixed:
-                    raise ValueError("No valid polygon remained after cleaning.")
-                
-                updated.append({**feat, "geometry": mapping(fixed)})
+        gd = feat.get("geometry")
+        if gd is None:
+            updated.append(feat)
+            continue
+            
+        try:
+            geom = shape(gd)
+            was_invalid = fid in invalid_map
+            
+            # 1. Repair if invalid
+            current_geom = make_valid(geom) if was_invalid else geom
+            
+            # 2. Clean (remove lines, points, and 1000x smaller slivers)
+            cleaned = clean_make_valid_result(current_geom)
+            
+            if not cleaned:
+                if was_invalid:
+                    raise ValueError("No valid polygon remained after repair and cleaning.")
+                updated.append(feat)
+                continue
+
+            # Check if something actually changed
+            # (We check type or part count change as a proxy for 'cleaning')
+            changed = was_invalid or (cleaned.geom_type != geom.geom_type)
+            if not changed and geom.geom_type == 'MultiPolygon':
+                # Check if number of parts changed (slivers removed)
+                if len(getattr(cleaned, 'geoms', [])) != len(getattr(geom, 'geoms', [])):
+                    changed = True
+
+            if changed:
+                updated.append({**feat, "geometry": mapping(cleaned)})
                 try:
-                    fc = fixed.centroid
+                    fc = cleaned.centroid
                     centroids = [[fc.x, fc.y]]
                 except Exception:
                     centroids = []
                 
-                msg = f"Polygon '{fid}': successfully repaired and cleaned. "
-                if fixed.geom_type != geom.geom_type:
-                    msg += f"Converted ({geom.geom_type} → {fixed.geom_type}). Non-polygonal segments or tiny artifacts were removed."
+                if was_invalid:
+                    msg = f"Polygon '{fid}': repaired and cleaned. "
                 else:
-                    msg += "Original geometry stabilized."
+                    msg = f"Polygon '{fid}': cleaned. "
+                
+                if cleaned.geom_type != geom.geom_type:
+                    msg += f"Converted ({geom.geom_type} → {cleaned.geom_type}). Non-polygonal segments or tiny artifacts were removed."
+                elif geom.geom_type == 'MultiPolygon' and len(getattr(cleaned, 'geoms', [])) < len(getattr(geom, 'geoms', [])):
+                    msg += f"Tiny slivers (1000x smaller than the main part) were removed from this MultiPolygon."
+                else:
+                    msg += "Geometry stabilized."
                     
                 issues.append(ValidationIssue(
-                    level="fix", code="makeValidApplied",
+                    level="fix", code="geometryCleaned",
                     message=msg,
                     feature_ids=[fid], centroids=centroids))
-            except Exception as e:
+            else:
                 updated.append(feat)
+
+        except Exception as e:
+            updated.append(feat)
+            if fid in invalid_map:
                 issues.append(ValidationIssue(
-                    level="error", code="makeValidFailed",
+                    level="error", code="repairFailed",
                     message=f"Polygon '{fid}': repair failed ({e}). Manual correction on the map required.",
                     feature_ids=[fid],
                     centroids=[c for c in [_centroid(feat)] if c]))
-        else:
-            updated.append(feat)
+    
     return updated, issues
 
 
-def explode_multipolygons(features: List[Dict]) -> Tuple[List[Dict], List[ValidationIssue]]:
-    issues, exploded = [], []
 
-    for feat in features:
-        gd = feat.get("geometry")
-        if gd is None:
-            exploded.append(feat); continue
-        try:
-            geom = shape(gd)
-        except Exception:
-            exploded.append(feat); continue
-
-        if geom.geom_type in ("MultiPolygon", "GeometryCollection"):
-            fid = _fid(feat)
-            parts = [g for g in geom.geoms if g.geom_type == "Polygon"]
-            if len(parts) > 1:
-                centroids = []
-                for p in parts:
-                    try: pc = p.centroid; centroids.append([pc.x, pc.y])
-                    except Exception: pass
-                issues.append(ValidationIssue(
-                    level="warning", code="multiPolygonExploded",
-                    message=(
-                        f"Polygon '{fid}' is a MultiPolygon with {len(parts)} parts. "
-                        "The platform uses ST_Dump (separates each part with the same ID, causing duplicates). "
-                        f"IDs exploded and renamed to '{fid}_0', '{fid}_1', etc."
-                    ),
-                    feature_ids=[fid], centroids=centroids))
-                for i, part in enumerate(parts):
-                    np2 = {**(feat.get("properties") or {}), "id": f"{fid}_{i}"}
-                    exploded.append({"type": "Feature", "properties": np2, "geometry": mapping(part)})
-            elif len(parts) == 1:
-                exploded.append({**feat, "geometry": mapping(parts[0])})
-            else:
-                exploded.append(feat)
-        else:
-            exploded.append(feat)
-    return exploded, issues
 
 
 def check_duplicate_ids(features: List[Dict]) -> Tuple[List[Dict], List[ValidationIssue]]:
@@ -460,11 +457,8 @@ def validate_geojson(geojson: Dict) -> ValidationResult:
     geom_issues, invalid_map = check_geometry_validity(features)
     all_issues.extend(geom_issues)
 
-    features, fix_issues = apply_make_valid(features, invalid_map)
+    features, fix_issues = clean_and_repair_geometries(features, invalid_map)
     all_issues.extend(fix_issues)
-
-    features, multi_issues = explode_multipolygons(features)
-    all_issues.extend(multi_issues)
 
     features, dup_issues = check_duplicate_ids(features)
     all_issues.extend(dup_issues)
