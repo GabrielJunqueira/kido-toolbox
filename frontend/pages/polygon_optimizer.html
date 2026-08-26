@@ -40,6 +40,16 @@
             }
         }
 
+        /* On Review and Export the progress list has nothing left to report,
+           so the map takes the whole width. */
+        .po-layout.po-wide {
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .po-layout.po-wide .po-todo {
+            display: none;
+        }
+
         .po-todo {
             position: sticky;
             top: var(--space-lg);
@@ -362,6 +372,10 @@
             box-shadow: 0 0 0 2px var(--accent-primary);
         }
 
+        #main-container.po-roomy {
+            max-width: 1600px;
+        }
+
         .po-elapsed {
             font-family: var(--font-mono);
             color: var(--text-muted);
@@ -392,7 +406,7 @@
         </div>
     </nav>
 
-    <main class="container mt-xl mb-xl">
+    <main class="container mt-xl mb-xl" id="main-container">
         <div class="mb-lg">
             <h1 style="font-size: 1.9rem; margin-bottom: var(--space-xs);">Event Polygon Optimizer</h1>
             <p class="text-secondary">
