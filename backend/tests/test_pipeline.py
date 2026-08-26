@@ -209,6 +209,37 @@ def _run(monkeypatch, platform, baseline_date=None):
 
 
 # ==========================================
+# MISSING NODE FILE
+# ==========================================
+
+def test_no_node_file_says_so_instead_of_blaming_the_country(tmp_path, monkeypatch):
+    """
+    The Space clears /tmp when it hibernates, so reaching the analysis with no
+    cached file is routine. Telling the user their file is from the wrong
+    country would send them looking for the wrong problem.
+    """
+    monkeypatch.setattr(node_service, "NODE_CACHE_DIR", str(tmp_path))
+    monkeypatch.setattr(node_service, "_registry", {})
+    monkeypatch.setattr(node_service, "_frames", {})
+
+    geom, _ = optimizer.extract_input_polygon(_input_geojson())
+    with pytest.raises(optimizer.OptimizerError, match="No node file is loaded"):
+        optimizer.collect_nodes("br", geom, 500.0)
+
+
+def test_a_file_from_the_wrong_country_still_says_wrong_country(node_file):
+    # A Brazilian node file against a polygon in Madrid.
+    madrid = {
+        "type": "Polygon",
+        "coordinates": [[[-3.70, 40.41], [-3.69, 40.41], [-3.69, 40.42],
+                         [-3.70, 40.42], [-3.70, 40.41]]],
+    }
+    geom, _ = optimizer.extract_input_polygon(madrid)
+    with pytest.raises(optimizer.OptimizerError, match="Wrong country"):
+        optimizer.collect_nodes("br", geom, 500.0)
+
+
+# ==========================================
 # HAPPY PATH
 # ==========================================
 

@@ -28,7 +28,7 @@ from shapely.geometry import mapping, shape
 
 from services import polygon_scoring
 from services.geo import get_utm_crs
-from services.nodes import NodeFileError, covers_bbox, query_bbox
+from services.nodes import NodeFileError, covers_bbox, get_entry, query_bbox
 from services.tiles import tile_polygon
 
 # ==========================================
@@ -303,6 +303,16 @@ def collect_nodes(
     warnings: List[Dict[str, str]] = []
     buffered = buffer_polygon(geom, buffer_m)
     west, south, east, north = buffered.bounds
+
+    # "No file at all" and "file from the wrong country" need different
+    # answers. The first one is common: the Space hibernates and clears /tmp
+    # between the upload and the analysis.
+    if get_entry(country_code) is None:
+        raise OptimizerError(
+            "No node file is loaded for {}. The Space clears its temporary storage "
+            "when it hibernates, so the projection node file has to be uploaded "
+            "again before running an analysis.".format(country_code.upper())
+        )
 
     if not covers_bbox(country_code, west, south, east, north):
         raise OptimizerError(
