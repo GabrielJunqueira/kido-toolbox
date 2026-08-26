@@ -1095,12 +1095,12 @@ def run_platform_pipeline(job_id: str) -> None:
     set_step(job_id, "price_project", "running")
     price = price_project(root_url, token, clean_zones, event_date, event_date)
     if price:
-        set_step(
-            job_id,
-            "price_project",
-            "done",
-            "{} cores, {} day(s)".format(price.get("cores", "?"), price.get("days", "?")),
-        )
+        # `days` comes back as zero because start and end are the same day,
+        # so it is left out rather than shown as a misleading "0 days".
+        detail = "{} cores".format(price.get("cores", "?"))
+        if price.get("total_amount") is not None:
+            detail += ", {} credits".format(price["total_amount"])
+        set_step(job_id, "price_project", "done", detail)
     else:
         set_step(job_id, "price_project", "skipped", "price unavailable")
 

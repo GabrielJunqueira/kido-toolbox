@@ -259,21 +259,70 @@ def load_nodes(file_bytes: bytes, country_code: str, filename: str = "") -> Dict
     return entry
 
 
+def _rehydrate(country_code: str) -> Optional[Dict[str, Any]]:
+    """
+    Rebuild a registry entry from a parquet cache left on disk.
+
+    The registry lives in process memory but the parquet does not. A worker
+    restart empties the registry while /tmp is still intact, and without this
+    the user would be told to upload 143 MB again for a file that is already
+    sitting there.
+    """
+    path = _parquet_path(country_code)
+    if not os.path.exists(path):
+        return None
+
+    try:
+        df = pd.read_parquet(path)
+    except Exception:
+        # A half-written cache from an interrupted upload.
+        try:
+            os.remove(path)
+        except OSError:
+            pass
+        return None
+
+    if df.empty or not set(REQUIRED_COLUMNS).issubset(df.columns):
+        return None
+
+    entry = {
+        "country_code": country_code,
+        "path": path,
+        "rows": int(len(df)),
+        "uploaded_at": os.path.getmtime(path),
+        "filename": "",
+        "container": "parquet-cache",
+        "bbox": [
+            float(df["longitude"].min()),
+            float(df["latitude"].min()),
+            float(df["longitude"].max()),
+            float(df["latitude"].max()),
+        ],
+    }
+    _registry[country_code] = entry
+    _remember_frame(country_code, df)
+    return entry
+
+
 def get_entry(country_code: str) -> Optional[Dict[str, Any]]:
     """
     Return the registry entry for a country, or None when nothing is cached.
 
-    The parquet file is checked too: the Space hibernates and wipes /tmp while
-    the registry may still hold a stale entry.
+    Both halves of the cache are checked. The Space hibernates and wipes /tmp
+    while the registry may still hold a stale entry, and conversely a worker
+    restart empties the registry while the parquet survives.
     """
     country_code = country_code.lower().strip()
     entry = _registry.get(country_code)
+
     if entry is None:
-        return None
+        return _rehydrate(country_code)
+
     if not os.path.exists(entry["path"]):
         _registry.pop(country_code, None)
         _frames.pop(country_code, None)
         return None
+
     return entry
 
 

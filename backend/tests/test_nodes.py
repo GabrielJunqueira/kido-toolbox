@@ -163,6 +163,37 @@ def test_reading_falls_back_to_the_parquet_cache():
     assert len(df) == GRID * GRID
 
 
+def test_a_worker_restart_recovers_the_cache_from_disk():
+    """
+    The registry lives in process memory, the parquet does not. Losing the
+    registry must not force a 143 MB re-upload of a file that is still there.
+    """
+    nodes.load_nodes(_csv_bytes(), "br", "nodes.zip")
+
+    # The process restarted: registry and frames gone, /tmp intact.
+    nodes._registry.clear()
+    nodes._frames.clear()
+
+    info = nodes.describe("br")
+    assert info["loaded"] is True
+    assert info["rows"] == GRID * GRID
+    assert len(nodes.read_nodes("br")) == GRID * GRID
+
+
+def test_a_corrupt_parquet_cache_is_discarded_rather_than_served(tmp_path):
+    nodes.load_nodes(_csv_bytes(), "br", "nodes.csv")
+    path = nodes._registry["br"]["path"]
+    nodes._registry.clear()
+    nodes._frames.clear()
+
+    with open(path, "wb") as handle:
+        handle.write(b"not a parquet file")
+
+    assert nodes.describe("br")["loaded"] is False
+    import os
+    assert not os.path.exists(path), "the unusable cache must be cleaned up"
+
+
 def test_clear_removes_the_cache():
     nodes.load_nodes(_csv_bytes(), "br", "nodes.csv")
     nodes.clear("br")
