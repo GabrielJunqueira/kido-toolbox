@@ -10,4 +10,5 @@ geopandas
 shapely
 pyproj
 scikit-learn
-pyarrow
+# pyarrow 22+ dropped Python 3.9, which is what the Docker image runs.
+pyarrow<22

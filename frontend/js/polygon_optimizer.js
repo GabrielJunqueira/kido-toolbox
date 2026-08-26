@@ -272,6 +272,10 @@ function goToStep(step) {
         node.classList.toggle('active', node.id === `step-${step}`);
     });
 
+    const wide = step >= 4;
+    document.querySelector('.po-layout').classList.toggle('po-wide', wide);
+    document.getElementById('main-container').classList.toggle('po-roomy', wide);
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     // Leaflet needs a nudge when its container becomes visible.
@@ -493,8 +497,8 @@ function initInputMap() {
     }
 
     state.inputMap = L.map('input-map').setView([-22.91, -43.19], 13);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors',
         maxZoom: 19,
     }).addTo(state.inputMap);
 
@@ -893,3 +897,588 @@ el.btnRestart.addEventListener('click', () => window.location.reload());
     el.eventDate.max = yesterday.toISOString().slice(0, 10);
     el.baselineDate.max = el.eventDate.max;
 })();
+
+// ==========================================
+// STEP 4: REVIEW
+// ==========================================
+
+const review = {
+    nodeLayer: null,
+    polygonLayer: null,
+    inputLayer: null,
+    markers: {},          // node_id -> circleMarker
+    mode: 'view',         // view | toggle | draw
+    drawnItems: null,
+    drawHandler: null,
+    geometryToken: 0,     // guards against out-of-order geometry responses
+    pendingGeometry: null,
+};
+
+// A perceptually even ramp for the continuous layers, dark to bright.
+const RAMP = ['#1e1b4b', '#3730a3', '#6366f1', '#a78bfa', '#f0abfc', '#fde68a'];
+
+function rampColor(t) {
+    if (!isFinite(t)) return RAMP[0];
+    const clamped = Math.max(0, Math.min(1, t));
+    const scaled = clamped * (RAMP.length - 1);
+    return RAMP[Math.round(scaled)];
+}
+
+function enterReview(result) {
+    state.selectedIds = new Set(result.nodes.filter((n) => n.selected).map((n) => n.node_id));
+    state.currentGeometry = result.geometry;
+
+    el.windowStart.value = result.event_window[0];
+    el.windowEnd.value = result.event_window[1];
+    el.windowSource.textContent = result.event_window_source === 'user'
+        ? 'Set by you. Recompute applies it without querying the platform again.'
+        : `Detected automatically from the arrival curve (${result.detected_window[0]}h–${result.detected_window[1]}h).`;
+
+    el.exportName.value = `${result.project_name || 'event'}_optimized`;
+    el.exportProjectTrace.textContent =
+        `${result.project_name} · ${result.project_id}`;
+
+    // The step has to be visible before the map is measured, otherwise
+    // fitBounds runs against a zero-sized container and nothing is drawn.
+    goToStep(4);
+    initReviewMap();
+    setTimeout(() => {
+        state.reviewMap.invalidateSize();
+        renderReview();
+    }, 80);
+}
+
+function initReviewMap() {
+    if (state.reviewMap) {
+        state.reviewMap.invalidateSize();
+        return;
+    }
+
+    state.reviewMap = L.map('review-map').setView([0, 0], 2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors',
+        maxZoom: 19,
+    }).addTo(state.reviewMap);
+
+    review.drawnItems = new L.FeatureGroup();
+    state.reviewMap.addLayer(review.drawnItems);
+
+    attachDrawHandlers();
+}
+
+function renderReview() {
+    const result = state.result;
+
+    drawInputPolygon(result);
+    drawSuggestedPolygon(state.currentGeometry);
+    drawNodes(result);
+    renderLegend();
+    renderCoverage();
+    renderHourlyChart(result);
+    renderReasons(result);
+    renderWarnings(el.reviewWarnings, result.warnings);
+}
+
+function drawInputPolygon(result) {
+    if (review.inputLayer) state.reviewMap.removeLayer(review.inputLayer);
+    review.inputLayer = L.geoJSON(result.input_geometry, {
+        style: { color: '#94a3b8', weight: 2, dashArray: '6 5', fill: false },
+    }).addTo(state.reviewMap);
+}
+
+function drawSuggestedPolygon(geometry) {
+    if (review.polygonLayer) state.reviewMap.removeLayer(review.polygonLayer);
+    if (!geometry) return;
+
+    review.polygonLayer = L.geoJSON(geometry, {
+        style: { color: '#10b981', weight: 2, fillColor: '#10b981', fillOpacity: 0.18 },
+    }).addTo(state.reviewMap);
+
+    // The polygon sits under the node markers so clicks still reach them.
+    review.polygonLayer.bringToBack();
+    if (review.inputLayer) review.inputLayer.bringToBack();
+}
+
+function nodeColor(node, layer, extent) {
+    if (layer === 'decision') {
+        return REASON_COLORS[node.reason] || REASON_COLORS.excluded;
+    }
+    const value = layer === 'excess' ? node.excess
+        : layer === 'similarity' ? node.similarity
+            : node.total_event;
+    const span = extent.max - extent.min;
+    return rampColor(span > 0 ? (value - extent.min) / span : 0);
+}
+
+function layerExtent(nodes, layer) {
+    const values = nodes.map((n) => (
+        layer === 'excess' ? n.excess : layer === 'similarity' ? n.similarity : n.total_event
+    ));
+    return { min: Math.min(...values), max: Math.max(...values) };
+}
+
+function drawNodes(result) {
+    if (review.nodeLayer) state.reviewMap.removeLayer(review.nodeLayer);
+    review.markers = {};
+
+    const layer = el.layerSelect.value;
+    const extent = layerExtent(result.nodes, layer);
+
+    const markers = result.nodes.map((node) => {
+        const selected = state.selectedIds.has(node.node_id);
+        const marker = L.circleMarker([node.lat, node.lon], {
+            radius: selected ? 6 : 4,
+            color: selected ? '#f8fafc' : 'rgba(255,255,255,0.25)',
+            weight: selected ? 1.5 : 1,
+            fillColor: nodeColor(node, layer, extent),
+            fillOpacity: selected ? 0.95 : 0.45,
+        });
+
+        marker.bindPopup(() => nodePopup(node), { maxWidth: 260 });
+        marker.on('click', () => {
+            if (review.mode === 'toggle') toggleNode(node.node_id);
+        });
+
+        review.markers[node.node_id] = marker;
+        return marker;
+    });
+
+    review.nodeLayer = L.layerGroup(markers).addTo(state.reviewMap);
+
+    const bounds = review.polygonLayer
+        ? review.polygonLayer.getBounds()
+        : (review.nodeLayer ? L.featureGroup(markers).getBounds() : null);
+    if (bounds && bounds.isValid()) {
+        state.reviewMap.invalidateSize();
+        state.reviewMap.fitBounds(bounds, { padding: [40, 40] });
+    }
+}
+
+function nodePopup(node) {
+    const selected = state.selectedIds.has(node.node_id);
+    const rows = [
+        ['Volume (event day)', node.total_event.toLocaleString('en-US')],
+        ['Excess', node.excess.toLocaleString('en-US')],
+        ['Similarity', node.similarity.toFixed(2)],
+        ['Peak hour', `${node.peak_hour}:00`],
+        ['Rank', `#${node.rank}`],
+        ['Coverage', `${(node.coverage_ratio * 100).toFixed(0)}%`],
+    ];
+    if (node.total_baseline !== null && node.total_baseline !== undefined) {
+        rows.splice(1, 0, ['Volume (baseline)', node.total_baseline.toLocaleString('en-US')]);
+    }
+
+    const flags = [];
+    if (node.low_confidence) flags.push('<span class="tag tag-warning">low confidence</span>');
+    if (node.component_flagged) flags.push('<span class="tag tag-warning">detached block</span>');
+
+    return `
+        <div class="po-popup">
+            <div class="font-semibold">${escapeHtml(REASON_LABELS[node.reason] || node.reason)}</div>
+            <div class="po-reason-id">buffer_${node.node_id}</div>
+            <div class="mt-sm">${flags.join(' ')}</div>
+            ${sparkline(node)}
+            <table class="mt-sm">
+                ${rows.map(([k, v]) => `<tr><td>${escapeHtml(k)}</td><td class="po-popup-val">${escapeHtml(v)}</td></tr>`).join('')}
+            </table>
+            <div class="mt-sm text-muted text-xs">
+                ${selected ? 'In the current selection.' : 'Not in the current selection.'}
+                ${review.mode === 'toggle' ? ' Click the node to flip it.' : ''}
+            </div>
+        </div>`;
+}
+
+function sparkline(node) {
+    const width = 190;
+    const height = 44;
+    const curve = node.hourly_event || [];
+    const reference = state.result.reference_curve || [];
+    if (!curve.length) return '';
+
+    const maxCurve = Math.max(...curve, 1);
+    const maxRef = Math.max(...reference.map(Math.abs), 1);
+    const step = width / 23;
+
+    const path = (values, scale) => values.map((v, i) => (
+        `${i === 0 ? 'M' : 'L'}${(i * step).toFixed(1)},${(height - (v / scale) * (height - 4) - 2).toFixed(1)}`
+    )).join(' ');
+
+    const window = state.result.event_window;
+    const bandX = window[0] * step;
+    const bandW = Math.max(step, (window[1] - window[0]) * step);
+
+    return `
+        <svg class="po-sparkline mt-sm" viewBox="0 0 ${width} ${height}">
+            <rect x="${bandX.toFixed(1)}" y="0" width="${bandW.toFixed(1)}" height="${height}"
+                  fill="rgba(99,102,241,0.18)"></rect>
+            <path d="${path(reference.map((v) => Math.max(v, 0)), maxRef)}"
+                  fill="none" stroke="#64748b" stroke-width="1" stroke-dasharray="2 2"></path>
+            <path d="${path(curve, maxCurve)}" fill="none" stroke="#10b981" stroke-width="1.5"></path>
+        </svg>
+        <div class="text-muted text-xs">Green: this node. Grey: the event reference curve.</div>`;
+}
+
+function renderLegend() {
+    const layer = el.layerSelect.value;
+
+    if (layer === 'decision') {
+        el.mapLegend.innerHTML = Object.keys(REASON_LABELS).map((reason) => `
+            <span class="po-legend-item">
+                <span class="po-legend-swatch" style="background:${REASON_COLORS[reason]}"></span>
+                ${escapeHtml(REASON_LABELS[reason])}
+            </span>`).join('');
+        return;
+    }
+
+    const label = layer === 'excess' ? 'Event excess'
+        : layer === 'similarity' ? 'Curve similarity' : 'Raw volume';
+    el.mapLegend.innerHTML = `
+        <span class="po-legend-item">${escapeHtml(label)}: low</span>
+        ${RAMP.map((c) => `<span class="po-legend-swatch" style="background:${c}"></span>`).join('')}
+        <span class="po-legend-item">high</span>`;
+}
+
+function renderCoverage() {
+    const nodes = state.result.nodes;
+    const positive = (n) => Math.max(n.excess, 0);
+    const total = nodes.reduce((sum, n) => sum + positive(n), 0);
+
+    const seedShare = total > 0
+        ? nodes.filter((n) => n.in_seed).reduce((s, n) => s + positive(n), 0) / total : 0;
+    const selectedShare = total > 0
+        ? nodes.filter((n) => state.selectedIds.has(n.node_id)).reduce((s, n) => s + positive(n), 0) / total : 0;
+
+    el.coverageBefore.textContent = `${(seedShare * 100).toFixed(0)}%`;
+    el.coverageAfter.textContent = `${(selectedShare * 100).toFixed(0)}%`;
+
+    const seedCount = nodes.filter((n) => n.in_seed).length;
+    const selectedCount = state.selectedIds.size;
+    const added = nodes.filter((n) => state.selectedIds.has(n.node_id) && !n.in_seed).length;
+    const dropped = nodes.filter((n) => n.in_seed && !state.selectedIds.has(n.node_id)).length;
+
+    el.coverageDetail.textContent =
+        `${seedCount} nodes in your polygon, ${selectedCount} in the current selection ` +
+        `(${added} added, ${dropped} removed). ${((1 - selectedShare) * 100).toFixed(0)}% of the ` +
+        `event excess is still outside.`;
+}
+
+function renderHourlyChart(result) {
+    const width = 380;
+    const height = 150;
+    const seed = result.seed_curve || [];
+    const baseline = result.baseline_curve;
+    if (!seed.length) return;
+
+    const max = Math.max(...seed, ...(baseline || [0]), 1);
+    const step = width / 23;
+    const y = (v) => height - (v / max) * (height - 16) - 8;
+
+    const line = (values, color, dash) => `
+        <path d="${values.map((v, i) => `${i === 0 ? 'M' : 'L'}${(i * step).toFixed(1)},${y(v).toFixed(1)}`).join(' ')}"
+              fill="none" stroke="${color}" stroke-width="2"
+              ${dash ? `stroke-dasharray="${dash}"` : ''}></path>`;
+
+    const window = result.event_window;
+    const bandX = window[0] * step;
+    const bandW = Math.max(step, (window[1] - window[0]) * step);
+
+    el.hourlyChart.innerHTML = `
+        <rect x="${bandX.toFixed(1)}" y="0" width="${bandW.toFixed(1)}" height="${height}"
+              fill="rgba(99,102,241,0.18)"></rect>
+        ${baseline ? line(baseline, '#64748b', '4 3') : ''}
+        ${line(seed, '#10b981')}`;
+
+    el.hourlyChartLegend.textContent = baseline
+        ? `Green: event day (${result.event_date}). Grey: baseline (${result.baseline_date}), rescaled ×${result.summary.volume_scale}. Shaded: the event window.`
+        : `Green: event day (${result.event_date}). No baseline day, so the reference is the background profile of the outer ring. Shaded: the event window.`;
+}
+
+function renderReasons(result) {
+    const changed = result.nodes.filter((n) => {
+        const selected = state.selectedIds.has(n.node_id);
+        return (selected && !n.in_seed) || (!selected && n.in_seed) || n.reason === 'seed_dropped';
+    });
+
+    changed.sort((a, b) => b.excess - a.excess);
+
+    if (!changed.length) {
+        el.reasonList.innerHTML = '<p class="text-muted text-sm">The suggestion matches your polygon exactly.</p>';
+        return;
+    }
+
+    el.reasonList.innerHTML = changed.map((node) => {
+        const selected = state.selectedIds.has(node.node_id);
+        const label = !selected && node.in_seed ? 'Removed'
+            : node.reason === 'seed_dropped' ? 'Suggest removing' : REASON_LABELS[node.reason] || node.reason;
+        const color = !selected ? REASON_COLORS.excluded : (REASON_COLORS[node.reason] || REASON_COLORS.added_excess);
+
+        return `
+            <div class="po-reason" data-node="${node.node_id}" style="cursor:pointer;">
+                <span>
+                    <span class="po-legend-swatch" style="background:${color}"></span>
+                    ${escapeHtml(label)}
+                    <span class="po-reason-id">buffer_${node.node_id}</span>
+                </span>
+                <span class="font-mono text-xs">${Math.round(node.excess).toLocaleString('en-US')}</span>
+            </div>`;
+    }).join('');
+
+    el.reasonList.querySelectorAll('.po-reason').forEach((row) => {
+        row.addEventListener('click', () => {
+            const marker = review.markers[Number(row.dataset.node)];
+            if (marker) {
+                state.reviewMap.setView(marker.getLatLng(), Math.max(state.reviewMap.getZoom(), 16));
+                marker.openPopup();
+            }
+        });
+    });
+}
+
+// ==========================================
+// EDITING MODES
+// ==========================================
+
+el.layerSelect.addEventListener('change', () => {
+    drawNodes(state.result);
+    renderLegend();
+});
+
+function setMode(mode) {
+    review.mode = mode;
+    el.btnModeToggle.classList.toggle('po-mode-active', mode === 'toggle');
+    el.btnModeDraw.classList.toggle('po-mode-active', mode === 'draw');
+
+    if (review.drawHandler) {
+        review.drawHandler.disable();
+        review.drawHandler = null;
+    }
+
+    if (mode === 'draw') {
+        review.drawHandler = new L.Draw.Polygon(state.reviewMap, {
+            allowIntersection: false,
+            shapeOptions: { color: '#f59e0b' },
+        });
+        review.drawHandler.enable();
+    }
+}
+
+el.btnModeToggle.addEventListener('click', () => {
+    setMode(review.mode === 'toggle' ? 'view' : 'toggle');
+});
+
+el.btnModeDraw.addEventListener('click', () => {
+    setMode(review.mode === 'draw' ? 'view' : 'draw');
+});
+
+function toggleNode(nodeId) {
+    if (state.selectedIds.has(nodeId)) state.selectedIds.delete(nodeId);
+    else state.selectedIds.add(nodeId);
+
+    // Repaint immediately so the click feels instant, then fetch the outline.
+    refreshSelectionStyles();
+    renderCoverage();
+    renderReasons(state.result);
+    requestGeometry();
+}
+
+function refreshSelectionStyles() {
+    const layer = el.layerSelect.value;
+    const extent = layerExtent(state.result.nodes, layer);
+
+    state.result.nodes.forEach((node) => {
+        const marker = review.markers[node.node_id];
+        if (!marker) return;
+        const selected = state.selectedIds.has(node.node_id);
+        marker.setStyle({
+            radius: selected ? 6 : 4,
+            color: selected ? '#f8fafc' : 'rgba(255,255,255,0.25)',
+            weight: selected ? 1.5 : 1,
+            fillColor: nodeColor(node, layer, extent),
+            fillOpacity: selected ? 0.95 : 0.45,
+        });
+    });
+}
+
+async function requestGeometry() {
+    if (!state.selectedIds.size) {
+        drawSuggestedPolygon(null);
+        return;
+    }
+
+    const token = ++review.geometryToken;
+    try {
+        const res = await fetch('/api/polygon-optimizer/geometry', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                job_id: state.jobId,
+                node_ids: Array.from(state.selectedIds),
+            }),
+        });
+        const data = await res.json();
+
+        // A slower earlier response must not overwrite a newer selection.
+        if (token !== review.geometryToken) return;
+
+        if (data.success) {
+            state.currentGeometry = data.geometry;
+            drawSuggestedPolygon(data.geometry);
+        }
+    } catch (error) {
+        // Keep the previous outline; the next toggle retries.
+    }
+}
+
+// Draw manually: the drawn shape decides the node set, not the outline, so
+// the edit is resolved back into a set of nodes before anything is redrawn.
+function attachDrawHandlers() {
+    state.reviewMap.on(L.Draw.Event.CREATED, async (event) => {
+        const drawn = event.layer.toGeoJSON();
+        setMode('view');
+
+        try {
+            const res = await fetch('/api/polygon-optimizer/nodes-in-polygon', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ job_id: state.jobId, geometry: drawn }),
+            });
+            const data = await res.json();
+            if (!data.success) {
+                renderWarnings(el.reviewWarnings, [{ level: 'error', code: 'draw_failed', message: data.error }]);
+                return;
+            }
+
+            const before = new Set(state.selectedIds);
+            state.selectedIds = new Set(data.node_ids);
+
+            const added = data.node_ids.filter((id) => !before.has(id));
+            const removed = Array.from(before).filter((id) => !state.selectedIds.has(id));
+
+            refreshSelectionStyles();
+            renderCoverage();
+            renderReasons(state.result);
+            await requestGeometry();
+
+            renderWarnings(el.reviewWarnings, [{
+                level: 'info',
+                code: 'manual_edit',
+                message: `Your drawing selected ${data.node_ids.length} nodes: ` +
+                    `${added.length} came in and ${removed.length} dropped out.`,
+            }]);
+        } catch (error) {
+            renderWarnings(el.reviewWarnings, [{
+                level: 'error', code: 'draw_failed',
+                message: `The drawn area could not be read (${error.message}).`,
+            }]);
+        }
+    });
+}
+
+el.btnReset.addEventListener('click', () => {
+    state.selectedIds = new Set(state.result.nodes.filter((n) => n.selected).map((n) => n.node_id));
+    state.currentGeometry = state.result.geometry;
+    setMode('view');
+    renderReview();
+});
+
+el.btnRecompute.addEventListener('click', async () => {
+    show(el.recomputeSpinner);
+    el.btnRecompute.disabled = true;
+
+    try {
+        const res = await fetch('/api/polygon-optimizer/rescore', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                job_id: state.jobId,
+                event_window: [Number(el.windowStart.value), Number(el.windowEnd.value)],
+            }),
+        });
+        const data = await res.json();
+
+        if (!data.success) {
+            renderWarnings(el.reviewWarnings, [{ level: 'error', code: 'rescore_failed', message: data.error }]);
+            return;
+        }
+
+        state.result = data.result;
+        state.selectedIds = new Set(data.result.nodes.filter((n) => n.selected).map((n) => n.node_id));
+        state.currentGeometry = data.result.geometry;
+        el.windowSource.textContent = 'Set by you. The platform was not queried again.';
+        renderReview();
+    } catch (error) {
+        renderWarnings(el.reviewWarnings, [{
+            level: 'error', code: 'rescore_failed',
+            message: `The rescore failed (${error.message}).`,
+        }]);
+    } finally {
+        hide(el.recomputeSpinner);
+        el.btnRecompute.disabled = false;
+    }
+});
+
+el.btnAccept.addEventListener('click', () => {
+    const selectedCount = state.selectedIds.size;
+    el.exportSummary.textContent =
+        `${selectedCount} nodes, ${el.coverageAfter.textContent} of the event excess, ` +
+        `event window ${el.windowStart.value}h–${el.windowEnd.value}h on ${state.result.event_date}.`;
+    goToStep(5);
+});
+
+// ==========================================
+// STEP 5: EXPORT
+// ==========================================
+
+function buildExportGeojson() {
+    const rawId = el.exportId.value.trim() || '1';
+    const id = /^-?\d+$/.test(rawId) ? Number(rawId) : rawId;
+
+    return {
+        type: 'FeatureCollection',
+        features: [{
+            type: 'Feature',
+            properties: {
+                id,
+                name: el.exportName.value.trim() || 'optimized_area',
+                poly_type: 'core',
+            },
+            geometry: state.currentGeometry,
+        }],
+    };
+}
+
+el.btnDownloadGeojson.addEventListener('click', () => {
+    if (!state.currentGeometry) return;
+    const name = (el.exportName.value.trim() || 'optimized_area').replace(/[^\w.-]+/g, '_');
+    downloadBlob(`${name}.geojson`, JSON.stringify(buildExportGeojson(), null, 2), 'application/geo+json');
+});
+
+el.btnDownloadReport.addEventListener('click', async () => {
+    el.btnDownloadReport.disabled = true;
+    try {
+        const res = await fetch('/api/polygon-optimizer/report-csv', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                job_id: state.jobId,
+                node_ids: Array.from(state.selectedIds),
+            }),
+        });
+
+        const type = res.headers.get('content-type') || '';
+        if (type.includes('application/json')) {
+            const data = await res.json();
+            renderWarnings(el.reviewWarnings, [{
+                level: 'error', code: 'report_failed',
+                message: data.error || 'The audit report could not be built.',
+            }]);
+            return;
+        }
+
+        const text = await res.text();
+        const name = (state.result.project_name || 'polygon_optimizer');
+        downloadBlob(`${name}_audit.csv`, text, 'text/csv');
+    } finally {
+        el.btnDownloadReport.disabled = false;
+    }
+});

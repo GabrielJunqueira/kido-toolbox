@@ -80,6 +80,8 @@ class FakePlatform:
     suppressed counts.
     """
 
+    EVENT_DATE = "2026-06-22"
+
     def __init__(self, event_extra_nodes=(), reject=()):
         self.event_extra_nodes = set(event_extra_nodes)
         self.reject = set(reject)
@@ -134,8 +136,14 @@ class FakePlatform:
         metrics = [v for k, v in (params or []) if k == "metric"]
         rows = []
 
+        # The baseline day is an ordinary day: same background, no event.
+        queried_date = url.rstrip("/").split("/")[-1]
+        is_event_day = queried_date == self.EVENT_DATE
+
         for zone_id in self.zone_ids:
-            is_event = zone_id in self.seed_ids or zone_id in self.event_extra_nodes
+            is_event = is_event_day and (
+                zone_id in self.seed_ids or zone_id in self.event_extra_nodes
+            )
 
             if "arrival" in grouped:
                 for hour in range(24):
@@ -289,6 +297,16 @@ def test_a_baseline_day_is_queried_and_reported(node_file, monkeypatch):
     assert result["baseline_curve"] is not None
     states = {s["key"]: s["state"] for s in job["steps"]}
     assert states["query_baseline"] == "done"
+
+    # With a quiet baseline the event stands out clearly.
+    assert result["event_window"][0] <= 19 <= result["event_window"][1]
+    codes = [w["code"] for w in result["warnings"]]
+    assert "weak_event_signal" not in codes
+
+    distant = node_id_from_xy(cx + 4, cy)
+    selected = {n["node_id"] for n in result["nodes"] if n["selected"]}
+    assert distant in selected
+    assert result["summary"]["coverage_after"] > result["summary"]["coverage_before"]
 
 
 # ==========================================
