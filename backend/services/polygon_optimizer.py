@@ -26,6 +26,7 @@ import shapely.ops
 from pyproj import Transformer
 from shapely.geometry import mapping, shape
 
+from services import polygon_scoring
 from services.geo import get_utm_crs
 from services.nodes import NodeFileError, covers_bbox, query_bbox
 from services.tiles import tile_polygon
@@ -1250,11 +1251,120 @@ def run_platform_pipeline(job_id: str) -> None:
     score_job(job_id)
 
 
-def score_job(job_id: str) -> None:
+def score_job(
+    job_id: str,
+    window_override: Optional[Tuple[int, int]] = None,
+    selection_override: Optional[List[int]] = None,
+    params_override: Optional[Dict[str, Any]] = None,
+    finish: bool = True,
+) -> Dict[str, Any]:
     """
-    Turn the raw matrices into the suggestion. Filled in by the scoring stage.
+    Turn the raw matrices into a suggestion.
+
+    Called at the end of the pipeline and again by /rescore, which reuses the
+    stored matrices and never touches the Kido API.
     """
-    raise OptimizerError(
-        "The scoring stage is not wired up in this build yet. The diagnostic project "
-        "was created and the stays were read successfully."
+    job = get_job(job_id)
+    if job is None:
+        raise OptimizerError(
+            "This analysis is no longer available. Jobs are kept for two hours and are "
+            "lost when the Space hibernates. Start a new run."
+        )
+
+    raw = job["raw"]
+    if "event_matrix" not in raw:
+        raise OptimizerError("This analysis has no data to score yet.")
+
+    params = dict(job["request"]["params"])
+    if params_override:
+        params.update(params_override)
+
+    result = polygon_scoring.analyse(
+        frame=raw["frame"],
+        event_matrix=raw["event_matrix"],
+        event_suppressed=raw["event_suppressed"],
+        baseline_matrix=raw.get("baseline_matrix"),
+        event_daily=raw.get("event_daily"),
+        baseline_daily=raw.get("baseline_daily"),
+        params=params,
+        window_override=window_override,
+        selection_override=selection_override,
     )
+
+    result["project_id"] = raw.get("project_id")
+    result["project_name"] = raw.get("project_name")
+    result["event_date"] = job["request"]["event_date"]
+    result["baseline_date"] = job["request"].get("baseline_date")
+    result["primary_metric"] = job["request"]["primary_metric"]
+    result["buffer_m"] = job["request"]["buffer_m"]
+    result["input_geometry"] = mapping(raw["seed_geometry"])
+    result["buffer_geometry"] = mapping(raw["buffer_geometry"])
+    result["warnings"] = list(raw.get("warnings", [])) + result["warnings"]
+
+    if finish:
+        summary = result["summary"]
+        set_step(
+            job_id,
+            "score",
+            "done",
+            "{} nodes selected, {:.0%} of the excess".format(
+                summary["selected_count"], summary["coverage_after"]
+            ),
+        )
+        finish_job(job_id, result)
+
+    return result
+
+
+def geometry_for_nodes(job_id: str, node_ids: List[int]) -> Dict[str, Any]:
+    """
+    Dissolve an arbitrary set of nodes into a polygon.
+
+    Used by the Toggle nodes mode, which rebuilds the outline on every click.
+    """
+    job = get_job(job_id)
+    if job is None:
+        raise OptimizerError("This analysis is no longer available. Start a new run.")
+
+    frame = job["raw"]["frame"]
+    wanted = {int(v) for v in node_ids}
+    selected = frame["node_id"].isin(wanted).values
+
+    if not selected.any():
+        raise OptimizerError("No nodes are selected, so there is no polygon to build.")
+
+    params = job["request"]["params"]
+    geometry, warnings = polygon_scoring.build_geometry(
+        frame["x"].values,
+        frame["y"].values,
+        frame["lon"].values,
+        frame["lat"].values,
+        selected,
+        float(params.get("closing_radius_m", 10.0)),
+        float(params.get("simplify_tolerance_m", 5.0)),
+    )
+    return {"geometry": geometry, "warnings": warnings, "node_count": int(selected.sum())}
+
+
+def nodes_in_geometry(job_id: str, geometry: Dict[str, Any]) -> List[int]:
+    """
+    Return the candidate nodes contained in a hand-drawn geometry.
+
+    Used by the Draw manually mode, so the user immediately sees which nodes
+    the edit brought in and which it left out.
+    """
+    job = get_job(job_id)
+    if job is None:
+        raise OptimizerError("This analysis is no longer available. Start a new run.")
+
+    try:
+        drawn = shape(geometry.get("geometry", geometry))
+    except Exception as exc:
+        raise OptimizerError("The drawn geometry could not be read ({}).".format(exc))
+
+    frame = job["raw"]["frame"]
+    points = gpd.GeoSeries(
+        gpd.points_from_xy(frame["lon"], frame["lat"]), crs="EPSG:4326"
+    )
+    inside = points.within(drawn).values
+    return [int(v) for v in frame["node_id"].values[inside]]
