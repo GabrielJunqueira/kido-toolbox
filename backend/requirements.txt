@@ -10,3 +10,4 @@ geopandas
 shapely
 pyproj
 scikit-learn
+pyarrow
