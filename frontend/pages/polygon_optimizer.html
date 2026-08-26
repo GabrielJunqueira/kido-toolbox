@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Event Polygon Optimizer - Measure event attendance per projection node and propose an optimised polygon">
+    <title>Event Polygon Optimizer | Kido Toolbox</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Leaflet Draw CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+
+    <style>
+        /* ===== Layout: content + sticky to-do sidebar ===== */
+        .po-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: var(--space-xl);
+            align-items: start;
+        }
+
+        @media (max-width: 1100px) {
+            .po-layout {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        /* On Review and Export the progress list has nothing left to report,
+           so the map takes the whole width. */
+        .po-layout.po-wide {
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .po-layout.po-wide .po-todo {
+            display: none;
+        }
+
+        .po-todo {
+            position: sticky;
+            top: var(--space-lg);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+        }
+
+        .po-todo h3 {
+            font-size: 0.95rem;
+            margin-bottom: var(--space-md);
+            color: var(--text-primary);
+        }
+
+        .po-todo-group {
+            margin-bottom: var(--space-md);
+        }
+
+        .po-todo-group-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            margin-bottom: var(--space-xs);
+        }
+
+        .po-todo-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+            padding: var(--space-xs) 0;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            transition: color var(--transition-fast);
+        }
+
+        .po-todo-item .po-todo-mark {
+            flex: 0 0 16px;
+            height: 16px;
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .po-todo-item .po-todo-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .po-todo-detail {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-top: 1px;
+        }
+
+        .po-todo-item.state-running {
+            color: var(--text-primary);
+        }
+
+        .po-todo-item.state-done {
+            color: var(--text-secondary);
+        }
+
+        .po-todo-item.state-done .po-todo-detail {
+            color: var(--success);
+        }
+
+        .po-todo-item.state-error {
+            color: var(--error);
+        }
+
+        .po-todo-item.state-skipped {
+            opacity: 0.45;
+        }
+
+        .po-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: var(--radius-full);
+            background: var(--text-muted);
+            opacity: 0.4;
+        }
+
+        .po-spin {
+            width: 12px;
+            height: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-top-color: var(--accent-primary);
+            border-radius: var(--radius-full);
+            animation: po-rotate 0.8s linear infinite;
+        }
+
+        @keyframes po-rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ===== Maps ===== */
+        .po-map {
+            height: 420px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            background: var(--bg-tertiary);
+        }
+
+        .po-map-tall {
+            height: 620px;
+        }
+
+        /* ===== Review split ===== */
+        .po-review {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 380px;
+            gap: var(--space-lg);
+            align-items: start;
+        }
+
+        @media (max-width: 1200px) {
+            .po-review {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .po-map-tall {
+                height: 440px;
+            }
+        }
+
+        .po-panel {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-md);
+        }
+
+        .po-panel-title {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            margin-bottom: var(--space-sm);
+        }
+
+        /* ===== Coverage headline ===== */
+        .po-coverage {
+            display: flex;
+            align-items: baseline;
+            gap: var(--space-md);
+            margin-bottom: var(--space-sm);
+        }
+
+        .po-coverage-value {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .po-coverage-before .po-coverage-value {
+            color: var(--warning);
+        }
+
+        .po-coverage-after .po-coverage-value {
+            color: var(--success);
+        }
+
+        .po-coverage-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== Legend ===== */
+        .po-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-top: var(--space-sm);
+        }
+
+        .po-legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        .po-legend-swatch {
+            width: 10px;
+            height: 10px;
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+        }
+
+        /* ===== Reason list ===== */
+        .po-reasons {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .po-reason {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-sm);
+            padding: var(--space-xs) 0;
+            border-bottom: 1px solid var(--glass-border);
+            font-size: 0.78rem;
+        }
+
+        .po-reason:last-child {
+            border-bottom: none;
+        }
+
+        .po-reason-id {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== Advanced panel ===== */
+        .po-advanced {
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            background: var(--glass-bg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .po-advanced summary {
+            cursor: pointer;
+            padding: var(--space-md);
+            font-weight: 500;
+            color: var(--text-secondary);
+            list-style: none;
+        }
+
+        .po-advanced summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .po-advanced summary::before {
+            content: "▸ ";
+            color: var(--text-muted);
+        }
+
+        .po-advanced[open] summary::before {
+            content: "▾ ";
+        }
+
+        .po-advanced-body {
+            padding: 0 var(--space-md) var(--space-md);
+        }
+
+        .po-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--space-md);
+        }
+
+        /* ===== Range with value ===== */
+        .po-range-row {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .po-range-row input[type="range"] {
+            flex: 1;
+            accent-color: var(--accent-primary);
+        }
+
+        .po-range-value {
+            min-width: 74px;
+            text-align: right;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-primary);
+        }
+
+        /* ===== Charts ===== */
+        .po-chart {
+            width: 100%;
+            height: 150px;
+            display: block;
+        }
+
+        .po-sparkline {
+            width: 190px;
+            height: 44px;
+            display: block;
+        }
+
+        .po-popup {
+            font-size: 0.78rem;
+            line-height: 1.5;
+        }
+
+        .po-popup table td {
+            padding: 0 6px 0 0;
+        }
+
+        .po-popup td.po-popup-val {
+            font-family: var(--font-mono);
+            text-align: right;
+        }
+
+        .po-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+        }
+
+        .po-mode-active {
+            box-shadow: 0 0 0 2px var(--accent-primary);
+        }
+
+        #main-container.po-roomy {
+            max-width: 1600px;
+        }
+
+        .po-elapsed {
+            font-family: var(--font-mono);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="/" class="navbar-brand">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                </svg>
+                Kido Toolbox
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/aoi" class="nav-link">AOI Generator</a></li>
+                <li><a href="/scaling-factor" class="nav-link">Scaling Factor</a></li>
+                <li><a href="/li-project" class="nav-link">LI Creator</a></li>
+                <li><a href="/polygon-optimizer" class="nav-link active">Polygon Optimizer</a></li>
+                <li><a href="/report" class="nav-link">AOI Report</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mt-xl mb-xl" id="main-container">
+        <div class="mb-lg">
+            <h1 style="font-size: 1.9rem; margin-bottom: var(--space-xs);">Event Polygon Optimizer</h1>
+            <p class="text-secondary">
+                Mobile network data lands on z=18 projection nodes, and the nodes that record an event are not
+                always the ones closest to it. This tool measures the real per-node attendance on a past event day
+                and proposes a polygon backed by evidence, not by eye.
+            </p>
+        </div>
+
+        <!-- Stepper -->
+        <div class="stepper" id="stepper">
+            <div class="stepper-step active" data-step="1">
+                <div class="stepper-number">1</div>
+                <div class="stepper-label">Setup</div>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="2">
+                <div class="stepper-number">2</div>
+                <div class="stepper-label">Input</div>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="3">
+                <div class="stepper-number">3</div>
+                <div class="stepper-label">Processing</div>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="4">
+                <div class="stepper-number">4</div>
+                <div class="stepper-label">Review</div>
+            </div>
+            <div class="stepper-line"></div>
+            <div class="stepper-step" data-step="5">
+                <div class="stepper-number">5</div>
+                <div class="stepper-label">Export</div>
+            </div>
+        </div>
+
+        <div class="po-layout">
+            <div>
+                <!-- ================= Step 1: Setup ================= -->
+                <div class="step-content active" id="step-1">
+                    <div class="step-header">
+                        <h2 class="step-title">Sign in and load the node file</h2>
+                        <p class="step-description">
+                            Pick the country first. The projection node file is per country and is uploaded every
+                            session, because it is too large to keep inside the Space.
+                        </p>
+                    </div>
+
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label class="form-label required" for="country">Country</label>
+                            <select id="country" class="form-select" required>
+                                <option value="">Select a country…</option>
+                                <option value="br">🇧🇷 Brazil (claro)</option>
+                                <option value="ar">🇦🇷 Argentina (claro)</option>
+                                <option value="uy">🇺🇾 Uruguay (claro)</option>
+                                <option value="py">🇵🇾 Paraguay (claro)</option>
+                                <option value="co">🇨🇴 Colombia (kido)</option>
+                                <option value="pe">🇵🇪 Peru (kido)</option>
+                                <option value="mx">🇲🇽 Mexico (kido)</option>
+                                <option value="es">🇪🇸 Spain (kido)</option>
+                                <option value="ch">🇨🇭 Switzerland (kido)</option>
+                                <option value="pt">🇵🇹 Portugal (altice)</option>
+                                <option value="pa">🇵🇦 Panama (cw)</option>
+                                <option value="qa">🇶🇦 Qatar (ooredoo)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required" for="username">Email</label>
+                            <input type="email" id="username" class="form-input" placeholder="you@kidodynamics.com"
+                                autocomplete="username" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required" for="password">Password</label>
+                            <input type="password" id="password" class="form-input" placeholder="••••••••"
+                                autocomplete="current-password" required>
+                            <p class="form-hint">Credentials are used only to obtain an access token. Nothing is
+                                stored on disk or written to logs.</p>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="btn-login">
+                            <span id="login-spinner" class="spinner hidden"></span>
+                            Sign in
+                        </button>
+                    </form>
+
+                    <div id="login-error" class="alert alert-error hidden mt-md">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M15 9l-6 6M9 9l6 6" />
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-message" id="login-error-message"></div>
+                        </div>
+                    </div>
+
+                    <!-- Node file -->
+                    <div id="nodes-section" class="hidden mt-xl">
+                        <div class="step-header">
+                            <h2 class="step-title">Projection node file</h2>
+                            <p class="step-description">
+                                Upload the projection node export for this country. A zip is strongly preferred:
+                                the CSV is around 143 MB while the zip is around 24 MB.
+                            </p>
+                        </div>
+
+                        <div id="nodes-cached" class="alert alert-success hidden">
+                            <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                <polyline points="22 4 12 14.01 9 11.01" />
+                            </svg>
+                            <div class="alert-content">
+                                <div class="alert-title">Nodes already loaded</div>
+                                <div class="alert-message" id="nodes-cached-message"></div>
+                                <button type="button" class="btn btn-secondary btn-sm mt-sm" id="btn-replace-nodes">
+                                    Replace file
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="nodes-upload-group">
+                            <label class="form-label required">Node file</label>
+                            <div class="file-upload-area" id="nodes-upload-area">
+                                <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="17 8 12 3 7 8" />
+                                    <line x1="12" y1="3" x2="12" y2="15" />
+                                </svg>
+                                <p style="color: var(--text-primary); font-weight: 500; margin-bottom: 0.25rem;">
+                                    Click or drag the node file here
+                                </p>
+                                <p class="text-muted text-sm">.zip (recommended), .csv or .csv.gz — max 200 MB</p>
+                                <input type="file" id="nodes-file" accept=".zip,.csv,.gz,.txt">
+                            </div>
+                            <p class="form-hint" id="nodes-hint">
+                                Required columns: id, longitude, latitude, x, y. The file is cached in temporary
+                                storage, which the Space clears when it hibernates.
+                            </p>
+                        </div>
+
+                        <div id="nodes-progress" class="flex items-center gap-md hidden mb-md">
+                            <div class="spinner"></div>
+                            <span class="text-secondary" id="nodes-progress-text">Reading the node file…</span>
+                        </div>
+
+                        <div id="nodes-error" class="alert alert-error hidden">
+                            <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M15 9l-6 6M9 9l6 6" />
+                            </svg>
+                            <div class="alert-content">
+                                <div class="alert-message" id="nodes-error-message"></div>
+                            </div>
+                        </div>
+
+                        <div class="step-footer">
+                            <span></span>
+                            <button type="button" class="btn btn-primary" id="btn-next-1" disabled>
+                                Continue
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= Step 2: Input ================= -->
+                <div class="step-content" id="step-2">
+                    <div class="step-header">
+                        <h2 class="step-title">Event area and dates</h2>
+                        <p class="step-description">
+                            Draw the approximate event area or upload a GeoJSON, then tell the tool which day the
+                            event happened.
+                        </p>
+                    </div>
+
+                    <div class="tabs">
+                        <button type="button" class="tab-btn active" data-tab="draw">✏️ Draw on the map</button>
+                        <button type="button" class="tab-btn" data-tab="upload">📁 Upload GeoJSON</button>
+                    </div>
+
+                    <div class="tab-content active" id="tab-draw">
+                        <p class="text-secondary text-sm mb-sm">
+                            Use the polygon or rectangle tool on the map. Drawing again replaces the current area.
+                        </p>
+                    </div>
+
+                    <div class="tab-content" id="tab-upload">
+                        <div class="form-group">
+                            <div class="file-upload-area" id="geojson-upload-area">
+                                <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                    <polyline points="17 8 12 3 7 8" />
+                                    <line x1="12" y1="3" x2="12" y2="15" />
+                                </svg>
+                                <p style="color: var(--text-primary); font-weight: 500; margin-bottom: 0.25rem;">
+                                    Click or drag a .geojson file here
+                                </p>
+                                <p class="text-muted text-sm">EPSG:4326, one Polygon or MultiPolygon</p>
+                                <input type="file" id="geojson-file" accept=".geojson,.json">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="po-map mb-md" id="input-map"></div>
+
+                    <div id="area-summary" class="alert alert-info hidden">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 16v-4M12 8h.01" />
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-message" id="area-summary-message"></div>
+                        </div>
+                    </div>
+
+                    <div class="po-grid-2 mt-md">
+                        <div class="form-group">
+                            <label class="form-label required" for="event-date">Event date</label>
+                            <input type="date" id="event-date" class="form-input" required>
+                            <p class="form-hint">A past day when the event happened.</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="primary-metric">Primary metric</label>
+                            <select id="primary-metric" class="form-select">
+                                <option value="total_wanderers">total_wanderers (5 min or more)</option>
+                                <option value="total_visitors">total_visitors (30 min or more)</option>
+                                <option value="total_passerbys">total_passerbys</option>
+                            </select>
+                            <p class="form-hint">All three are always queried; this one drives the score.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input type="checkbox" id="use-baseline" class="form-check-input">
+                            <label class="form-check-label" for="use-baseline">
+                                Compare with a baseline day (recommended)
+                            </label>
+                        </div>
+                        <div id="baseline-group" class="hidden mt-sm">
+                            <input type="date" id="baseline-date" class="form-input" style="max-width: 260px;">
+                            <p class="form-hint">
+                                Suggested: the same weekday four weeks earlier. Edit it if that day was unusual.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="buffer-m">Collection radius</label>
+                        <div class="po-range-row">
+                            <input type="range" id="buffer-m" min="200" max="1500" step="50" value="500">
+                            <span class="po-range-value" id="buffer-m-value">500 m</span>
+                        </div>
+                        <p class="form-hint">
+                            How far beyond your polygon to look for nodes that recorded the event.
+                        </p>
+                    </div>
+
+                    <details class="po-advanced">
+                        <summary>Advanced</summary>
+                        <div class="po-advanced-body">
+                            <p class="text-muted text-sm mb-md">
+                                Defaults come from measurements on production data. Change them only when you know
+                                why.
+                            </p>
+
+                            <div class="po-grid-2">
+                                <div class="form-group">
+                                    <label class="form-label" for="hour-start">First valid hour</label>
+                                    <input type="number" id="hour-start" class="form-input" min="0" max="23" value="3">
+                                    <p class="form-hint">Hours 0-2 are inflated by people already in the area.</p>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="hour-end">Last valid hour</label>
+                                    <input type="number" id="hour-end" class="form-input" min="0" max="23" value="22">
+                                    <p class="form-hint">Hour 23 is structurally depressed by the day cutoff.</p>
+                                </div>
+                            </div>
+
+                            <div id="hour-23-warning" class="alert alert-warning hidden mb-md">
+                                <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                                    <line x1="12" y1="9" x2="12" y2="13" />
+                                    <line x1="12" y1="17" x2="12.01" y2="17" />
+                                </svg>
+                                <div class="alert-content">
+                                    <div class="alert-message">
+                                        Hour 23 is under-counted by construction: a stay starting at 23:00 has little
+                                        time to reach the minimum duration before the day ends. Include it only for
+                                        events that run past midnight.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="po-panel-title mt-md">Score weights</div>
+                            <div class="po-grid-2">
+                                <div class="form-group">
+                                    <label class="form-label" for="w-excess">Excess</label>
+                                    <input type="number" id="w-excess" class="form-input" step="0.05" min="0" max="1"
+                                        value="0.40">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="w-similarity">Curve similarity</label>
+                                    <input type="number" id="w-similarity" class="form-input" step="0.05" min="0"
+                                        max="1" value="0.30">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="w-peak">Peak alignment</label>
+                                    <input type="number" id="w-peak" class="form-input" step="0.05" min="0" max="1"
+                                        value="0.15">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="w-proximity">Proximity</label>
+                                    <input type="number" id="w-proximity" class="form-input" step="0.05" min="0"
+                                        max="1" value="0.15">
+                                </div>
+                            </div>
+                            <p class="form-hint" id="weights-hint">
+                                Without a baseline day the weights shift to 0.30 / 0.35 / 0.20 / 0.15, because excess
+                                gets less reliable and the shape of the curve matters more.
+                            </p>
+
+                            <div class="po-panel-title mt-md">Thresholds</div>
+                            <div class="po-grid-2">
+                                <div class="form-group">
+                                    <label class="form-label" for="proximity-length">Proximity decay L (m)</label>
+                                    <input type="number" id="proximity-length" class="form-input" step="50" min="50"
+                                        value="400">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="fill-threshold">Hole fill neighbours</label>
+                                    <input type="number" id="fill-threshold" class="form-input" min="1" max="8"
+                                        value="6">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="min-component-share">Min component share</label>
+                                    <input type="number" id="min-component-share" class="form-input" step="0.01"
+                                        min="0" max="1" value="0.05">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="target-count">Target node count</label>
+                                    <input type="number" id="target-count" class="form-input" min="1" max="100"
+                                        value="10">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="closing-radius">Closing radius (m)</label>
+                                    <input type="number" id="closing-radius" class="form-input" step="1" min="0"
+                                        value="10">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="simplify-tolerance">Simplify tolerance (m)</label>
+                                    <input type="number" id="simplify-tolerance" class="form-input" step="1" min="0"
+                                        value="5">
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <div id="input-error" class="alert alert-error hidden">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M15 9l-6 6M9 9l6 6" />
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-message" id="input-error-message"></div>
+                        </div>
+                    </div>
+
+                    <div id="input-warnings"></div>
+
+                    <div class="step-footer">
+                        <button type="button" class="btn btn-secondary" id="btn-back-2">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7" />
+                            </svg>
+                            Back
+                        </button>
+                        <div class="flex gap-sm">
+                            <button type="button" class="btn btn-secondary" id="btn-preview" disabled>
+                                <span id="preview-spinner" class="spinner hidden"></span>
+                                Preview nodes
+                            </button>
+                            <button type="button" class="btn btn-primary" id="btn-run" disabled>
+                                Run analysis
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= Step 3: Processing ================= -->
+                <div class="step-content" id="step-3">
+                    <div class="step-header">
+                        <h2 class="step-title">Running the analysis</h2>
+                        <p class="step-description">
+                            A temporary diagnostic project is created on the platform with one zone per node, then
+                            queried for the event day. Validation and creation can take several minutes in large
+                            countries.
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-md mb-lg">
+                        <div class="spinner spinner-lg" id="run-spinner"></div>
+                        <div>
+                            <div class="font-semibold" id="run-headline">Working…</div>
+                            <div class="po-elapsed" id="run-elapsed">0s elapsed</div>
+                        </div>
+                    </div>
+
+                    <div id="project-trace" class="alert alert-info hidden">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 16v-4M12 8h.01" />
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-title">Diagnostic project</div>
+                            <div class="alert-message font-mono text-sm" id="project-trace-message"></div>
+                        </div>
+                    </div>
+
+                    <div id="run-error" class="alert alert-error hidden">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M15 9l-6 6M9 9l6 6" />
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-title">The analysis stopped</div>
+                            <div class="alert-message" id="run-error-message"></div>
+                        </div>
+                    </div>
+
+                    <div class="step-footer">
+                        <button type="button" class="btn btn-secondary hidden" id="btn-back-3">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7" />
+                            </svg>
+                            Back to input
+                        </button>
+                        <span></span>
+                    </div>
+                </div>
+
+                <!-- ================= Step 4: Review ================= -->
+                <div class="step-content" id="step-4">
+                    <div class="step-header">
+                        <h2 class="step-title">Review the suggestion</h2>
+                        <p class="step-description">
+                            What matters is the set of nodes, not the outline. Toggle nodes on and off and the
+                            polygon rebuilds around them.
+                        </p>
+                    </div>
+
+                    <div class="po-review">
+                        <div>
+                            <div class="po-toolbar">
+                                <select id="layer-select" class="form-select" style="max-width: 190px;">
+                                    <option value="decision">Decision</option>
+                                    <option value="excess">Excess</option>
+                                    <option value="similarity">Similarity</option>
+                                    <option value="volume">Raw volume</option>
+                                </select>
+                                <button type="button" class="btn btn-secondary btn-sm" id="btn-mode-toggle">
+                                    Toggle nodes
+                                </button>
+                                <button type="button" class="btn btn-secondary btn-sm" id="btn-mode-draw">
+                                    Draw manually
+                                </button>
+                                <button type="button" class="btn btn-ghost btn-sm" id="btn-reset">
+                                    Reset to suggestion
+                                </button>
+                            </div>
+
+                            <div class="po-map po-map-tall" id="review-map"></div>
+                            <div class="po-legend" id="map-legend"></div>
+                        </div>
+
+                        <div>
+                            <div class="po-panel">
+                                <div class="po-panel-title">Event excess captured</div>
+                                <div class="po-coverage po-coverage-before">
+                                    <span class="po-coverage-value" id="coverage-before">–</span>
+                                    <span class="po-coverage-label">your polygon</span>
+                                </div>
+                                <div class="po-coverage po-coverage-after">
+                                    <span class="po-coverage-value" id="coverage-after">–</span>
+                                    <span class="po-coverage-label">current selection</span>
+                                </div>
+                                <p class="text-secondary text-sm" id="coverage-detail"></p>
+                            </div>
+
+                            <div class="po-panel">
+                                <div class="po-panel-title">Arrivals by hour</div>
+                                <svg class="po-chart" id="hourly-chart" viewBox="0 0 380 150"
+                                    preserveAspectRatio="none"></svg>
+                                <p class="text-muted text-xs mt-sm" id="hourly-chart-legend"></p>
+                            </div>
+
+                            <div class="po-panel">
+                                <div class="po-panel-title">Event window</div>
+                                <div class="flex items-center gap-sm">
+                                    <input type="number" id="window-start" class="form-input" min="0" max="23"
+                                        style="width: 80px;">
+                                    <span class="text-muted">to</span>
+                                    <input type="number" id="window-end" class="form-input" min="0" max="23"
+                                        style="width: 80px;">
+                                    <button type="button" class="btn btn-secondary btn-sm" id="btn-recompute">
+                                        <span id="recompute-spinner" class="spinner hidden"></span>
+                                        Recompute
+                                    </button>
+                                </div>
+                                <p class="form-hint" id="window-source"></p>
+                            </div>
+
+                            <div class="po-panel">
+                                <div class="po-panel-title">Why each node changed</div>
+                                <div class="po-reasons" id="reason-list"></div>
+                            </div>
+
+                            <div id="review-warnings"></div>
+                        </div>
+                    </div>
+
+                    <div class="step-footer">
+                        <button type="button" class="btn btn-secondary" id="btn-back-4">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7" />
+                            </svg>
+                            Back to input
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btn-accept">
+                            Accept suggestion
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ================= Step 5: Export ================= -->
+                <div class="step-content" id="step-5">
+                    <div class="step-header">
+                        <h2 class="step-title">Export</h2>
+                        <p class="step-description">
+                            A single Feature with poly_type "core", ready to drop into a new project.
+                        </p>
+                    </div>
+
+                    <div class="po-grid-2">
+                        <div class="form-group">
+                            <label class="form-label" for="export-id">Feature id</label>
+                            <input type="text" id="export-id" class="form-input" value="1">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="export-name">Feature name</label>
+                            <input type="text" id="export-name" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="po-panel">
+                        <div class="po-panel-title">Final selection</div>
+                        <p class="text-secondary" id="export-summary"></p>
+                    </div>
+
+                    <div class="flex gap-sm flex-wrap mb-lg">
+                        <button type="button" class="btn btn-primary" id="btn-download-geojson">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="7 10 12 15 17 10" />
+                                <line x1="12" y1="15" x2="12" y2="3" />
+                            </svg>
+                            Download GeoJSON
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="btn-download-report">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg>
+                            Download analysis report (CSV)
+                        </button>
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                            <line x1="12" y1="9" x2="12" y2="13" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <div class="alert-content">
+                            <div class="alert-title">Clean up the diagnostic project</div>
+                            <div class="alert-message">
+                                The tool does not delete it for you. Remove it from the platform when you are done.
+                                <div class="font-mono text-sm mt-sm" id="export-project-trace"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-footer">
+                        <button type="button" class="btn btn-secondary" id="btn-back-5">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7" />
+                            </svg>
+                            Back to review
+                        </button>
+                        <button type="button" class="btn btn-ghost" id="btn-restart">Start another analysis</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= To-do sidebar ================= -->
+            <aside class="po-todo" id="todo-sidebar">
+                <h3>Progress</h3>
+                <div id="todo-groups"></div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Leaflet Draw JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <!-- Page logic -->
+    <script src="/js/polygon_optimizer.js"></script>
+</body>
+
+</html>
