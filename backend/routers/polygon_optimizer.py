@@ -4,9 +4,12 @@ API endpoints for measuring event attendance per projection node and
 proposing an optimised analysis polygon.
 """
 
+import csv
+import io
 from typing import Any, Dict, List, Optional
 
 from fastapi import APIRouter, BackgroundTasks, File, Form, UploadFile
+from fastapi.responses import Response
 from pydantic import BaseModel
 from shapely.geometry import mapping
 
@@ -20,8 +23,11 @@ from services.polygon_optimizer import (
     collect_nodes,
     create_job,
     extract_input_polygon,
+    geometry_for_nodes,
     job_status,
+    nodes_in_geometry,
     run_job,
+    score_job,
 )
 
 router = APIRouter(prefix="/api/polygon-optimizer", tags=["polygon-optimizer"])
@@ -201,3 +207,129 @@ async def status(job_id: str):
                      "hours and are lost when the Space hibernates. Start a new run.",
         }
     return {"success": True, **payload}
+
+
+# ==========================================
+# Review endpoints
+# ==========================================
+
+class RescoreRequest(BaseModel):
+    job_id: str
+    event_window: Optional[List[int]] = None
+    params: Optional[OptimizerParams] = None
+
+
+class GeometryRequest(BaseModel):
+    job_id: str
+    node_ids: List[int]
+
+
+class NodesInPolygonRequest(BaseModel):
+    job_id: str
+    geometry: Dict[str, Any]
+
+
+class ReportRequest(BaseModel):
+    job_id: str
+    node_ids: Optional[List[int]] = None
+
+
+@router.post("/rescore")
+async def rescore(request: RescoreRequest):
+    """
+    Score the stored data again with a different event window or parameters.
+
+    Never calls the Kido API: the raw matrices live on the job.
+    """
+    try:
+        window = None
+        if request.event_window and len(request.event_window) == 2:
+            window = (int(request.event_window[0]), int(request.event_window[1]))
+
+        result = score_job(
+            request.job_id,
+            window_override=window,
+            params_override=request.params.dict() if request.params else None,
+            finish=False,
+        )
+        return {"success": True, "result": result}
+    except OptimizerError as exc:
+        return {"success": False, "error": str(exc)}
+    except Exception as exc:
+        return {"success": False, "error": "The rescore failed: {}".format(exc)}
+
+
+@router.post("/geometry")
+async def geometry(request: GeometryRequest):
+    """Dissolve a hand-picked set of nodes into a polygon."""
+    try:
+        return {"success": True, **geometry_for_nodes(request.job_id, request.node_ids)}
+    except OptimizerError as exc:
+        return {"success": False, "error": str(exc)}
+    except Exception as exc:
+        return {"success": False, "error": "The polygon could not be rebuilt: {}".format(exc)}
+
+
+@router.post("/nodes-in-polygon")
+async def nodes_in_polygon(request: NodesInPolygonRequest):
+    """Return the candidate nodes contained in a hand-drawn geometry."""
+    try:
+        return {"success": True, "node_ids": nodes_in_geometry(request.job_id, request.geometry)}
+    except OptimizerError as exc:
+        return {"success": False, "error": str(exc)}
+    except Exception as exc:
+        return {"success": False, "error": "The drawn area could not be read: {}".format(exc)}
+
+
+REPORT_COLUMNS = [
+    "node_id", "x", "y", "lon", "lat", "in_seed", "in_outer_ring", "dist_m",
+    "selected", "reason", "rank", "score",
+    "excess", "ratio", "similarity", "peak_hour", "peak_align", "proximity",
+    "coverage_ratio", "low_confidence", "component_flagged",
+    "total_event", "total_baseline",
+    "total_wanderers", "total_visitors", "total_passerbys",
+]
+
+
+@router.post("/report-csv")
+async def report_csv(request: ReportRequest):
+    """
+    Build the audit CSV: one row per candidate node with every computed metric,
+    plus the hourly curves, so the analysis can be checked outside the tool.
+    """
+    try:
+        selection = set(request.node_ids or [])
+        result = score_job(
+            request.job_id,
+            selection_override=sorted(selection) if selection else None,
+            finish=False,
+        )
+    except OptimizerError as exc:
+        return {"success": False, "error": str(exc)}
+
+    buffer = io.StringIO()
+    hour_columns = ["event_h{:02d}".format(h) for h in range(24)]
+    baseline_columns = ["baseline_h{:02d}".format(h) for h in range(24)]
+    writer = csv.writer(buffer)
+    writer.writerow(REPORT_COLUMNS + hour_columns + baseline_columns)
+
+    for node in result["nodes"]:
+        daily = node.get("total_event_daily") or {}
+        writer.writerow([
+            node["node_id"], node["x"], node["y"], node["lon"], node["lat"],
+            node["in_seed"], node["in_outer_ring"], node["dist_m"],
+            node["selected"], node["reason"], node["rank"], node["score"],
+            node["excess"], node["ratio"], node["similarity"], node["peak_hour"],
+            node["peak_align"], node["proximity"], node["coverage_ratio"],
+            node["low_confidence"], node["component_flagged"],
+            node["total_event"], node["total_baseline"],
+            daily.get("total_wanderers"), daily.get("total_visitors"),
+            daily.get("total_passerbys"),
+        ] + node["hourly_event"] + (node["hourly_baseline"] or [""] * 24))
+
+    filename = "{}_audit.csv".format(result.get("project_name") or "polygon_optimizer")
+    return Response(
+        content=buffer.getvalue(),
+        media_type="text/csv",
+        headers={"Content-Disposition": 'attachment; filename="{}"'.format(filename)},
+    )
