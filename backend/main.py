@@ -8,7 +8,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
-from routers import aoi, aoi_generator, anonymizer, editor, scaling_factor, li_project, report, tourism_report, retail_report, geojson_validator
+from routers import aoi, aoi_generator, anonymizer, editor, scaling_factor, li_project, polygon_optimizer, report, tourism_report, retail_report, geojson_validator
 from services.auth import login_kido
 
 # Initialize FastAPI app
@@ -34,6 +34,7 @@ app.include_router(anonymizer.router)
 app.include_router(editor.router)
 app.include_router(scaling_factor.router)
 app.include_router(li_project.router)
+app.include_router(polygon_optimizer.router)
 app.include_router(report.router)
 app.include_router(tourism_report.router)
 app.include_router(retail_report.router)
@@ -239,6 +240,15 @@ async def editor_page():
 async def li_project_page():
     """Serve the LI Project Creator page."""
     page_path = os.path.join(FRONTEND_DIR, "pages", "li_project.html")
+    if os.path.exists(page_path):
+        return FileResponse(page_path)
+    return {"error": "Page not found"}
+
+
+@app.get("/polygon-optimizer")
+async def polygon_optimizer_page():
+    """Serve the Event Polygon Optimizer page."""
+    page_path = os.path.join(FRONTEND_DIR, "pages", "polygon_optimizer.html")
     if os.path.exists(page_path):
         return FileResponse(page_path)
     return {"error": "Page not found"}
